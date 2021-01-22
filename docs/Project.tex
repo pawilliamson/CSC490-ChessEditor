@@ -24,6 +24,7 @@ Tyler Wallschleger
 \section{Project Definition}
 \subsection{Purpose}
 
+\newpage
 % Section 2 - Project Requirements (Group Responsibility)
 \section{Project Requirements}
 
@@ -38,11 +39,17 @@ The primary requirements of the project must be functional at 'all times'. These
 \item vs Computer
 \end{itemize}
 
-\item User can create, load, and play chess scenarios like:
+\item User can create, load, and play chess scenarios and variants like:
 
+
+% Someone needs to attribute sources -_-
+%% For each official scenario, add source under scenarios in the .bib
 \begin{itemize}
-\item Horde
-
+\item Chess960 
+\item 3-Check
+\item King of The Hill
+\cite{variants}
+\item Horde % Needs Citation
 \end{itemize}
 
 \item The user is able to add a chess engine\footnote{Whether the chess engine works is dependent on the engine. However at least two public chess engines must work with the application.}.
@@ -63,7 +70,10 @@ The program must be able to perform without noticable performance drop in all si
 The required hardware is a standard personal computer with a monitor display.
 \subsubsection{Software}
 \paragraph{Required Software}
-Graphviz.
+The required software includes:
+\begin{itemize}
+\item Graphviz: Reason
+\end{itemize}
 \paragraph{Operating System}
 This program must be able to on both Windows 10 and Linux (specifically OpenSuse 15.2).
 
@@ -112,4 +122,8 @@ There are currently no security requirements with the exception of optional pass
 \subsubsection{Testing}
 \section{Complete System}
 
+\section{References}
+
+\bibliography{Project}
+\bibliographystyle{ieeetr}
 \end{document}
