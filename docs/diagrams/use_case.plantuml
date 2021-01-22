@@ -1,0 +1,13 @@
+ /**
+ Use Case Diagram
+ Authors: Devin M. O'Brien
+ Last Modified: Friday, January 22, 2021 2:47 PM
+ 
+ **/
+ @startuml
+ // Actors
+ :User: as user
+ user -> (Play Game)
+ user -> (Create Scenario)
+ 
+ @enduml

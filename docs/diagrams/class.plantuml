@@ -1,0 +1,101 @@
+/**
+ * UML Class Diagram
+ * Authors: Devin M. O'Brien
+ * Last Modified: Friday, January 22, 2021 2:47 PM
+ */
+@startuml
+interface Controller
+
+interface PieceType{
+	
+}
+enum ChessPieceType{
+	PAWN, ROOK BISHOP, KING,  QUEEN, KNIGHT
+}
+package "ScenarioEditing"{
+	
+}
+package "ChessEngineIntegration"{
+	
+}
+
+
+package "ViewSystem"{
+	interface View{
+		getView()
+	}
+	class ViewController
+}
+package "ControllerSystem"{
+	interface Controller{
+		getController()
+		getView()
+	}
+	
+}
+
+package "ChessGame" {
+class ChessBoard
+class ChessPiece
+class ChessGame
+class ChessEngineComputer
+class Move{
+ - int x
+ - int y
+ + int getDistance()
+}
+}
+
+package "BoardGame" {
+abstract class "Piece" as piece
+abstract class "Board" as board
+abstract class "Game" as game
+abstract class "Player" as player
+abstract class "Play" as play
+
+
+piece --* board
+board --* game
+piece --> ChessPiece
+player --> ChessEngineComputer
+}
+
+
+
+board --> ChessBoard
+game --> ChessGame
+
+
+
+
+class FileIOTranslator{
+	+ boolean saveFile(Path path)
+	+ Game loadFile(Path path)
+}
+package "Graphics" {
+
+}
+
+package "ChessNotation" {
+class Notation {
+	
+}
+
+}
+package "Networking" {
+	
+}
+package "AnalysisTools" {
+	
+}
+package "App"{
+	class AppModel {
+- View currentView
+- Controller appController
+}
+class AppController {
++ void switchView(View view)
+}
+}
+
+@enduml
