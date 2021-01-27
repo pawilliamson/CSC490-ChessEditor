@@ -1,0 +1,53 @@
+/**
+State Diagram
+Authors: Devin M. O'Brien
+Last Modified: Friday, January 22, 2021 2:40 PM
+------------------------------------------------
+TODO:
++ Polish Main Menu State Transition
++ Add FileIO State Diagram
++ Add Notation State Diagram
++ Add additional comments
++ Add Game State Diagram
++ Add Editor State Diagram
++ Expand Startup State
++ Add Networking State
+(Add more todo)
+**/
+@startuml
+[*] --> State1
+State1: Get Any PreConditions
+state precond1 <<choice>>
+State1 --> precond1 
+precond1--> [*] : Error
+precond1 --> State2
+State2: Start application.
+state success1 <<choice>>
+State2 --> success1
+success1 -> MainScreenIdle
+state mainmenu <<choice>>
+
+MainScreenIdle --> mainmenu
+
+mainmenu -> PlayGameMenu
+mainmenu -> ScenarioEditorMenu
+mainmenu -> ApplicationSettings
+ApplicationSettings -> MainScreenIdle
+state GameMenu{
+state playgame <<choice>>
+PlayGameMenu --> playgame
+playgame --> NewGameMenu
+playgame --> LoadGameMenu
+playgame --> JoinGameMenu
+}
+state ScenarioMenu{
+state scenariomenu <<choice>>
+ScenarioEditorMenu --> scenariomenu
+scenariomenu -> CreateScenario
+scenariomenu -> LoadScenario
+}
+CreateScenario -> EditorIdle
+LoadScenario -> EditorIdle
+
+
+@enduml 

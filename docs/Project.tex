@@ -1,0 +1,134 @@
+\documentclass{article}
+\title{Chess Editor 2.0}
+
+\begin{document}
+% Title Page
+\begin{titlepage}
+\begin{center}
+\vspace{1cm}
+\huge Chess Editor\\
+\normalsize
+\vspace{1cm}
+\today\\
+\vspace{1cm}
+\begin{tabular}{c}
+Devin M. O'Brien \\
+Preston Williamson\\
+Brandon Kyle\\
+Dakota Simpkins\\
+Tyler Wallschleger
+\end{tabular}
+\end{center}
+\end{titlepage}
+% Section 1 - Project Definition (Group Responsibility)
+\section{Project Definition}
+People like Chess and need a way to quickly develop and practice new strategies. I love
+Chess!!! Chess Editor will let people play Chess on their PC and set up the board the
+way they want to test different strategies, or just play in a different way. It will support
+playing against an AI, or playing against another person locally. It will include an account
+system to track wins and losses. For the purposes of testing, there will be an undo and
+redo button, as well as tools to set up specific board scenarios. It will be programmed in
+Java and we will use Stockfish for the AI.
+\newpage
+% Section 2 - Project Requirements (Group Responsibility)
+\section{Project Requirements}
+
+\subsection{Functional Requirments}
+
+\subsubsection{Primary Requirements}
+The primary requirements of the project must be functional at 'all times'. These requirements include the following:
+\begin{enumerate}
+\item User can play a game of chess:
+\begin{itemize}
+\item Locally (vs Player)
+\item vs Computer
+\end{itemize}
+
+\item User can create, load, and play chess scenarios and variants like:
+
+
+% Someone needs to attribute sources -_-
+%% For each official scenario, add source under scenarios in the .bib
+\begin{itemize}
+\item Chess960 
+\item 3-Check
+\item King of The Hill
+\cite{variants}
+\item Horde % Needs Citation
+\end{itemize}
+
+\item The user is able to add a chess engine\footnote{Whether the chess engine works is dependent on the engine. However at least two public chess engines must work with the application.}.
+\end{enumerate}
+\subsubsection{Secondary Requirements}
+The secondary requirements of the project may not always be function and are dependent on specific situation. These requirements include the following:
+\begin{enumerate}
+\item User can play a game of chess remotely.
+\item User can use program to analyze moves.
+\end{enumerate}
+\subsection{Usability}
+\subsubsection{User Interface}
+The user interface must not be obtrusive and intuitive. Visuals need to be properly contrasted for differentiation. 
+\subsubsection{Performance}
+The program must be able to perform without noticable performance drop in all situations with the exceptional of analysis and secondary features.
+\subsection{System}
+\subsubsection{Hardware}
+The required hardware is a standard personal computer with a monitor display.
+\subsubsection{Software}
+\paragraph{Required Software}
+The required software includes:
+\begin{itemize}
+\item Graphviz: Reason
+\end{itemize}
+\paragraph{Operating System}
+This program must be able to on both Windows 10 and Linux (specifically OpenSuse 15.2).
+
+\subsubsection{Database}
+(POSTPONED)
+\subsubsection{Networking}
+Certain secondary functionality requires a network connection in order to work properly.
+
+\subsection{Security}
+There are currently no security requirements with the exception of optional password protection for saved games and hosted games.
+% Section 3  Project Specification (Group Responsibility)
+\section{Project Specification}
+\subsection{Scope}
+\subsection{Libraries/ Frameworks/ Development Environments/ Dependencies}
+\subsection{Platform}
+\subsection{Genre}
+% Section 4 Design Perspective (Group Responsibility)
+\section{System - Design Perspective}
+\subsection{Subsystems}
+\subsubsection{Models}
+
+% Section 5 Analyssis Perspective (Group Responsibility)
+\section{System - Analysis Perspective}
+\subsection{Subsystems}
+
+% Section 6 Project Scrum Report (Group Responsibility)
+\section{Project Scrum Report}
+
+\subsection{Product Backlog} % Table / Diagram
+
+\subsection{Sprint Backlog} % Table / Diagram
+
+\subsection{Burndown Chart}
+
+% Individual Responsibility
+\section{Subsystems}
+\subsection{Subsystem 1}
+\subsubsection{Initial Design and Models}
+\subsubsection{Data dictionary}
+\subsubsection{Revisions}
+\subsubsection{Scrum Backlog } % (Product and Sprint - Link to Section 6)
+\subsubsection{Coding}
+\paragraph{Approach}
+\paragraph{Language}
+\subsubsection{User Training}
+\subsubsection{Testing}
+\section{Complete System}
+
+\section{References}
+
+\bibliography{Project}
+\bibliographystyle{ieeetr}
+\end{document}

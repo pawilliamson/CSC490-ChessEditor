@@ -1,0 +1,22 @@
+#+Title: Documentation Folder Guide
+#+Author: Devin M. O'Brien
+
+* Overview
+All files not within a subfolder must not be part of a particular
+subsytem. Each subsystem must have its own folder. Diagrams should have their
+own folder. 
+
+* Root
+All files must either be a markup text file or a type of document/image
+file. Any dependencies related to a particular file type that is not self
+explanitory  should be stated
+within this document.
+
+* File Types
+** Org
+This is a stylized plain text file.
+
+
+
+
+
