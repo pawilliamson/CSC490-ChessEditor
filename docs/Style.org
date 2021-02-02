@@ -3,18 +3,6 @@
 
 * Document Overview
 * Documentation Directory
-** Project.tex
-** Project.bib
-** Project.pdf
-** Style.org
-** data
-** diagrams
-*** Diagrams_Guide.org
-*** src
-*** out
-#+END_SRC
-
-
 ** Files
 - Project.tex
 - Project.bib
