@@ -31,7 +31,8 @@ src/node_modules/
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Files generated from Angular/IDEs 
 hs_err_pid*
 /node_modules/
 /.project
+/.vscode
