@@ -1,6 +1,6 @@
 \documentclass{article}
 \title{Chess System}
-
+\include{hyperref}
 \begin{document}
 % Title Page
 \begin{titlepage}
@@ -31,6 +31,11 @@ redo button, as well as tools to set up specific board scenarios. It will be pro
 Java and we will use Stockfish for the AI.
 %% I would like to revise this - Devin
 \newpage
+\section{Members}
+%Need to add
+\newpage
+\section{Definitions and  Jargon}
+\newpage
 % Section 2 - Project Requirements (Group Responsibility)
 \section{Project Requirements}
 
@@ -39,27 +44,11 @@ Java and we will use Stockfish for the AI.
 \subsubsection{Primary Requirements}
 The primary requirements of the project must be functional at 'all times'. These requirements include the following:
 \begin{enumerate}
-\item User can play a game f chess:
-\begin{itemize}
-\item Locally (vs Player)
-\item vs Computer
-\end{itemize}
-
-\item User can create, load, and play chess scenarios and variants like:
-
-
-% Someone needs to attribute sources -_-
-%% For each official scenario, add source under scenarios in the .bib
-\begin{itemize}
-\item Chess960 
-\item 3-Check
-\item King of The Hill
-\cite{variants}
-\item Horde % Needs Citation
-\end{itemize}
-
-\item The user is able to add a chess engine\footnote{Whether the chess engine works is dependent on the engine. However at least two public chess engines must work with the application.}.
+\item User can play a local game of chess.
 \end{enumerate}
+
+% Removing: \item The user is able to add a chess engine\footnote{Whether the chess engine works is dependent on the engine. However at least two public chess engines must work with the application.}
+
 \subsubsection{Secondary Requirements}
 The secondary requirements of the project may not always be function and are dependent on specific situation. These requirements include the following:
 \begin{enumerate}
@@ -76,44 +65,70 @@ The program must be able to perform without noticable performance drop in all si
 The required hardware is a standard personal computer with a monitor display.
 \subsubsection{Software}
 \paragraph{Required Software}
-The required software includes:
-\begin{itemize}
-\item Graphviz: Reason
-\end{itemize}
+A modern web browser will be required to use the application.
 \paragraph{Operating System}
-This program must be able to on both Windows 10 and Linux (specifically OpenSuse 15.2).
-
+This project will primarily be a web application, so it will not be specific to any operating system in particular. The browser used however, may impact the application.
 \subsubsection{Database}
-(POSTPONED)
+This project will use a database to store online chess games.
+% Please ellaborate
 \subsubsection{Networking}
 Certain secondary functionality requires a network connection in order to work properly.
-
+% Online ches
 \subsection{Security}
-There are currently no security requirements with the exception of optional password protection for saved games and hosted games.
+User authentication to create and join online games.
+
+
+\newpage
 % Section 3  Project Specification (Group Responsibility)
 \section{Project Specification}
 \subsection{Scope}
 \subsection{Libraries/ Frameworks/ Development Environments/ Dependencies}
+This project will be developed using Angular Framework
 \subsection{Platform}
 \subsection{Genre}
+
+\newpage
 % Section 4 Design Perspective (Group Responsibility)
 \section{System - Design Perspective}
 \subsection{Subsystems}
 \subsubsection{Models}
 
+
+\newpage
 % Section 5 Analyssis Perspective (Group Responsibility)
 \section{System - Analysis Perspective}
 \subsection{Subsystems}
 
+\newpage
 % Section 6 Project Scrum Report (Group Responsibility)
 \section{Project Scrum Report}
+\subsection{Overall}
+\subsubsection{Product Backlog} % Table / Diagram
 
-\subsection{Product Backlog} % Table / Diagram
+\subsubsection{Sprint Backlog} % Table / Diagram
 
-\subsection{Sprint Backlog} % Table / Diagram
+\subsubsection{Burndown Chart}
 
-\subsection{Burndown Chart}
+\subsection{Sprint 1}
+Sprint 1 began on January 22, 2021 and continued till Febuary 6, 2021. The period lasted one (1) day longer than its assigned duration.
+\subsubsection{Scrums}
+During the sprint, two scrum meetings took place:
+\begin{itemize}
+ \item January 28, 2021: Discussed the framework of the project and decided to use Angular. Also discussed the scope of the project, decided to make it a web application. Mention of authetication services for server.
+\item Febuary 4, 2021: Discussed some work that was done since the previous scrum;  includes diagrams and investigation of Google Authentication for the server.
+\end{itemize}
+\subsubsection{Sprint Backlog}
+\begin{tabular}{|p{0.28\textwidth}| p{0.2\textwidth}|p{0.12\textwidth}|p{0.4\textwidth}|}
+\hline
+Item & Created by & Date & Status\\\hline
+Project Definition & dobrienUNCG  & 01/21/21 &  Completed by pizzaza\\\hline
+Project Requirements & dobrienUNCG & 01/21/21  & Completed during Scrums 1 and 2 by group\\\hline
+Identify Subsystems & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog\\\hline
+Project Specification & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog \\\hline
+\end{tabular}
 
+
+\newpage
 % Individual Responsibility
 \section{Subsystems}
 \subsection{Subsystem 1}
