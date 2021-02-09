@@ -62,6 +62,9 @@ The user interface must not be obtrusive and intuitive. Visuals need to be prope
 The program must be able to perform without noticable performance drop in all situations with the exceptional of analysis and secondary features.
 \subsection{System}
 \subsubsection{Hardware}
+\paragraph{Serverside}
+
+\paragraph{Clientside}
 The required hardware is a standard personal computer with a monitor display.
 \subsubsection{Software}
 \paragraph{Required Software}
@@ -69,11 +72,11 @@ A modern web browser will be required to use the application.
 \paragraph{Operating System}
 This project will primarily be a web application, so it will not be specific to any operating system in particular. The browser used however, may impact the application.
 \subsubsection{Database}
-This project will use a database to store online chess games.
-% Please ellaborate
+This project wi
+% Please ellaborate  MySQL (Which Version?)
 \subsubsection{Networking}
 Certain secondary functionality requires a network connection in order to work properly.
-% Online ches
+% Online chess
 \subsection{Security}
 User authentication to create and join online games.
 
@@ -82,16 +85,36 @@ User authentication to create and join online games.
 % Section 3  Project Specification (Group Responsibility)
 \section{Project Specification}
 \subsection{Scope}
+This project will work to develop a chess web application similiar to lichess to develop the following skills:
+\begin{itemize}
+\item Working with Angular
+\item WOrking with remote distribution platform
+\end{itemize}
+The web application should be able to run a game of chess between two players.
 \subsection{Libraries/ Frameworks/ Development Environments/ Dependencies}
 This project will be developed using Angular Framework
 \subsection{Platform}
+This project will be a web application that can be accessed by a web browser.
 \subsection{Genre}
+This project is can be considered as a video game or an online game depending on the context.
 
 \newpage
 % Section 4 Design Perspective (Group Responsibility)
 \section{System - Design Perspective}
 \subsection{Subsystems}
-\subsubsection{Models}
+\begin{itemize}
+\item User Authentication
+\item Game Management
+\item Editor
+\item Analysis
+\item Game Play
+\end{itemize}
+\subsection{Sub-System Communication}
+\subsubsection{Controls}
+\subsubsection{IO}
+\subsubsection{DataFlow}
+\subsection{Entity Relationship Model}
+\subsection{Overall Operation - System Model}
 
 
 \newpage
@@ -141,7 +164,39 @@ Project Specification & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog \\\hl
 \paragraph{Language}
 \subsubsection{User Training}
 \subsubsection{Testing}
+\newpage
+\subsection{Subsystem 1: Chess Game}
+\subsubsection{Initial Design and Models}
+The idea is to make this subsystem efficient and open so we can potentially add or reuse different components for the editor or analysis functionality. This will be reused for online games, so it would be best for this to be modular.
+\subsubsection{Data dictionary}
+\subsubsection{Revisions}
+\subsubsection{Scrum Backlog}
+\begin{tabular}{|c|c|c|c|c|}
+  Task & On & Assigned To & Completed On\\\hline
+  Generate Chess Board &  & \\\hline
+  Chess Pieces Classes & & \\\hline
+  Move Classes & & \\\hline
+  Player+Move Interfaces & & \\\hline
+  Display BOard & & \\\hline
+  Drag and Move Piece & & \\\hline
+  Validate Moves & & \\\hline
+  Detect Check & & \\\hline
+  Detect Win &  & \\\hline
+\end{tabular}
+\subsubsection{Coding}
+\paragraph{Approach}
+This will developed using Angular to build the system.
+\paragraph{Language}
+This will be developed using TypeScript, HTML, and CSS.
+\subsubsection{User Training}
+
+\subsubsection{Testing}
+
+\newpage
+\subsection{Subsystem 2: 
+
 \section{Complete System}
+
 
 \section{References}
 

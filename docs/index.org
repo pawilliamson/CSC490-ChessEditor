@@ -1,0 +1,133 @@
+#+TITLE: Senior Project
+#+FILETAGS: :Senior_Project:
+:HELPER:
+:Parent: [[../../Index.org]]
+:Add: FALSE
+:END:
+
+* Week of 02-11
+  :LOGBOOK:
+  CLOCK: [2021-02-09 Tue 16:45]
+  :END:
+  
+
+
+  
+  <2021-02-04 Thu 17:30>
+* Week of <2021-02-04 Thu>
+** Documentation
+   I had started working on general documentation which includes the following:
+*** Diagrams
+**** Use-Case:
+     Even though this isn't really a use case
+#+ATTR_HTML: :width 500
+#+ATTR_ORG :width 500
+
+#+ATTR_HTML: :width 900px
+#+ATTR_ORG :width 500 :height 700
+[[file:diagrams/out/state.png]]
+src: [[file:./diagrams/src/state.plantuml]]
+**** Class Diagram
+#+ATTR_HTML: :width 900
+#+ATTR_ORG: :width 500
+[[file:./diagrams/out/class.png]] 
+src: [[file:./diagrams/src/class.plantuml]] 
+**** Sequence Diagram
+
+#+BEGIN_SRC plantuml :file diagrams/out/sequence.png
+title Getting Client
+User -> Server: Get Request Index
+activate Server
+Server --> User
+deactivate Server
+create Client
+User -> Client
+Client --> User
+
+User -> Client: I want to check online games.
+activate Client
+Client -> Client: Check UserID Exists
+Client --> User: Authentication Required
+deactivate Client
+== Authentication ==
+User -> XYZ: Verifiy
+activate XYZ
+XYZ --> User: Confirmation
+XYZ -> Client: UserID
+deactivate XYZ
+== Connect To Server ==
+Client -> Server: Request Table of Games
+Server --> Client: Table of Games
+
+#+END_SRC
+
+#+RESULTS:
+[[file:diagrams/out/sequence.png]]
+**** Missing File:
+#+ATTR_ORG :width 300 :height 300
+[[file:./diagrams/out/missing.png]]
+
+*** Conceptual Docs
+I have several markdown strewn around on my computer that I need to
+compile down and utilize. I think what I had 
+*** Explanation of project.
+I have been considering what we are doing is
+not actually a chess editor, but a chess client with a scenario editor
+(+ chess server).
+** Designs
+I haven't actually talked about my the design docs with the team yet because I hadn't finished yet.
+*** Game System
+**** Game
+Contains information about the game as a whole, anything related to an instance of a game.
+***** Move 
+
+***** Board
+Object containing all the positions on the board
+****** Cells
+******* Position
+******* Padding
+******* Margin
+******* Border
+******* Content
+**** Piece
+***** Type
+***** Side
+***** Moves
+**** Player
+***** Moves
+
+
+** Project Tracking
+*** ZenHub
+I wouldn't be calling this an acheivement considering how bad I have
+it, but issues for the first sprint (we stll have task listed under
+the first sprint).
+Q: Should I keep it like that or change it?
+*** TODO Roadmap
+    SCHEDULED: <2021-02-05 Fri>
+IMPORT THE BLODDY THING!
+I tried to estimate where we should be at what time, I still have a
+ways to go.
+** General
+*** Angular
+I have been trying to learn how to use Angular. I haven't had much
+free-time so I haven't gotten far. The only **contribution** I made
+was adding some template json files since I couldn't build the main
+branch, and I made a mistake when I uploaded the instructions to
+build.
+~npm install~ vs ~npm install ChessEditor~
+
+
+* Next Week
+** Finish Diagrams
+   DEADLINE: <2021-02-05 Fri 23:00>
+
+   Well finish the diagrams that I am working on. Someone has their own diagrams
+   so I will just be focusing on the sequence, component, and roadmap diagrams.
+
+   :NOTE:
+   I failed to do that.
+   :END:
+** Task Management
+
+   

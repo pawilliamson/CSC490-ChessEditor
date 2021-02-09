@@ -1,0 +1,6 @@
+* User can connect to the server.
+** User can download the client from the server.
+** User can play a game of chess on the server.
+* User can play a game of chess on the client.
+* User can use editor on the client. 
+
