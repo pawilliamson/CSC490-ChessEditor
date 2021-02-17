@@ -1,0 +1,94 @@
+digraph G{
+	splines=false;
+	start[
+		shape = oval;
+	];
+	isPawn[
+		shape = diamond;
+		label = "Pawn?";
+	];
+	pawnStart[
+		shape = diamond;
+		label = "Start?";
+	];
+	pawnY[
+		shape = diamond;
+		label="Y-Axis";
+	];
+	pawnD2[
+		shape = diamond;
+		label = "Distance <= 2";
+	];
+	pawnD1[
+		shape = diamond;
+		label = "Distance == 1";
+	];
+	pawnDiag[
+		shape = diamond;
+		label ="Diagonal?";
+	];
+	pawnCapture[
+		shape = diamond;
+		label = "Capture?";
+	];
+	reject[
+		shape = oval;
+		label = "Reject";
+	];
+	{
+		rank=same;
+		isPawn -> pawnStart;
+		pawnStart -> pawnD1;
+		pawnD1 -> reject
+	}
+	pawnStart -> pawnD2;
+	{
+		
+		pawnD2 -> reject;
+
+	}
+	acceptP{
+		shape = oval;
+		label = "Accept if Positive";
+	}
+	pawnD1 -> pawnY;
+	{
+		rank = same;
+		pawnY -> acceptP;
+	}
+	pawnY -> pawnCapture;
+	pawnCapture -> acceptP;
+	pawnCapture -> reject;
+	
+
+
+
+	isRook[
+		shape = diamond;
+		label = "Rook?";
+	];
+	isBishop[
+		shape = diamond;
+		label = "Bishop?";
+	];
+	isKnight[
+		shape = diamond;
+		label = "Knight?";
+	];
+	isQueen[
+		shape = diamond;
+		label = "Queen?";
+	];
+	isKing[
+		shape = diamond;
+		label = "King?";
+	];
+
+	start -> isPawn;
+	isPawn -> isRook;
+	isRook -> isBishop;
+	isBishop -> isKnight;
+	isKnight -> isQueen;
+	isQueen -> isKing;
+	
+}

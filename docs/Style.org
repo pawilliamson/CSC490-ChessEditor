@@ -1,23 +1,28 @@
 #+Title: Documentation Folder Guide
 #+Author: Devin M. O'Brien
-
-* Document Overview
+#+DATE: Thursday, February 11, 2021
+* Overview
+  Keep files where they belong.
+  
 * Documentation Directory
 ** Files
-- Project.tex
-- Project.bib
-- Project.pdf
-- Style.org
+  - Project.tex: Project Documentation (.tex form)
+  - Project.bib: Project Documentation Sources
+  - Project.pdf: *Official* Project Documentation
+  - Style.org:   (You Are Here!)
 ** Sub-Directories
 *** data
-
+    We don't have any data, but if we did, it would go here.
 *** diagrams
-
+    No one looks here, so don't worry.
 **** Files
-- Diagrams_Guide.org
+- Diagrams_Guide.org: Useless. Does it even exist?
 **** Sub-Directories
 ***** src
+      Arbitrary decision to place files that are used to make images, but not
+      themselves images, go here.
 ***** out
+      See above.
 ** File Types
 | *Extension* | *Description*                                      |
 |-------------+----------------------------------------------------|
@@ -29,6 +34,7 @@
 | plantuml    | Markup document, for diagrams.                     |
 | md          | *How did this get in here?*                        |
 
-
+Any violations will be listed here:
+- dobrienUNCG: 
 
 

@@ -1,205 +1,322 @@
-\documentclass{article}
-\title{Chess System}
-\include{hyperref}
+% Created 2021-02-17 Wed 16:38
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Devin Michael O'Brien}
+\date{\today}
+\title{Chess Editor}
+\hypersetup{
+ pdfauthor={Devin Michael O'Brien},
+ pdftitle={Chess Editor},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
 \begin{document}
-% Title Page
-\begin{titlepage}
-\begin{center}
-\vspace{1cm}
-\huge Chess Editor\\
-\normalsize
-\vspace{1cm}
-\today\\
-\vspace{1cm}
-\begin{tabular}{c}
-Devin M. O'Brien \\
-Preston Williamson\\
-Brandon Kyle\\
-Dakota Simpkins\\
-Tyler Wallschleger
-\end{tabular}
-\end{center}
-\end{titlepage}
-% Section 1 - Project Definition (Group Responsibility)
+
+\maketitle
+\tableofcontents
+
 \section{Project Definition}
+\label{sec:orgb20949e}
 People like Chess and need a way to quickly develop and practice new strategies. I love
 Chess!!! Chess Editor will let people play Chess on their PC and set up the board the
 way they want to test different strategies, or just play in a different way. It will support
 playing against an AI, or playing against another person locally. It will include an account
 system to track wins and losses. For the purposes of testing, there will be an undo and
 redo button, as well as tools to set up specific board scenarios. It will be programmed in
-Java and we will use Stockfish for the AI.
-%% I would like to revise this - Devin
-\newpage
-\section{Members}
-%Need to add
-\newpage
-\section{Definitions and  Jargon}
-\newpage
-% Section 2 - Project Requirements (Group Responsibility)
-\section{Project Requirements}
+Typescript and we will use Stockfish for the AI.
+\section{{\bfseries\sffamily TODO} Project Requirements [1/4]}
+\label{sec:orgfb85e42}
+\subsection{{\bfseries\sffamily DONE} Functional [2/2]}
+\label{sec:orgdbf309f}
+\subsubsection{{\bfseries\sffamily DONE} Primary Requirements}
+\label{sec:org54f4998}
+The primary soce of functionality for \emph{/ \textbf{Chess Editor} /} include:
+\begin{itemize}
+\item Ability for the user to play an online game of chess with
+another user, or alternatively against \textbf{AI} that will be
+provided,
+\item Ability for the user to track their \textbf{statistics} of play over
+the life of their account; such as:
+\begin{itemize}
+\item Wins
+\item Losses
+\item Draws
+\end{itemize}
+\item Ability for the user to modify the starting layout of the chess
+pieces to match the configuration of either a previously ongoing
+game or a chess scenario.
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} Secondary Requirements}
+\label{sec:org1390d35}
+The secondary scope of functionality for Chess Editor include:
+\begin{itemize}
+\item Ability for the end user to create an account to access features
+\item Ability for the end user to login via their Google Account credentials.
+\end{itemize}
+\subsubsection{Optional Requirements}
+\label{sec:orgb9af487}
+\subsection{{\bfseries\sffamily TODO} Usability [0/2]}
+\label{sec:orge2ec26e}
+\subsubsection{{\bfseries\sffamily TODO} User Interface}
+\label{sec:orgdbd0401}
+The user interface of the application must not be obtrusive and
+needs to be adapted for mobile devices.
+\subsubsection{{\bfseries\sffamily TODO} Performance}
+\label{sec:org15e218a}
+The performance of the application must not interfere with other
+processes on the users system.
+\subsection{{\bfseries\sffamily TODO} System [0/3]}
+\label{sec:org2675774}
+\subsubsection{{\bfseries\sffamily TODO} Hardware}
+\label{sec:org27dec61}
+The application will require hardware capable of running a modern web-brower without difficulty.
+Please add table of estimate
+\subsubsection{{\bfseries\sffamily TODO} Software}
+\label{sec:orge0244f9}
+The application will require a modern web-browser preferably one of the following:
+Add a table of web-browsers
+\subsubsection{{\bfseries\sffamily TODO} Database\hfill{}\textsc{Verify}}
+\label{sec:orgcbf4328}
+This project will have one database which is used to keep track of on-going games.
+\subsection{{\bfseries\sffamily TODO} Security}
+\label{sec:org82ea64f}
 
-\subsection{Functional Requirments}
-
-\subsubsection{Primary Requirements}
-The primary requirements of the project must be functional at 'all times'. These requirements include the following:
-\begin{enumerate}
-\item User can play a local game of chess.
-\end{enumerate}
-
-% Removing: \item The user is able to add a chess engine\footnote{Whether the chess engine works is dependent on the engine. However at least two public chess engines must work with the application.}
-
-\subsubsection{Secondary Requirements}
-The secondary requirements of the project may not always be function and are dependent on specific situation. These requirements include the following:
-\begin{enumerate}
-\item User can play a game of chess remotely.
-\item User can use program to analyze moves.
-\end{enumerate}
-\subsection{Usability}
-\subsubsection{User Interface}
-The user interface must not be obtrusive and intuitive. Visuals need to be properly contrasted for differentiation. 
-\subsubsection{Performance}
-The program must be able to perform without noticable performance drop in all situations with the exceptional of analysis and secondary features.
-\subsection{System}
-\subsubsection{Hardware}
-\paragraph{Serverside}
-
-\paragraph{Clientside}
-The required hardware is a standard personal computer with a monitor display.
-\subsubsection{Software}
-\paragraph{Required Software}
-A modern web browser will be required to use the application.
-\paragraph{Operating System}
-This project will primarily be a web application, so it will not be specific to any operating system in particular. The browser used however, may impact the application.
-\subsubsection{Database}
-This project wi
-% Please ellaborate  MySQL (Which Version?)
-\subsubsection{Networking}
-Certain secondary functionality requires a network connection in order to work properly.
-% Online chess
-\subsection{Security}
-User authentication to create and join online games.
-
-
-\newpage
-% Section 3  Project Specification (Group Responsibility)
 \section{Project Specification}
-\subsection{Scope}
-This project will work to develop a chess web application similiar to lichess to develop the following skills:
-\begin{itemize}
-\item Working with Angular
-\item WOrking with remote distribution platform
-\end{itemize}
-The web application should be able to run a game of chess between two players.
-\subsection{Libraries/ Frameworks/ Development Environments/ Dependencies}
-This project will be developed using Angular Framework
+\label{sec:orgaa08407}
+\subsection{Focus}
+\label{sec:org00e3bce}
+This project has a focus on developing experience with Angular and
+with a client-server application. This project will attempt to utilize
+open-source projects when it is reasonably possible.
+
+\subsection{Development Environemnt}
+\label{sec:org558edd4}
+\subsubsection{Libraries}
+\label{sec:orga693088}
+This project will be using the Google Identity API for user Authentication.
+\subsubsection{Frameworks}
+\label{sec:org67f148d}
+This project will be developed using the Angular framework (11.1.2)
+with TypeScript.
 \subsection{Platform}
-This project will be a web application that can be accessed by a web browser.
+\label{sec:org3feb2ce}
+This project is going to be web-based application,
 \subsection{Genre}
-This project is can be considered as a video game or an online game depending on the context.
+\label{sec:orge2a5561}
+This project is considered as an online board game.
+\section{System Design}
+\label{sec:org8c257f6}
+\subsection{Subsystem Identification}
+\label{sec:org9f8e945}
+\subsubsection{Sequence Diagram\hfill{}\textsc{@DeMO}}
+\label{sec:org474874a}
+I have previously made the sequence diagram, but I have had to redo it a couple times
+as we have continued, the design has changed. I am going to just upload an complete 
+sequence diagram and since it doesn't have to be the same and can be used in refinement
+section.
+\subsubsection{Use-Case Diagram}
+\label{sec:org0dc7b17}
 
-\newpage
-% Section 4 Design Perspective (Group Responsibility)
-\section{System - Design Perspective}
-\subsection{Subsystems}
-\begin{itemize}
-\item User Authentication
-\item Game Management
-\item Editor
-\item Analysis
-\item Game Play
-\end{itemize}
+\subsubsection{Class Diagram\hfill{}\textsc{@Dakota:@Tyler:@DeMO:@pawilliamson}}
+\label{sec:org779b03e}
+
+\subsubsection{State Diagram}
+\label{sec:org916ef68}
+\subsection{Design}
+\label{sec:org5080350}
+\subsubsection{Mock-up Diagram}
+\label{sec:orgc8e6978}
+\subsubsection{Color Schemes}
+\label{sec:orgd4f23f7}
+\subsubsection{{\bfseries\sffamily TODO} Additional Comments}
+\label{sec:orgd1a30d5}
+We will be using Bootstrap framewwork.
 \subsection{Sub-System Communication}
+\label{sec:org3d5c8d8}
 \subsubsection{Controls}
-\subsubsection{IO}
-\subsubsection{DataFlow}
-\subsection{Entity Relationship Model}
-\subsection{Overall Operation - System Model}
+\label{sec:orge9a7ffc}
+\subsubsection{I/O}
+\label{sec:orga0d9841}
+\subsubsection{Dataflow\hfill{}\textsc{@Tyler}}
+\label{sec:org31f7bd8}
+\subsection{{\bfseries\sffamily TODO} Entity Relationship Model (E-R Model)}
+\label{sec:org45ed458}
+\subsection{{\bfseries\sffamily TODO} Overall operation - System Model}
+\label{sec:org49d2edd}
+\section{{\bfseries\sffamily TODO} System Analysis}
+\label{sec:org76bfca0}
 
-
-\newpage
-% Section 5 Analyssis Perspective (Group Responsibility)
-\section{System - Analysis Perspective}
-\subsection{Subsystems}
-
-\newpage
-% Section 6 Project Scrum Report (Group Responsibility)
-\section{Project Scrum Report}
+\section{{\bfseries\sffamily TODO} Project Scrum Report}
+\label{sec:org7495096}
 \subsection{Overall}
-\subsubsection{Product Backlog} % Table / Diagram
-
-\subsubsection{Sprint Backlog} % Table / Diagram
-
-\subsubsection{Burndown Chart}
-
+\label{sec:orgaf86fa2}
+\subsection{Product Backlog}
+\label{sec:orge7aaca8}
+\subsection{Sprint Backlog}
+\label{sec:org73af022}
+\subsection{Burndown Chart}
+\label{sec:orgd97450a}
 \subsection{Sprint 1}
-Sprint 1 began on January 22, 2021 and continued till Febuary 6, 2021. The period lasted one (1) day longer than its assigned duration.
-\subsubsection{Scrums}
-During the sprint, two scrum meetings took place:
+\label{sec:org208e456}
+Sprint 1 began on January 22, 2021 and continued to Febuary
+6, 2021. The period lasted one day longer than the allocated duration.
+\subsubsection{Scrum}
+\label{sec:orgdc794fa}
+During sprint, two scrum meetings took place
 \begin{itemize}
- \item January 28, 2021: Discussed the framework of the project and decided to use Angular. Also discussed the scope of the project, decided to make it a web application. Mention of authetication services for server.
-\item Febuary 4, 2021: Discussed some work that was done since the previous scrum;  includes diagrams and investigation of Google Authentication for the server.
+\item January 28, 2021: Discussed the framework of the project and
+decided to use Angular. Discussed the scope of the project and
+decided to be a web application. Discussed authentication
+services for the server.
+\item February 4, 2021: Discussed some work that was done since the
+previous scrum; includes diagrams and investigations of Google
+Authentication viability for the server.
+
+\begin{center}
+\begin{tabular}{llll}
+Item & Created BY & Date & Status\\
+Project Definition & dobrienUNCG & 01/21/21 & Completed by pizzaza\\
+Project requirements & dobrienUNCG & 01/21/21 & Completed during Scrums 1 and 2 by group\\
+Identify subsystems & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog\\
+Project Specification & dobrienUNCG & 01/21/21 & Moved to sprint 2 backlog\\
+\end{tabular}
+\end{center}
 \end{itemize}
-\subsubsection{Sprint Backlog}
-\begin{tabular}{|p{0.28\textwidth}| p{0.2\textwidth}|p{0.12\textwidth}|p{0.4\textwidth}|}
-\hline
-Item & Created by & Date & Status\\\hline
-Project Definition & dobrienUNCG  & 01/21/21 &  Completed by pizzaza\\\hline
-Project Requirements & dobrienUNCG & 01/21/21  & Completed during Scrums 1 and 2 by group\\\hline
-Identify Subsystems & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog\\\hline
-Project Specification & dobrienUNCG & 01/21/21 & Moved to Sprint 2 backlog \\\hline
+
+\section{{\bfseries\sffamily TODO} Subsystems [/]}
+\label{sec:org03c7b0f}
+\subsection{{\bfseries\sffamily TODO} Chess Game [0/7]\hfill{}\textsc{@Tyler:@Dakota}}
+\label{sec:orgdc962f0}
+\subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
+\label{sec:org33da27e}
+\subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
+\label{sec:org260d33a}
+\subsubsection{{\bfseries\sffamily TODO} Revisions (Refinement)}
+\label{sec:org22b4fb6}
+\subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
+\label{sec:org65cf748}
+\begin{center}
+\begin{tabular}{llll}
+Task & On & Assigned To & Completed On\\
+--------------------------- & -- & ------------ & -----------\\
+Generate Chessboard &  & Tyler, Dakota & \\
+Chess Pieces &  &  & \\
+Movement &  &  & \\
+Movement and player interfaces &  &  & \\
+Display Board &  &  & \\
+Drag and move piece` &  &  & \\
+Validate Moves &  &  & \\
+Detect Check &  &  & \\
+Detect Win &  &  & \\
 \end{tabular}
+\end{center}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} User Story Categories\hfill{}\textsc{@DeMO}
+\label{sec:org0feb27f}
+\end{enumerate}
+\subsubsection{{\bfseries\sffamily TODO} Coding}
+\label{sec:org667dba5}
+\begin{enumerate}
+\item Language
+\label{sec:org3ab076c}
+\end{enumerate}
+\subsubsection{{\bfseries\sffamily TODO} User Training}
+\label{sec:orgb2f6dbb}
+\subsubsection{{\bfseries\sffamily TODO} Testing}
+\label{sec:org2f6d543}
+\subsection{{\bfseries\sffamily TODO} User Authentication [0/7]\hfill{}\textsc{@pawilliamson}}
+\label{sec:org73ca7b6}
+\subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
+\label{sec:orgb8760eb}
+\subsubsection{{\bfseries\sffamily TODO} Data Model}
+\label{sec:org5ced554}
+\subsubsection{{\bfseries\sffamily TODO} Refinement}
+\label{sec:orgb80ab0c}
+\subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
+\label{sec:org6f1c72d}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} User Story Categories\hfill{}\textsc{@DeMO}
+\label{sec:org8e60305}
+\end{enumerate}
+\subsubsection{{\bfseries\sffamily TODO} Coding}
+\label{sec:org2996c9b}
+\subsubsection{{\bfseries\sffamily TODO} User Training}
+\label{sec:org8edbb2d}
+\subsubsection{{\bfseries\sffamily TODO} Testing}
+\label{sec:org65c28ba}
+\subsection{{\bfseries\sffamily TODO} Server - Client [0/7]\hfill{}\textsc{@Tyler}}
+\label{sec:org0647564}
+\subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
+\label{sec:orgadeeb28}
+\subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
+\label{sec:orga3771cc}
+\subsubsection{{\bfseries\sffamily TODO} Refinement}
+\label{sec:org8df178e}
+\subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
+\label{sec:org3a7233a}
+\subsubsection{{\bfseries\sffamily TODO} Coding}
+\label{sec:org99c3f3d}
+\subsubsection{{\bfseries\sffamily TODO} User Training}
+\label{sec:org9496414}
+\subsubsection{{\bfseries\sffamily TODO} Testing}
+\label{sec:org230d570}
+\subsection{{\bfseries\sffamily TODO} Computer Opponent  [0/7]\hfill{}\textsc{@DeMO}}
+\label{sec:orgf838c81}
+\subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
+\label{sec:org6ece6c8}
+\subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
+\label{sec:orgf9866c3}
+\subsubsection{{\bfseries\sffamily TODO} Refinement}
+\label{sec:orgb2dc701}
+\subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
+\label{sec:org0068398}
+\begin{enumerate}
+\item {\bfseries\sffamily TODO} User Story Categories
+\label{sec:org5c18c55}
+\end{enumerate}
+\subsubsection{{\bfseries\sffamily TODO} Coding}
+\label{sec:org8a6197d}
+\subsubsection{{\bfseries\sffamily TODO} User Training}
+\label{sec:orge31abcc}
+\subsubsection{{\bfseries\sffamily TODO} Testing}
+\label{sec:org4d86b18}
+\section{{\bfseries\sffamily TODO} Complete System}
+\label{sec:org64ebb9a}
+\subsection{{\bfseries\sffamily TODO} Final Product}
+\label{sec:org6d46a23}
+\subsection{{\bfseries\sffamily TODO} Source code and user manual + Technical Report}
+\label{sec:org54beef9}
+\subsubsection{{\bfseries\sffamily TODO} GitHub}
+\label{sec:org6f68d1f}
+\subsection{{\bfseries\sffamily TODO} Evaluation by client and instructor}
+\label{sec:org8bc8658}
 
-
-\newpage
-% Individual Responsibility
-\section{Subsystems}
-\subsection{Subsystem 1}
-\subsubsection{Initial Design and Models}
-\subsubsection{Data dictionary}
-\subsubsection{Revisions}
-\subsubsection{Scrum Backlog } % (Product and Sprint - Link to Section 6)
-\subsubsection{Coding}
-\paragraph{Approach}
-\paragraph{Language}
-\subsubsection{User Training}
-\subsubsection{Testing}
-\newpage
-\subsection{Subsystem 1: Chess Game}
-\subsubsection{Initial Design and Models}
-The idea is to make this subsystem efficient and open so we can potentially add or reuse different components for the editor or analysis functionality. This will be reused for online games, so it would be best for this to be modular.
-\subsubsection{Data dictionary}
-\subsubsection{Revisions}
-\subsubsection{Scrum Backlog}
-\begin{tabular}{|c|c|c|c|c|}
-  Task & On & Assigned To & Completed On\\\hline
-  Generate Chess Board &  & \\\hline
-  Chess Pieces Classes & & \\\hline
-  Move Classes & & \\\hline
-  Player+Move Interfaces & & \\\hline
-  Display BOard & & \\\hline
-  Drag and Move Piece & & \\\hline
-  Validate Moves & & \\\hline
-  Detect Check & & \\\hline
-  Detect Win &  & \\\hline
-\end{tabular}
-\subsubsection{Coding}
-\paragraph{Approach}
-This will developed using Angular to build the system.
-\paragraph{Language}
-This will be developed using TypeScript, HTML, and CSS.
-\subsubsection{User Training}
-
-\subsubsection{Testing}
-
-\newpage
-\subsection{Subsystem 2: 
-
-\section{Complete System}
-
-
-\section{References}
-
-\bibliography{Project}
-\bibliographystyle{ieeetr}
+\subsection{{\bfseries\sffamily TODO} Team Member Description}
+\label{sec:org350429c}
+Our team consists of five members: Dakota Simpkins, Tyler Wallshleger,
+Devin O'Brien, Preston Williamson, and Brandon Kyle.
+\subsubsection{Dakota Simpkins}
+\label{sec:org22e14b5}
+\subsubsection{Tyler Wallshleger}
+\label{sec:org55d4c8c}
+\subsubsection{Devin O'Brien}
+\label{sec:orgff4f13c}
+\subsubsection{Preston Williamson}
+\label{sec:org6fdd71f}
+\subsubsection{Brandon Kyle}
+\label{sec:org29679ea}
 \end{document}

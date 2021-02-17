@@ -1,0 +1,181 @@
+#+TITLE: Chess Editor
+#+TAGS: @DeMO @pizzaza @Tyler @Dakota @pawilliamson
+* Project Definition
+People like Chess and need a way to quickly develop and practice new strategies. I love
+Chess!!! Chess Editor will let people play Chess on their PC and set up the board the
+way they want to test different strategies, or just play in a different way. It will support
+playing against an AI, or playing against another person locally. It will include an account
+system to track wins and losses. For the purposes of testing, there will be an undo and
+redo button, as well as tools to set up specific board scenarios. It will be programmed in
+Typescript and we will use Stockfish for the AI.
+* TODO Project Requirements [1/4]
+** DONE Functional [2/2]
+*** DONE Primary Requirements
+    The primary soce of functionality for // *Chess Editor* // include:
+    - Ability for the user to play an online game of chess with
+      another user, or alternatively against *AI* that will be
+      provided,
+    - Ability for the user to track their *statistics* of play over
+      the life of their account; such as:
+      - Wins
+      - Losses
+      - Draws
+    - Ability for the user to modify the starting layout of the chess
+      pieces to match the configuration of either a previously ongoing
+      game or a chess scenario.
+*** DONE Secondary Requirements
+    The secondary scope of functionality for Chess Editor include:
+    - Ability for the end user to create an account to access features
+    - Ability for the end user to login via their Google Account credentials.
+*** Optional Requirements
+** TODO Usability [0/2]
+*** TODO User Interface
+    The user interface of the application must not be obtrusive and
+    needs to be adapted for mobile devices.
+*** TODO Performance
+    The performance of the application must not interfere with other
+    processes on the users system.
+** TODO System [0/3]
+*** TODO Hardware
+    The application will require hardware capable of running a modern web-brower without difficulty.
+    :DESC:
+    Please add table of estimate
+    :END:
+*** TODO Software
+    The application will require a modern web-browser preferably one of the following:
+    :DESC:
+    Add a table of web-browsers
+    :END:
+*** TODO Database                                                    :Verify:
+    This project will have one database which is used to keep track of on-going games.
+** TODO Security
+
+* Project Specification
+** Focus 
+   This project has a focus on developing experience with Angular and
+   with a client-server application. This project will attempt to utilize
+   open-source projects when it is reasonably possible.
+
+** Development Environemnt
+*** Libraries
+    This project will be using the Google Identity API for user Authentication.
+*** Frameworks
+    This project will be developed using the Angular framework (11.1.2)
+    with TypeScript.
+** Platform
+   This project is going to be web-based application,
+** Genre
+   This project is considered as an online board game.
+* System Design
+** Subsystem Identification
+*** Sequence Diagram                                                  :@DeMO:
+    :WHY:
+    I have previously made the sequence diagram, but I have had to redo it a couple times
+    as we have continued, the design has changed. I am going to just upload an complete 
+    sequence diagram and since it doesn't have to be the same and can be used in refinement
+    section.
+    :END:
+*** Use-Case Diagram
+    
+*** Class Diagram                        :@Dakota:@Tyler:@DeMO:@pawilliamson:
+
+*** State Diagram
+** Design 
+*** Mock-up Diagram
+*** Color Schemes
+*** TODO Additional Comments
+    We will be using Bootstrap framewwork.
+** Sub-System Communication
+*** Controls
+*** I/O
+*** Dataflow                                                         :@Tyler:
+** TODO Entity Relationship Model (E-R Model)
+** TODO Overall operation - System Model
+* TODO System Analysis
+
+* TODO Project Scrum Report
+** Overall
+** Product Backlog
+** Sprint Backlog
+** Burndown Chart
+** Sprint 1
+   Sprint 1 began on January 22, 2021 and continued to Febuary
+   6, 2021. The period lasted one day longer than the allocated duration.
+*** Scrum 
+    During sprint, two scrum meetings took place
+    - January 28, 2021: Discussed the framework of the project and
+      decided to use Angular. Discussed the scope of the project and
+      decided to be a web application. Discussed authentication
+      services for the server.
+    - February 4, 2021: Discussed some work that was done since the
+      previous scrum; includes diagrams and investigations of Google
+      Authentication viability for the server.
+      
+      | Item                  | Created BY  | Date     | Status                                   |
+      | Project Definition    | dobrienUNCG | 01/21/21 | Completed by pizzaza                     |
+      | Project requirements  | dobrienUNCG | 01/21/21 | Completed during Scrums 1 and 2 by group |
+      | Identify subsystems   | dobrienUNCG | 01/21/21 | Moved to Sprint 2 backlog                |
+      | Project Specification | dobrienUNCG | 01/21/21 | Moved to sprint 2 backlog                |
+
+* TODO Subsystems [/]
+** TODO Chess Game [0/7]                                     :@Tyler:@Dakota:
+*** TODO Initial Design and Model
+*** TODO Data Dictionary
+*** TODO Revisions (Refinement)
+*** TODO Scrum Backlog
+    | Task                           | On | Assigned To   | Completed On |
+    | ---------------------------    | -- | ------------  | -----------  |
+    | Generate Chessboard            |    | Tyler, Dakota |              |
+    | Chess Pieces                   |    |               |              |
+    | Movement                       |    |               |              |
+    | Movement and player interfaces |    |               |              |
+    | Display Board                  |    |               |              |
+    | Drag and move piece`           |    |               |              |
+    | Validate Moves                 |    |               |              |
+    | Detect Check                   |    |               |              |
+    | Detect Win                     |    |               |              |
+**** TODO User Story Categories                                       :@DeMO:
+*** TODO Coding
+****  Language
+*** TODO User Training
+*** TODO Testing
+** TODO User Authentication [0/7]                             :@pawilliamson:
+*** TODO Initial Design and Model
+*** TODO Data Model
+*** TODO Refinement
+*** TODO Scrum Backlog
+**** TODO User Story Categories                                       :@DeMO:
+*** TODO Coding
+*** TODO User Training
+*** TODO Testing
+** TODO Server - Client [0/7]                                        :@Tyler:
+*** TODO Initial Design and Model
+*** TODO Data Dictionary
+*** TODO Refinement
+*** TODO Scrum Backlog
+*** TODO Coding
+*** TODO User Training
+*** TODO Testing
+** TODO Computer Opponent  [0/7]                                      :@DeMO:
+*** TODO Initial Design and Model
+*** TODO Data Dictionary
+*** TODO Refinement
+*** TODO Scrum Backlog
+**** TODO User Story Categories
+*** TODO Coding
+*** TODO User Training
+*** TODO Testing
+* TODO Complete System
+** TODO Final Product
+** TODO Source code and user manual + Technical Report
+*** TODO GitHub
+** TODO Evaluation by client and instructor
+
+** TODO Team Member Description
+   Our team consists of five members: Dakota Simpkins, Tyler Wallshleger,
+   Devin O'Brien, Preston Williamson, and Brandon Kyle.
+*** Dakota Simpkins
+*** Tyler Wallshleger
+*** Devin O'Brien
+*** Preston Williamson
+*** Brandon Kyle
