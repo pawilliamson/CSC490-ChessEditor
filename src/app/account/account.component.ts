@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 // https://stackoverflow.com/questions/12709074/how-do-you-explicitly-set-a-new-property-on-window-in-typescript
 declare global{
 	interface Window {
-		MyNameSpace: any; 
 		googleSDKLoaded: any;
 		gapi: any
 	}
