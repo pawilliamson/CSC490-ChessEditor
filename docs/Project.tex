@@ -1,4 +1,4 @@
-% Created 2021-02-17 Wed 16:38
+% Created 2021-02-25 Thu 15:06
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,7 +30,7 @@
 \tableofcontents
 
 \section{Project Definition}
-\label{sec:orgb20949e}
+\label{sec:org61485d5}
 People like Chess and need a way to quickly develop and practice new strategies. I love
 Chess!!! Chess Editor will let people play Chess on their PC and set up the board the
 way they want to test different strategies, or just play in a different way. It will support
@@ -38,12 +38,35 @@ playing against an AI, or playing against another person locally. It will includ
 system to track wins and losses. For the purposes of testing, there will be an undo and
 redo button, as well as tools to set up specific board scenarios. It will be programmed in
 Typescript and we will use Stockfish for the AI.
-\section{{\bfseries\sffamily TODO} Project Requirements [1/4]}
-\label{sec:orgfb85e42}
-\subsection{{\bfseries\sffamily DONE} Functional [2/2]}
-\label{sec:orgdbf309f}
-\subsubsection{{\bfseries\sffamily DONE} Primary Requirements}
-\label{sec:org54f4998}
+\section{Project Specification}
+\label{sec:org9f7263e}
+\subsection{Focus}
+\label{sec:org6b55886}
+This project has a focus on developing experience with Angular and
+with a client-server application. This project will attempt to utilize
+open-source projects when it is reasonably possible.
+
+\subsection{Development Environemnt}
+\label{sec:orgcc8f8a6}
+\subsubsection{Libraries}
+\label{sec:orge64ef45}
+This project will be using the Google Identity API for user Authentication.
+\subsubsection{Frameworks}
+\label{sec:orgd6c9225}
+This project will be developed using the Angular framework (11.1.2)
+with TypeScript.
+\subsection{Platform}
+\label{sec:org9cfeb7e}
+This project is going to be web-based application,
+\subsection{Genre}
+\label{sec:org8d77c67}
+This project is considered as an online board game.
+\section{Project Requirements}
+\label{sec:org424121c}
+\subsection{Functional}
+\label{sec:orgee89f7c}
+\subsubsection{Primary Requirements}
+\label{sec:orgbe5a75f}
 The primary soce of functionality for \emph{/ \textbf{Chess Editor} /} include:
 \begin{itemize}
 \item Ability for the user to play an online game of chess with
@@ -60,122 +83,179 @@ the life of their account; such as:
 pieces to match the configuration of either a previously ongoing
 game or a chess scenario.
 \end{itemize}
-\subsubsection{{\bfseries\sffamily DONE} Secondary Requirements}
-\label{sec:org1390d35}
+\subsubsection{Secondary Requirements}
+\label{sec:orgbea8ecf}
 The secondary scope of functionality for Chess Editor include:
 \begin{itemize}
 \item Ability for the end user to create an account to access features
 \item Ability for the end user to login via their Google Account credentials.
 \end{itemize}
 \subsubsection{Optional Requirements}
-\label{sec:orgb9af487}
-\subsection{{\bfseries\sffamily TODO} Usability [0/2]}
-\label{sec:orge2ec26e}
+\label{sec:org4231056}
+\subsection{Usability}
+\label{sec:org21fd7ff}
 \subsubsection{{\bfseries\sffamily TODO} User Interface}
-\label{sec:orgdbd0401}
+\label{sec:orgfb71b0d}
 The user interface of the application must not be obtrusive and
 needs to be adapted for mobile devices.
 \subsubsection{{\bfseries\sffamily TODO} Performance}
-\label{sec:org15e218a}
+\label{sec:org9ca7aa3}
 The performance of the application must not interfere with other
 processes on the users system.
-\subsection{{\bfseries\sffamily TODO} System [0/3]}
-\label{sec:org2675774}
+\subsection{{\bfseries\sffamily TODO} System [0/1]}
+\label{sec:orgc71e5c5}
 \subsubsection{{\bfseries\sffamily TODO} Hardware}
-\label{sec:org27dec61}
+\label{sec:orgdea7994}
+\begin{enumerate}
+\item Severside
+\label{sec:orga46d2e7}
+All server-side requirments will be provided by the hosting site: ecowebhosting.co.uk
+\item Clientside
+\label{sec:org7e507a7}
 The application will require hardware capable of running a modern web-brower without difficulty.
-Please add table of estimate
-\subsubsection{{\bfseries\sffamily TODO} Software}
-\label{sec:orge0244f9}
-The application will require a modern web-browser preferably one of the following:
-Add a table of web-browsers
-\subsubsection{{\bfseries\sffamily TODO} Database\hfill{}\textsc{Verify}}
-\label{sec:orgcbf4328}
-This project will have one database which is used to keep track of on-going games.
-\subsection{{\bfseries\sffamily TODO} Security}
-\label{sec:org82ea64f}
+\end{enumerate}
+\subsubsection{Software}
+\label{sec:org16b053a}
+\begin{enumerate}
+\item Clientside
+\label{sec:org1bb0ce1}
+The application will require a modern web-browser preferably one
+of the following:
 
-\section{Project Specification}
-\label{sec:orgaa08407}
-\subsection{Focus}
-\label{sec:org00e3bce}
-This project has a focus on developing experience with Angular and
-with a client-server application. This project will attempt to utilize
-open-source projects when it is reasonably possible.
+\item Serverside
+\label{sec:orgb829c08}
+\end{enumerate}
 
-\subsection{Development Environemnt}
-\label{sec:org558edd4}
-\subsubsection{Libraries}
-\label{sec:orga693088}
-This project will be using the Google Identity API for user Authentication.
-\subsubsection{Frameworks}
-\label{sec:org67f148d}
-This project will be developed using the Angular framework (11.1.2)
-with TypeScript.
-\subsection{Platform}
-\label{sec:org3feb2ce}
-This project is going to be web-based application,
-\subsection{Genre}
-\label{sec:orge2a5561}
-This project is considered as an online board game.
+\subsubsection{Database\hfill{}\textsc{Verify}}
+\label{sec:org2421a77}
+This project will have one database which is used to keep track of
+on-going games. This is specifically MySQL version 10.4.14.
+
+\subsection{Networking}
+\label{sec:org4392613}
+All project artifacts and interconnectivities are provided by the
+hosting server.
+\subsection{Security}
+\label{sec:orgca31c3b}
+For Google Authentication, we will be leveraging the Google OAuth
+2.0 API. The other security requirements are inherently provided by
+the hosting server.
+
 \section{System Design}
-\label{sec:org8c257f6}
+\label{sec:orgb2304e8}
 \subsection{Subsystem Identification}
-\label{sec:org9f8e945}
+\label{sec:org49ec099}
+We will be leveraging our MySQL database engine to create, update,
+read, and delete user information.
+Google Identity will also be used to facilitate account creation
+with a user's exsisting Google account.
+\subsubsection{Chess Gameplay}
+\label{sec:org6fcd12c}
+The MySQL database engine will be used for tracking gameplay
+metrics.
+The Angular framework will be implemented with TypeScript to
+manage the gameplay logic and for validation of chess scenarios.
+The Stockfish AI framework will be used to respond to the end
+player's movement when playing against the "computer".
+\subsubsection{Subsystem Communication}
+\label{sec:org82ae07f}
+The player will interact with the Chess UI with their keyboard and
+mouse. The player will notice a response from the UI with their
+monitor. The system should have proper UI responses indicating a
+success/failur of the attempted action.
 \subsubsection{Sequence Diagram\hfill{}\textsc{@DeMO}}
-\label{sec:org474874a}
+\label{sec:org7427d69}
+:WHY:
 I have previously made the sequence diagram, but I have had to redo it a couple times
 as we have continued, the design has changed. I am going to just upload an complete 
-sequence diagram and since it doesn't have to be the same and can be used in refinement
-section.
+sequence diagram and since it doesn't have to be the same 
 \subsubsection{Use-Case Diagram}
-\label{sec:org0dc7b17}
+\label{sec:orgebb903e}
 
 \subsubsection{Class Diagram\hfill{}\textsc{@Dakota:@Tyler:@DeMO:@pawilliamson}}
-\label{sec:org779b03e}
-
+\label{sec:org4d3eb78}
+\begin{center}
+\includegraphics[width=.9\linewidth]{present/ClassDiagram.png}
+\end{center}
 \subsubsection{State Diagram}
-\label{sec:org916ef68}
+\label{sec:org564f867}
+\subsubsection{Entity Relationship Model (E-R Model)}
+\label{sec:orgf466da3}
+\url{https://lucid.app/lucidchart/b4d167c8-e8fa-475e-9e63-86c4e3aed414/view?page=0\_0\#}
 \subsection{Design}
-\label{sec:org5080350}
+\label{sec:org0ad0c00}
 \subsubsection{Mock-up Diagram}
-\label{sec:orgc8e6978}
+\label{sec:orge0ce6b1}
 \subsubsection{Color Schemes}
-\label{sec:orgd4f23f7}
+\label{sec:orgc10a44e}
 \subsubsection{{\bfseries\sffamily TODO} Additional Comments}
-\label{sec:orgd1a30d5}
+\label{sec:org746b7be}
 We will be using Bootstrap framewwork.
 \subsection{Sub-System Communication}
-\label{sec:org3d5c8d8}
+\label{sec:orgc6f8e78}
 \subsubsection{Controls}
-\label{sec:orge9a7ffc}
+\label{sec:org900cd93}
 \subsubsection{I/O}
-\label{sec:orga0d9841}
+\label{sec:orgf1e2d56}
 \subsubsection{Dataflow\hfill{}\textsc{@Tyler}}
-\label{sec:org31f7bd8}
+\label{sec:org603ce61}
 \subsection{{\bfseries\sffamily TODO} Entity Relationship Model (E-R Model)}
-\label{sec:org45ed458}
-\subsection{{\bfseries\sffamily TODO} Overall operation - System Model}
-\label{sec:org49d2edd}
+\label{sec:org316e622}
+\subsection{{\bfseries\sffamily TODO} Overall operation - System Model$\backslash$}
+\label{sec:org261b3fe}
+\subsubsection{Account Creation Management}
+\label{sec:orgac5f684}
+The user will modify their account information via the Chess Game
+UI that will be fed into their respective records in the database.
+\subsubsection{Chess Gameplay Management}
+\label{sec:org4ae3dd4}
+Gameplay metrics will be automatically tracked by the Chess Game
+UI in tandem with pre-existing records stored in the MYSQL
+database.
+Gameplay involvng the "computer" will be handled by the Stockfish
+AI program to determine the next best move.
+\url{https://lucid.app/lucidchart/invitations/accept/18b1143a-20e9-441c-ac34-2c95f7a2d031}
 \section{{\bfseries\sffamily TODO} System Analysis}
-\label{sec:org76bfca0}
+\label{sec:org1dcb15f}
+\subsection{Subsystems}
+\label{sec:org6eb6d65}
+\begin{itemize}
+\item Account Creation/Management
+\item Chess Gameplay Management
+\end{itemize}
+\subsection{System (Tables and Description)}
+\label{sec:org2fe77dc}
+\subsubsection{Data Dictionary}
+\label{sec:org40756d9}
+\url{https://lucid.app/lucidchart/b4d167c8-e8fa-475e-9e63-86c4e3aed414/view?page=0\_0\#}
+\subsubsection{Process Models}
+\label{sec:orgb34b0bc}
+\url{https://lucid.app/lucidchart/7d69e18e-721a-43ad-a77d-83df4e8d1f3a/view?page=0\_0\#}
+\subsection{Algorithm Analysis}
+\label{sec:orgd92b26b}
+\subsubsection{Big-O Analysis}
+\label{sec:org3a21f5b}
+We expect that the game when not playing with an AI will run in
+constant time as there is nothing in our current algorithms that
+will execute a variable number of times. This will probably change
+when the AI is implemented.
 
 \section{{\bfseries\sffamily TODO} Project Scrum Report}
-\label{sec:org7495096}
+\label{sec:org00fdbe5}
 \subsection{Overall}
-\label{sec:orgaf86fa2}
+\label{sec:orgcf7572a}
 \subsection{Product Backlog}
-\label{sec:orge7aaca8}
+\label{sec:orgf3a07cc}
 \subsection{Sprint Backlog}
-\label{sec:org73af022}
+\label{sec:orgbe429cd}
 \subsection{Burndown Chart}
-\label{sec:orgd97450a}
+\label{sec:orga1ff6ca}
 \subsection{Sprint 1}
-\label{sec:org208e456}
+\label{sec:org3c75951}
 Sprint 1 began on January 22, 2021 and continued to Febuary
 6, 2021. The period lasted one day longer than the allocated duration.
 \subsubsection{Scrum}
-\label{sec:orgdc794fa}
+\label{sec:orga4ea07f}
 During sprint, two scrum meetings took place
 \begin{itemize}
 \item January 28, 2021: Discussed the framework of the project and
@@ -198,17 +278,17 @@ Project Specification & dobrienUNCG & 01/21/21 & Moved to sprint 2 backlog\\
 \end{itemize}
 
 \section{{\bfseries\sffamily TODO} Subsystems [/]}
-\label{sec:org03c7b0f}
+\label{sec:orgab00ee7}
 \subsection{{\bfseries\sffamily TODO} Chess Game [0/7]\hfill{}\textsc{@Tyler:@Dakota}}
-\label{sec:orgdc962f0}
+\label{sec:orgcfe3af6}
 \subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
-\label{sec:org33da27e}
+\label{sec:org3c12605}
 \subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
-\label{sec:org260d33a}
+\label{sec:orgc6ac4b9}
 \subsubsection{{\bfseries\sffamily TODO} Revisions (Refinement)}
-\label{sec:org22b4fb6}
+\label{sec:org71e9676}
 \subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
-\label{sec:org65cf748}
+\label{sec:org6b30145}
 \begin{center}
 \begin{tabular}{llll}
 Task & On & Assigned To & Completed On\\
@@ -226,97 +306,97 @@ Detect Win &  &  & \\
 \end{center}
 \begin{enumerate}
 \item {\bfseries\sffamily TODO} User Story Categories\hfill{}\textsc{@DeMO}
-\label{sec:org0feb27f}
+\label{sec:org712c851}
 \end{enumerate}
 \subsubsection{{\bfseries\sffamily TODO} Coding}
-\label{sec:org667dba5}
+\label{sec:org85c851e}
 \begin{enumerate}
 \item Language
-\label{sec:org3ab076c}
+\label{sec:org4f37990}
 \end{enumerate}
 \subsubsection{{\bfseries\sffamily TODO} User Training}
-\label{sec:orgb2f6dbb}
+\label{sec:orgfe4e928}
 \subsubsection{{\bfseries\sffamily TODO} Testing}
-\label{sec:org2f6d543}
+\label{sec:org59b48d4}
 \subsection{{\bfseries\sffamily TODO} User Authentication [0/7]\hfill{}\textsc{@pawilliamson}}
-\label{sec:org73ca7b6}
+\label{sec:orgd00cec4}
 \subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
-\label{sec:orgb8760eb}
+\label{sec:org5596d34}
 \subsubsection{{\bfseries\sffamily TODO} Data Model}
-\label{sec:org5ced554}
+\label{sec:orgefcd13c}
 \subsubsection{{\bfseries\sffamily TODO} Refinement}
-\label{sec:orgb80ab0c}
+\label{sec:org759e7f9}
 \subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
-\label{sec:org6f1c72d}
+\label{sec:orge2b0cea}
 \begin{enumerate}
 \item {\bfseries\sffamily TODO} User Story Categories\hfill{}\textsc{@DeMO}
-\label{sec:org8e60305}
+\label{sec:orgbb7683d}
 \end{enumerate}
 \subsubsection{{\bfseries\sffamily TODO} Coding}
-\label{sec:org2996c9b}
+\label{sec:org2d0e6a3}
 \subsubsection{{\bfseries\sffamily TODO} User Training}
-\label{sec:org8edbb2d}
+\label{sec:orgfa30323}
 \subsubsection{{\bfseries\sffamily TODO} Testing}
-\label{sec:org65c28ba}
+\label{sec:orgfc01316}
 \subsection{{\bfseries\sffamily TODO} Server - Client [0/7]\hfill{}\textsc{@Tyler}}
-\label{sec:org0647564}
+\label{sec:org3b8ab40}
 \subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
-\label{sec:orgadeeb28}
+\label{sec:orgc3655ab}
 \subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
-\label{sec:orga3771cc}
+\label{sec:org4ad717e}
 \subsubsection{{\bfseries\sffamily TODO} Refinement}
-\label{sec:org8df178e}
+\label{sec:org0dd4b3c}
 \subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
-\label{sec:org3a7233a}
+\label{sec:org641d2a2}
 \subsubsection{{\bfseries\sffamily TODO} Coding}
-\label{sec:org99c3f3d}
+\label{sec:org5c8ca20}
 \subsubsection{{\bfseries\sffamily TODO} User Training}
-\label{sec:org9496414}
+\label{sec:orgbe27e47}
 \subsubsection{{\bfseries\sffamily TODO} Testing}
-\label{sec:org230d570}
+\label{sec:org28d2e91}
 \subsection{{\bfseries\sffamily TODO} Computer Opponent  [0/7]\hfill{}\textsc{@DeMO}}
-\label{sec:orgf838c81}
+\label{sec:orgf10b9bd}
 \subsubsection{{\bfseries\sffamily TODO} Initial Design and Model}
-\label{sec:org6ece6c8}
+\label{sec:org215a363}
 \subsubsection{{\bfseries\sffamily TODO} Data Dictionary}
-\label{sec:orgf9866c3}
+\label{sec:org56023cf}
 \subsubsection{{\bfseries\sffamily TODO} Refinement}
-\label{sec:orgb2dc701}
+\label{sec:org6a55463}
 \subsubsection{{\bfseries\sffamily TODO} Scrum Backlog}
-\label{sec:org0068398}
+\label{sec:org01f16bd}
 \begin{enumerate}
 \item {\bfseries\sffamily TODO} User Story Categories
-\label{sec:org5c18c55}
+\label{sec:org514a9da}
 \end{enumerate}
 \subsubsection{{\bfseries\sffamily TODO} Coding}
-\label{sec:org8a6197d}
+\label{sec:org1ad44c2}
 \subsubsection{{\bfseries\sffamily TODO} User Training}
-\label{sec:orge31abcc}
+\label{sec:orgd493984}
 \subsubsection{{\bfseries\sffamily TODO} Testing}
-\label{sec:org4d86b18}
+\label{sec:org864b8ef}
 \section{{\bfseries\sffamily TODO} Complete System}
-\label{sec:org64ebb9a}
+\label{sec:org4754439}
 \subsection{{\bfseries\sffamily TODO} Final Product}
-\label{sec:org6d46a23}
+\label{sec:org91a7f0c}
 \subsection{{\bfseries\sffamily TODO} Source code and user manual + Technical Report}
-\label{sec:org54beef9}
+\label{sec:orga6f6674}
 \subsubsection{{\bfseries\sffamily TODO} GitHub}
-\label{sec:org6f68d1f}
+\label{sec:org6e5a797}
 \subsection{{\bfseries\sffamily TODO} Evaluation by client and instructor}
-\label{sec:org8bc8658}
+\label{sec:orgf2c50fa}
 
 \subsection{{\bfseries\sffamily TODO} Team Member Description}
-\label{sec:org350429c}
+\label{sec:org5bb5f5a}
 Our team consists of five members: Dakota Simpkins, Tyler Wallshleger,
 Devin O'Brien, Preston Williamson, and Brandon Kyle.
 \subsubsection{Dakota Simpkins}
-\label{sec:org22e14b5}
+\label{sec:org462d10c}
 \subsubsection{Tyler Wallshleger}
-\label{sec:org55d4c8c}
+\label{sec:orge8392a7}
 \subsubsection{Devin O'Brien}
-\label{sec:orgff4f13c}
+\label{sec:orgf1fac83}
 \subsubsection{Preston Williamson}
-\label{sec:org6fdd71f}
+\label{sec:orgeffb465}
 \subsubsection{Brandon Kyle}
-\label{sec:org29679ea}
+\label{sec:org13e545e}
 \end{document}
