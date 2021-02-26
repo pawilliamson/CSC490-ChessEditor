@@ -1,9 +1,17 @@
-#+Title: Documentation Folder Guide
+#+Title: General Style Guide
 #+Author: Devin M. O'Brien
-#+DATE: Thursday, February 11, 2021
-* Overview
-  Keep files where they belong.
-  
+#+DATE: {INSERT DATE}
+
+* What am I?
+  This document is a general outline of the style of the directory
+  structure as well as the coding style that is expected.
+
+* Coding Style
+** Magic Numbers
+** Statements
+** Methods
+** Classes
+** Documentation
 * Documentation Directory
 ** Files
   - Project.tex: Project Documentation (.tex form)
@@ -35,6 +43,8 @@
 | md          | *How did this get in here?*                        |
 
 Any violations will be listed here:
-- dobrienUNCG: 
+- dobrienUNCG: ~||||~ ~||||~ |
+  1-7: Failure to update file extensions table after adding files
+  8-11: Uploaded junk files
 
 
