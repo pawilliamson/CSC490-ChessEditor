@@ -7,9 +7,39 @@
   structure as well as the coding style that is expected.
 
 * Coding Style
+** File Header 
+   All source files require a file header.
 ** Magic Numbers
+   Magic numbers will be defined as situations where the number used
+   has a specific meaning. For example, if you have a loop that increases 
+   a counter by 1, it will not be considered as a magic
+   number. However, adding 97 to an integer to get an ascii character
+   requires it to be a variable.
+
+   Such variables should be defined at the beginning of the scope in
+   which it is used. 
 ** Statements
 ** Methods
+*** Method Descriptors
+You may use a different style as long as the information is the same and it is used throughout the src file.
+#+BEGIN_SRC js
+/**
+* SomeClass
+*
+* @desc An example for documentation.
+* @method someMethod() 
+**/
+class SomeClass{
+/* someMethod
+* An example for a method
+* @param[out] string Some string
+*/
+function someMethod(){
+ return "Some String";
+};
+
+};
+#+END_SRC
 ** Classes
 ** Documentation
 * Documentation Directory
