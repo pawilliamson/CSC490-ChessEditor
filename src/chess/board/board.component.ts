@@ -9,22 +9,55 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class BoardComponent implements OnInit {
-  counter = 1;
-  cells:Array<Cell> = [];
-  addCell(c:number) {
-	  let temp = new Cell();
-	  temp.value = c;
-	  return temp;
-  }
-  constructor() { 
-	  this.cells.push(this.addCell(1));
+  counter = 0;
+  rownum = 0;
+  rows:Array<Row> = [];
+  addRow() {
+	  let z:number = 8;
+	  let y:number = 0;
+	  let temp:Row = new Row();
+	  for(; y < z; y++){
+	  let a = new Cell();
+	  a.value = this.counter++;
+	  if((y + this.rownum)%2 == 0){
+		  a.style = "bg-primary";
+	  }else{
+		  a.style = "bg-secondary";
+	  }
+	  temp.addCell(a);
 	}
+	  return temp;
+}
+  constructor() { 
+	  let i:number = 8;
+	  let x:number = 0;
+	  for(; x < i; x++){
+	this.rownum++;
+	  this.rows.push(this.addRow());
+	}
+  }
+	
   ngOnInit(): void {
   }
 
 }
 
+class Row{
+	cells:Array<Cell> = [];
+	addCell(cell:Cell){
+		this.cells.push(cell);
+	}
+	constructor(){
+		
+	}
+}
+
 class Cell{
 	value:number = 0;
+	style:string = "";
+	getStyle(){
+		return this.style;
+	}
 	constructor(){}
+	
 }
