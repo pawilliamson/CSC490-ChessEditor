@@ -3,28 +3,39 @@
  * 
  */
 class Piece {
-    color: String = "";
+    color: String = "UNSPECIFIED";
 
     constructor(specifiedColor: string) {
-        this.color = specifiedColor;
+        this.setColor(specifiedColor);
     }
 
     /**
-     * This method will set the color of the piece, "White" for a white piece and "Black" for a black piece.
+     * This method will set the color of the piece, "WHITE" for a white piece and "BLACK" for a black piece. Will not be used in the game, but will be used in the editor.
      * 
      * @param specifiedColor 
      */
     setColor(specifiedColor: string) {
-        this.color = specifiedColor;
+        if(specifiedColor == "WHITE" || specifiedColor == "BLACK") {
+            this.color = specifiedColor;
+        }
+        else {
+            console.log("Piece class tried to assign a color to a Piece that was not WHITE or BLACK. Attempted color assignment: " + specifiedColor);
+        }
     }
 
     /**
-     * This method will return the color of the piece, "White" for a white piece and "Black" for a black piece.
+     * This method will return the color of the piece, "WHITE" for a white piece and "BLACK" for a black piece.
      * 
      */
     getColor() {
         return this.color;
     }
 
-
+    /**
+     * This method will return the name of the Piece, will be used in the classes for other chess pieces to specify their name.
+     * 
+     */
+    getName() {
+        return "UNSPECIFIED";
+    }
 }
