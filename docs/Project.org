@@ -1,6 +1,6 @@
 #+TITLE: Chess Editor
 #+TAGS: @DeMO @pizzaza @Tyler @Dakota @pawilliamson
-* Project Definition TODO
+* Project Definition
 ** Revised 
 Devin's:
 Chess is a game that has been played by millions since its
