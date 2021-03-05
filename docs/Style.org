@@ -1,14 +1,21 @@
 #+Title: General Style Guide
 #+Author: Devin M. O'Brien
-#+DATE: {INSERT DATE}
+#+DATE: March 5, 2021
 
 * What am I?
   This document is a general outline of the style of the directory
   structure as well as the coding style that is expected.
 
 * Coding Style
+  The coding style pertains specifically to code that is to be pushed to
+  the main branch. Although it is recommended to follow this practice on
+  other branches, it is not required. 
+
+  There may be variations of the code style implemented, but it must
+  be consistent in within a file.
 ** File Header 
-   All source files require a file header.
+   All source files should have a header that contains the name and a
+   brief description (1-2 sentences) of the source code. 
 ** Magic Numbers
    Magic numbers will be defined as situations where the number used
    has a specific meaning. For example, if you have a loop that increases 
@@ -18,10 +25,10 @@
 
    Such variables should be defined at the beginning of the scope in
    which it is used. 
-** Statements
-** Methods
-*** Method Descriptors
-You may use a different style as long as the information is the same and it is used throughout the src file.
+** Documentation
+   You may use a different style as long as the information is the same
+   and it is used throughout the src file. I will be using *JavaScript*
+   as an example.
 #+BEGIN_SRC js
 /**
 * SomeClass
@@ -41,7 +48,6 @@ function someMethod(){
 };
 #+END_SRC
 ** Classes
-** Documentation
 * Documentation Directory
 ** Files
   - Project.tex: Project Documentation (.tex form)
@@ -49,8 +55,15 @@ function someMethod(){
   - Project.pdf: *Official* Project Documentation
   - Style.org:   (You Are Here!)
 ** Sub-Directories
+*** subsystems
+    This directory should contain subdirectories for each
+    subsystem. Each subdirectory should maintain their own diagrams
+    for the update portion of the project documentation.
+*** project_management
+    This folder should no longer be stored on the repo after March 10,
+    2021 since the primary document has been moved to Google Drive.
 *** data
-    We don't have any data, but if we did, it would go here.
+    Data from ZenHub is stored here for the burndown chart.
 *** diagrams
     No one looks here, so don't worry.
 **** Files
@@ -71,10 +84,13 @@ function someMethod(){
 | tex         | Formal project documents.                          |
 | plantuml    | Markup document, for diagrams.                     |
 | md          | *How did this get in here?*                        |
+| dia         | File for Dia diagramming.                          |
+| ods         | Spreadsheet (LibreOffice Calc)                     |
+| odb         | Database (LibreOffice Base)                        |
 
 Any violations will be listed here:
 - dobrienUNCG: ~||||~ ~||||~ |
   1-7: Failure to update file extensions table after adding files
   8-11: Uploaded junk files
 
-
+  
