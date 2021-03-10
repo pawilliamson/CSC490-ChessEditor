@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:chess/board/board.component.ts","board.component.ts");NDSummary.OnSummaryLoaded("File:chess/board/board.component.ts",[["TypeScript","TypeScript"]],[["Classes","Class"],["Files","File"]],[[8,0,1,"board.component.ts","board.component.ts"],[10,0,0,"BoardComponent","BoardComponent"]]);

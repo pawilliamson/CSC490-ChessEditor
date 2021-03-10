@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:chess/chess.module.ts",{});

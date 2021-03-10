@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("TypeScriptClass:BoardComponent","BoardComponent");NDSummary.OnSummaryLoaded("TypeScriptClass:BoardComponent",[["TypeScript","TypeScript"]],[["Classes","Class"]],[[10,0,0,"BoardComponent"]]);

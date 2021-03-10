@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("TypeScriptClass:AppComponent","AppComponent");NDSummary.OnSummaryLoaded("TypeScriptClass:AppComponent",[["TypeScript","TypeScript"]],[["Classes","Class"]],[[11,0,0,"AppComponent"]]);
