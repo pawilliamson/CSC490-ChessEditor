@@ -2,7 +2,7 @@
 #+AUTHOR: Devin M. O'Brien
 
 * What is this? 
-  The documentation related to a specific subsystem past after/during
+  The documentation related to a specific subsystem after/during
   sprint 3 should be seperated based on the system. 
 
 * Why
