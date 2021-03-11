@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:rook.ts","rook.ts");NDSummary.OnSummaryLoaded("File:rook.ts",[["TypeScript","TypeScript"]],[["Files","File"]],[[1,0,0,"rook.ts","rook.ts"]]);

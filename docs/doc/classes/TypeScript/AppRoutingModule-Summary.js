@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("TypeScriptClass:AppRoutingModule","AppRoutingModule");NDSummary.OnSummaryLoaded("TypeScriptClass:AppRoutingModule",[["TypeScript","TypeScript"]],[["Classes","Class"]],[[12,0,0,"AppRoutingModule"]]);

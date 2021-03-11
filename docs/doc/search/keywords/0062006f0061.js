@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("boa",["File","Class"],[["board",,[[,"board.component.spec.ts",,,0,"File:chess/board/board.component.spec.ts:board.component.spec.ts"],[,"board.component.ts",,,0,"File:chess/board/board.component.ts:board.component.ts"]]],["BoardComponent",,[[,,,,1,"File:chess/board/board.component.ts:BoardComponent","TypeScriptClass:BoardComponent"]]]]);

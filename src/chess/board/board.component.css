@@ -1,0 +1,21 @@
+	 .bg-primary{
+		background-color: #8B4513 !important;	 
+	 }
+	 .bg-secondary{
+		background-color:  #E3DAC9 !important;	 
+	 }
+	 html, body{
+	 height: 100%;
+	 }
+	 .row{
+	height: 130px;	 
+	 }
+	 .col p{
+		 height: 100%;
+		 font-size: 80px!important;
+
+	 }
+	 .col{
+	  padding: 10px;
+	  text-align: center;
+	 }

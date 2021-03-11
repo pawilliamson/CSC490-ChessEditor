@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:chess/chess.module.ts","chess.module.ts");NDSummary.OnSummaryLoaded("File:chess/chess.module.ts",[["TypeScript","TypeScript"]],[["Files","File"]],[[2,0,0,"chess.module.ts","chess.module.ts"]]);
