@@ -2,7 +2,7 @@
 #+TAGS: @DeMO @pizzaza @Tyler @Dakota @pawilliamson
 * Project Definition
 ** Revised 
-Devin's:
+
 Chess is a game that has been played by millions since its
 conception. It is a game that has relatively simple rules that make it
 which make it a game that has been sort of a standard for testing the
@@ -109,15 +109,15 @@ Typescript and we will use Stockfish for the AI.
     monitor. The system should have proper UI responses indicating a
     success/failure of the attempted action.
 *** Sequence Diagram                                                  :@DeMO:
-    [[file:present/Sequence1.png]]
-    [[file:present/Sequence2.png]]
-    [[file:present/Sequence3.png]]
+    [[file:diagrams/out/Sequence1.png]]
+    [[file:diagrams/out/Sequence2.png]]
+    [[file:diagrams/out/Sequence3.png]]
 *** Use-Case Diagram
     
 *** Class Diagram                        :@Dakota:@Tyler:@DeMO:@pawilliamson:
-[[file:present/ClassDiagram.png]]
+[[file:diagrams/out/ClassDiagram.png]]
 *** Entity Relationship Model (E-R Model)
-[[file:present/ERDiagram.png]]
+[[file:diagrams/out/ERDiagram.png]]
 [[https://lucid.app/lucidchart/b4d167c8-e8fa-475e-9e63-86c4e3aed414/view?page=0_0#]]
 ** Design
 *** Mock-up Diagram
@@ -129,7 +129,7 @@ Typescript and we will use Stockfish for the AI.
 *** I/O
 *** Dataflow                                                         :@Tyler:
 ** Entity Relationship Model (E-R Model)
-** Overall operation - System Model\
+** Overall operation - System Model
 *** Account Creation Management
     The user will modify their account information via the Chess Game
     UI that will be fed into their respective records in the database.
@@ -159,7 +159,7 @@ Typescript and we will use Stockfish for the AI.
 |       | playerOne (fky)    | int                           | UUID of player one (white)    |
 |       | playerTwo (fky)    | int                           | UUID of player two (black)    |
 *** Process Models
-[[file: present/ProcessModel.png]]
+[[file: diagrams/out/ProcessModel.png]]
 [[https://lucid.app/lucidchart/7d69e18e-721a-43ad-a77d-83df4e8d1f3a/view?page=0_0#]]
 ** Algorithm Analysis
 *** Big-O Analysis
@@ -167,7 +167,7 @@ Typescript and we will use Stockfish for the AI.
     constant time as there is nothing in our current algorithms that
     will execute a variable number of times. This will probably change
     when the AI is implemented.
-
+    
 * TODO Project Scrum Report
 ** Overall
 ** Product Backlog
