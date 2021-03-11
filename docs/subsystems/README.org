@@ -6,5 +6,4 @@
   sprint 3 should be seperated based on the system. 
 
 * Why
-  This makes it easier to organize and search for the main project
-  documentation file.
+  This makes it easier to organize and search for documentation related to the specific subsystems
