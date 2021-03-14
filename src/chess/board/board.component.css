@@ -10,12 +10,9 @@
 	 .row{
 	height: 130px;	 
 	 }
-	 .col p{
-		 height: 100%;
-		 font-size: 80px!important;
-
-	 }
+	 
 	 .col{
-	  padding: 10px;
+	 padding: 0px;
 	  text-align: center;
+	  border: 0px;
 	 }

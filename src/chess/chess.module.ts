@@ -37,9 +37,9 @@ NgModule({
 	imports: [
 		CommonModule
 	],
-	exports: [BoardComponent],
-	bootstrap: [BoardComponent],
+	exports: [BoardComponent, CellComponent],
+	bootstrap: [BoardComponent, CellComponent],
 })
 export class ChessModule {
-
+	
 }
