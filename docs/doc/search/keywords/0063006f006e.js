@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("con",["Function"],[["constructor",,[["Cell",,,,0,"File:chess/board/board.component.ts:Cell.constructor","TypeScriptClass:Cell:constructor"],["Row",,,,0,"File:chess/board/board.component.ts:Row.constructor","TypeScriptClass:Row:constructor"]]]]);

@@ -1,7 +1,15 @@
+// File: chess.module.ts
 /**
- * Chess Module
+ * Class: Chess Module
  * 
  * Contains components required to generate a chess board with pieces.
+ * 
+ * Components:
+ * 
+ * - <BoardComponent> 
+ * - PieceComponent (Not Implemented)
+ * - RowComponent (Not Implemented)
+ * - <CellComponent>
  **/
  
 import {
@@ -31,8 +39,7 @@ from './cell/cell.component';
 
 
 
-@
-NgModule({
+@NgModule({
 	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],
 	imports: [
 		CommonModule

@@ -14,6 +14,15 @@ import { Component, OnInit } from '@angular/core';
  * Implements: OnInit
  * 
  * Structure for chessboard
+ * 
+ * Note:
+ * 
+ * This component uses an internal array of cells that is used to store.
+ * I am working on transfering this over to a component system and eventually
+ * try to switch the generation over to have cell tracking with built-in
+ * Angular Directives.
+ * 
+ * 
  */
 export class BoardComponent implements OnInit {
 
@@ -21,7 +30,8 @@ export class BoardComponent implements OnInit {
   /*
    * Function: addRow
    * 
-   * Returns a row with the first cell has primary style.
+   * Returns a row with the first cell having primary style.
+   * 
    */
   addRow() {
 	  let z:number = 8;
@@ -41,20 +51,20 @@ export class BoardComponent implements OnInit {
 /*
  * Function: addRowAlt
  * 
- * Returns row with the first cell has secondary style.
+ * Returns a row with the first cell having secondary style.
  */
 	  addRowAlt() {
-	  let z:number = 8;
-	  let y:number = 0;
+	  let size:number = 8;
+	  let i:number = 0;
 	  let temp:Row = new Row();
-	  for(; y < z; y++){
-	  let a = new Cell();
-	  if(y %2 == 0){
-		  a.style = "bg-secondary";
+	  for(; i < size; i++){
+	  let cell = new Cell();
+	  if(i %2 == 0){
+		  cell.style = "bg-secondary";
 	  }else{
-		  a.style = "bg-primary";
+		  cell.style = "bg-primary";
 	  }
-	  temp.addCell(a);
+	  temp.addCell(cell);
 	}
 	  return temp;
 }
@@ -74,23 +84,46 @@ export class BoardComponent implements OnInit {
   }
 
 }
-
+/**
+ * Class: Row
+ * 
+ * Structure for rows.
+ */
 class Row{
+	
 	cells:Array<Cell> = [];
+	/**
+	 * Function: addCell
+	 * 
+	 * Parameters:
+	 * 
+	 * - cell 
+	 */
 	addCell(cell:Cell){
 		this.cells.push(cell);
 	}
+	/**
+	 * Function: constructor
+	 */
 	constructor(){
 		
 	}
 }
 
+/**
+ * Class: Cell
+ * 
+ * 
+ */
 class Cell{
 	value:number = 0;
 	style:string = "";
 	getStyle(){
 		return this.style;
 	}
+	/*
+	 * Function: constructor
+	 */
 	constructor(){}
 	
 }

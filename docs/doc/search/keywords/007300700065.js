@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("spe",["File"],[["spec",,[[,"app.component.spec.ts",,,0,"File:app/app.component.spec.ts:app.component.spec.ts"],[,"board.component.spec.ts",,,0,"File:chess/board/board.component.spec.ts:board.component.spec.ts"]]]]);

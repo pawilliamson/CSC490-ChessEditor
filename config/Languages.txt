@@ -17,6 +17,7 @@
 
 # Languages
 # ------------------------------------------------------------------------
+# The syntax reference is after the definitions.
 
 Language: TypeScript
 
@@ -24,6 +25,21 @@ Language: TypeScript
 
    Line Comment: //
    Block Comment: /* */ /** **/
+   Enum Values: Under Type
+
+   Class Prototype Ender: {
+   Function Prototype Ender: {
+
+
+Language: html
+
+   Extension: html
+
+   Block Comment: <!-- -->
+   Enum Values: Under Parent
+
+   Function Prototype Ender: -->
+   Section Prototype Ender: <!--END-->
 
 
 # These settings define the languages Natural Docs knows how to parse.  You
