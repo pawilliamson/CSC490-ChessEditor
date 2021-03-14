@@ -13,6 +13,8 @@ const routes = [
   { path: '**', redirectTo: '/' }
 ];
 
+import { ChessModule } from '../chess/chess.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ const routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    ChessModule
   ],
   providers: [],
   bootstrap: [AppComponent]

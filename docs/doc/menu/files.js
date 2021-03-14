@@ -1,0 +1,1 @@
+﻿NDMenu.OnSectionLoaded("files.js",[[2,"board","File:chess/board/",[[1,"board.component.html"],[1,"board.component.ts"]]],[2,"cell","File:chess/cell/",[[1,"cell.component.html"],[1,"cell.component.ts"]]],[1,"chess.module.ts"]]);

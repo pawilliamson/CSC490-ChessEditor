@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("mod",["Class","File"],[["Module",,[[,"Chess Module",,,0,"File:chess/chess.module.ts:Chess_Module","TypeScriptClass:Chess_Module"],[,"chess.module.ts",,,1,"File:chess/chess.module.ts:chess.module.ts"]]]]);

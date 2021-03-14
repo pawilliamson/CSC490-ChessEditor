@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("get",["Function"],[["getStyle",,[["CellComponent",,,,0,"File:chess/cell/cell.component.ts:CellComponent.getStyle","TypeScriptClass:CellComponent:getStyle"]]]]);

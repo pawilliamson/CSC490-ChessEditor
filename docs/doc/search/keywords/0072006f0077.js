@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("row",["Class"],[["Row",,[[,,,,0,"File:chess/board/board.component.ts:Row","TypeScriptClass:Row"]]]]);

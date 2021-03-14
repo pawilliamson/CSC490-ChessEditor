@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:chess/chess.module.ts",{4:"<div class=\"NDToolTip TClass LTypeScript\"><div class=\"TTSummary\">Contains components required to generate a chess board with pieces.</div></div>"});

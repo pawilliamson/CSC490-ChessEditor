@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:chess/board/board.component.html",{});

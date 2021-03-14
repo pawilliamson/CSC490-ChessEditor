@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ts",["File"],[["ts",,[[,"board.component.ts",,,0,"File:chess/board/board.component.ts:board.component.ts"],[,"chess.module.ts",,,0,"File:chess/chess.module.ts:chess.module.ts"]]]]);

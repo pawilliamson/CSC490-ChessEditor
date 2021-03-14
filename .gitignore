@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Natural Docs
+Natural\ Docs/
+
 # Backup Files
 *~
 
@@ -36,4 +39,3 @@ hs_err_pid*
 /node_modules/
 /.project
 /.vscode
-/.settings/
