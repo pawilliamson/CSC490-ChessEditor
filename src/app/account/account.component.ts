@@ -1,12 +1,17 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import "reflect-metadata";
+import {DatabaseService} from '../database/database.service';
+import {User} from "../../entities/user.entity";
+
 // https://stackoverflow.com/questions/12709074/how-do-you-explicitly-set-a-new-property-on-window-in-typescript
 declare global{
 	interface Window {
 		googleSDKLoaded: any;
 		gapi: any
-	}
+  }
 	
 }
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -46,6 +51,14 @@ export class AccountComponent implements OnInit {
         let profpic = <HTMLImageElement> document.getElementById('profilePic');
         profpic.src = profile.getImageUrl ();
         profpic.style.visibility = "visible";
+
+        const user = new User ();
+        user.firstName = fnameInput.value;
+        user.lastName = lnameInput.value;
+        user.emailAddress = emailInput.value;
+
+       const service = new DatabaseService ();
+       service.addUser (user);
  
       }, (error: any) => {
 		let loginbtn = document.getElementById('loginBtn');
@@ -60,7 +73,7 @@ export class AccountComponent implements OnInit {
     window['googleSDKLoaded'] = ( ) => {
      window['gapi'].load('auth2', () => {
 		this.auth2 =  (window as any)['gapi'].auth2.init({
-          client_id: '754829809876-hnefv3gcbq3j9k35u9bq7a0irn3ef883.apps.googleusercontent.com',
+          client_id: '683748379823-4mjr3dhphc14q7e769lhpa9a1193b0nc.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin',
           scope: 'profile email'
         });
