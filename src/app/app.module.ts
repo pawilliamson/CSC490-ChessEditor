@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AccountComponent } from './account/account.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+
 const routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'account', component: AccountComponent },
@@ -24,7 +27,10 @@ import { ChessModule } from '../chess/chess.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChessModule
+    ChessModule,
+    RouterModule.forRoot (routes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

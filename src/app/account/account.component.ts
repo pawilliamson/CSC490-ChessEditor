@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import "reflect-metadata";
-import {DatabaseService} from '../database/database.service';
-import {User} from "../../entities/user.entity";
+import {UserService} from "../services/user.service";
+import {HttpClient, HttpHandler} from "@angular/common/http";
 
 // https://stackoverflow.com/questions/12709074/how-do-you-explicitly-set-a-new-property-on-window-in-typescript
 declare global{
@@ -24,7 +24,7 @@ export class AccountComponent implements OnInit {
   @ViewChild('loginRef', { static: true })
   loginElement!: ElementRef;
  
-  constructor() { }
+  constructor(private userService : UserService) { }
  
   ngOnInit(): void {
  
@@ -38,7 +38,7 @@ export class AccountComponent implements OnInit {
         let profile = googleUser.getBasicProfile ();
         var name = profile.getName ();
         var nameSplit = name.split (" ");
-		let emailInput = <HTMLInputElement> document.getElementById('emailAddress');
+		    let emailInput = <HTMLInputElement> document.getElementById('emailAddress');
         emailInput.value = profile.getEmail();
         let logbtn = document.getElementById('loginBtn');
         if(logbtn != null){
@@ -52,13 +52,12 @@ export class AccountComponent implements OnInit {
         profpic.src = profile.getImageUrl ();
         profpic.style.visibility = "visible";
 
-        const user = new User ();
-        user.firstName = fnameInput.value;
-        user.lastName = lnameInput.value;
-        user.emailAddress = emailInput.value;
-
-       const service = new DatabaseService ();
-       service.addUser (user);
+        var data = {
+          firstName: fnameInput.value, 
+          lastName: lnameInput.value, 
+          emailAddress : emailInput.value
+        };
+        this.userService.create (data).subscribe ();
  
       }, (error: any) => {
 		let loginbtn = document.getElementById('loginBtn');
