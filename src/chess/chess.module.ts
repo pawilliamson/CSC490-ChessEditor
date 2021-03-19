@@ -10,6 +10,14 @@
  * - PieceComponent (Not Implemented)
  * - RowComponent (Not Implemented)
  * - <CellComponent>
+ *
+ * TODO:
+ *
+ * - Implement Pieces
+ * - Add FEN Interpretor/Generator (Module, Service or In )
+ * - Replace Board call in app template to chess (if possible)
+ * - Research Animations
+ * - Create an Algorithm Service
  **/
  
 import {
