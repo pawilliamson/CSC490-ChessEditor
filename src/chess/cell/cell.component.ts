@@ -21,6 +21,7 @@ export class CellComponent implements OnInit {
   @Input("init")
   style:string = "";
   
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -36,3 +37,4 @@ export class CellComponent implements OnInit {
   }
 
 }
+

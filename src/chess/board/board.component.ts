@@ -26,8 +26,10 @@ Component({
  * 
  * This component uses an internal array of CellComponent to store
  * and generate the chessboard.
+ *
+ * TODO:
  * 
- * 
+ * Change so the css classes can be changed to different styles.
  */
 export class BoardComponent implements OnInit {
 
@@ -81,6 +83,14 @@ export class BoardComponent implements OnInit {
 	generateBoard(){}
 	constructor() {
 		
+	}
+	/**
+	* Function: toFENString()
+	*
+	* (PLACEHOLDER)
+	*/
+	toFENString(){
+	return "";
 	}
 
 	ngOnInit(): void {
