@@ -11,10 +11,9 @@ import { Component, OnInit, Input } from '@angular/core';
 /**
  * Class: CellComponent
  * 
- * Note: 
- * 
- * Attempting to switch to components, current development can proceed 
- * using the classes for now.
+ * Variables:
+ *
+ * - style:string = ""; @Input("init");
  */
 export class CellComponent implements OnInit {
 	

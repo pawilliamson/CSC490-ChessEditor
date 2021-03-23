@@ -22,10 +22,6 @@ Component({
  * 
  * Structure for chessboard
  * 
- * Note:
- * 
- * This component uses an internal array of CellComponent to store
- * and generate the chessboard.
  *
  * TODO:
  * 
