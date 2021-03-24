@@ -45,7 +45,9 @@ import {
 }
 from './cell/cell.component';
 
-
+import {
+	Types
+}from'./piece/types.enum';
 
 @NgModule({
 	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],

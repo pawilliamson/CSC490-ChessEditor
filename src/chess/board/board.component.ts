@@ -36,47 +36,36 @@ export class BoardComponent implements OnInit {
 	 * Returns a row with the first cell having primary style.
 	 * 
 	 */
-	addRow() {
+	addRow(classA:string, classB:string) {
 		let z: number = 8;
 		let y: number = 0;
 		let temp: Row = new Row();
 		for (; y < z; y++) {
 			let a = new CellComponent();
 			if (y % 2 == 0) {
-				a.style = "bg-primary";
+				a.style = classA;
 			} else {
-				a.style = "bg-secondary";
+				a.style = classB;
 			}
 			temp.addCell(a);
 		}
 		return temp;
 	}
-	/*
-	 * Function: addRowAlt
-	 * 
-	 * Returns a row with the first cell having secondary style.
-	 */
-	addRowAlt() {
-		let size: number = 8;
-		let i: number = 0;
-		let temp: Row = new Row();
-		for (; i < size; i++) {
-			let cell = new CellComponent();
-			if (i % 2 == 0) {
-				cell.style = "bg-secondary";
-			} else {
-				cell.style = "bg-primary";
-			}
-			temp.addCell(cell);
-		}
-		return temp;
-	}
-	
 	/**
 	* Function: generateBoard()
-	* (PLACEHOLDER)
+	* Creates the chessboard with alternating rows.
 	*/
-	generateBoard(){}
+	generateBoard(classA:string, classB:string){
+		let num:number = 8;
+		let counter: number = 0;
+		for(; counter < num; counter++){
+			if(counter%2==0){
+				this.rows.push(this.addRow(classA, classB));
+			}else{
+				this.rows.push(this.addRow(classB, classA));
+			}
+		}
+	}
 	constructor() {
 		
 	}
@@ -90,15 +79,7 @@ export class BoardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		let rows = 8;
-		let i = 0;
-		for (; i < rows; i++) {
-			if (i % 2 == 0) {
-				this.rows.push(this.addRow());
-			} else {
-				this.rows.push(this.addRowAlt());
-			}
-		}
+		this.generateBoard("bg-primary", "bg-secondary");
 	}
 }
 
@@ -114,13 +95,17 @@ class Row {
 
 
 
-/**
-getCell(num:number){
-	if(this.cells.length < num || num < 0){
-		return -1;	
+	/**
+	  Function: getCell
+
+	  Returns the cell if found, else returns -1
+	**/
+	getCell(num:number){
+		if(this.cells.length < num || num < 0){
+			return -1;	
+		}
+		return this.cells[num];
 	}
-	return this.cells[num];
-}
 
 	/**
 	 * Function: addCell
