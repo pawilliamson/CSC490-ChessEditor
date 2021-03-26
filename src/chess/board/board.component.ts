@@ -51,6 +51,8 @@ export class BoardComponent implements OnInit {
 		}
 		return temp;
 	}
+	
+	
 	/**
 	* Function: generateBoard()
 	* 

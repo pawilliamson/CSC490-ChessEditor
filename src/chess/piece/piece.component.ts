@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Types } from "./types.enum"
 @Component({
   selector: 'app-piece',
@@ -14,15 +14,16 @@ import { Types } from "./types.enum"
 	- type:Types = Types.BlackPawn;
 */
 export class PieceComponent implements OnInit {
-  type:Types = Types.BlackPawn;
-
+  ptype:Types = Types.None;
+	@Input('pid')
+	pid:number = 0;
 	/**
 	Function: getImage()
 	
 	Returns file name corresponding to the piece's type.
 	**/
   getImage(){
-        switch(this.type){
+        switch(this.ptype){
             case Types.BlackPawn:
                 return "Chess_pdt45.svg";
             case Types.WhitePawn:
@@ -50,6 +51,16 @@ export class PieceComponent implements OnInit {
             default:
                 return "NONE";
         }
+  }
+  set(num:number){
+  	this.ptype = num;
+  	console.log("SETP")
+  }
+  ngOnChanges(){
+  	this.set(this.pid)
+  }
+  get(){
+	return this.ptype;  
   }
   
   constructor() { }

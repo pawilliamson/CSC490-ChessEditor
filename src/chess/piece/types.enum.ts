@@ -1,4 +1,5 @@
 export enum Types {
+	None,
 	BlackPawn, WhitePawn, Pawn = BlackPawn | WhitePawn, BlackRook, WhiteRook, Rook = BlackRook | WhiteRook, WhiteBishop,
 	BlackBishop, Bishop = WhiteBishop | BlackBishop, WhiteKnight, BlackKnight, 
 	Knight = WhiteKnight | BlackKnight, 

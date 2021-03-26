@@ -5,6 +5,6 @@ Template for <CellComponent>
 Section: Cell
 -->
 <div class="{{this.getStyle()}}">
-<app-piece ng-if="piece != null"></app-piece>
+<app-piece [pid]=this.piece.get()  ng-if="piece != null"></app-piece>
 </div>
 <!--END-->

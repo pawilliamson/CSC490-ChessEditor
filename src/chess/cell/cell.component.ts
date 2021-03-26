@@ -19,9 +19,14 @@ export class CellComponent implements OnInit {
 	
   @Input("init")
   style:string = "";
-  
+  @Input("piece")
   piece:PieceComponent = new PieceComponent();
-  
+  setPiece(num:number){
+  	this.piece.set(num)
+  }
+  getPiece(){
+		return this.piece;  
+  }
   constructor() { }
 
   ngOnInit(): void {
