@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("pie",["Class"],[["PieceComponent",,[[,,,,0,"File:chess/piece/piece.component.ts:PieceComponent","TypeScriptClass:PieceComponent"]]]]);

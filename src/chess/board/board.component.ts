@@ -53,6 +53,12 @@ export class BoardComponent implements OnInit {
 	}
 	/**
 	* Function: generateBoard()
+	* 
+	* Parameters:
+	* 
+	* - classA:string
+	* - classB:string
+	*
 	* Creates the chessboard with alternating rows.
 	*/
 	generateBoard(classA:string, classB:string){

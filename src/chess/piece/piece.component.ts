@@ -5,9 +5,22 @@ import { Types } from "./types.enum"
   templateUrl: './piece.component.html',
   styleUrls: ['./piece.component.css']
 })
+
+/**
+	Class: PieceComponent
+	
+	Properties:
+	
+	- type:Types = Types.BlackPawn;
+*/
 export class PieceComponent implements OnInit {
   type:Types = Types.BlackPawn;
 
+	/**
+	Function: getImage()
+	
+	Returns file name corresponding to the piece's type.
+	**/
   getImage(){
         switch(this.type){
             case Types.BlackPawn:
