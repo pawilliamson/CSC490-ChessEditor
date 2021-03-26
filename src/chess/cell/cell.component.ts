@@ -4,7 +4,7 @@ import { PieceComponent } from '../piece/piece.component';
 @Component({
   selector: 'app-cell',
   templateUrl: './cell.component.html',
-  styleUrls: ['../../../node_modules/bootstrap/dist/css/bootstrap.min.css','./cell.component.css',],
+  styleUrls: ['../../../node_modules/bootstrap/dist/css/bootstrap.min.css','../board/board.component.css',],
 
 })
 

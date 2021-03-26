@@ -44,3 +44,22 @@
 	  text-align: center;
 	  border: 0px;
 	 }
+	 
+	 .bg-primary{
+		background-color: #8B4513 !important;	 
+	 }
+	 .bg-secondary{
+		background-color:  #E3DAC9 !important;	 
+	 }
+
+	 .col p{
+		 height: 100%;
+		 font-size: 80px!important;
+
+	 }
+	 .col{
+	 float: left;
+	 height: 100%;
+	 }
+	
+
