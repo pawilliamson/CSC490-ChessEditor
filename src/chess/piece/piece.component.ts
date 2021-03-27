@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Types } from "./types.enum"
+import { Types, FEN } from "./types.enum"
 @Component({
   selector: 'app-piece',
   templateUrl: './piece.component.html',
@@ -54,18 +54,46 @@ export class PieceComponent implements OnInit {
   }
   set(num:number){
   	this.ptype = num;
-  	console.log("SETP")
   }
   ngOnChanges(){
-  	this.set(this.pid)
+  	this.set(this.pid);
   }
   get(){
 	return this.ptype;  
   }
+  toFENString(){
+   switch(this.ptype){
+            case Types.BlackPawn:
+                return FEN.BlackPawn;
+            case Types.WhitePawn:
+                return FEN.WhitePawn;
+            case Types.BlackKnight:
+                return FEN.BlackKnight;
+            case Types.WhiteKnight:
+                return FEN.WhiteKnight;
+            case Types.WhiteBishop:
+                return FEN.WhiteBishop;
+            case Types.BlackBishop:
+                return FEN.BlackBishop;
+            case Types.BlackQueen:
+                return FEN.BlackQueen;
+            case Types.WhiteQueen:
+                return FEN.WhiteQueen;
+            case Types.WhiteKing:
+                return FEN.WhiteKing;
+            case Types.BlackKing:
+                return FEN.BlackKing;
+            case Types.BlackRook:
+                return FEN.BlackRook;
+            case Types.WhiteRook:
+                return FEN.WhiteRook;
+            default:
+                return 1;
+        }
+  }
   
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

@@ -8,7 +8,7 @@ export enum Types {
 	Black = BlackPawn | BlackRook | BlackBishop | BlackKnight | BlackKing | BlackQueen, 
 	White = WhitePawn | WhiteRook | WhiteBishop | WhiteKnight | WhiteKing | WhiteQueen
 }
-enum FEN {
+export enum FEN {
 	BlackPawn = 'p', WhitePawn='P',
 	 BlackRook = 'r', WhiteRook='R', 
 	  WhiteBishop = 'B', BlackBishop = 'b', 

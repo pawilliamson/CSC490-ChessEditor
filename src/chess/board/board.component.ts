@@ -7,8 +7,8 @@ from '@angular/core';
 
 import {
 	CellComponent
-}from '../cell/cell.component';
-@
+}
+from '../cell/cell.component';@
 Component({
 	selector: 'app-board',
 	templateUrl: './board.component.html',
@@ -30,13 +30,14 @@ Component({
 export class BoardComponent implements OnInit {
 
 	rows: Array < Row > = [];
+
 	/*
 	 * Function: addRow
 	 * 
 	 * Returns a row with the first cell having primary style.
 	 * 
 	 */
-	addRow(classA:string, classB:string) {
+	addRow(classA: string, classB: string) {
 		let z: number = 8;
 		let y: number = 0;
 		let temp: Row = new Row();
@@ -51,43 +52,56 @@ export class BoardComponent implements OnInit {
 		}
 		return temp;
 	}
-	
-	
+
+
 	/**
-	* Function: generateBoard()
-	* 
-	* Parameters:
-	* 
-	* - classA:string
-	* - classB:string
-	*
-	* Creates the chessboard with alternating rows.
-	*/
-	generateBoard(classA:string, classB:string){
-		let num:number = 8;
+	 * Function: generateBoard()
+	 * 
+	 * Parameters:
+	 * 
+	 * - classA:string
+	 * - classB:string
+	 *
+	 * Creates the chessboard with alternating rows.
+	 */
+	generateBoard(classA: string, classB: string) {
+		let num: number = 8;
 		let counter: number = 0;
-		for(; counter < num; counter++){
-			if(counter%2==0){
+		for (; counter < num; counter++) {
+			if (counter % 2 == 0) {
 				this.rows.push(this.addRow(classA, classB));
-			}else{
+			} else {
 				this.rows.push(this.addRow(classB, classA));
 			}
 		}
 	}
 	constructor() {
-		
+
+	}
+	printFENString() {
+		console.log(this.toFENString());
 	}
 	/**
-	* Function: toFENString()
-	*
-	* (PLACEHOLDER)
-	*/
-	toFENString(){
-	return "";
+	 * Function: toFENString()
+	 *
+	 * (PLACEHOLDER)
+	 */
+	toFENString() {
+		let i: number = 0;
+		let j: number = 0;
+		let length = 8;
+		let output = "";
+
+		for (; i < length; i++) {
+			
+			output += this.rows[i].toFENString() + (i+1==length?"":"/");
+		}
+		return output;
 	}
 
 	ngOnInit(): void {
 		this.generateBoard("bg-primary", "bg-secondary");
+		console.log(this.toFENString());
 	}
 }
 
@@ -101,6 +115,29 @@ class Row {
 
 	cells: Array < CellComponent > = [];
 
+	toFENString() {
+		let out = "";
+		let i = 0;
+		let counter = 0;
+		for (; i < this.cells.length; i++) {
+			let z = this.cells[i].toFENString();
+			if (z == 1) {
+				counter += 1;
+			} else {
+				console.log("TEST")
+				if (counter > 0) {
+					out = out.concat(counter.toString());
+					counter = 0;
+				}
+				out = out.concat(z.toString());
+			}
+		}
+		if (counter > 0) {
+			return out.concat(counter.toString())
+		}
+		console.log(out);
+		return out;
+	}
 
 
 	/**
@@ -108,9 +145,9 @@ class Row {
 
 	  Returns the cell if found, else returns -1
 	**/
-	getCell(num:number){
-		if(this.cells.length < num || num < 0){
-			return -1;	
+	getCell(num: number) {
+		if (this.cells.length < num || num < 0) {
+			return -1;
 		}
 		return this.cells[num];
 	}
@@ -123,17 +160,21 @@ class Row {
 	 * - cell 
 	 */
 	addCell(cell: CellComponent) {
-			this.cells.push(cell);
-		}
-		
-		/**
-		 * Function: constructor
-		 */
+		this.cells.push(cell);
+	}
+
+	/**
+	 * Function: constructor
+	 */
 	constructor() {
 
 	}
 }
+/**
+ * Class: Fen
+ * 
+ * Placeholder
+ **/
+class Fen {
 
-class Fen{
-	
 }
