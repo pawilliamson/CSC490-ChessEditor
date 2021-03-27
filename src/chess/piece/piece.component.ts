@@ -95,9 +95,7 @@ export class PieceComponent implements OnInit {
         }
   }
   setFEN(fen:string){
-  	console.log(fen);
  		let fe =  fen;
-
  		switch(fe){
  			 case  FEN.BlackPawn:
                 this.ptype = Types.BlackPawn;

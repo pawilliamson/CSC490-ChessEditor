@@ -34,18 +34,17 @@ export class BoardComponent implements OnInit {
 	/*
 	 * Function: addRow
 	 * 
-	 * Returns a row with the first cell having primary style.
-	 *  TODO: Add Counter For Digits
+	 * Returns a row with cells having alternating style classes.
+	 * 
 	 */
 	addRow(classA: string, classB: string, fen: string) {
-		let z: number = 8;
+		let cells: number = 8;
 		let y: number = 0;
 		let temp: Row = new Row();
 		let counter = 0;
 		let counter2 = 0;
-		for (; y < z; y++) {
+		for (; y < cells; y++) {
 			let fs = fen.charAt(counter);
-			console.log(fs)
 			if (!isNaN(Number(fs))) {
 				if (counter2 == 0) {
 					counter2++;
@@ -58,8 +57,6 @@ export class BoardComponent implements OnInit {
 				}
 
 			} else {
-				console.log("TEST");
-				console.log(counter);
 				counter++;
 			}
 			let a = new CellComponent();
@@ -68,19 +65,21 @@ export class BoardComponent implements OnInit {
 			} else {
 				a.style = classB;
 			}
-			console.log(Number(fs))
-			console.log(counter)
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
 			temp.addCell(a);
 		}
-		return temp;
-	}
+		
+	
+	return temp;
+}
+	
 	test_counter: number = 0;
 
 	memo() {
 		if (this.test_counter == 0) {
 			this.move(0, 1, 0, 2);
 			this.test_counter++;
+			this.printFENString();
 		} else {
 			if (this.test_counter == 1) {
 				this.rows = [];
@@ -97,6 +96,10 @@ export class BoardComponent implements OnInit {
 		}
 	}
 
+	
+	/**
+     * Function move()
+     */
 	move(x1: number, y1: number, x2: number, y2: number) {
 		let temp = this.rows[y1].cells[x1].toFENString();
 		this.rows[y1].cells[x1].setFEN("");
@@ -118,7 +121,6 @@ export class BoardComponent implements OnInit {
 		let num: number = 8;
 		let counter: number = 0;
 		let fen = startingPos.split("/")
-		console.log(fen);
 		for (; counter < num; counter++) {
 			if (counter % 2 == 0) {
 				this.rows.push(this.addRow(classA, classB, fen[counter]));
@@ -126,17 +128,26 @@ export class BoardComponent implements OnInit {
 				this.rows.push(this.addRow(classB, classA, fen[counter]));
 			}
 		}
+		this.printFENString();
 	}
+	
 	constructor() {
 
 	}
+	
+	/**
+     * Function: printFENString()
+     * 
+     * Prints the output of toFENString in the developer console
+     */
 	printFENString() {
 		console.log(this.toFENString());
 	}
+	
 	/**
 	 * Function: toFENString()
 	 *
-	 * (PLACEHOLDER)
+	 * Returns the position of all pieces in a FEN string.
 	 */
 	toFENString() {
 		let i: number = 0;
@@ -186,21 +197,23 @@ class Row {
 		if (counter > 0) {
 			return out.concat(counter.toString())
 		}
-		console.log(out);
 		return out;
 	}
 
 
 	/**
-	  Function: getCell
-
-	  Returns the cell if found, else returns -1
+     * Function: getCell()
+     * 
+     * Parameters:
+     * - pos: number - position in rows
+     *
+     * Returns the cell if found, else returns -1.
 	**/
-	getCell(num: number) {
-		if (this.cells.length < num || num < 0) {
+	getCell(pos: number) {
+		if (this.cells.length < pos || pos < 0) {
 			return -1;
 		}
-		return this.cells[num];
+		return this.cells[pos];
 	}
 
 	/**
@@ -220,12 +233,4 @@ class Row {
 	constructor() {
 
 	}
-}
-/**
- * Class: Fen
- * 
- * Placeholder
- **/
-class Fen {
-
 }

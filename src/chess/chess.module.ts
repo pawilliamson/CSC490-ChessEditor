@@ -7,17 +7,16 @@
  * Components:
  * 
  * - <BoardComponent> 
- * - PieceComponent (Not Implemented)
- * - RowComponent (Not Implemented)
+ * - <PieceComponent>
  * - <CellComponent>
- *
+ * - <RowComponent> (Not Implemented)
  * TODO:
  *
- * - Implement Pieces
+ * - ++Implement Pieces++
  * - Add FEN Interpretor/Generator (Module, Service or In )
- * - Replace Board call in app template to chess (if possible)
  * - Research Animations
  * - Create an Algorithm Service
+ * - Add User Input
  **/
  
 import {
