@@ -1,12 +1,23 @@
+let pointMap = new Map([
+    ["PAWN", 1],
+    ["KNIGHT", 3],
+    ["BISHOP", 3],
+    ["ROOK", 5],
+    ["QUEEN", 9]
+]);
+
 /**
  * This class is the generic class that all chess pieces are extended from. It contains the color of the chess piece as well as a method to retrieve that color.
  * 
  */
 class Piece {
     color: String = "UNSPECIFIED";
+    points: number = 0;
+    
 
     constructor(specifiedColor: string) {
         this.setColor(specifiedColor);
+        this.setPoints(this.getName());
     }
 
     /**
@@ -37,5 +48,13 @@ class Piece {
      */
     getName() {
         return "UNSPECIFIED";
+    }
+
+    getPoints() {
+        return this.points;
+    }
+
+    setPoints(pieceType:string){
+        this.points = pointMap.get(pieceType);
     }
 }
