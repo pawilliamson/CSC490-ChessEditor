@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Types, FEN } from "./types.enum"
+
 @Component({
   selector: 'app-piece',
   templateUrl: './piece.component.html',
@@ -96,7 +97,7 @@ export class PieceComponent implements OnInit {
   setFEN(fen:string){
   	console.log(fen);
  		let fe =  fen;
- 		console.log(fe);
+
  		switch(fe){
  			 case  FEN.BlackPawn:
                 this.ptype = Types.BlackPawn;
