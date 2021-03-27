@@ -9,11 +9,10 @@ export enum Types {
 	White = WhitePawn | WhiteRook | WhiteBishop | WhiteKnight | WhiteKing | WhiteQueen
 }
 export enum FEN {
-	BlackPawn = 'p', WhitePawn='P',
-	 BlackRook = 'r', WhiteRook='R', 
-	  WhiteBishop = 'B', BlackBishop = 'b', 
-	   WhiteKnight = 'N', BlackKnight = 'n',
-	WhiteKing = 'K', BlackKing = 'k', 
-	WhiteQueen = 'Q', BlackQueen = 'q'
-
+BlackPawn = 'p', WhitePawn='P',
+BlackRook = 'r', WhiteRook='R', 
+WhiteBishop = 'B', BlackBishop = 'b', 
+WhiteKnight = 'N', BlackKnight = 'n',
+WhiteKing = "K", BlackKing = 'k', 
+WhiteQueen = 'Q', BlackQueen = 'q'
 }

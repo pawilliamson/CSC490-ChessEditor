@@ -28,16 +28,16 @@ export class CellComponent implements OnInit {
 	style: string = "";
 	
 	@Input("piece")
-	piece: PieceComponent = new PieceComponent();
+	piece = "";
 	
     /**
      * setPiece()
      * 
      * Sets piece component to enumerated integer
      */
-	setPiece(num: number) {
+	/*setPiece(num: number) {
 		this.piece.set(num)
-	}
+	}*/
 	/**
      * Function: getPiece()
      * 
@@ -52,7 +52,14 @@ export class CellComponent implements OnInit {
      * Returns FEN String of cell
      */
 	toFENString(){
-       return this.piece.toFENString(); 
+       return this.piece; 
+    }
+    
+    setFEN(fen:string){
+    /*	piece = new PieceComponent();
+    	this.piece.setFEN(fen);
+    	*/
+    	this.piece = fen;
     }
 	constructor() {}
 

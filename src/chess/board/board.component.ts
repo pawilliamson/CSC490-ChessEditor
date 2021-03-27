@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
 	 * Returns a row with the first cell having primary style.
 	 * 
 	 */
-	addRow(classA: string, classB: string) {
+	addRow(classA: string, classB: string, fen:string) {
 		let z: number = 8;
 		let y: number = 0;
 		let temp: Row = new Row();
@@ -48,6 +48,7 @@ export class BoardComponent implements OnInit {
 			} else {
 				a.style = classB;
 			}
+			a.setFEN(fen.charAt(y))
 			temp.addCell(a);
 		}
 		return temp;
@@ -64,14 +65,16 @@ export class BoardComponent implements OnInit {
 	 *
 	 * Creates the chessboard with alternating rows.
 	 */
-	generateBoard(classA: string, classB: string) {
+	generateBoard(classA: string, classB: string, startingPos="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR") {
 		let num: number = 8;
 		let counter: number = 0;
+		let fen = startingPos.split("/")
+		console.log(fen);
 		for (; counter < num; counter++) {
 			if (counter % 2 == 0) {
-				this.rows.push(this.addRow(classA, classB));
+				this.rows.push(this.addRow(classA, classB, fen[counter]));
 			} else {
-				this.rows.push(this.addRow(classB, classA));
+				this.rows.push(this.addRow(classB, classA, fen[counter]));
 			}
 		}
 	}
@@ -121,7 +124,7 @@ class Row {
 		let counter = 0;
 		for (; i < this.cells.length; i++) {
 			let z = this.cells[i].toFENString();
-			if (z == 1) {
+			if (z == "") {
 				counter += 1;
 			} else {
 				console.log("TEST")

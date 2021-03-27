@@ -17,6 +17,8 @@ export class PieceComponent implements OnInit {
   ptype:Types = Types.None;
 	@Input('pid')
 	pid:number = 0;
+	@Input('piece')
+	piece:string = "";
 	/**
 	Function: getImage()
 	
@@ -56,7 +58,7 @@ export class PieceComponent implements OnInit {
   	this.ptype = num;
   }
   ngOnChanges(){
-  	this.set(this.pid);
+  	this.setFEN(this.piece);
   }
   get(){
 	return this.ptype;  
@@ -91,9 +93,59 @@ export class PieceComponent implements OnInit {
                 return 1;
         }
   }
+  setFEN(fen:string){
+  	console.log(fen);
+ 		let fe =  fen;
+ 		console.log(fe);
+ 		switch(fe){
+ 			 case  FEN.BlackPawn:
+                this.ptype = Types.BlackPawn;
+                return;
+            case FEN.WhitePawn:
+                this.ptype =  Types.WhitePawn;
+                return;
+            case FEN.BlackKnight:
+                this.ptype =  Types.BlackKnight;
+                break;
+            case FEN.WhiteKnight:
+                this.ptype =  Types.WhiteKnight;
+                break;
+            case FEN.WhiteBishop:
+                this.ptype =  Types.WhiteBishop;
+                break;
+            case FEN.BlackBishop:
+                this.ptype =  Types.BlackBishop;
+                break;
+            case FEN.BlackQueen:
+                this.ptype =  Types.BlackQueen;
+                break;
+            case FEN.WhiteQueen:
+                this.ptype =  Types.WhiteQueen;
+                break;
+            case FEN.WhiteKing:
+                this.ptype =  Types.WhiteKing;
+                break;
+            case FEN.BlackKing:
+                this.ptype =  Types.BlackKing;
+                break;
+            case FEN.BlackRook:
+                this.ptype =  Types.BlackRook;
+                break;
+            case FEN.WhiteRook:
+                this.ptype =  Types.WhiteRook;	
+                break;
+            default:
+            	this.ptype = Types.None;
+            	break;
+ 		}
+  	}
   
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+		  
+			this.setFEN(this.piece)		  
+		  
+  }
 
 }
