@@ -42,14 +42,19 @@
 	 .col{
 	 padding: 0px;
 	  text-align: center;
-	  border: 0px;
 	 }
 	 
 	 .bg-primary{
-		background-color: #8B4513 !important;	 
+		background-color: #8B4513 !important;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #000 !important; 
 	 }
 	 .bg-secondary{
-		background-color:  #E3DAC9 !important;	 
+		background-color:  #E3DAC9 !important;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #000 !important; 
 	 }
 
 	 .col p{
@@ -60,6 +65,14 @@
 	 .col{
 	 float: left;
 	 height: 100%;
+	 }
+
+	 .shown {
+		 display: block;
+	 }
+
+	 .hide {
+		 display: none;
 	 }
 	
 
