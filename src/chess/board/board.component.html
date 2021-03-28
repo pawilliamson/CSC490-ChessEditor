@@ -9,6 +9,16 @@ File: board.component.html
 <button (click)="this.memo()">
 DOES STUFF</button>
 
+<button (click)="this.startEditor()">Enter the editor</button>
+<button (click)="this.saveBoard()">Save the current board</button>
+
+<div id="editorTools" class="hide">
+    <button >Place Pawn</button>
+    <input id="colorWhite" type="radio" name="colorRadio" value="white" (click)="this.setNewColor('WHITE')" checked>
+    <label>White</label>
+    <input id="colorBlack" type="radio" name="colorRadio" value="black">
+    <label>Black</label>
+</div>
 <div class="row" *ngFor="let row of rows">
 <div class="col" *ngFor="let cell of row.cells">
 <app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
