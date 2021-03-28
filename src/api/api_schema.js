@@ -13,7 +13,7 @@
     }
   ],
   "paths": {
-    "/user": {
+    "/acount": {
       "get": {
         "summary": "Details about a user",
         "operationId": "listUser",
