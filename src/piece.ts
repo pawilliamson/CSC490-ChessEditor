@@ -12,12 +12,11 @@ let pointMap = new Map([
  */
 class Piece {
     color: String = "UNSPECIFIED";
-    points: number = 0;
+    points: number | undefined;
     
 
     constructor(specifiedColor: string) {
         this.setColor(specifiedColor);
-        this.setPoints(this.getName());
     }
 
     /**
@@ -50,11 +49,17 @@ class Piece {
         return "UNSPECIFIED";
     }
 
+    /**
+     * This method returns the points assigned to the Piece.
+     * @returns this.points
+     */
     getPoints() {
         return this.points;
     }
 
-    setPoints(pieceType:string){
-        this.points = pointMap.get(pieceType);
+    setPoints(specifiedType: string){
+        if(pointMap.has(specifiedType)){
+            this.points = pointMap.get(specifiedType);
+        }
     }
 }
