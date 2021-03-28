@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:chess/cell/cell.component.html",{2:"<div class=\"NDToolTip TFile Lhtml\"><div class=\"TTSummary\">Template for CellComponent</div></div>"});

@@ -1,1 +1,0 @@
-﻿NDFramePage.OnPageTitleLoaded("File:app/app.module.ts","app.module.ts");NDSummary.OnSummaryLoaded("File:app/app.module.ts",[["TypeScript","TypeScript"]],[["Files","File"]],[[4,0,0,"app.module.ts","app.module.ts"]]);

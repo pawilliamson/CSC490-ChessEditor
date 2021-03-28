@@ -1,1 +1,1 @@
-﻿NDMenu.OnTabsLoaded([["File","Files","File:","files.js"],["Class","Classes","TypeScriptClass:","classes.js"]]);
+﻿NDMenu.OnTabsLoaded([["File","Files","File:chess/","files.js"],["Class","Classes","TypeScriptClass:","classes.js"]]);

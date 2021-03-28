@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("TypeScriptClass:PieceComponent","PieceComponent");NDSummary.OnSummaryLoaded("TypeScriptClass:PieceComponent",[["TypeScript","TypeScript"]],[["Classes","Class"],["Functions","Function"],["Groups","Group"]],[[7,0,0,"PieceComponent"],[21,0,2,"Functions","Functions"],[22,0,1,"getImage()","getImage"]]);

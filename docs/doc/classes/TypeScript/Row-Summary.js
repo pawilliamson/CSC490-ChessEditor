@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("TypeScriptClass:Row","Row");NDSummary.OnSummaryLoaded("TypeScriptClass:Row",[["TypeScript","TypeScript"]],[["Classes","Class"],["Functions","Function"],["Groups","Group"]],[[17,0,0,"Row"],[18,0,2,"Functions","Functions"],[25,0,1,"getCell","getCell"],[26,0,1,"addCell","addCell"],[19,0,1,"constructor","constructor"]]);

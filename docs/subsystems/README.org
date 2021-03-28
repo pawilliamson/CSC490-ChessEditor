@@ -1,0 +1,9 @@
+#+TITLE: README
+#+AUTHOR: Devin M. O'Brien
+
+* What is this? 
+  The documentation related to a specific subsystem after/during
+  sprint 3 should be seperated based on the system. 
+
+* Why
+  This makes it easier to organize and search for documentation related to the specific subsystems

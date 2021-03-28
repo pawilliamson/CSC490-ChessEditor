@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("mod",["File"],[["module",,[[,"app.module.ts",,,0,"File:app/app.module.ts:app.module.ts"],[,"app-routing.module.ts",,,0,"File:app/app-routing.module.ts:app-routing.module.ts"],[,"chess.module.ts",,,0,"File:chess/chess.module.ts:chess.module.ts"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("mod",["Class","File"],[["Module",,[[,"Chess Module",,,0,"File:chess/chess.module.ts:Chess_Module","TypeScriptClass:Chess_Module"],[,"chess.module.ts",,,1,"File:chess/chess.module.ts:chess.module.ts"]]]]);

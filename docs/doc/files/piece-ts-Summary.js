@@ -1,1 +1,0 @@
-﻿NDFramePage.OnPageTitleLoaded("File:piece.ts","piece.ts");NDSummary.OnSummaryLoaded("File:piece.ts",[["TypeScript","TypeScript"]],[["Files","File"]],[[3,0,0,"piece.ts","piece.ts"]]);

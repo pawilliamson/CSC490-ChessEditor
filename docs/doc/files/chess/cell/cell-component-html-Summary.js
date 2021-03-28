@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:chess/cell/cell.component.html","cell.component.html");NDSummary.OnSummaryLoaded("File:chess/cell/cell.component.html",[["html","html"]],[["Files","File"],["Sections","Section"]],[[2,0,0,"cell.component.html","cell.component.html"],[3,0,1,"Cell","Cell"]]);

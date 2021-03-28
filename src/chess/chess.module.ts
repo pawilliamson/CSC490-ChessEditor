@@ -1,7 +1,22 @@
+// File: chess.module.ts
 /**
- * Chess Module
+ * Class: Chess Module
  * 
  * Contains components required to generate a chess board with pieces.
+ * 
+ * Components:
+ * 
+ * - <BoardComponent> 
+ * - <PieceComponent>
+ * - <CellComponent>
+ * - <RowComponent> (Not Implemented)
+ * TODO:
+ *
+ * - ++Implement Pieces++
+ * - Add FEN Interpretor/Generator (Module, Service or In )
+ * - Research Animations
+ * - Create an Algorithm Service
+ * - Add User Input
  **/
  
 import {
@@ -29,17 +44,18 @@ import {
 }
 from './cell/cell.component';
 
+import {
+	Types
+}from'./piece/types.enum';
 
-
-@
-NgModule({
+@NgModule({
 	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],
 	imports: [
 		CommonModule
 	],
-	exports: [BoardComponent],
-	bootstrap: [BoardComponent],
+	exports: [BoardComponent, CellComponent],
+	bootstrap: [BoardComponent, CellComponent],
 })
 export class ChessModule {
-
+	
 }

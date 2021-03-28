@@ -21,6 +21,14 @@
 # Comment Types
 # ------------------------------------------------------------------------
 
+Comment Type: string
+
+   Display Name: string
+   Simple Identifier: string
+
+   Flags: Code, Variable Type
+
+
 # Each Natural Docs comment has a corresponding type which determine its
 # behavior.  You can define your own here or override the settings of the
 # existing ones.

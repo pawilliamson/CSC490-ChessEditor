@@ -1,1 +1,0 @@
-﻿NDSummary.OnToolTipsLoaded("File:app/app.component.spec.ts",{});
