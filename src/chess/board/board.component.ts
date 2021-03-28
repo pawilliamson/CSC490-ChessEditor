@@ -28,6 +28,10 @@ Component({
  * Change so the css classes can be changed to different styles.
  */
 export class BoardComponent implements OnInit {
+	primaryColor : string = "bg-primary";
+	secondaryColor: string = "bg-secondary";
+	pieceToAdd: string | unknown;
+	colorToAdd: string | unknown;
 
 	rows: Array < Row > = [];
 
@@ -82,14 +86,12 @@ export class BoardComponent implements OnInit {
 			this.printFENString();
 		} else {
 			if (this.test_counter == 1) {
-				this.rows = [];
 				this.test_counter = 3;
-				this.generateBoard("bg-primary", "bg-secondary", "r1b1k1nr/p2p1pNp/n2B4/1p1NP2P/6P1/3P1Q2/P1P1K3/q5b1");
+				this.generateBoard("r1b1k1nr/p2p1pNp/n2B4/1p1NP2P/6P1/3P1Q2/P1P1K3/q5b1");
 				this.printFENString();
 			} else {
 				if (this.test_counter == 3) {
-					this.rows = []
-					this.generateBoard("bg-primary", "bg-secondary");
+					this.generateBoard();
 					this.test_counter = 0;
 				}
 			}
@@ -117,15 +119,20 @@ export class BoardComponent implements OnInit {
 	 *
 	 * Creates the chessboard with alternating rows.
 	 */
-	generateBoard(classA: string, classB: string, startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR") {
+	generateBoard(startingPos? : Partial<string>){
+	//generateBoard(startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"){
+		this.rows = [];
+		if(!startingPos){
+			startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+		}
 		let num: number = 8;
 		let counter: number = 0;
 		let fen = startingPos.split("/")
 		for (; counter < num; counter++) {
 			if (counter % 2 == 0) {
-				this.rows.push(this.addRow(classA, classB, fen[counter]));
+				this.rows.push(this.addRow(this.primaryColor, this.secondaryColor, fen[counter]));
 			} else {
-				this.rows.push(this.addRow(classB, classA, fen[counter]));
+				this.rows.push(this.addRow(this.secondaryColor, this.primaryColor, fen[counter]));
 			}
 		}
 		this.printFENString();
@@ -163,8 +170,29 @@ export class BoardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.generateBoard("bg-primary", "bg-secondary");
+		this.generateBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 		console.log(this.toFENString());
+	}
+
+	startEditor(){
+		this.generateBoard("8/8/8/8/8/7p/8/8");
+		document.getElementById("editorTools")?.classList.remove("hide");
+	}
+
+	addPiece(color: string){
+		
+	}
+
+	saveBoard(){
+		this.printFENString();
+	}
+
+	setNewPiece(pieceType: string){
+		this.pieceToAdd = pieceType;
+	}
+
+	setNewColor(color: string){
+		this.colorToAdd = color;
 	}
 }
 
