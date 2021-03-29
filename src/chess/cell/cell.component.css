@@ -1,5 +1,6 @@
-// NOTE: This file is currently not used
-// check cell.component.ts and board.component.css
+/* NOTE: This file is currently not used
+ * check cell.component.ts and board.component.css
+ */
 	 .bg-primary{
 		background-color: #8B4513 !important;	 
 	 }
@@ -12,8 +13,8 @@
 		 font-size: 80px!important;
 
 	 }
-	 .col{
-	 float: left;
-	 height: 100%;
+	 .col{	 	
+		 float: left;
+		 height: 100%;
 	 }
 	
