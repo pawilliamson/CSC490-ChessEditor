@@ -1,0 +1,6 @@
+.center {
+    margin: 0;
+    top: 50%;
+    -ms-transform: translateY(00%);
+    transform: translateY(00%);
+}
