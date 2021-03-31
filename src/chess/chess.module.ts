@@ -7,9 +7,16 @@
  * Components:
  * 
  * - <BoardComponent> 
- * - PieceComponent (Not Implemented)
- * - RowComponent (Not Implemented)
+ * - <PieceComponent>
  * - <CellComponent>
+ * - <RowComponent> (Not Implemented)
+ * TODO:
+ *
+ * - ++Implement Pieces++
+ * - Add FEN Interpretor/Generator (Module, Service or In )
+ * - Research Animations
+ * - Create an Algorithm Service
+ * - Add User Input
  **/
  
 import {
@@ -37,7 +44,9 @@ import {
 }
 from './cell/cell.component';
 
-
+import {
+	Types
+}from'./piece/types.enum';
 
 @NgModule({
 	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],

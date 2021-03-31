@@ -5,9 +5,13 @@ File: board.component.html
 
 
 <div class="container">
+
+<button (click)="this.memo()">
+DOES STUFF</button>
+
 <div class="row" *ngFor="let row of rows">
 <div class="col" *ngFor="let cell of row.cells">
-<app-cell [init]=cell.getStyle() ></app-cell>
+<app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
 </div>
 </div>
 </div>

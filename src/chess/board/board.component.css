@@ -1,3 +1,10 @@
+/**
+ * Board CSS 
+ * 
+ * Currently only controls rows.
+ * 
+ * TODO: Fix problem with size < 240 breaking board
+ */
 	 .bg-primary{
 		background-color: #8B4513 !important;	 
 	 }
@@ -7,12 +14,52 @@
 	 html, body{
 	 height: 100%;
 	 }
+	 @media screen and (min-width:1000px){
 	 .row{
 	height: 130px;	 
 	 }
-	 
+     }
+	 @media screen and (max-width: 1000px){
+            .row{
+                height: 100px;
+            }
+     }
+     @media screen and (max-width: 780px){
+            .row{
+                    height: 75px;
+            }
+     }
+      @media screen and (max-width: 500px){
+            .row{
+                    height: 70px;
+            }
+     }
+      @media screen and (max-width: 450px){
+            .row{
+                    height: 60px;
+            }
+     }
 	 .col{
 	 padding: 0px;
 	  text-align: center;
 	  border: 0px;
 	 }
+	 
+	 .bg-primary{
+		background-color: #8B4513 !important;	 
+	 }
+	 .bg-secondary{
+		background-color:  #E3DAC9 !important;	 
+	 }
+
+	 .col p{
+		 height: 100%;
+		 font-size: 80px!important;
+
+	 }
+	 .col{
+	 float: left;
+	 height: 100%;
+	 }
+	
+

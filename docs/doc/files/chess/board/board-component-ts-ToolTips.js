@@ -1,1 +1,1 @@
-﻿NDContentPage.OnToolTipsLoaded({14:"<div class=\"NDToolTip TClass LTypeScript\"><div class=\"NDClassPrototype\" id=\"NDClassPrototype14\"><div class=\"CPEntry TClass Current\"><div class=\"CPName\">Cell</div></div></div></div>"});
+﻿NDContentPage.OnToolTipsLoaded({11:"<div class=\"NDToolTip TClass LTypeScript\"><div class=\"NDClassPrototype\" id=\"NDClassPrototype11\"><div class=\"CPEntry TClass Current\"><div class=\"CPModifiers\"><span class=\"SHKeyword\">export</span></div><div class=\"CPName\">CellComponent</div></div></div></div>"});

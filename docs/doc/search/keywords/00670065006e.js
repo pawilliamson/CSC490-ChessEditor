@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("gen",["Function"],[["generateBoard",,[["BoardComponent",,,,0,"File:chess/board/board.component.ts:BoardComponent.generateBoard","TypeScriptClass:BoardComponent:generateBoard"]]]]);
