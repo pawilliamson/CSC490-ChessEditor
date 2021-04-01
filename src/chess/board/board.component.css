@@ -61,4 +61,13 @@
 		 height: 100%;
 	 }
 	
-
+	 .col * {
+		align-items:center;
+		justify-content: center;
+		vertical-align:center;
+	 }
+	.fill{
+		display: inline-block;
+		height: 100%;
+		width:100%;
+	}

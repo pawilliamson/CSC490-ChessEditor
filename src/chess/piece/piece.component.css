@@ -1,6 +1,16 @@
 .center {
-    margin: 0;
-    top: 50%;
-    -ms-transform: translateY(00%);
-    transform: translateY(00%);
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+	margin: 0;
+}
+
+.center img{
+	position: absolute;
+	bottom: 15%;
+	top: 15%;
+	left:15%;
+	right:15%;
+	width:70%;
+	height:70%;
 }
