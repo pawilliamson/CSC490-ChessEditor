@@ -11,13 +11,11 @@
 }
 .center img{
 	position: absolute;
-	bottom: 0%;
+	bottom: 15%;
+	top: 15%;
 	left:15%;
-	vertical-align: middle;
 	right:15%;
 	width:70%;
-	height:100%;
-	margin-left: auto;
-	margin-right:auto;
+	height:70%;
 }
 	
