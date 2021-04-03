@@ -11,7 +11,7 @@ DOES STUFF</button>
 
 <div class="row" *ngFor="let row of rows">
 <div class="col" *ngFor="let cell of row.cells">
-<app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
+<app-cell class="fill"  [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
 </div>
 </div>
 </div>
