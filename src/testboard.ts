@@ -3,5 +3,5 @@
  * 
  */
 class TestBoard {
-
+    testedBoard: Board = new Board;
 }
