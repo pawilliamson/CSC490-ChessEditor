@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ChessModule } from '../chess/chess.module'
+import {HeaderComponent} from '../app/header/header.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
