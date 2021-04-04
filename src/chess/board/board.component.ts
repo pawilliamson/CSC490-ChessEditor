@@ -30,6 +30,7 @@ Component({
 export class BoardComponent implements OnInit {
 	primaryColor : string = "bg-primary";
 	secondaryColor: string = "bg-secondary";
+	currentFenString: string | unknown;
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
 
@@ -114,8 +115,8 @@ export class BoardComponent implements OnInit {
 	 * 
 	 * Parameters:
 	 * 
-	 * - classA:string
-	 * - classB:string
+	 * - startingPos - Optional - Fen String of board to load.
+	 * 
 	 *
 	 * Creates the chessboard with alternating rows.
 	 */
@@ -175,16 +176,30 @@ export class BoardComponent implements OnInit {
 	}
 
 	startEditor(){
-		this.generateBoard("8/8/8/8/8/7p/8/8");
+		document.getElementById("startEditorBtn")?.classList.add("hide"); 
+		this.currentFenString = this.toFENString();
+		this.generateBoard("8/8/8/8/8/8/8/8");
 		document.getElementById("editorTools")?.classList.remove("hide");
 	}
 
-	addPiece(color: string){
-		
+	closeEditor(){
+		this.setNewPiece("");
+		this.generateBoard(String(this.currentFenString));
+		document.getElementById("editorTools")?.classList.add("hide");
+		document.getElementById("startEditorBtn")?.classList.remove("hide");
 	}
 
 	saveBoard(){
 		this.printFENString();
+	}
+	
+	addPiece(){
+	}
+
+	checkAddPiece(cellPiece: string){
+		if(this.pieceToAdd == "") return false;
+		if(cellPiece != "") return false;
+		return true;
 	}
 
 	setNewPiece(pieceType: string){

@@ -9,19 +9,26 @@ File: board.component.html
 <button (click)="this.memo()">
 DOES STUFF</button>
 
-<button (click)="this.startEditor()">Enter the editor</button>
-<button (click)="this.saveBoard()">Save the current board</button>
+<button id="startEditorBtn" (click)="this.startEditor()">Enter the editor</button>
+
 
 <div id="editorTools" class="hide">
-    <button >Place Pawn</button>
+    <button (click)="this.setNewPiece('PAWN')">Place Pawn</button>
+    <button (click)="this.setNewPiece('ROOK')">Place Rook</button>
+    <button (click)="this.setNewPiece('KNIGHT')">Place Knight</button>
+    <button (click)="this.setNewPiece('BISHOP')">Place Bishop</button>
+    <button (click)="this.setNewPiece('QUEEN')">Place Queen</button>
+    <button (click)="this.setNewPiece('KING')">Place King</button>
     <input id="colorWhite" type="radio" name="colorRadio" value="white" (click)="this.setNewColor('WHITE')" checked>
     <label>White</label>
-    <input id="colorBlack" type="radio" name="colorRadio" value="black">
+    <input id="colorBlack" type="radio" name="colorRadio" value="black" (click)="this.setNewColor('BLACK')">
     <label>Black</label>
+    <button (click)="this.saveBoard()">Save the current board</button>
+    <button (click)="this.closeEditor()">Close the editor</button>
 </div>
 <div class="row" *ngFor="let row of rows">
 <div class="col" *ngFor="let cell of row.cells">
-<app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
+<app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() (click)="cell.setPieceWithPiece(this.checkAddPiece(cell.getPiece()), this.pieceToAdd)"></app-cell>
 </div>
 </div>
 </div>
