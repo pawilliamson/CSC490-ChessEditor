@@ -1,0 +1,39 @@
+\documentclass[12pt]{article} 
+\usepackage{draculatheme}
+\usepackage{import}
+\usepackage{titlesec}
+\usepackage{graphicx}
+
+\titleformat*{\section}{\color{draculapurple}\large}
+\titleformat*{\subsection}{\color{draculagreen}\Large}
+
+\title{\color{draculacyan}Chess Editor\\(daChess)}
+\author{\color{draculared}Askaban Dabmentors}
+\date{\color{draculared}April 1, 2021}
+\begin{document}
+	\paragraph{Dracula Theme}
+	DraculaTheme.com made a latex theme.
+	\maketitle
+	
+	\section{Project Definition}
+	Chess is a classic game that has been played by millions since its conception; be it as a board game or in modern times as a digital game. It is a game that has relatively simple rules that make it a game that has been a standard for testing the computation ability of automata. Although they have become advanced enough where chess is no longer sufficient\footnote{https://openai.com/projects/five/}, we feel it is a good start for testing ones' abilities. The goal of this project is to develop a chess application using the Angular framework and to test some concepts that we are interested in, such as User Authentication with Google Identity and the Unified Chess Interface\footnote{Current development has this pending, may have to change.}  with an added bonus of trying to wrangle with an external web server for multi-player support.
+	
+	
+	\newpage
+	\import{info/}{ProjectRequirements.tex}
+	
+	\newpage
+	\import{info/}{ProjectSpecs.tex}
+	
+	\newpage
+	\import{info/}{SubsystemDesign.tex}
+	\section{System Analysis}
+	\section{Scrum Report}
+	
+	\section{Subsystems}
+	\import{../subsystems/}{group.tex}
+	
+	\section{Complete System}
+	\section{Team}
+	
+\end{document}
