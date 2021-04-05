@@ -21,8 +21,10 @@ describe('BoardComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  
+  it('should generate normal chessboard', () => {
+    const initial_layout = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+    const result = component.toFENString();
+    expect(result).toContain(initial_layout);
   });
 });
