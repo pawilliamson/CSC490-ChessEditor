@@ -39,10 +39,6 @@ import {
 	RowComponent
 }
 from './row/row.component';
-import {
-	CellComponent
-}
-from './cell/cell.component';
 
 import {
 	Types
@@ -51,12 +47,12 @@ import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],
+	declarations: [BoardComponent, PieceComponent, RowComponent],
 	imports: [
 		CommonModule, DragDropModule
 	],
-	exports: [BoardComponent, CellComponent],
-	bootstrap: [BoardComponent, CellComponent],
+	exports: [BoardComponent],
+	bootstrap: [BoardComponent],
 })
 export class ChessModule {
 	
