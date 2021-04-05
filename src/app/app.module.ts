@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ChessModule } from '../chess/chess.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ChessModule } from '../chess/chess.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChessModule
+    ChessModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
