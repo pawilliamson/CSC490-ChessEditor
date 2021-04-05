@@ -1,20 +1,20 @@
 // File: board.component.ts
-
+import{
+	PieceComponent
+	} from '../piece/piece.component';
+import {
+     CdkDragDrop, moveItemInArray, transferArrayItem
+}from '@angular/cdk/drag-drop';
 import {
 	Component, OnInit
 }
 from '@angular/core';
-
-import {
-	CellComponent
-}
-from '../cell/cell.component';@
+@
 Component({
 	selector: 'app-board',
 	templateUrl: './board.component.html',
 	styleUrls: ['./board.component.css']
 })
-
 
 /**
  * Class: BoardComponent
@@ -59,7 +59,7 @@ export class BoardComponent implements OnInit {
 			} else {
 				counter++;
 			}
-			let a = new CellComponent();
+			let a = new Cell();
 			if (y % 2 == 0) {
 				a.style = classA;
 			} else {
@@ -176,7 +176,7 @@ export class BoardComponent implements OnInit {
  */
 class Row {
 
-	cells: Array < CellComponent > = [];
+	cells: Array < Cell > = [];
 
 	toFENString() {
 		let out = "";
@@ -184,7 +184,7 @@ class Row {
 		let counter = 0;
 		for (; i < this.cells.length; i++) {
 			let z = this.cells[i].toFENString();
-			if (z == "") {
+			if (z == "" || z == null) {
 				counter += 1;
 			} else {
 				if (counter > 0) {
@@ -223,7 +223,7 @@ class Row {
 	 * 
 	 * - cell 
 	 */
-	addCell(cell: CellComponent) {
+	addCell(cell: Cell) {
 		this.cells.push(cell);
 	}
 
@@ -233,4 +233,67 @@ class Row {
 	constructor() {
 
 	}
-}
+	}
+	class Cell{
+	style = "";
+	pieces = [""];
+	getPieces(){
+		return this.pieces[0];
+	}
+    /**
+     * setPiece()
+     * 
+     * Sets piece component to enumerated integer
+     */
+	/*setPiece(num: number) {
+		this.piece.set(num)
+	}*/
+	/**
+     * Function: getPiece()
+     * 
+     * Returns PieceComponent
+     */
+	getPiece() {
+		return this.pieces[0];
+	}
+	/**
+     * Function: toFENString()
+     * 
+     * Returns FEN String of cell
+     */
+	toFENString(){
+       return this.pieces[0]; 
+    }
+   
+    drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+   
+  }
+
+    constructor(){}
+    
+    setFEN(fen:string){
+    /*	piece = new PieceComponent();
+    	this.piece.setFEN(fen);
+    	*/
+    	this.pieces[0] = fen;
+    }
+	
+		/*
+		 * Function: getStyle
+		 * 
+		 * Returns a string containing the cell's style.
+		 * 
+		 */
+	getStyle() {
+		return "col " + this.style;
+	}
+	}
+

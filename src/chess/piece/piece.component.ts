@@ -60,6 +60,7 @@ export class PieceComponent implements OnInit {
   }
   ngOnChanges(){
   	this.setFEN(this.piece);
+    console.log("Hello?");
   }
   get(){
 	return this.ptype;  

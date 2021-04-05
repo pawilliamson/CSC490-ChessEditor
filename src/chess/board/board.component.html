@@ -3,15 +3,16 @@ File: board.component.html
 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-
-<div class="container">
-
-<button (click)="this.memo()">
-DOES STUFF</button>
-
-<div class="row" *ngFor="let row of rows">
-<div class="col" *ngFor="let cell of row.cells">
-<app-cell [piece]="cell.getPiece()" [init]=cell.getStyle() ></app-cell>
-</div>
-</div>
+<div cdkDropListGroup class="container">
+	<button class="btn" (click)="this.memo()">DOES STUFF</button>
+	<div  class="row" *ngFor="let row of rows">
+		<div class="col" *ngFor="let cell of row.cells">
+		<div class="fill" cdkDropList [cdkDropListData]="cell.pieces" (cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
+			
+			<div class="fill"*ngIf="cell.pieces[0]!=''">
+			<app-piece class="fill" style="z-index: 99" cdkDropData="cell.getPieces()" [piece]="cell.getPiece()" cdkDrag></app-piece>
+			</div>
+			</div>
+		</div>
+	</div>
 </div>
