@@ -1,5 +1,5 @@
 import {
-	Component, OnInit, Input
+	Component, OnInit, Input, Output, EventEmitter
 }
 from '@angular/core';
 
@@ -7,7 +7,9 @@ import {
 	PieceComponent
 }
 from '../piece/piece.component';
-
+import {
+     CdkDragDrop, moveItemInArray, transferArrayItem
+}from '@angular/cdk/drag-drop';
 @Component({
 	selector: 'app-cell',
 	templateUrl: './cell.component.html',
@@ -15,7 +17,7 @@ from '../piece/piece.component';
 
 })
 
-/**
+/** 
  * Class: CellComponent
  * 
  * Variables:
@@ -27,9 +29,12 @@ export class CellComponent implements OnInit {
 	@Input("init")
 	style: string = "";
 	
-	@Input("piece")
-	piece = "";
+	opiece:string = "";
 	
+	@Input() piece: string = "";
+	pieces = [ this.piece ];
+	@Output() 
+	pieceMoved = new EventEmitter<string>();
     /**
      * setPiece()
      * 
@@ -54,6 +59,22 @@ export class CellComponent implements OnInit {
 	toFENString(){
        return this.piece; 
     }
+   
+   printout(event:any){
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+    console.log(this.pieces);
+    this.piece = this.pieces[0];
+    this.opiece = this.piece;
+    this.pieceMoved.emit(this.piece);
+  }
+  
     
     setFEN(fen:string){
     /*	piece = new PieceComponent();
@@ -61,8 +82,14 @@ export class CellComponent implements OnInit {
     	*/
     	this.piece = fen;
     }
-	constructor() {}
-
+	constructor() {
+	
+	}
+	ngOnChanges(){
+		this.pieces = [this.piece];
+		this.setFEN(this.piece);
+		this.opiece = this.piece;
+	}
 	ngOnInit(): void {}
 		/*
 		 * Function: getStyle

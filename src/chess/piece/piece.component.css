@@ -10,7 +10,8 @@
     */
 }
 .center img{
-	position: absolute;
+	position: relative;
+	display:block;
 	bottom: 15%;
 	top: 15%;
 	left:15%;

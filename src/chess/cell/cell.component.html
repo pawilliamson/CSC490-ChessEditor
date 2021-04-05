@@ -4,7 +4,8 @@ Template for <CellComponent>
 
 Section: Cell
 -->
-<div class="{{this.getStyle()}}">
-<app-piece class="fill" [piece]="this.piece"></app-piece>
+<div cdkDropList [cdkDropListData]="pieces" class="{{this.getStyle()}}" (cdkDropListDropped)="printout($event)">
+
+<app-piece  [cdkDragData]="piece" class="fill" [piece]="this.piece" cdkDrag></app-piece>
 </div>
 <!--END-->

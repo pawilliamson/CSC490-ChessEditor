@@ -47,11 +47,13 @@ from './cell/cell.component';
 import {
 	Types
 }from'./piece/types.enum';
-
+import {
+	DragDropModule
+	} from '@angular/cdk/drag-drop';
 @NgModule({
 	declarations: [BoardComponent, PieceComponent, RowComponent, CellComponent],
 	imports: [
-		CommonModule
+		CommonModule, DragDropModule
 	],
 	exports: [BoardComponent, CellComponent],
 	bootstrap: [BoardComponent, CellComponent],
