@@ -3,28 +3,39 @@ File: board.component.html
 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-<div cdkDropListGroup class="container">
-<button (click)="this.memo()">
-DOES STUFF</button>
+<!--Header above chess board-->
+<h1>Gamer Chess</h1>
 
-<button (click)="this.startEditor()">Enter the editor</button>
-<button (click)="this.saveBoard()">Save the current board</button>
-
-<div id="editorTools" class="hide">
-    <button >Place Pawn</button>
-    <input id="colorWhite" type="radio" name="colorRadio" value="white" (click)="this.setNewColor('WHITE')" checked>
-    <label>White</label>
-    <input id="colorBlack" type="radio" name="colorRadio" value="black">
-    <label>Black</label>
+<!--Menu Buttons-->
+<div class="d-flex justify-content-center">
+	<a href="home.component.html"><button class="btn btn-primary">Home</button></a>
+	<a href="board.component.html"><button class="btn btn-primary">Play Chess</button></a>
 </div>
-	<button class="btn" (click)="this.memo()">DOES STUFF</button>
+<!--Temp Text-->
+<div class="d-flex flex-column" class="d-flex justify-content-center">There will be more menu buttons!</div>
+
+<!--Chess Container-->
+<div cdkDropListGroup class="container">
+	<button (click)="this.memo()" class="btn btn-secondary">
+		DOES STUFF
+	</button>
+
+		<button (click)="this.startEditor()" class="btn btn-secondary">Enter the editor</button>
+		<button (click)="this.saveBoard()" class="btn btn-secondary">Save the current board</button>
+
+	<div id="editorTools" class="hide">
+    	<button >Place Pawn</button>
+    	<input id="colorWhite" type="radio" name="colorRadio" value="white" (click)="this.setNewColor('WHITE')" checked>
+    	<label>White</label>
+    	<input id="colorBlack" type="radio" name="colorRadio" value="black">
+    	<label>Black</label>
+	</div>
 	<div  class="row" *ngFor="let row of rows">
 		<div class="col" *ngFor="let cell of row.cells">
-		<div class="fill" cdkDropList [cdkDropListData]="cell.pieces" (cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
-			
-			<div class="fill"*ngIf="cell.pieces[0]!=''">
-			<app-piece class="fill" style="z-index: 99" cdkDropData="cell.getPieces()" [piece]="cell.getPiece()" cdkDrag></app-piece>
-			</div>
+			<div class="fill" cdkDropList [cdkDropListData]="cell.pieces" (cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
+				<div class="fill"*ngIf="cell.pieces[0]!=''">
+					<app-piece class="fill" style="z-index: 99" cdkDropData="cell.getPieces()" [piece]="cell.getPiece()" cdkDrag></app-piece>
+				</div>
 			</div>
 		</div>
 	</div>

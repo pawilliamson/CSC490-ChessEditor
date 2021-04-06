@@ -1,2 +1,13 @@
-<app-board></app-board>
+<div *ngIf="page == 1">
+    <button class="btn btn-primary" (click)="goHome()">Home</button>
+    <button class="btn btn-primary" (click)="goBoard()">Board</button>
+    <!--
+    <app-home></app-home>
+    -->
+</div>
+<div *ngIf="page == 2">
+    <button class="btn btn-primary" (click)="goHome()">Home</button>
+    <button class="btn btn-primary" (click)="goBoard()">Board</button>
+    <app-board></app-board>
+</div>
 <router-outlet></router-outlet>
