@@ -30,7 +30,7 @@ export class CellComponent implements OnInit {
 	@Input("piece")
 	piece = "";
 
-	pieceType : Piece | undefined;
+	pieceType : unknown | PieceComponent;
 	
     /**
      * setPiece()
@@ -45,8 +45,8 @@ export class CellComponent implements OnInit {
 	 * 
 	 * @returns 
 	 */
-	setPieceWithPiece(placeable: boolean, newPiece: Piece){
-		placeable ? this.pieceType = newPiece : console.log("Piece not placeable.  Piece that was attempted to be added: " + newPiece.getName());
+	setPieceWithPiece(placeable: boolean, newPiece: PieceComponent | any){
+		placeable ? this.pieceType = newPiece : console.log("Piece not placeable.  Piece that was attempted to be added: " + newPiece.get());
 	}
 
 	getPieceType(){
