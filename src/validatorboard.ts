@@ -113,6 +113,7 @@ class ValidatorBoard extends Board {
             // If it passes the initial if conditions and the for loops, it is a horizontal or vertical path with no obsturctions.
             return true;
         }
+        return false;
     }
 
     /**
