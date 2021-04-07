@@ -23,7 +23,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
       - uses: CDNievas/heroku-action@v1.0
         with:
+          heroku_app_name: "chesseditor"
           heroku_api_key: "b70dce42-f44c-4899-80a3-af9686a2bede"
           heroku_email: "p_willi7@uncg.edu"
+          branch: "main"
+          useforce: true
+          procfile: "worker: npm start"
+          
+          
