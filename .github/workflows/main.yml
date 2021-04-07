@@ -31,6 +31,6 @@ jobs:
           heroku_email: "p_willi7@uncg.edu"
           branch: "main"
           useforce: true
-          procfile: "worker: npm start"
+          procfile: "web: npm start"
           
           
