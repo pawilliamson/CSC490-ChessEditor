@@ -74,4 +74,27 @@ describe('PieceComponent', () => {
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition + 1)).toBeFalse();
     });
   });
+
+  describe('Kings', function() {
+    let king: King;
+    let otherPiece: Pawn;
+
+    it('should be able to move only one space', () => {
+      board.chessBoard[xStartPosition][yStartPosition] = king;
+      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition)).toBeTrue();
+    });
+
+    it('should not be able to move more than one space', () => {
+      board.chessBoard[xStartPosition][yStartPosition] = king;
+      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 2, yStartPosition)).toBeFalse();
+    });
+
+    it('should be able to capture an opposing piece', () => {
+      king.setColor('WHITE');
+      otherPiece.setColor('BLACK');
+      board.chessBoard[xStartPosition][yStartPosition] = king;
+      board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
+      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition)).toBeTrue();
+    });
+  });
 });
