@@ -25,6 +25,5 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: CDNievas/heroku-action@v1.0
         with:
-          heroku_app_name: "chesseditor"
           heroku_api_key: "b70dce42-f44c-4899-80a3-af9686a2bede"
           heroku_email: "p_willi7@uncg.edu"
