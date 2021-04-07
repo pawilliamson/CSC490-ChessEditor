@@ -1,4 +1,8 @@
 # CSC490-ChessEditor Readme
+
+## Requirements
+npm: 6.14.11
+
 ## How to build?
 This project requires node to build the projects and download the dependencies.
 

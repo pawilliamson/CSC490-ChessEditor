@@ -36,18 +36,13 @@ import {
 }
 from './piece/piece.component';
 import {
-	RowComponent
-}
-from './row/row.component';
-
-import {
 	Types
 }from'./piece/types.enum';
 import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent, RowComponent],
+	declarations: [BoardComponent, PieceComponent],
 	imports: [
 		CommonModule, DragDropModule
 	],
