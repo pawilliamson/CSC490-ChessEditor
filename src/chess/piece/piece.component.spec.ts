@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PieceComponent } from './piece.component';
 import { BoardComponent } from '../board/board.component';
 import { Types } from './types.enum';
-
+import { Piece, Pawn, Rook, Bishop, ValidatorBoard, Knight, Queen, King, Board }from '../../validator/validator.module';
 describe('PieceComponent', () => {
   let component: PieceComponent;
   let pieceComponentMock: PieceComponent;
@@ -35,7 +35,7 @@ describe('PieceComponent', () => {
     let pawn: Pawn;
     let otherPiece: Pawn;
 
-    it('should move correctly when white', () => {
+    it('should move correctly when white', () => {;
       pawn.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition, yStartPosition + 1)).toBeTrue();

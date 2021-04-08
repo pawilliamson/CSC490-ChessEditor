@@ -10,7 +10,7 @@ let pointMap = new Map([
  * This class is the generic class that all chess pieces are extended from. It contains the color of the chess piece as well as a method to retrieve that color.
  * 
  */
-class Piece {
+export class Piece {
     color: String = "UNSPECIFIED";
     points: number | undefined;
     

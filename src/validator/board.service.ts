@@ -1,8 +1,16 @@
+import { Rook } from './rook.service';
+import { Pawn } from './pawn.service';
+import { King } from './king.service';
+import { Queen } from './queen.service';
+import { Piece } from './piece.service';
+import { Bishop } from './bishop.service';
+import { Knight } from './knight.service';
+import { ValidatorBoard } from './validatorboard';
 /**
  * This class has a 2D array that will contain the chess pieces as well as methods to move them around, remove them, and add them.
  * 
  */
-class Board {
+export class Board {
     BOARD_LIMIT: number = 7;
     chessBoard: Piece[][] = new Array;
     empty: Piece = new Piece("UNSPECIFIED");
@@ -119,6 +127,7 @@ class Board {
         else {
             console.log("Board class tried to return a Piece that was out of bounds. Attempted X Position: " + xPos + " Attempted Y Position: " + yPos);
         }
+        return null;
     }
 
     /**

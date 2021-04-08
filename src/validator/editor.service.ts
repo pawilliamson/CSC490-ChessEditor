@@ -2,7 +2,7 @@
  * This class contains the code for the editor function.
  * 
  */
-class Editor {
+export class Editor {
     chessboard: Board = new Board();
     
     /**
