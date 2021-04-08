@@ -2,6 +2,10 @@ import {
 	Component, OnInit
 }
 from '@angular/core';
+import {
+	AppComponent
+}
+from '../../app/app.component';
 @
 Component({
 	selector: 'app-home',

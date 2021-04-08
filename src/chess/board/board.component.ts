@@ -9,6 +9,10 @@ import {
 	Component, OnInit
 }
 from '@angular/core';
+import {
+	AppComponent
+}
+from '../../app/app.component';
 @
 Component({
 	selector: 'app-board',
@@ -323,5 +327,5 @@ class Row {
 	getStyle() {
 		return "col " + this.style;
 	}
-	}
+}
 

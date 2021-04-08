@@ -32,6 +32,10 @@ import {
 }
 from './board/board.component';
 import {
+	HomeComponent
+}
+from './home/home.component';
+import {
 	PieceComponent
 }
 from './piece/piece.component';
@@ -42,12 +46,12 @@ import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent],
+	declarations: [BoardComponent, PieceComponent, HomeComponent],
 	imports: [
 		CommonModule, DragDropModule
 	],
-	exports: [BoardComponent],
-	bootstrap: [BoardComponent],
+	exports: [BoardComponent, HomeComponent],
+	bootstrap: [BoardComponent, HomeComponent],
 })
 export class ChessModule {
 	
