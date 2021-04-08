@@ -41,10 +41,12 @@ import {
 import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
+import {
+	ValidatorModule} from '../validator/validator.module';
 @NgModule({
 	declarations: [BoardComponent, PieceComponent],
 	imports: [
-		CommonModule, DragDropModule
+		CommonModule, DragDropModule, ValidatorModule
 	],
 	exports: [BoardComponent],
 	bootstrap: [BoardComponent],

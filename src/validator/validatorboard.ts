@@ -1,9 +1,18 @@
+import {Board} from './board.service';
+import { Rook } from './rook.service';
+import { Pawn } from './pawn.service';
+import { King } from './king.service';
+import { Queen } from './queen.service';
+import { Piece } from './piece.service';
+import { Bishop } from './bishop.service';
+import { Knight } from './knight.service';
+
 /**
  * This class is an extension of the Board that will be used in the Game class. The difference is that this class contains methods to determine what moves a chess piece can make. Throughout this class x1, y1, x2, and y2 will be used as parameters.
  * x1 and y1 refer to the x and y coordinates of the initial space the piece is at, and x2 and y2 refer to the destination of the piece.
  * 
  */
-class ValidatorBoard extends Board {
+export class ValidatorBoard extends Board {
     // These two Queens will be exchanged with the Pawn when the Pawn reaches the end of the board.
     blackQueen: Queen = new Queen("BLACK");
     whiteQueen: Queen = new Queen("WHITE");
@@ -150,9 +159,11 @@ class ValidatorBoard extends Board {
             case("PAWN"): if(this.checkPawnMovement(x1, y1, x2, y2)) {
                 validMovement = true;
             }
+            break;
             case("QUEEN"): if(this.checkQueenMovement(x1, y1, x2, y2)) {
                 validMovement = true;
             }
+            break;
             case("KING"): if(this.checkKingMovement(x1, y1, x2, y2)) {
                 validMovement = true;
                 // These booleans will be set to true after the king's movement to prevent them from castling after moving.
@@ -163,15 +174,19 @@ class ValidatorBoard extends Board {
                     this.blackKingMoved = true;
                 }
             }
+            break;
             case("BISHOP"): if(this.checkBishopMovement(x1, y1, x2, y2)) {
                 validMovement = true;
             }
+            break;
             case("ROOK"): if(this.checkRookMovement(x1, y1, x2, y2)) {
                 validMovement = true;
             }
+            break;
             case("KNIGHT"): if(this.checkKnightMovement(x1, y1, x2, y2)) {
                 validMovement = true;
             }
+            break;
         }
         if(validMovement) {
             this.move(x1, y1, x2, y2);

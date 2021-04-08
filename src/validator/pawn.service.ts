@@ -1,8 +1,10 @@
+import {Piece} from './piece.service';
+
 /**
  * This class is for the Pawn chess piece.
  * 
  */
-class Pawn extends Piece {
+export class Pawn extends Piece{
     
     /**
      * This method returns the name of the Piece.
@@ -11,4 +13,5 @@ class Pawn extends Piece {
     getName() {
         return "PAWN";
     }
-}
+    }
+

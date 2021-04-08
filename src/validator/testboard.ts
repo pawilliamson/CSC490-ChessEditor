@@ -2,7 +2,7 @@
  * This class will test ValidatorBoard class. It will test the capabilities of movement of each piece in a variety of ways.
  * 
  */
-class TestBoard {
+export class TestBoard {
     testBoard: ValidatorBoard = new ValidatorBoard();
 
     /**
