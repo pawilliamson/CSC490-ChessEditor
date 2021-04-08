@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Chess Editor</title>
+
+<style type="text/css">
+.noshow{
+display:none;
+}
+</style>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1>Chess Editor</h1>
+      <h2>Azkaban Dabmentors</h2>
+    </section>
+    
+    <section class="slide">
+    <h1>Subsystems</h1>
+    </section>
+    <section class="slide">
+    <h2>Subsystems</h2>
+    <ul>
+    
+    <li class="slide">Board Subsystem </li>
+    <div class="slide">
+    <li>Game Subsystem</li>
+    <li>Editor Subsystem</li>
+    </div>
+    <div class="slide">
+    <li>Statistics Subsystem</li>
+    <li>Networking Subsystems</li>
+    </div>
+    </ul>
+    </section>
+    
+    <section class="slide">
+    <h2>Board Subsystem</h2>
+    <p>The board subsystem is comprised of the following:
+    <ul>
+        <li class="slide" onchange="boardSubsystem('b')">Board Component</li>
+        <div class="slide">
+        <li>Row Class</li>
+        <li>Cell Class</li>
+        </div>
+        <li class="slide">Piece Component</li>
+    </ul>
+  
+	<section class="slide">    
+    <div id="board" style="height:10em;width:10em;border: 2px black solid; float: right">
+    <div id="row"  style="width:100%; height:1.5em;border:2px blue solid">
+    <div id="cell"style="height:1.5em; width: 1.5em; border: 2px red solid">
+    <img id="piece" src="./assets/Chess_rdt45.svg"/>
+    </div>
+    </div>
+    </div>
+    </section>
+    </section>
+    <section class="slide">
+    <h4>FEN Processing</h4>
+    <p>Each component has some FEN functionality specific to their role.</p>
+    <pre>
+    FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+    Board: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+    Row: rnbqkbnr
+    Cell: r
+    Piece: r
+    </pre>
+    <p>https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation</p>
+    </section>
+    <section class="slide">
+      <h2>Board Subsystem Tests</h2>
+      <section class="slide">
+			<p>Implemented Tests:
+				<ul>
+					<li class="slide">FEN Processing & Board Generation
+					<ul class="slide">
+					<li>Generate Chess Board</li>
+					<li>Generate Empty Chess Board</li>
+					</ul>
+					</li>				
+				</ul>
+			</p>      
+			<section class="slide">
+				INSERT PICTURE HERE
+				</section>	
+      </section>
+    </section>
+
+
+	<section class="slide">
+	<h2>Game Subsystem</h2>
+	</section>
+	<section class="slide">
+	<h2>Editor Subsystem</h2>
+	</section>
+	<section class="slide">
+	<h1>Back burner</h1>
+	</section>
+	<section class="slide">
+	<h2>Back burner</h2>
+	<ul>
+	<li>Statistics Subsystem</li>
+	<li>Networking Subsystem</li>
+	</ul>
+	</section>
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
