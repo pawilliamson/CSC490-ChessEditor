@@ -14,7 +14,17 @@ export class Board {
     BOARD_LIMIT: number = 7;
     chessBoard: Piece[][] = new Array;
     empty: Piece = new Piece("UNSPECIFIED");
-
+	constructor(){
+	let x = 0;
+	for(;x < this.BOARD_LIMIT; x++){
+	 let y = 0;
+	 let row:Piece[] = new Array;
+	 for(;y < this.BOARD_LIMIT; y++){
+	  row[y] = new Piece("UNSPECIFIED");
+	 }
+	 this.chessBoard[x] = row;
+	}
+	}
     /**
      * This method will print the board out to the console. An empty space will be represented by --, and a filled space will be represented by a letter indicating the color of the Piece followed by a letter indicating the type of the Piece. This method should be used for
      * testing purposes only.
