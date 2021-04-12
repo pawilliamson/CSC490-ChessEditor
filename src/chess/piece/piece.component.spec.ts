@@ -9,7 +9,7 @@ describe('PieceComponent', () => {
   let pieceComponentMock: PieceComponent;
   let piece: Piece;
   let xStartPosition = 3, yStartPosition = 3;
-  let boardStart = 0, boardEnd = 8;
+  let boardStart = 0, boardEnd = 7;
 
   let fixture: ComponentFixture<PieceComponent>;
   let board: ValidatorBoard = new ValidatorBoard();
@@ -37,8 +37,12 @@ describe('PieceComponent', () => {
 
   describe('Pawns', function() {
   let xStartPosition = 3, yStartPosition = 3;
-    let pawn: Pawn = new Pawn("UNSPECIFIED");
-    let otherPiece: Pawn = new Pawn("UNSPECIFIED");
+    let pawn: Pawn = new Pawn("WHITE");
+    let otherPiece: Pawn = new Pawn("BLACK");
+   
+    beforeEach(() => {
+    board = new ValidatorBoard();
+    });
 
     it('should move correctly when white', () => {;
       pawn.setColor('WHITE');
@@ -78,11 +82,11 @@ describe('PieceComponent', () => {
   describe('Rooks', function() {
     let rook: Rook = new Rook("BLACK");
     let otherPiece:Pawn = new Pawn("WHITE");
-	let xStartPosition = 3;
-	let yStartPosition = 3;
-	let board = new ValidatorBoard();
+	beforeEach( () =>{
+	board = new ValidatorBoard();
+	});
+	
     it('should be able to move horizontally', () => {
-    
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeTrue();
     });
@@ -122,10 +126,11 @@ describe('PieceComponent', () => {
   });
 
   describe('Bishops', function() {
-    let bishop: Bishop = new  Bishop("UNSPECIFIED");
-    let otherPiece: Pawn = new Pawn("UNSPECIFIED");
-	let xStartPosition = 3;
-	let yStartPosition = 3;
+    let bishop: Bishop = new  Bishop("BLACK");
+    let otherPiece: Pawn = new Pawn("WHITE");
+	beforeEach( () =>{
+	board = new ValidatorBoard();
+	});
     it('should not be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeFalse();
@@ -166,14 +171,14 @@ describe('PieceComponent', () => {
   });
 
   describe('Knights', function() {
-    let knight: Knight = new Knight("UNSPECIFIED");
-    let otherPiece: Pawn = new Pawn("UNSPECIFIED");
-	let xStartPosition = 3;
-	let yStartPosition = 3;
+    let knight: Knight = new Knight("BLACK");
+    let otherPiece: Pawn = new Pawn("WHITE");
+	beforeEach( () =>{
 	board = new ValidatorBoard();
+	});
 	
     it('should not be able to move horizontally', () => {
-    let xStartPosition = 3, yStartPosition = 3;
+  
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeFalse();
     });
@@ -195,6 +200,7 @@ describe('PieceComponent', () => {
     });
 
     it('should be able to capture an opposing piece', () => {
+    
       knight.setColor('WHITE');
       otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
@@ -211,6 +217,8 @@ describe('PieceComponent', () => {
     });
 
     it('should not be able to pass through another piece to get to a cell', () => {
+       knight.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       board.chessBoard[xStartPosition + 2][yStartPosition] = otherPiece;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 2, yStartPosition)).toBeFalse();
@@ -220,31 +228,30 @@ describe('PieceComponent', () => {
   describe('Queens', function() {
     let queen: Queen = new Queen("WHITE");
     let otherPiece: Pawn = new Pawn("BLACK");
-    let xStartPosition = 3;
-	let yStartPosition = 3;
+    beforeEach(()=> {
     board = new ValidatorBoard();
+    });
 
     it('should be able to move horizontally', () => {
-   
+  
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeTrue();
     });
 
     it('should be able to move vertically', () => {
-
+    
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition, boardStart)).toBeTrue();
     });
 
     it('should be able to move diagonally', () => {
-   
+
       let diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, xStartPosition, xStartPosition - diag, yStartPosition - diag)).toBeTrue();
     });
 
     it('should be able to capture an opposing piece', () => {
-  
       queen.setColor('WHITE');
       otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = queen;
@@ -265,13 +272,16 @@ describe('PieceComponent', () => {
   describe('Kings', function() {
     let king: King = new King("BLACK");
     let otherPiece: Pawn = new Pawn("WHITE");
-
+	beforeEach(()=>{
+	board = new ValidatorBoard();
+	});
     it('should be able to move only one space', () => {
       board.chessBoard[xStartPosition][yStartPosition] = king;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition)).toBeTrue();
     });
 
     it('should not be able to move more than one space', () => {
+    board = new ValidatorBoard();
       board.chessBoard[xStartPosition][yStartPosition] = king;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 2, yStartPosition)).toBeFalse();
     });
