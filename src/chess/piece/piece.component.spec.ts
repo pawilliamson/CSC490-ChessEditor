@@ -119,9 +119,11 @@ describe('PieceComponent', () => {
     });
 
     it('should not be able to pass through another piece to get to a cell', () => {
-      board.chessBoard[xStartPosition][yStartPosition] = rook;
-      board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
-      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 2, yStartPosition)).toBeFalse();
+	  rook.setColor('WHITE');
+	  otherPiece.setColor('BLACK');
+      board.chessBoard[yStartPosition][xStartPosition] = rook;
+      board.chessBoard[yStartPosition][xStartPosition+1] = otherPiece;
+      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition+2, yStartPosition)).toBeFalse();
     });
   });
 
@@ -204,18 +206,21 @@ describe('PieceComponent', () => {
       knight.setColor('WHITE');
       otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
-      board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
-      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition)).toBeTrue();
+      board.chessBoard[xStartPosition + 2][yStartPosition+1] = otherPiece;
+      expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 2, yStartPosition+1)).toBeTrue();
     });
 
     it('should not be able to capture a piece with the same color', () => {
       knight.setColor('WHITE');
       otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
-      board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
+      board.chessBoard[xStartPosition + 2][yStartPosition + 1] = otherPiece;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition + 1, yStartPosition + 1)).toBeFalse();
     });
 
+    /**
+      * I don't think this applies for knights. - DeMO
+      */
     it('should not be able to pass through another piece to get to a cell', () => {
        knight.setColor('WHITE');
       otherPiece.setColor('WHITE');

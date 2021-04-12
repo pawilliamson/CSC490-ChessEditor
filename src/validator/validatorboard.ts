@@ -31,14 +31,6 @@ import {
 }
 from './knight.service';
 
-/*
-* Devin's Complaints
-* (1) When you are determining the distance in units between two
-*  spaces, it is NOT xDistance/xDistance. It is 1/xDistance. 
-* (2) Do not change an important function parameter in a loop.
-* (3) Do not have inline comments larger than 100 characters.
-* 
-* 
 
 
 /**
@@ -152,7 +144,7 @@ export class ValidatorBoard extends Board {
 			// it will be an obstruction, and false will be returned.
 			let tempx:number = x1;
 			let tempy:number = y1;
-			for (; tempx != x2; tempx += xChangePerSpace > 0?1:-1) {
+			for (tempx = tempx + (xChangePerSpace > 0?1:-1); tempx != x2 ; tempx += (xChangePerSpace > 0?1:-1)) {
 				tempy += yChangePerSpace > 0?1:-1;
 				console.log(tempx);
 				console.log(tempy);
@@ -211,20 +203,23 @@ export class ValidatorBoard extends Board {
 			let tempy = y1;
 			if(yChange == 0)
 			for (let tem = tempx + (xChangePerSpace > 0?1:-1); tem != x2; tem += xChangePerSpace >0?1:-1) {
+				console.log(this.chessBoard[tempy][tem].getName());
 				if (this.chessBoard[tempy][tem].getName() != "UNSPECIFIED") {
 					console.log("Obstruction along horizontal path");
 					return false;
 				}
 			}
 			if(xChange == 0)
-			for (let temy = tempy + (yChangePerSpace > 0?1:-1); temy != y2; temy += yChangePerSpace>0?1:-1) {
+			for (let temy = tempy + (yChangePerSpace > 0?1:-1); temy != y2; temy += (yChangePerSpace>0?1:-1)) {
+				console.log(this.chessBoard[temy][tempx].getName());
 				if (this.chessBoard[temy][tempx].getName() != "UNSPECIFIED") {
-					console.log(this.chessBoard[temy][tempx].getName())
+					console.log(this.chessBoard[temy][tempx].getName());
 					console.log('Obstruction along vertical path');
 					console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
 					return false;
 				}
 			}
+			
 
 			// If it passes the initial if conditions and the for loops,
 			// it is a horizontal or vertical path with no obsturctions.
@@ -458,6 +453,7 @@ export class ValidatorBoard extends Board {
 			return false;
 		}
 		if ((this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor())) {
+			console.log("ATTEMPTING TO CAPTURE OWN PIECE");
 			return false;
 		}
 		if (this.goodHorizontalVerticalPathChecker(x1, y1, x2, y2)) {
@@ -475,13 +471,13 @@ export class ValidatorBoard extends Board {
 	 * @param y1 
 	 * @param x2 
 	 * @param y2 
-	 * @returns 
+	 * @returns f
 	 */
 	checkBishopMovement(x1: number, y1: number, x2: number, y2: number) {
 		if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
 			return false;
 		}
-		if (this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor()) {
+		if (this.chessBoard[y1][x1].getColor() == this.chessBoard[y2][x2].getColor()) {
 			return false;
 		}
 		// The bishop can move in any direction diagonally, the
@@ -506,9 +502,11 @@ export class ValidatorBoard extends Board {
 	 */
 	checkKnightMovement(x1: number, y1: number, x2: number, y2: number) {
 		if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
+			console.log('INVALID COORD');
 			return false;
 		}
-		if (this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor()) {
+		if (this.chessBoard[y1][x1].getColor() == this.chessBoard[y2][x2].getColor()) {
+			console.log('ATTEMPTING TO CAPTURE OWN PIECE');
 			return false;
 		}
 		// The Knight must move in an L shape, horizontally by 1 or 2 spaces
@@ -516,8 +514,8 @@ export class ValidatorBoard extends Board {
 		// value and performing 2 if statements
 
 		// accounts for all variants of this instead of having to do 8 if statements.
-		var xDiff = Math.abs(x2 - x1);
-		var yDiff = Math.abs(y2 - y1);
+		let xDiff = Math.abs(x2 - x1);
+		let yDiff = Math.abs(y2 - y1);
 		if ((xDiff == 2 && yDiff == 1) || (xDiff == 1 && yDiff == 2)) {
 			return true;
 		}

@@ -37,12 +37,14 @@ describe('BoardComponent', () => {
 
     it('should generate an empty chessboard', () => {
       const initialLayout = "8/8/8/8/8/8/8/8";
+      component.generateBoard(initialLayout);
       const result = component.toFENString();
       expect(result).toContain(initialLayout);
     });
 
     it('should generate an empty board with an empty layout', () =>{
       const initialLayout = "";
+      component.generateBoard("");
       const result = component.toFENString();
       expect(result).toContain(initialLayout);
     });
