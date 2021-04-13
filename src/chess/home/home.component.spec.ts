@@ -22,8 +22,11 @@ describe('HomeComponent', () => {
         fixture.detectChanges();
     });
 
+    //To fill with test cases
+    /*
     it('should generate home page', () => {
-        //To fill with test cases
+        
     });
+    */
 
 });
