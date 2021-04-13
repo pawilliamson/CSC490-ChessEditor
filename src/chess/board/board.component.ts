@@ -3,7 +3,7 @@ import{
 	PieceComponent
 	} from '../piece/piece.component';
 import {
-     CdkDragDrop, moveItemInArray, transferArrayItem
+     CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem
 }from '@angular/cdk/drag-drop';
 import {
 	Component, OnInit
@@ -34,6 +34,11 @@ export class BoardComponent implements OnInit {
 	colorToAdd: string | unknown;
 
 	rows: Array < Row > = [];
+
+    moveCellPiece(event: CdkDragDrop<string[]>) {
+        let cellNum = event.container.element.nativeElement.id;
+        console.log (cellNum);
+    }
 
 	/*
 	 * Function: addRow
@@ -175,8 +180,7 @@ export class BoardComponent implements OnInit {
 	}
 
 	startEditor(){
-		this.generateBoard("8/8/8/8/8/7p/8/8");
-		document.getElementById("editorTools")?.classList.remove("hide");
+		this.generateBoard("8/8/8/8/8/8/8/8");
 	}
 
 	addPiece(color: string){
@@ -294,16 +298,23 @@ class Row {
     }
    
     drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        console.log (event.previousContainer);
+        console.log (event.container);
+
+        if (event.previousContainer.id == "editorTools") {
+            copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+        }
+        else {
+            if (event.previousContainer === event.container || event.previousContainer.id === "editorTools") {
+                console.log ("move");
+                moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+            } 
+            else {
+                console.log ("transfer");
+                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            }
+        }
     }
-   
-  }
 
     constructor(){}
     
