@@ -12,12 +12,9 @@ import { ValidatorBoard } from './validatorboard';
 import { Board } from './board.service';
 export {Piece, Pawn, Rook, ValidatorBoard, Knight, Bishop, King, Queen, Board};
 @NgModule({
-  declarations: [Piece, Pawn, King, Queen, Bishop, Knight],
+
   imports: [
     CommonModule
-  ],
-  exports: [
-  Pawn, Rook, King, Queen, Piece, Bishop, Knight
   ]
 })
 export class ValidatorModule { }
