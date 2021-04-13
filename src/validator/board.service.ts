@@ -1,12 +1,35 @@
+// File: board.service.ts
+// Contains Board Class
+import { Rook } from './rook.service';
+import { Pawn } from './pawn.service';
+import { King } from './king.service';
+import { Queen } from './queen.service';
+import { Piece } from './piece.service';
+import { Bishop } from './bishop.service';
+import { Knight } from './knight.service';
+import { ValidatorBoard } from './validatorboard';
+
+
 /**
+ *Class:Board
  * This class has a 2D array that will contain the chess pieces as well as methods to move them around, remove them, and add them.
  * 
  */
-class Board {
+export class Board {
     BOARD_LIMIT: number = 7;
     chessBoard: Piece[][] = new Array;
     empty: Piece = new Piece("UNSPECIFIED");
-
+	constructor(){
+	let x = 0;
+	for(;x <= 8; x++){
+	 let y = 0;
+	 let row:Piece[] = new Array;
+	 for(;y <= 8; y++){
+	  row[y] = new Piece("UNSPECIFIED");
+	 }
+	 this.chessBoard[x] = row;
+	}
+	}
     /**
      * This method will print the board out to the console. An empty space will be represented by --, and a filled space will be represented by a letter indicating the color of the Piece followed by a letter indicating the type of the Piece. This method should be used for
      * testing purposes only.
@@ -119,6 +142,7 @@ class Board {
         else {
             console.log("Board class tried to return a Piece that was out of bounds. Attempted X Position: " + xPos + " Attempted Y Position: " + yPos);
         }
+        return null;
     }
 
     /**

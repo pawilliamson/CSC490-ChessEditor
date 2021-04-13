@@ -1,12 +1,13 @@
 <!--
 File: board.component.html
 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <div cdkDropListGroup class="container">
 <button (click)="this.memo()">
 DOES STUFF</button>
-
+<app-piece style="display:inline-block;height: 50px; width:50px" [piece]="'p'" cdkDropData="'p'" cdkDrag></app-piece>
 <button (click)="this.startEditor()">Enter the editor</button>
 <button (click)="this.saveBoard()">Save the current board</button>
 
