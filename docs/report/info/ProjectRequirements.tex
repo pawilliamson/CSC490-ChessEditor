@@ -1,0 +1,79 @@
+
+	
+\section{Project Requirements}
+	\subsection{Constraints}
+	There are two constraints imposed on this project.
+	\subsubsection{Deliverables}
+	The project has the following deliverables that are required for success:
+	\begin{itemize}
+		\item This Report
+		\item The Program
+		\item The Poster
+	\end{itemize}
+	\subsubsection{Time Constraint}
+	This project is to be finished by April 22nd, 2021\footnote{Needs to be verified}.
+	
+	\subsection{Functional Requirements}
+	The functional requirements of the project include minimum requirements and those which we would like to implement, the latter will be diliminated by a star *:
+	\subsubsection{Primary Requirements}
+	The primary requirements are those which are to always be functional:
+	\begin{itemize}
+		\item Ability for the user to play a game:
+		\begin{itemize}
+			\item Against another user locally.
+			\item Against an \emph{AI} that will be provided.*
+		\end{itemize}
+	\item Ability for the user to track their \emph{statistics} of play over the lifetime of their account including wins, losses, and draws.\footnote{This does not include syncing which is a secondary requirement.}
+	\item Ability for the user to modify the starting layout of the chess pieces to match a configuration of either a previously ongoing game or a game scenario. 
+	\begin{itemize}
+		\item FEN Processing
+		\item FEN Interpretation
+		\item FEN Generation
+	\end{itemize}
+	\end{itemize}
+	\subsubsection{Secondary Requirements}
+	Secondary requirements are those which will not always be available.
+	\begin{itemize}
+		\item Ability for the user to create an account to access online features.
+		\begin{itemize}
+			\item Ability for the user to sync statistics.
+			\item Ability for the user to play against another user online.
+		\end{itemize}
+	\item Ability for the user to login via their Google Account credentials.
+	\end{itemize}
+	\subsection{Usability}
+	\subsubsection{User Interface}
+	
+	\subsubsection{Performance}
+	
+	\subsection{System}
+	\paragraph{Serverside}
+	All server-side requirements of the this project were provided by eco.webhosting.co.uk
+	
+	The requirements of the server include:
+	\begin{itemize}
+		\item Web Server setup to run Angular applications
+		\item Database running MySQL 10.4.14
+		\item Can handle multiple requests and sessions at a given time.
+	\end{itemize}
+
+	\paragraph{Clientside}
+	The client side requirements are recommended requirements based on our own systems:
+	\subparagraph{Operating System}
+	This program does not require a specific Operating System.
+	\subparagraph{Memory}
+	The system should have at least 2GB of RAM.
+	\subparagraph{Required Software}
+	This program requires a modern GUI web browser, preferably:
+	\begin{itemize}
+		\item Firefox 
+		\item Google Chrome
+		\item Brave
+	\end{itemize}
+	\subsection{Database}
+	This project will be using one database to keep track of ongoing games which is using MySQL version 10.4.14.
+	\subsection{Networking}
+	All project artifacts and interconnectivities are being provided by the hosing web server.
+	\subsection{Security}
+	For Google Authentication, we will be leveraging Google OAuth 2.0 API. The other security requirements are inherently provided by the hosting server.
+
