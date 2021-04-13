@@ -32,7 +32,32 @@ export class BoardComponent implements OnInit {
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-
+	
+	/** I'M OVER HERE! **/
+	/*
+	 So this array stores the white pawn that is outside the board.
+	 This will be removed the piece is moved to a cell.
+	 */
+	test:Array<string> = ["P"];
+	
+	drop(event: CdkDragDrop<string[]>) {
+		/*
+		*This is not to be used for actually moving pieces around
+		* I just have it so I can see what is being passed, this 
+		* could break at any moment!
+		*/
+		console.log(event.item.element.nativeElement.attributes[6]);
+		
+		if (event.previousContainer === event.container) {
+		moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+		} else {
+		transferArrayItem(event.previousContainer.data,
+							event.container.data,
+							event.previousIndex,
+							event.currentIndex);
+		}
+		
+	}
 	rows: Array < Row > = [];
 
 	/*
@@ -194,6 +219,8 @@ export class BoardComponent implements OnInit {
 	setNewColor(color: string){
 		this.colorToAdd = color;
 	}
+
+
 }
 
 
@@ -294,6 +321,7 @@ class Row {
 		}
    
 		drop(event: CdkDragDrop<string[]>) {
+			console.log(event.item.element.nativeElement.attributes[6]);
 			if (event.previousContainer === event.container) {
 			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 			} else {
@@ -302,7 +330,7 @@ class Row {
 								event.previousIndex,
 								event.currentIndex);
 			}
-		
+			
 		}
 
 		constructor(){}

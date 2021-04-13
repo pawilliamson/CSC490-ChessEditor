@@ -1,2 +1,10 @@
+<div cdkDropListGroup>
+<div id="appList" cdkDropList  cdkDropListConnectedTo="otherList" (cdkDropListDropped)="ted()" >
+<p cdkDrag>Hello</p>
+</div>
+<div cdkDropList #alist="cdkDropList"></div>
+<div>
 <app-board></app-board>
+</div>
+</div>
 <router-outlet></router-outlet>
