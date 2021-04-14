@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { ChessModule } from '../chess/chess.module';
 
-import {
-     CdkDragDrop, moveItemInArray, transferArrayItem
-}from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +7,4 @@ import {
 })
 export class AppComponent {
   title = 'chess-app';
-  ted(){
-  console.log("HEEEEEEEELLLOOOOOOOOOOO!!!!!");
-  }
 }

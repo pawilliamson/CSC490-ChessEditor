@@ -7,31 +7,19 @@ File: board.component.html
 
 
 <div  class="container">
-<button (click)="this.memo()">
-DOES STUFF</button>
-<!-- OVER HERE!!! 
+    <button (click)="this.startEditor()">Enter the editor</button>
+    <button (click)="this.saveBoard()">Save the current board</button>
 
-So the id is something I used to test if I could get something working
-between component. -- If you move this pawn over 'Hello' there is 
-a screaming message is printed in the console.
+    <div id="editorTools" style="display:none;">
+        <div id="otherList" cdkDropList [cdkDropListData]="pieceCollection" [cdkDropListConnectedTo]="['appList']" (cdkDropListDropped)="this.drop($event)">
+            <a *ngFor = "let piece of pieces">
+                <app-piece id="freeMovingPiece_{{piece.piece}}" style="display:inline-block;height: 10%;width: 10%;" [limit] = "piece.limit" [piece]="piece.piece" cdkDropData="piece.piece" (cdkDragStarted) = "dragStarted ($event)" cdkDrag></app-piece>
+                <a id = "pieceLimit_{{piece.piece}}">{{piece.limit}}</a>
+            </a>
+        </div>
+    </div>
 
--->
-<div id="otherList" cdkDropList [cdkDropListData]="test" [cdkDropListConnectedTo]="['appList']" (cdkDropListDropped)="this.drop($event)">
-<app-piece style="display:inline-block;height: 50px; width:50px" [piece]="test[0]" cdkDropData="'p'" cdkDrag></app-piece>
-</div>
-
-<button (click)="this.startEditor()">Enter the editor</button>
-<button (click)="this.saveBoard()">Save the current board</button>
-
-<div id="editorTools" class="hide">
-    <button >Place Pawn</button>
-    <input id="colorWhite" type="radio" name="colorRadio" value="white" (click)="this.setNewColor('WHITE')" checked>
-    <label>White</label>
-    <input id="colorBlack" type="radio" name="colorRadio" value="black">
-    <label>Black</label>
-</div>
-	<button class="btn" (click)="this.memo()">DOES STUFF</button>
-	<div  class="row" *ngFor="let row of rows">
+	<div class="row" *ngFor="let row of rows">
 		<div class="col" *ngFor="let cell of row.cells">
 		<div class="fill" cdkDropList [cdkDropListData]="cell.pieces" (cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
 			
