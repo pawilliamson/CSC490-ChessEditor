@@ -39,45 +39,21 @@ export class BoardComponent implements OnInit {
 	 So this array stores the white pawn that is outside the board.
 	 This will be removed the piece is moved to a cell.
 	 */
-    pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
 
-    pieces = [
-        {piece: "P", limit: 8},
-        {piece: "N", limit: 2},
-        {piece: "B", limit: 2},
-        {piece: "R", limit: 2},
-        {piece: "Q", limit: 1},
-        {piece: "K", limit: 1},
-        {piece: "p", limit: 8},
-        {piece: "n", limit: 2},
-        {piece: "b", limit: 2},
-        {piece: "r", limit: 2},
-        {piece: "q", limit: 1},
-        {piece: "k", limit: 1}];
+
+
 	
     dragStarted (event : CdkDragStart) {
         console.log(event);
     }
 
+	
 	drop(event: CdkDragDrop<string[]>) {
-		
-        if (event.container.id == "otherList" && event.previousContainer.id  != "otherList") {
-            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-            let pieceStr = event.item.element.nativeElement.attributes[6].value;
-            let cellID = event.previousContainer.element.nativeElement.id;
-            let cellNum = Number.parseInt (cellID.replace ("cdk-drop-list-", ""));
-            let row = Math.floor (cellNum / 8);
-            let col = cellNum % 8;
-
-            this.rows [row].cells [col].setPieceCount (pieceStr, true);
-        }
-        else {
             if (event.previousContainer === event.container) {
                 moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
             } else {
                 transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
             }
-        }
 		
 	}
 	rows: Array < Row > = [];
@@ -184,7 +160,6 @@ export class BoardComponent implements OnInit {
 		}
 		this.printFENString();
 	}
-	
 	constructor() {
 
 	}
@@ -220,31 +195,6 @@ export class BoardComponent implements OnInit {
 		this.generateBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 		console.log(this.toFENString());
 	}
-
-	startEditor(){
-		this.generateBoard("8/8/8/8/8/8/8/8");
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "block";
-	}
-
-	addPiece(color: string){
-		
-	}
-
-	saveBoard(){
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "none";
-	}
-
-	setNewPiece(pieceType: string){
-		this.pieceToAdd = pieceType;
-	}
-
-	setNewColor(color: string){
-		this.colorToAdd = color;
-	}
-
-
 }
 
 

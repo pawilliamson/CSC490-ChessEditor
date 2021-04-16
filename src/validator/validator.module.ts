@@ -10,11 +10,13 @@ import { Bishop } from './bishop.service';
 import { Knight } from './knight.service';
 import { ValidatorBoard } from './validatorboard';
 import { Board } from './board.service';
-export {Piece, Pawn, Rook, ValidatorBoard, Knight, Bishop, King, Queen, Board};
+import { PieceProvider} from './piece.service.provider';
 @NgModule({
-
   imports: [
     CommonModule
+  ],
+  providers: [
+  Rook, Pawn, King, Queen, PieceProvider, Bishop, Knight, ValidatorBoard, Board
   ]
 })
 export class ValidatorModule { }

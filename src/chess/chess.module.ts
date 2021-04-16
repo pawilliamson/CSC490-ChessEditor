@@ -48,7 +48,7 @@ import {
 	imports: [
 		CommonModule, DragDropModule, ValidatorModule
 	],
-	exports: [BoardComponent],
+	exports: [BoardComponent, PieceComponent],
 	bootstrap: [BoardComponent],
 })
 export class ChessModule {
