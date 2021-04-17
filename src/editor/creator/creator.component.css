@@ -1,0 +1,20 @@
+.cdk-drop-list-dragging .cdk-drag {
+}
+.cdk-drag-placeholder{
+  height: 10em;
+  width: 10em;
+ 
+}
+
+.cdk-drag-animating {
+ transform: none;
+ display: none;
+}
+.row{
+
+height: 10em;
+}
+
+.cdk-drag-placeholder {
+ display: none;
+}

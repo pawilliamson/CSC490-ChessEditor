@@ -295,49 +295,15 @@ class Row {
 		}
    
 		drop(event: CdkDragDrop<string[]>) {
-            //used to determine whether moving from piece Editor or from cell to cell.
-            if (event.previousContainer.id == "otherList") {
-                //verify piece count is greater than 0 before placing on the board.
-                let limitID = event.item.element.nativeElement.attributes[8].value;
-                let pieceCount = this.getPieceCount (limitID);
 
-                if (pieceCount != 0) {
-                    copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-
-                    this.setPieceCount (limitID, false);
-                }
-            }
-            else {
                 if (event.previousContainer === event.container) {
                     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
                 } else {
                     transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-                }
+                
             }
 		}
 
-        getPieceCountObject (pieceStr : string) {
-            return <HTMLInputElement>document.getElementById ("pieceLimit_" + pieceStr);
-        }
-
-        getPieceCount (pieceStr : string) {
-            let pieceLimit = this.getPieceCountObject (pieceStr);
-            return Number.parseInt (pieceLimit.innerText);
-        }
-
-        setPieceCount (pieceStr : string, increment : boolean) {
-            let pieceLimitObj = this.getPieceCountObject (pieceStr);
-            let pieceLimit = this.getPieceCount (pieceStr);
-            var update : number;
-            if (increment) {
-                update = 1;
-            }
-            else {
-                update = -1;
-            }
-
-            pieceLimitObj.innerText = (pieceLimit + update).toString ();
-        }
 
 		constructor(){}
 		
