@@ -3,12 +3,13 @@ import{
 	PieceComponent
 	} from '../piece/piece.component';
 import {
-     CdkDragDrop, moveItemInArray, transferArrayItem
+     CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem, CdkDragStart
 }from '@angular/cdk/drag-drop';
 import {
 	Component, OnInit
 }
 from '@angular/core';
+import { Observable } from 'rxjs';
 @
 Component({
 	selector: 'app-board',
@@ -32,7 +33,53 @@ export class BoardComponent implements OnInit {
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
+	
+	/** I'M OVER HERE! **/
+	/*
+	 So this array stores the white pawn that is outside the board.
+	 This will be removed the piece is moved to a cell.
+	 */
+    pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
 
+    pieces = [
+        {piece: "P", limit: 8},
+        {piece: "N", limit: 2},
+        {piece: "B", limit: 2},
+        {piece: "R", limit: 2},
+        {piece: "Q", limit: 1},
+        {piece: "K", limit: 1},
+        {piece: "p", limit: 8},
+        {piece: "n", limit: 2},
+        {piece: "b", limit: 2},
+        {piece: "r", limit: 2},
+        {piece: "q", limit: 1},
+        {piece: "k", limit: 1}];
+	
+    dragStarted (event : CdkDragStart) {
+        console.log(event);
+    }
+
+	drop(event: CdkDragDrop<string[]>) {
+		
+        if (event.container.id == "otherList" && event.previousContainer.id  != "otherList") {
+            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            let pieceStr = event.item.element.nativeElement.attributes[6].value;
+            let cellID = event.previousContainer.element.nativeElement.id;
+            let cellNum = Number.parseInt (cellID.replace ("cdk-drop-list-", ""));
+            let row = Math.floor (cellNum / 8);
+            let col = cellNum % 8;
+
+            this.rows [row].cells [col].setPieceCount (pieceStr, true);
+        }
+        else {
+            if (event.previousContainer === event.container) {
+                moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+            } else {
+                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            }
+        }
+		
+	}
 	rows: Array < Row > = [];
 
 	/*
@@ -175,8 +222,9 @@ export class BoardComponent implements OnInit {
 	}
 
 	startEditor(){
-		this.generateBoard("8/8/8/8/8/7p/8/8");
-		document.getElementById("editorTools")?.classList.remove("hide");
+		this.generateBoard("8/8/8/8/8/8/8/8");
+        let editor = <HTMLInputElement>document.getElementById("editorTools");
+		editor.style.display = "block";
 	}
 
 	addPiece(color: string){
@@ -184,7 +232,8 @@ export class BoardComponent implements OnInit {
 	}
 
 	saveBoard(){
-		this.printFENString();
+        let editor = <HTMLInputElement>document.getElementById("editorTools");
+		editor.style.display = "none";
 	}
 
 	setNewPiece(pieceType: string){
@@ -194,6 +243,8 @@ export class BoardComponent implements OnInit {
 	setNewColor(color: string){
 		this.colorToAdd = color;
 	}
+
+
 }
 
 
@@ -294,16 +345,49 @@ class Row {
 		}
    
 		drop(event: CdkDragDrop<string[]>) {
-			if (event.previousContainer === event.container) {
-			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-			} else {
-			transferArrayItem(event.previousContainer.data,
-								event.container.data,
-								event.previousIndex,
-								event.currentIndex);
-			}
-		
+            //used to determine whether moving from piece Editor or from cell to cell.
+            if (event.previousContainer.id == "otherList") {
+                //verify piece count is greater than 0 before placing on the board.
+                let limitID = event.item.element.nativeElement.attributes[8].value;
+                let pieceCount = this.getPieceCount (limitID);
+
+                if (pieceCount != 0) {
+                    copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+
+                    this.setPieceCount (limitID, false);
+                }
+            }
+            else {
+                if (event.previousContainer === event.container) {
+                    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+                } else {
+                    transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+                }
+            }
 		}
+
+        getPieceCountObject (pieceStr : string) {
+            return <HTMLInputElement>document.getElementById ("pieceLimit_" + pieceStr);
+        }
+
+        getPieceCount (pieceStr : string) {
+            let pieceLimit = this.getPieceCountObject (pieceStr);
+            return Number.parseInt (pieceLimit.innerText);
+        }
+
+        setPieceCount (pieceStr : string, increment : boolean) {
+            let pieceLimitObj = this.getPieceCountObject (pieceStr);
+            let pieceLimit = this.getPieceCount (pieceStr);
+            var update : number;
+            if (increment) {
+                update = 1;
+            }
+            else {
+                update = -1;
+            }
+
+            pieceLimitObj.innerText = (pieceLimit + update).toString ();
+        }
 
 		constructor(){}
 		

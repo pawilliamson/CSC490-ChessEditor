@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 
 import { ChessModule } from '../chess/chess.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {
+	DragDropModule
+	} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ChessModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
