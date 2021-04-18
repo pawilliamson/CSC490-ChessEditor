@@ -34,28 +34,12 @@ export class BoardComponent implements OnInit {
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
 	
-	/** I'M OVER HERE! **/
-	/*
-	 So this array stores the white pawn that is outside the board.
-	 This will be removed the piece is moved to a cell.
-	 */
-
-
-
-	
     dragStarted (event : CdkDragStart) {
         console.log(event);
     }
 
 	
-	drop(event: CdkDragDrop<string[]>) {
-            if (event.previousContainer === event.container) {
-                moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-            } else {
-                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-            }
-		
-	}
+	
 	rows: Array < Row > = [];
 
 	/*
