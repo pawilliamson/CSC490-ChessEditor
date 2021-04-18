@@ -33,6 +33,10 @@ export class BoardComponent implements OnInit {
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
+	static turn: boolean = true;
+	previousFEN: string = "";
+	savedFENs: string[] = [];
+	fensMap = new Map();
 	
 	/** I'M OVER HERE! **/
 	/*
@@ -65,11 +69,11 @@ export class BoardComponent implements OnInit {
             transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
             let pieceStr = event.item.element.nativeElement.attributes[6].value;
             let cellID = event.previousContainer.element.nativeElement.id;
-            let cellNum = Number.parseInt (cellID.replace ("cdk-drop-list-", ""));
-            let row = Math.floor (cellNum / 8);
+            let cellNum = Number.parseInt(cellID.replace("cdk-drop-list-", ""));
+            let row = Math.floor(cellNum / 8);
             let col = cellNum % 8;
 
-            this.rows [row].cells [col].setPieceCount (pieceStr, true);
+            this.rows[row].cells[col].setPieceCount(pieceStr, true);
         }
         else {
             if (event.previousContainer === event.container) {
@@ -222,9 +226,25 @@ export class BoardComponent implements OnInit {
 	}
 
 	startEditor(){
+		this.previousFEN = this.toFENString();
 		this.generateBoard("8/8/8/8/8/8/8/8");
         let editor = <HTMLInputElement>document.getElementById("editorTools");
+		let btn = <HTMLInputElement>document.getElementById("noEditor");
 		editor.style.display = "block";
+		btn.style.display = "none";
+	}
+
+	closeEditor(){
+		this.generateBoard(this.previousFEN);
+		let editor = <HTMLInputElement>document.getElementById("editorTools");
+		let btn = <HTMLInputElement>document.getElementById("noEditor");
+		editor.style.display = "none";
+		btn.style.display = "block";
+
+		let limits = document.getElementsByClassName('limits');
+		for(let count = 0; count < limits.length; count++){
+			limits[count].innerHTML = this.pieces[count].limit.toString();
+		}
 	}
 
 	addPiece(color: string){
@@ -232,8 +252,19 @@ export class BoardComponent implements OnInit {
 	}
 
 	saveBoard(){
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "none";
+		this.fensMap.set('fen' + this.fensMap.size, this.toFENString());
+		this.closeEditor();
+	}
+
+	showSavedFens(){
+		console.log(this.fensMap);
+		for(let fen in this.fensMap){
+			console.log(fen);
+		}
+	}
+
+	loadSavedFen(fen: string){
+		this.generateBoard(fen);
 	}
 
 	setNewPiece(pieceType: string){
@@ -313,99 +344,96 @@ class Row {
 
 	}
 }
-	class Cell{
-		style = "";
-		pieces = [""];
-		getPieces(){
-			return this.pieces[0];
+	
+export class Cell{
+	style = "";
+	pieces = [""];
+	getPieces(){
+		return this.pieces[0];
+	}
+	/**
+	 * setPiece()
+	 * 
+	 * Sets piece component to enumerated integer
+	 */
+	/*setPiece(num: number) {
+		this.piece.set(num)
+	}*/
+	/**
+	 * Function: getPiece()
+	 * 
+	 * Returns PieceComponent
+	 */
+	getPiece() {
+		return this.pieces[0];
+	}
+	/**
+	 * Function: toFENString()
+	 * 
+	 * Returns FEN String of cell
+	 */
+	toFENString(){
+	return this.pieces[0]; 
+	}
+
+	drop(event: CdkDragDrop<string[]>) {
+		//used to determine whether moving from piece Editor or from cell to cell.
+		if (event.previousContainer.id == "otherList") {
+			//verify piece count is greater than 0 before placing on the board.
+			let limitID = event.item.element.nativeElement.attributes[8].value;
+			let pieceCount = this.getPieceCount(limitID);
+
+			if (pieceCount != 0) {
+				copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+
+				this.setPieceCount(limitID, false);
+			}
 		}
-		/**
-		 * setPiece()
-		 * 
-		 * Sets piece component to enumerated integer
-		 */
-		/*setPiece(num: number) {
-			this.piece.set(num)
-		}*/
-		/**
-		 * Function: getPiece()
-		 * 
-		 * Returns PieceComponent
-		 */
-		getPiece() {
-			return this.pieces[0];
-		}
-		/**
-		 * Function: toFENString()
-		 * 
-		 * Returns FEN String of cell
-		 */
-		toFENString(){
-		return this.pieces[0]; 
-		}
-   
-		drop(event: CdkDragDrop<string[]>) {
-            //used to determine whether moving from piece Editor or from cell to cell.
-            if (event.previousContainer.id == "otherList") {
-                //verify piece count is greater than 0 before placing on the board.
-                let limitID = event.item.element.nativeElement.attributes[8].value;
-                let pieceCount = this.getPieceCount (limitID);
-
-                if (pieceCount != 0) {
-                    copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-
-                    this.setPieceCount (limitID, false);
-                }
-            }
-            else {
-                if (event.previousContainer === event.container) {
-                    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-                } else {
-                    transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-                }
-            }
-		}
-
-        getPieceCountObject (pieceStr : string) {
-            return <HTMLInputElement>document.getElementById ("pieceLimit_" + pieceStr);
-        }
-
-        getPieceCount (pieceStr : string) {
-            let pieceLimit = this.getPieceCountObject (pieceStr);
-            return Number.parseInt (pieceLimit.innerText);
-        }
-
-        setPieceCount (pieceStr : string, increment : boolean) {
-            let pieceLimitObj = this.getPieceCountObject (pieceStr);
-            let pieceLimit = this.getPieceCount (pieceStr);
-            var update : number;
-            if (increment) {
-                update = 1;
-            }
-            else {
-                update = -1;
-            }
-
-            pieceLimitObj.innerText = (pieceLimit + update).toString ();
-        }
-
-		constructor(){}
-		
-		setFEN(fen:string){
-		/*	piece = new PieceComponent();
-			this.piece.setFEN(fen);
-			*/
-			this.pieces[0] = fen;
-		}
-		
-		/*
-		* Function: getStyle
-		* 
-		* Returns a string containing the cell's style.
-		* 
-		*/
-		getStyle() {
-			return "col " + this.style;
+		else {
+			if (event.previousContainer === event.container) {
+				moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+			} else {
+				transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+			}
+			BoardComponent.turn = !BoardComponent.turn;
+			console.log(BoardComponent.turn);
 		}
 	}
+
+	getPieceCountObject (pieceStr : string) {
+		return <HTMLInputElement>document.getElementById("pieceLimit_" + pieceStr);
+	}
+
+	getPieceCount (pieceStr : string) {
+		let pieceLimit = this.getPieceCountObject(pieceStr);
+		return Number.parseInt(pieceLimit.innerText);
+	}
+
+	setPieceCount (pieceStr : string, increment : boolean) {
+		let pieceLimitObj = this.getPieceCountObject(pieceStr);
+		let pieceLimit = this.getPieceCount(pieceStr);
+		var update : number = increment ? 1 : -1;
+
+		pieceLimitObj.innerText = (pieceLimit + update).toString();
+	}
+
+	constructor(){}
+	
+	setFEN(fen:string){
+	/*	piece = new PieceComponent();
+		this.piece.setFEN(fen);
+		*/
+		this.pieces[0] = fen;
+	}
+	
+	/*
+	* Function: getStyle
+	* 
+	* Returns a string containing the cell's style.
+	* 
+	*/
+	getStyle() {
+		return "col " + this.style;
+	}
+}
 
