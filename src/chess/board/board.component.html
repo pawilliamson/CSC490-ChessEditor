@@ -11,17 +11,17 @@ File: board.component.html
         <div id="otherList" cdkDropList [cdkDropListData]="pieceCollection" [cdkDropListConnectedTo]="['appList']" (cdkDropListDropped)="this.drop($event)">
             <div class="column.split" style="display:inline-block;width: 50%;">
 				White Pieces<br>
-				<a *ngFor = "let piece of piecesWhite">
-					<app-piece id="freeMovingPiece_{{piece.piece}}"  style="display:inline-block;height: 10%;width: 30%;" [limit] = "piece.limit" [piece]="piece.piece" cdkDropData="piece.piece" (cdkDragStarted) = "dragStarted ($event)" cdkDrag  class="border"></app-piece>
+				<div *ngFor = "let piece of piecesWhite" class="border" style="display:inline-block;width: 30%;">
+					<app-piece id="freeMovingPiece_{{piece.piece}}" style="display:inline-block;width: 100%;max-width: 250px;" [limit] = "piece.limit" [piece]="piece.piece" cdkDropData="piece.piece" (cdkDragStarted) = "dragStarted ($event)" cdkDrag></app-piece>
 					<a id = "pieceLimit_{{piece.piece}}">{{piece.limit}}</a>
-				</a>
+				</div>
 			</div>
 			<div class="column.split" style="display:inline-block;width: 50%;">
 				Black Pieces<br>
-				<a *ngFor = "let piece of piecesBlack">
-					<app-piece id="freeMovingPiece_{{piece.piece}}" style="display:inline-block;height: 10%;width: 30%;" [limit] = "piece.limit" [piece]="piece.piece" cdkDropData="piece.piece" (cdkDragStarted) = "dragStarted ($event)" cdkDrag class="border"></app-piece>
+				<div *ngFor = "let piece of piecesBlack" class="border" style="display:inline-block;width: 30%;">
+					<app-piece id="freeMovingPiece_{{piece.piece}}" style="display:inline-block;width: 100%;max-width: 250px;" [limit] = "piece.limit" [piece]="piece.piece" cdkDropData="piece.piece" (cdkDragStarted) = "dragStarted ($event)" cdkDrag></app-piece>
 					<a id = "pieceLimit_{{piece.piece}}">{{piece.limit}}</a>
-				</a>
+				</div>
 			</div>
         </div>
     </div>

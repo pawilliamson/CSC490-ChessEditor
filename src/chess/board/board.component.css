@@ -70,13 +70,6 @@
 			height: 100%;
 		}
 
-		.col.count {
-			column-count: 2;
-			column-span: all;
-			column-fill: balance;
-			column-width: 45%;
-		}
-
 		.col * {
 			align-items:center;
 			justify-content: center;
@@ -98,6 +91,11 @@
 		
 		.border {
 			border-style: solid;
-			border-width: 100px;
+			border-width: 10px;
+			border-color: #000;
+			border-spacing: 0px 10px;
 		}
 
+		.column.split {
+			width: 45%
+		}
