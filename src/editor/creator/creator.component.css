@@ -3,7 +3,7 @@
 .cdk-drag-placeholder{
   height: 10em;
   width: 10em;
- 
+  display: none; 
 }
 
 .cdk-drag-animating {

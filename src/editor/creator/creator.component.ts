@@ -83,11 +83,12 @@ console.log("test");
 		
     }
 	
-	drop(event: CdkDragDrop<string[]>) {
+	drop(event: any) {
 	
             if (event.previousContainer === event.container) {
+	    
                 moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-            } else {
+	    } else {
                 transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
             }
              let p = 0;
