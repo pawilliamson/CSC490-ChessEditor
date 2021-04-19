@@ -110,7 +110,8 @@ console.log("test");
 	}
   constructor() { }
 
-  ngAfterViewInit(): void {
+ngAfterViewInit(): void {
+	this.pieceCollection = this.pieceCollection.sort();
   }
 	startEditor(){
 	        let editor = <HTMLInputElement>document.getElementById("editorTools");
