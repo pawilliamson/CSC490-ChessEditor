@@ -25,9 +25,9 @@ File: board.component.html
     </div>
 
     <div id="load" style="display: none;">
-        <div *ngFor="let fen of fensMap">
-            <p id="fenId_{{fen[0]}}">{{fen[1]}}</p>
-            <button (click)="this.loadSavedFen(fen[1])">Load this board</button>
+        <div *ngFor="let fen of fensMap; let i = index;">
+            <p id="fenId_{{i}}">{{fen}}</p>
+            <button (click)="this.loadSavedFen(fen)">Load this board</button>
         </div>
     </div>
 

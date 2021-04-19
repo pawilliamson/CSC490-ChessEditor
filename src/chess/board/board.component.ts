@@ -31,33 +31,25 @@ Component({
 export class BoardComponent implements OnInit {
 	primaryColor : string = "bg-primary";
 	secondaryColor: string = "bg-secondary";
+    rows: Array < Row > = [];
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
 	static turn: boolean = true;
 	previousFEN: string = "";
 	savedFENs: string[] = [];
-	fensMap = new Map();
+	fensMap: Array <string> = [];
+    DEFAULT : string = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 	
 	/** I'M OVER HERE! **/
 	/*
 	 So this array stores the white pawn that is outside the board.
 	 This will be removed the piece is moved to a cell.
 	 */
-    pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
 
-    pieces = [
-        {piece: "P", limit: 8},
-        {piece: "N", limit: 2},
-        {piece: "B", limit: 2},
-        {piece: "R", limit: 2},
-        {piece: "Q", limit: 1},
-        {piece: "K", limit: 1},
-        {piece: "p", limit: 8},
-        {piece: "n", limit: 2},
-        {piece: "b", limit: 2},
-        {piece: "r", limit: 2},
-        {piece: "q", limit: 1},
-        {piece: "k", limit: 1}];
+    pieces = [{piece: "P", limit: 8}, {piece: "N", limit: 2}, {piece: "B", limit: 2}, {piece: "R", limit: 2}, {piece: "Q", limit: 1}, {piece: "K", limit: 1},
+        {piece: "p", limit: 8}, {piece: "n", limit: 2}, {piece: "b", limit: 2}, {piece: "r", limit: 2}, {piece: "q", limit: 1}, {piece: "k", limit: 1}];
+
+    pieceCollection:Array<string> = [];
 	
     dragStarted (event : CdkDragStart) {
         console.log(event);
@@ -81,10 +73,8 @@ export class BoardComponent implements OnInit {
             } else {
                 transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
             }
-        }
-		
+        }		
 	}
-	rows: Array < Row > = [];
 
 	/*
 	 * Function: addRow
@@ -174,7 +164,7 @@ export class BoardComponent implements OnInit {
 	//generateBoard(startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"){
 		this.rows = [];
 		if(!startingPos){
-			startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+			startingPos = this.DEFAULT;
 		}
 		let num: number = 8;
 		let counter: number = 0;
@@ -221,6 +211,9 @@ export class BoardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+        for (let piece of this.pieces) {
+            this.pieceCollection.push (piece.piece);
+        }
 		this.generateBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 		console.log(this.toFENString());
 	}
@@ -245,6 +238,8 @@ export class BoardComponent implements OnInit {
 		for(let count = 0; count < limits.length; count++){
 			limits[count].innerHTML = this.pieces[count].limit.toString();
 		}
+
+        this.printFENString ();
 	}
 
 	addPiece(color: string){
@@ -252,15 +247,13 @@ export class BoardComponent implements OnInit {
 	}
 
 	saveBoard(){
-		this.fensMap.set('fen' + this.fensMap.size, this.toFENString());
+        this.fensMap.push (this.toFENString());
 		this.closeEditor();
 	}
 
 	showSavedFens(){
-		console.log(this.fensMap);
-		for(let fen in this.fensMap){
-			console.log(fen);
-		}
+        let savedFENS = <HTMLInputElement>document.getElementById("load");
+        savedFENS.style.display = "block";
 	}
 
 	loadSavedFen(fen: string){
@@ -373,7 +366,7 @@ export class Cell{
 	 * Returns FEN String of cell
 	 */
 	toFENString(){
-	return this.pieces[0]; 
+	    return this.pieces[0]; 
 	}
 
 	drop(event: CdkDragDrop<string[]>) {
