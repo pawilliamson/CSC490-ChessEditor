@@ -55,6 +55,22 @@ export class BoardComponent implements OnInit {
         {piece: "q", limit: 1},
         {piece: "k", limit: 1}];
 	
+	piecesWhite = [
+		{piece: "P", limit: 8},
+        {piece: "N", limit: 2},
+        {piece: "B", limit: 2},
+        {piece: "R", limit: 2},
+        {piece: "Q", limit: 1},
+        {piece: "K", limit: 1}];
+
+	piecesBlack = [
+		{piece: "p", limit: 8},
+        {piece: "n", limit: 2},
+        {piece: "b", limit: 2},
+        {piece: "r", limit: 2},
+        {piece: "q", limit: 1},
+        {piece: "k", limit: 1}];
+	
     dragStarted (event : CdkDragStart) {
         console.log(event);
     }
