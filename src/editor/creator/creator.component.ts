@@ -76,7 +76,8 @@ console.log("test");
 		if(this.pieces[p].limit == 0){
 		 this.pieceCollection.push(piece);
 		}
-		break;
+			this.pieceCollection = this.pieceCollection.sort();
+			break;
 		}
 		
 		}
