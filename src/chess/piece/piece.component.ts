@@ -20,6 +20,8 @@ export class PieceComponent implements OnInit {
 	pid:number = 0;
 	@Input('piece')
 	piece:string = "";
+    @Input ('limit')
+    limit:number = 0;
 	/**
 	Function: getImage()
 	
