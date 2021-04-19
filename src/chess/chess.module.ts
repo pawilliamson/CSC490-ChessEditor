@@ -46,7 +46,9 @@ import {
 @NgModule({
 	declarations: [BoardComponent, PieceComponent],
 	imports: [
-		CommonModule, DragDropModule, ValidatorModule
+		CommonModule,
+		DragDropModule,
+		ValidatorModule
 	],
 	exports: [BoardComponent, PieceComponent],
 	bootstrap: [BoardComponent],
