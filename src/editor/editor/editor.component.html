@@ -1,14 +1,14 @@
 <div class="container">
 	<button  class="btn btn-secondary" (click)="this.startEditor()">Enter the editor</button>
 	<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
-	<button class="btn btn-secondary" (click)="this.closeEditor()" style="visibility: hidden;">Close editor</button>
+	<button class="btn btn-secondary" (click)="this.closeEditor()" style="display: none;">Close editor</button>
 
 	<div id="editorTools" style="display:none;" class="container-fluid">
 		<div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"
-       class="row " [cdkDropListData]="pieceCollection" [cdkDropListConnectedTo]="['appList']" 
+       class="row " [cdkDropListData]="pieceCollection" 
        (cdkDropListDropped)="this.drop($event)">
 			<div *ngFor = "let piece of pieceCollection" class="col container">
-					 <div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
+				<div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
 				<app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
 						 [cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
 						 (cdkDragStarted)="this.start(piece)" 
