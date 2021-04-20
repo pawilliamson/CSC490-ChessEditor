@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:chess/board/board.component.spec.js",{15:"<div class=\"NDToolTip TFile LJavaScript\"><div class=\"TTSummary\">File containing tests for Board Component.</div></div>"});

@@ -1,0 +1,1 @@
+﻿NDFramePage.OnPageTitleLoaded("File:chess/board/board.component.spec.js","board.component.spec.js");NDSummary.OnSummaryLoaded("File:chess/board/board.component.spec.js",[["JavaScript","JavaScript"]],[["Files","File"]],[[15,0,0,"board.component.spec.ts","board.component.spec.ts"]]);

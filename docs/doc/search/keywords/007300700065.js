@@ -1,1 +1,1 @@
-﻿NDSearch.OnPrefixDataLoaded("spe",["File"],[["spec",,[[,"board.component.spec.ts",,,0,"File:chess/board/board.component.spec.ts:board.component.spec.ts"]]]]);
+﻿NDSearch.OnPrefixDataLoaded("spe",["File"],[["spec",,[[,"board.component.spec.ts","JavaScript",,0,"File:chess/board/board.component.spec.js:board.component.spec.ts"],[,"board.component.spec.ts","TypeScript",,0,"File:chess/board/board.component.spec.ts:board.component.spec.ts"]]]]);

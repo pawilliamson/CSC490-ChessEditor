@@ -22,22 +22,28 @@
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="BoardComponent.addRow"></a><a name="Topic23"></a><div class="CTopic TFunction LTypeScript">
+<a name="BoardComponent.addRow"></a><a name="Topic27"></a><div class="CTopic TFunction LTypeScript">
  <div class="CTitle">addRow</div>
- <div id="NDPrototype23" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">addRow(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">classA</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span>,</td></tr><tr><td class="PName first">classB</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
- <div class="CBody"><p>Returns a row with the first cell having primary style.</p></div>
+ <div id="NDPrototype27" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">addRow(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">classA</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span>,</td></tr><tr><td class="PName first">classB</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span>,</td></tr><tr><td class="PName first">fen</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
+ <div class="CBody"><p>Returns a row with cells having alternating style classes.</p></div>
 </div>
 
-<a name="BoardComponent.generateBoard"></a><a name="Topic24"></a><div class="CTopic TFunction LTypeScript">
+<a name="BoardComponent.generateBoard"></a><a name="Topic28"></a><div class="CTopic TFunction LTypeScript">
  <div class="CTitle">generateBoard()</div>
- <div id="NDPrototype24" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">generateBoard(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">classA</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span>,</td></tr><tr><td class="PName first">classB</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><span class="SHKeyword">string</span></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
+ <div id="NDPrototype28" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">generateBoard(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">startingPos?</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last">Partial&lt;<span class="SHKeyword">string</span>&gt;</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
  <div class="CBody"><div class="CHeading">Parameters</div><ul><li><p>classA:string</p></li><li><p>classB:string</p></li></ul><p>Creates the chessboard with alternating rows.</p></div>
 </div>
 
-<a name="BoardComponent.toFENString"></a><a name="Topic16"></a><div class="CTopic TFunction LTypeScript">
+<a name="BoardComponent.printFENString"></a><a name="Topic29"></a><div class="CTopic TFunction LTypeScript">
+ <div class="CTitle">printFENString()</div>
+ <div id="NDPrototype29" class="NDPrototype"><div class="PSection PPlainSection">printFENString()</div></div>
+ <div class="CBody"><p>Prints the output of toFENString in the developer console</p></div>
+</div>
+
+<a name="BoardComponent.toFENString"></a><a name="Topic30"></a><div class="CTopic TFunction LTypeScript">
  <div class="CTitle">toFENString()</div>
- <div id="NDPrototype16" class="NDPrototype"><div class="PSection PPlainSection">toFENString()</div></div>
- <div class="CBody"><p>(PLACEHOLDER)</p></div>
+ <div id="NDPrototype30" class="NDPrototype"><div class="PSection PPlainSection">toFENString()</div></div>
+ <div class="CBody"><p>Returns the position of all pieces in a FEN string.</p></div>
 </div>
 
 <a name="Row"></a><a name="Topic17"></a><div class="CTopic TClass LTypeScript">
@@ -50,21 +56,39 @@
  <div class="CTitle">Functions</div>
 </div>
 
-<a name="Row.getCell"></a><a name="Topic25"></a><div class="CTopic TFunction LTypeScript">
- <div class="CTitle">getCell</div>
- <div id="NDPrototype25" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">getCell(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">num</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last">number</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
- <div class="CBody"><p>Returns the cell if found, else returns -1 *</p></div>
+<a name="Row.getCell"></a><a name="Topic31"></a><div class="CTopic TFunction LTypeScript">
+ <div class="CTitle">getCell()</div>
+ <div id="NDPrototype31" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">getCell(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">pos</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last">number</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
+ <div class="CBody"><div class="CHeading">Parameters</div><table class="CDefinitionList"><tr><td class="CDLEntry">- pos: number</td><td class="CDLDefinition"><p>position in rows</p></td></tr></table><p>Returns the cell if found, else returns -1.</p></div>
 </div>
 
-<a name="Row.addCell"></a><a name="Topic26"></a><div class="CTopic TFunction LTypeScript">
+<a name="Row.addCell"></a><a name="Topic32"></a><div class="CTopic TFunction LTypeScript">
  <div class="CTitle">addCell</div>
- <div id="NDPrototype26" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">addCell(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">cell</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last"><a href="../../../index.html#File:chess/cell/cell.component.ts:CellComponent" target="_top" onmouseover="NDContentPage.OnLinkMouseOver(event,11);" onmouseout="NDContentPage.OnLinkMouseOut(event);" >CellComponent</a></td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
+ <div id="NDPrototype32" class="NDPrototype WideForm"><div class="PSection PParameterSection PascalStyle"><table><tr><td class="PBeforeParameters">addCell(</td><td class="PParametersParentCell"><table class="PParameters"><tr><td class="PName first">cell</td><td class="PTypeNameSeparator">:&nbsp;</td><td class="PType last">Cell</td></tr></table></td><td class="PAfterParameters">)</td></tr></table></div></div>
  <div class="CBody"><div class="CHeading">Parameters</div><ul><li><p>cell</p></li></ul></div>
 </div>
 
-<a name="Row.constructor"></a><a name="Topic19"></a><div class="CTopic TFunction LTypeScript last">
+<a name="Row.constructor"></a><a name="Topic19"></a><div class="CTopic TFunction LTypeScript">
  <div class="CTitle">constructor</div>
  <div id="NDPrototype19" class="NDPrototype"><div class="PSection PPlainSection">constructor()</div></div>
+</div>
+
+<a name="Row.getPiece"></a><a name="Topic33"></a><div class="CTopic TFunction LTypeScript">
+ <div class="CTitle">getPiece()</div>
+ <div id="NDPrototype33" class="NDPrototype"><div class="PSection PPlainSection">getPiece()</div></div>
+ <div class="CBody"><p>Returns PieceComponent</p></div>
+</div>
+
+<a name="Row.toFENString"></a><a name="Topic34"></a><div class="CTopic TFunction LTypeScript">
+ <div class="CTitle">toFENString()</div>
+ <div id="NDPrototype34" class="NDPrototype"><div class="PSection PPlainSection">toFENString()</div></div>
+ <div class="CBody"><p>Returns FEN String of cell</p></div>
+</div>
+
+<a name="Row.getStyle"></a><a name="Topic35"></a><div class="CTopic TFunction LTypeScript last">
+ <div class="CTitle">getStyle</div>
+ <div id="NDPrototype35" class="NDPrototype"><div class="PSection PPlainSection">getStyle()</div></div>
+ <div class="CBody"><p>Returns a string containing the cell's style.</p></div>
 </div>
 
 </body></html>

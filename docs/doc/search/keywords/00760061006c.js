@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("val",["Class","Function"],[["ValidatorBoard",,[[,,,,0,"File:validator/validatorboard.ts:ValidatorBoard","TypeScriptClass:ValidatorBoard"]]],["validCoordinatesChecker",,[["ValidatorBoard",,,,1,"File:validator/validatorboard.ts:ValidatorBoard.validCoordinatesChecker","TypeScriptClass:ValidatorBoard:validCoordinatesChecker"]]]]);

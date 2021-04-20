@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("pri",["Function"],[["printFENString",,[["BoardComponent",,,,0,"File:chess/board/board.component.ts:BoardComponent.printFENString","TypeScriptClass:BoardComponent:printFENString"]]]]);
