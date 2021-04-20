@@ -43,8 +43,9 @@ import {
 	} from '@angular/cdk/drag-drop';
 import {
 	ValidatorModule} from '../validator/validator.module';
+import { GameComponent } from './game/game.component';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent],
+	declarations: [BoardComponent, PieceComponent, GameComponent],
 	imports: [
 		CommonModule, DragDropModule, ValidatorModule
 	],
