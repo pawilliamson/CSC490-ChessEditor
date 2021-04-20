@@ -24,7 +24,8 @@ console.log("test");
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-    fensSaved: Array <string> = [];	
+	
+	
 	
     pieces = [
         {piece: "P", limit: 8},
@@ -42,9 +43,9 @@ console.log("test");
 	
 	getLimit(piece:string){
 		for ( let p = 0; p < this.pieces.length; p++){
-		    if(this.pieces[p].piece == piece){
-		    return this.pieces[p].limit;
-		    }
+		if(this.pieces[p].piece == piece){
+		return this.pieces[p].limit;
+		}
 		}
 		return -1;
 	}
@@ -107,46 +108,24 @@ console.log("test");
 		
 		
 	}
-    constructor() { }
+  constructor() { }
 
-    ngAfterViewInit(): void {
-	    this.pieceCollection = this.pieceCollection.sort();
-    }
-
+ngAfterViewInit(): void {
+	this.pieceCollection = this.pieceCollection.sort();
+  }
 	startEditor(){
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-        let saved = <HTMLInputElement>document.getElementById("load");
+	        let editor = <HTMLInputElement>document.getElementById("editorTools");
 		editor.style.display = "block";
-        saved.style.display = "block";
-        console.log (this.fensSaved);
-	}
-
-	closeEditor(){
-		let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "none";
-
-		let limits = document.getElementsByClassName('limits');
-		for(let count = 0; count < limits.length; count++){
-			limits[count].innerHTML = this.pieces[count].limit.toString();
-		}
-    }
-
-	loadSavedFen(fen: string){
-		this.board.generateBoard(fen);
-	}
-
-	showSavedFens(){
-        let savedFENS = <HTMLInputElement>document.getElementById("load");
-        savedFENS.style.display = "block";
-	}
-
-	saveBoard(){
-        this.fensSaved.push (this.board.toFENString());
-		this.closeEditor();
 	}
 
 	addPiece(color: string){
 		
+	}
+
+	saveBoard(){
+        let editor = <HTMLInputElement>document.getElementById("editorTools");
+		editor.style.display = "none";
+		console.log(this.board.toFENString());
 	}
 
 	setNewPiece(pieceType: string){
