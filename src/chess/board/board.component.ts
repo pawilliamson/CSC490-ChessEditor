@@ -1,17 +1,10 @@
 // File: board.component.ts
-import{
-	PieceComponent
-	} from '../piece/piece.component';
-import {
-     CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem, CdkDragStart
-}from '@angular/cdk/drag-drop';
-import {
-	Component, OnInit
-}
-from '@angular/core';
+import { FEN } from '../fen';
+import{ PieceComponent } from '../piece/piece.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem, CdkDragStart }from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-@
-Component({
+@Component({
 	selector: 'app-board',
 	templateUrl: './board.component.html',
 	styleUrls: ['./board.component.css']
@@ -19,68 +12,28 @@ Component({
 
 /**
  * Class: BoardComponent
- * Implements: OnInit
+ * Implements: OnInit, FEN
  * 
  * Structure for chessboard
  * 
- *
- * TODO:
  * 
- * Change so the css classes can be changed to different styles.
  */
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, FEN{
 	primaryColor : string = "bg-primary";
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
 	
-	/** I'M OVER HERE! **/
-	/*
-	 So this array stores the white pawn that is outside the board.
-	 This will be removed the piece is moved to a cell.
-	 */
-    pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
-
-    pieces = [
-        {piece: "P", limit: 8},
-        {piece: "N", limit: 2},
-        {piece: "B", limit: 2},
-        {piece: "R", limit: 2},
-        {piece: "Q", limit: 1},
-        {piece: "K", limit: 1},
-        {piece: "p", limit: 8},
-        {piece: "n", limit: 2},
-        {piece: "b", limit: 2},
-        {piece: "r", limit: 2},
-        {piece: "q", limit: 1},
-        {piece: "k", limit: 1}];
-	
-    dragStarted (event : CdkDragStart) {
-        console.log(event);
-    }
-
-	drop(event: CdkDragDrop<string[]>) {
-		
-        if (event.container.id == "otherList" && event.previousContainer.id  != "otherList") {
-            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-            let pieceStr = event.item.element.nativeElement.attributes[6].value;
-            let cellID = event.previousContainer.element.nativeElement.id;
-            let cellNum = Number.parseInt (cellID.replace ("cdk-drop-list-", ""));
-            let row = Math.floor (cellNum / 8);
-            let col = cellNum % 8;
-
-            this.rows [row].cells [col].setPieceCount (pieceStr, true);
-        }
-        else {
-            if (event.previousContainer === event.container) {
-                moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-            } else {
-                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-            }
-        }
-		
-	}
 	rows: Array < Row > = [];
+	test_counter: number = 0;
+	/**
+	 * Function: dragStarted
+	 * Parameter: event
+	 *
+	 * Note: Not necessary (DEMO_REMOVE)
+	 */
+	
+	
 
 	/*
 	 * Function: addRow
@@ -119,13 +72,18 @@ export class BoardComponent implements OnInit {
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
 			temp.addCell(a);
 		}
-		
-	
-	return temp;
+
+
+		return temp;
 	}
 	
-	test_counter: number = 0;
-
+	/**
+	 * Function: memo
+	 *
+	 * Used for testing
+	 *
+	 * (DEMO_REMOVE)
+	 */
 	memo() {
 		if (this.test_counter == 0) {
 			this.move(0, 1, 0, 2);
@@ -147,8 +105,12 @@ export class BoardComponent implements OnInit {
 
 	
 	/**
-     * Function move()
-     */
+	 * Function: move()
+	 * Parameters: x1, y1, x2, y2
+	 *
+	 * Moves piece from cell defined by (x1, y1) to cell defined
+	 * by (x2, y2). 
+	 */
 	move(x1: number, y1: number, x2: number, y2: number) {
 		let temp = this.rows[y1].cells[x1].toFENString();
 		this.rows[y1].cells[x1].setFEN("");
@@ -167,7 +129,6 @@ export class BoardComponent implements OnInit {
 	 * Creates the chessboard with alternating rows.
 	 */
 	generateBoard(startingPos? : Partial<string>){
-	//generateBoard(startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"){
 		this.rows = [];
 		if(!startingPos){
 			startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
@@ -177,23 +138,29 @@ export class BoardComponent implements OnInit {
 		let fen = startingPos.split("/")
 		for (; counter < num; counter++) {
 			if (counter % 2 == 0) {
-				this.rows.push(this.addRow(this.primaryColor, this.secondaryColor, fen[counter]));
+				this.rows.push(this.addRow(this.primaryColor, this.secondaryColor,
+					fen[counter]));
 			} else {
-				this.rows.push(this.addRow(this.secondaryColor, this.primaryColor, fen[counter]));
+				this.rows.push(this.addRow(this.secondaryColor, this.primaryColor, 
+					fen[counter]));
 			}
 		}
 		this.printFENString();
 	}
-	
+
+	/**
+	 * Function: constructor
+	 *
+	 */
 	constructor() {
 
 	}
 	
 	/**
-     * Function: printFENString()
-     * 
-     * Prints the output of toFENString in the developer console
-     */
+	 * Function: printFENString()
+	 * 
+	 * Prints the output of toFENString in the developer console
+	 */
 	printFENString() {
 		console.log(this.toFENString());
 	}
@@ -210,41 +177,17 @@ export class BoardComponent implements OnInit {
 		let output = "";
 
 		for (; i < length; i++) {
-
 			output += this.rows[i].toFENString() + (i + 1 == length ? "" : "/");
 		}
 		return output;
 	}
-
+	/**
+	 * Function: ngOnInit
+	 */
 	ngOnInit(): void {
 		this.generateBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 		console.log(this.toFENString());
 	}
-
-	startEditor(){
-		this.generateBoard("8/8/8/8/8/8/8/8");
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "block";
-	}
-
-	addPiece(color: string){
-		
-	}
-
-	saveBoard(){
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "none";
-	}
-
-	setNewPiece(pieceType: string){
-		this.pieceToAdd = pieceType;
-	}
-
-	setNewColor(color: string){
-		this.colorToAdd = color;
-	}
-
-
 }
 
 
@@ -253,7 +196,7 @@ export class BoardComponent implements OnInit {
  * 
  * Structure for rows.
  */
-class Row {
+class Row implements FEN{
 
 	cells: Array < Cell > = [];
 
@@ -281,13 +224,13 @@ class Row {
 
 
 	/**
-     * Function: getCell()
-     * 
-     * Parameters:
-     * - pos: number - position in rows
-     *
-     * Returns the cell if found, else returns -1.
-	**/
+	 * Function: getCell()
+	 * 
+	 * Parameters:
+	 * - pos: number - position in rows
+	 *
+	 * Returns the cell if found, else returns -1.
+	 **/
 	getCell(pos: number) {
 		if (this.cells.length < pos || pos < 0) {
 			return -1;
@@ -313,99 +256,82 @@ class Row {
 
 	}
 }
-	class Cell{
-		style = "";
-		pieces = [""];
-		getPieces(){
-			return this.pieces[0];
-		}
-		/**
-		 * setPiece()
-		 * 
-		 * Sets piece component to enumerated integer
-		 */
-		/*setPiece(num: number) {
+class Cell implements FEN{
+	style = "";
+	pieces = [""];
+
+	/**
+	 * Function: getPieces
+	 *
+	 * Returns first character in the pieces array
+	 */
+	getPieces(){
+		return this.pieces[0];
+	}
+
+
+	/**
+	 * setPiece()
+	 * 
+	 * Sets piece component to enumerated integer
+	 */
+	/*setPiece(num: number) {
 			this.piece.set(num)
 		}*/
-		/**
-		 * Function: getPiece()
-		 * 
-		 * Returns PieceComponent
-		 */
-		getPiece() {
-			return this.pieces[0];
-		}
-		/**
-		 * Function: toFENString()
-		 * 
-		 * Returns FEN String of cell
-		 */
-		toFENString(){
+	/**
+	 * Function: getPiece()
+	 * 
+	 * Returns PieceComponent
+	 */
+	getPiece() {
+		return this.pieces[0];
+	}
+	/**
+	 * Function: toFENString()
+	 * 
+	 * Returns FEN String of cell
+	 */
+	toFENString(){
 		return this.pieces[0]; 
-		}
-   
-		drop(event: CdkDragDrop<string[]>) {
-            //used to determine whether moving from piece Editor or from cell to cell.
-            if (event.previousContainer.id == "otherList") {
-                //verify piece count is greater than 0 before placing on the board.
-                let limitID = event.item.element.nativeElement.attributes[8].value;
-                let pieceCount = this.getPieceCount (limitID);
+	}
+	
+	/**
+	 * Function: drop
+	 */
+	drop(event: CdkDragDrop<string[]>) {
 
-                if (pieceCount != 0) {
-                    copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+		if (event.previousContainer === event.container) {
+			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+		} else {
+			transferArrayItem(event.previousContainer.data, event.container.data, 
+				event.previousIndex, event.currentIndex);
 
-                    this.setPieceCount (limitID, false);
-                }
-            }
-            else {
-                if (event.previousContainer === event.container) {
-                    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-                } else {
-                    transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-                }
-            }
-		}
-
-        getPieceCountObject (pieceStr : string) {
-            return <HTMLInputElement>document.getElementById ("pieceLimit_" + pieceStr);
-        }
-
-        getPieceCount (pieceStr : string) {
-            let pieceLimit = this.getPieceCountObject (pieceStr);
-            return Number.parseInt (pieceLimit.innerText);
-        }
-
-        setPieceCount (pieceStr : string, increment : boolean) {
-            let pieceLimitObj = this.getPieceCountObject (pieceStr);
-            let pieceLimit = this.getPieceCount (pieceStr);
-            var update : number;
-            if (increment) {
-                update = 1;
-            }
-            else {
-                update = -1;
-            }
-
-            pieceLimitObj.innerText = (pieceLimit + update).toString ();
-        }
-
-		constructor(){}
-		
-		setFEN(fen:string){
-		/*	piece = new PieceComponent();
-			this.piece.setFEN(fen);
-			*/
-			this.pieces[0] = fen;
-		}
-		
-		/*
-		* Function: getStyle
-		* 
-		* Returns a string containing the cell's style.
-		* 
-		*/
-		getStyle() {
-			return "col " + this.style;
 		}
 	}
+
+
+	/**
+	 * Function: constructor
+	 *
+	 */
+	constructor(){}
+
+	/**
+	 * Function: setFEN
+	 *
+	 */
+	setFEN(fen:string){
+		this.pieces[0] = fen;
+	}
+
+	/*
+	 * Function: getStyle
+	 * 
+	 * Returns a string containing the cell's style.
+	 * 
+	 */
+	getStyle() {
+		return "col " + this.style;
+	}
+}
 

@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
+import { EditorModule } from '../editor/editor.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +19,8 @@ import {
     AppRoutingModule,
     ChessModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
