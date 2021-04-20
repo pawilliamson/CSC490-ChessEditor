@@ -6,8 +6,8 @@ import {
 import {BoardComponent} from '../../chess/board/board.component';
 @Component({
   selector: 'app-creator',
-  templateUrl: './creator.component.html',
-  styleUrls: ['./creator.component.css'],
+	templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css'],
 })
 export class CreatorComponent implements AfterViewInit {
 @ViewChild("board")board:any;
@@ -24,7 +24,7 @@ console.log("test");
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-	
+	fenSaved:Array<string>=[];	
 	
 	
     pieces = [
@@ -114,18 +114,36 @@ ngAfterViewInit(): void {
 	this.pieceCollection = this.pieceCollection.sort();
   }
 	startEditor(){
-	        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "block";
+		let editor = <HTMLInputElement>document.getElementById("editorTools");
+		let saved = <HTMLInputElement>document.getElementById("load");
+		editor.style.display="block";
+		saved.style.display="block";
+		this.board.generateBoard("8/8/8/8/8/8/8/8");
+		console.log(this.fenSaved);
 	}
 
-	addPiece(color: string){
-		
+closeEditor(){
+	let editor = <HTMLInputElement>document.getElementById("editorTools");
+	editor.style.display= "none";
+	let limits = document.getElementsByClassName("limits");
+	for(let count = 0; count < limits.length; count++){
+		limits[count].innerHTML = this.pieces[count].limit.toString();
 	}
+	this.fenSaved.push(this.board.toFENString());
+}
 
-	saveBoard(){
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-		editor.style.display = "none";
-		console.log(this.board.toFENString());
+loadSavedFen(fen:string){
+this.board.generateBoard(fen);
+}
+
+showSavedFens(){
+	let savedFENS = <HTMLInputElement>document.getElementById("load");
+	savedFENS.style.display = "block";
+
+}
+
+saveBoard(){
+	this.closeEditor();
 	}
 
 	setNewPiece(pieceType: string){
@@ -135,5 +153,8 @@ ngAfterViewInit(): void {
 	setNewColor(color: string){
 		this.colorToAdd = color;
 	}
+	addPiece(color:string){
+	
+}
 
 }
