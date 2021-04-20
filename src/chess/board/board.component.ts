@@ -32,9 +32,7 @@ export class BoardComponent implements OnInit, FEN{
 	 *
 	 * Note: Not necessary (DEMO_REMOVE)
 	 */
-	dragStarted (event : CdkDragStart) {
-		console.log(event);
-	}
+	
 	
 
 	/*

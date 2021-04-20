@@ -1,11 +1,16 @@
 <div class="container">
-<button (click)="this.startEditor()">Enter the editor</button>
-    <button (click)="this.saveBoard()">Save the current board</button>
+<button  class="btn btn-secondary" (click)="this.startEditor()">Enter the editor</button>
+    <button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
 
     <div id="editorTools" style="display:none;" class="container-fluid">
-        <div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"   class="row " [cdkDropListData]="pieceCollection" [cdkDropListConnectedTo]="['appList']" (cdkDropListDropped)="this.drop($event)">
+        <div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"
+		class="row " [cdkDropListData]="pieceCollection" [cdkDropListConnectedTo]="['appList']" 
+		(cdkDropListDropped)="this.drop($event)">
             <div *ngFor = "let piece of pieceCollection" class="col">
-                <app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" [cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" (cdkDragStarted)="this.start(piece)" style="display:inline-block;height: 75%;width: 100%;"  [piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
+                <app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
+			[cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
+			(cdkDragStarted)="this.start(piece)" 
+			[piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
                 <div id = "pieceLimit_{{piece}}">{{this.getLimit(piece)}}</div>
             </div>
         </div>

@@ -1,20 +1,24 @@
-.cdk-drop-list-dragging .cdk-drag {
-}
-.cdk-drag-placeholder{
-  height: 10em;
-  width: 10em;
-  display: none; 
-}
 
 .cdk-drag-animating {
- transform: none;
- display: none;
+ transform: none !important;
+ display: none!important;
 }
 .row{
 
 height: 10em;
 }
-
+.cdk-drop-list-dragging .cdk-drag-placeholder{
+display: none !important;
+transform: none !important;
+}
+.cdk-drag-preview{
+display: none;
+}
 .cdk-drag-placeholder {
- display: none;
+ display:hidden!important;
+	transform: none!important;
+ z-index: 999!important;
+}
+.fill .cdk-drag-placeholder{
+display: none;
 }
