@@ -15,13 +15,13 @@
 						 [piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
 			</div>
 		</div>
+	</div>
 		<div id ="load" style="display:none">
 			<div *ngFor="let fen of fenSaved; let i = index;">
 				<p id="fenId_{{i}}">{{fen}}</p>
-				<button (click)="this.loadSavedFen(fen)">Load this board</button>
+				<button class="btn btn-primary" (click)="this.loadSavedFen(fen)">Load this board</button>
 			</div>
 		</div>
-	</div>
 	<app-board #board>
 	</app-board>
 </div>
