@@ -8,15 +8,7 @@
  * 
  * - <BoardComponent> 
  * - <PieceComponent>
- * - <CellComponent>
- * - <RowComponent> (Not Implemented)
- * TODO:
  *
- * - ++Implement Pieces++
- * - Add FEN Interpretor/Generator (Module, Service or In )
- * - Research Animations
- * - Create an Algorithm Service
- * - Add User Input
  **/
  
 import {
@@ -32,6 +24,10 @@ import {
 }
 from './board/board.component';
 import {
+	HomeComponent
+}
+from './home/home.component';
+import {
 	PieceComponent
 }
 from './piece/piece.component';
@@ -44,13 +40,14 @@ import {
 import {
 	ValidatorModule} from '../validator/validator.module';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent],
+	declarations: [BoardComponent, PieceComponent, HomeComponent],
 	imports: [
-		CommonModule, DragDropModule, ValidatorModule
+		CommonModule,
+		DragDropModule,
+		ValidatorModule
 	],
-	exports: [BoardComponent],
-	bootstrap: [BoardComponent],
+	exports: [BoardComponent,HomeComponent,PieceComponent],
+	bootstrap: [BoardComponent, HomeComponent],
 })
-export class ChessModule {
-	
-}
+export class ChessModule {};
+export {BoardComponent, HomeComponent, PieceComponent};

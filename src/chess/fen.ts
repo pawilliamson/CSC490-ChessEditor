@@ -1,3 +1,3 @@
 export interface FEN {
-	function toFENString(){};
+	toFENString:() => string;
 }
