@@ -9,12 +9,12 @@ File: board.component.html
 <div  class="container">
 	<div class="row" *ngFor="let row of rows">
 		<div class="col" *ngFor="let cell of row.cells">
-		<div class="fill" [cdkDropListSortingDisabled]="true"  cdkDropList [cdkDropListData]="cell.pieces" 
-			(cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
-			<div class="fill"*ngIf="cell.pieces[0]!=''">
-			<app-piece class="fill" style="z-index: 99" cdkDropData="cell.getPieces()" 
-				[piece]="cell.getPiece()" cdkDrag></app-piece>
-			</div>
+			<div class="fill" [cdkDropListSortingDisabled]="true"  cdkDropList [cdkDropListData]="cell.pieces" 
+				(cdkDropListDropped)="cell.drop($event)"  class="{{cell.getStyle()}}">
+				<div class="fill"*ngIf="cell.pieces[0]!=''">
+					<app-piece class="fill" style="z-index: 99" cdkDropData="cell.getPieces()" 
+						[piece]="cell.getPiece()" cdkDrag></app-piece>
+				</div>
 			</div>
 		</div>
 	</div>

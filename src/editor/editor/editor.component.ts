@@ -19,7 +19,7 @@ console.log("test");
 CdkDragStart(event:CdkDrag<string[]>){
 console.log("test");
 }
-  pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
+  	pieceCollection:Array<string> = ["P", "N", "B", "R", "Q", "K", "p", "n", "b", "r", "q", "k"];
 	primaryColor : string = "bg-primary";
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;

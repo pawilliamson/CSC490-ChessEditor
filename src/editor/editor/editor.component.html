@@ -5,14 +5,23 @@
 
 	<div id="editorTools" style="display:none;" class="container-fluid">
 		<div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"
-       class="row " [cdkDropListData]="pieceCollection" 
-       (cdkDropListDropped)="this.drop($event)">
-			<div *ngFor = "let piece of pieceCollection" class="col container">
-				<div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
-				<app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
-						 [cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
-						 (cdkDragStarted)="this.start(piece)" 
-						 [piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
+       		class="row " [cdkDropListData]="pieceCollection" 
+       		(cdkDropListDropped)="this.drop($event)">
+			<div *ngFor = "let piece of pieceCollection; let i = index;" class="col container">
+				<div *ngIf="i<=5" class="col container">
+					<div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
+					<app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
+							[cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
+							(cdkDragStarted)="this.start(piece)" 
+							[piece]="piece" cdkDropData="piece" cdkDrag></app-piece>
+				</div>
+				<div *ngIf="i>5" class="col container">
+					<div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
+					<app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
+							[cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
+							(cdkDragStarted)="this.start(piece)" 
+							[piece]="piece" cdkDropData="piece" cdkDrag></app-piece>
+				</div>
 			</div>
 		</div>
 	</div>
