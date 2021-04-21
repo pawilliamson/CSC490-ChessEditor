@@ -22,10 +22,38 @@ export class GameComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit(): void {
-
+		this.board.generateBoard();
+		this.board.madeMove = () => this.move();
+		this.vboard = new ValidatorBoard();
 	}
 	move(){
-
+		let after = this.getFENBoard();
+		let previous = this.history[this.turn - 1];
+		let aboard = after.split("/");
+		let pos1 = {x: -1, y: -1};
+		let pos2 = {x: -1, y: -1};
+		let found = false;
+		for(var y = 0; y < aboard.length && !found; y++){
+		for(var x = 0; x < aboard[y].length && !found; x++){
+			if(aboard[y][x] != previous[y][x]){
+				if(pos1.x != -1){
+					pos2.x = x;
+					pos2.y = y;
+					found = true;
+				}else{
+					pos1.x = x;
+					pos1.y = y;
+				}
+			}
+		}
+		}
+		if(found){
+			if( !this.vboard.validateMovement(pos1.x, pos1.y ,
+				pos2.x, pos2.y)){
+				this.undo();
+				// TODO Add Message or error
+			}
+		}
 	}
 
 	parse(){
