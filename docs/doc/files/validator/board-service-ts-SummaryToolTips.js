@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:validator/board.service.ts",{2:"<div class=\"NDToolTip TFile LTypeScript\"><div class=\"TTSummary\">Contains Board Class</div></div>"});

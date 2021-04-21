@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ser",["File"],[["service",,[[,"board.service.ts",,,0,"File:validator/board.service.ts:board.service.ts"]]]]);

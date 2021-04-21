@@ -22,9 +22,31 @@ describe('BoardComponent', () => {
     fixture.detectChanges();
   });
   
-  it('should generate normal chessboard', () => {
-    const initial_layout = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    const result = component.toFENString();
-    expect(result).toContain(initial_layout);
+  describe('Initialization', function() {
+    it('should be defined', () => {
+      expect(component).toBeDefined();
+    });
+  });
+
+  describe('Create Board', function(){
+    it('should generate normal chessboard', () => {
+      const initial_layout = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+      const result = component.toFENString();
+      expect(result).toContain(initial_layout);
+    });
+
+    it('should generate an empty chessboard', () => {
+      const initialLayout = "8/8/8/8/8/8/8/8";
+      component.generateBoard(initialLayout);
+      const result = component.toFENString();
+      expect(result).toContain(initialLayout);
+    });
+
+    it('should generate an empty board with an empty layout', () =>{
+      const initialLayout = "";
+      component.generateBoard("");
+      const result = component.toFENString();
+      expect(result).toContain(initialLayout);
+    });
   });
 });

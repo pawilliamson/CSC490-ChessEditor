@@ -1,1 +1,0 @@
-﻿NDSearch.OnPrefixDataLoaded("cel",["Section","File","Class"],[["Cell",,[[,,,,0,"File:chess/cell/cell.component.html:Cell"],[,"cell.component.html",,,1,"File:chess/cell/cell.component.html:cell.component.html"]]],["CellComponent",,[[,,,,2,"File:chess/cell/cell.component.ts:CellComponent","TypeScriptClass:CellComponent"]]]]);

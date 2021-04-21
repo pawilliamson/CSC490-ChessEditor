@@ -8,15 +8,7 @@
  * 
  * - <BoardComponent> 
  * - <PieceComponent>
- * - <CellComponent>
- * - <RowComponent> (Not Implemented)
- * TODO:
  *
- * - ++Implement Pieces++
- * - Add FEN Interpretor/Generator (Module, Service or In )
- * - Research Animations
- * - Create an Algorithm Service
- * - Add User Input
  **/
  
 import {
@@ -32,6 +24,11 @@ import {
 }
 from './board/board.component';
 import {
+	HomeComponent
+}
+from './home/home.component';
+import { GameComponent } from './game/game.component';
+import {
 	PieceComponent
 }
 from './piece/piece.component';
@@ -41,14 +38,18 @@ import {
 import {
 	DragDropModule
 	} from '@angular/cdk/drag-drop';
+import {
+	ValidatorModule} from '../validator/validator.module';
+
 @NgModule({
-	declarations: [BoardComponent, PieceComponent],
+	declarations: [BoardComponent, PieceComponent, GameComponent, HomeComponent],
 	imports: [
-		CommonModule, DragDropModule
+		CommonModule,
+		DragDropModule,
+		ValidatorModule
 	],
-	exports: [BoardComponent],
-	bootstrap: [BoardComponent],
+	exports: [BoardComponent,HomeComponent,PieceComponent, GameComponent],
+	bootstrap: [BoardComponent, HomeComponent],
 })
-export class ChessModule {
-	
-}
+export class ChessModule {};
+export {BoardComponent, HomeComponent, PieceComponent};

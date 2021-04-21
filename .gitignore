@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+./game.*
+game.component.ts
+game.*
 # Natural Docs
 Natural\ Docs/
 

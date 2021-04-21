@@ -1,0 +1,42 @@
+
+.cdk-drag-animating {
+ transform: none !important;
+ display: none!important;
+}
+.row{
+
+height: 10em;
+}
+.fill{
+height: 75%;
+}
+.col{
+display: inline-block;
+height:100%;
+width: 100%;
+}
+.cdk-drag{
+z-index: 20;
+}
+.cdk-drop-list-dragging .cdk-drag-placeholder{
+display: none !important;
+transform: none !important;
+}
+.cdk-drag-preview{
+display: none;
+}
+.cdk-drag-placeholder {
+ display:hidden!important;
+	transform: none!important;
+ z-index: 19!important;
+}
+.special{
+z-index: 99;
+position: relative;
+top:80%;
+right:10;
+text-align:right;
+}
+.fill .cdk-drag-placeholder{
+display: none;
+}
