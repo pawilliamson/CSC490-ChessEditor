@@ -21,7 +21,7 @@ export class Board {
     empty: Piece = new Piece("UNSPECIFIED");
 	constructor(){
 	let x = 0;
-	for(;x <= 8; x++){
+	for(;x <= 7; x++){
 	 let y = 0;
 	 let row:Piece[] = new Array;
 	 for(;y <= 8; y++){
