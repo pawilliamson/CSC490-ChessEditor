@@ -7,7 +7,7 @@ import {BoardComponent} from '../../chess/board/board.component';
 @Component({
     selector: 'app-creator',
 	templateUrl: './editor.component.html',
-    styleUrls: ['./editor.component.css'],
+    styleUrls: ['./editor.component.css']
 })
 
 export class CreatorComponent implements AfterViewInit {
@@ -143,12 +143,12 @@ export class CreatorComponent implements AfterViewInit {
         let editor = <HTMLInputElement>document.getElementById("editorTools");
         editor.style.display= "none";
 
+        //Reset counts for pieces
         for(let piece of this.pieces){
             let limit = <HTMLInputElement>document.getElementById("pieceLimit_" + piece.piece);
             limit.innerHTML = piece.upperBound.toString();
         }
-
-        this.fenSaved.push(this.board.toFENString());
+        this.board.saveBoard
     }
 
     loadSavedFen(fen:string){
@@ -161,6 +161,7 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     saveBoard(){
+        this.fenSaved.push(this.board.toFENString());
         this.closeEditor();
     }
 
