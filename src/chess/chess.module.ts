@@ -27,6 +27,7 @@ import {
 	HomeComponent
 }
 from './home/home.component';
+import { GameComponent } from './game/game.component';
 import {
 	PieceComponent
 }
@@ -41,13 +42,13 @@ import {
 	ValidatorModule} from '../validator/validator.module';
 import { GameComponent } from './game/game.component';
 @NgModule({
-	declarations: [BoardComponent, PieceComponent, HomeComponent],
+	declarations: [BoardComponent, PieceComponent, GameComponent, HomeComponent],
 	imports: [
 		CommonModule,
 		DragDropModule,
 		ValidatorModule
 	],
-	exports: [BoardComponent,HomeComponent,PieceComponent],
+	exports: [BoardComponent,HomeComponent,PieceComponent, GameComponent],
 	bootstrap: [BoardComponent, HomeComponent],
 })
 export class ChessModule {};

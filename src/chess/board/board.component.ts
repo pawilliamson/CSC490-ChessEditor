@@ -23,9 +23,13 @@ export class BoardComponent implements OnInit, FEN{
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-	
+	noStack:boolean = false;	
 	rows: Array < Row > = [];
+	moveMade:boolean = false;
 	test_counter: number = 0;
+
+	public madeMove?:() => void;
+
 	/**
 	 * Function: dragStarted
 	 * Parameter: event
@@ -70,6 +74,8 @@ export class BoardComponent implements OnInit, FEN{
 				a.style = classB;
 			}
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
+			a.y = 8 - this.rows.length;
+			a.x = y;
 			temp.addCell(a);
 		}
 
@@ -259,7 +265,8 @@ class Row implements FEN{
 class Cell implements FEN{
 	style = "";
 	pieces = [""];
-
+	x:number = -1;
+	y:number = -1;
 	/**
 	 * Function: getPieces
 	 *
@@ -307,6 +314,7 @@ class Cell implements FEN{
 				event.previousIndex, event.currentIndex);
 
 		}
+	
 	}
 
 

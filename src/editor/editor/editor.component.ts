@@ -133,7 +133,7 @@ closeEditor(){
 }
 
 loadSavedFen(fen:string){
-this.board.generateBoard(fen);
+	this.board.generateBoard(fen);
 }
 
 showSavedFens(){
