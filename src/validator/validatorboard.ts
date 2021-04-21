@@ -73,14 +73,14 @@ export class ValidatorBoard extends Board {
 		var xPos = 0;
 		// Checking where y=0, the bottom of the board.
 		for (xPos = 0; xPos < 8; xPos++) {
-			if (this.chessBoard[xPos][0].getName() == "PAWN" && this.chessBoard[xPos][0].getColor() == "BLACK") {
+			if (this.chessBoard[0][xPos].getName() == "PAWN" && this.chessBoard[xPos][0].getColor() == "BLACK") {
 				console.log("Changing black pawn at " + xPos + " 0 to a black queen.");
 				this.chessBoard[xPos][0] = this.blackQueen;
 			}
 		}
 		// Checking where y=7, the top of the board.
 		for (xPos = 0; xPos < 8; xPos++) {
-			if (this.chessBoard[xPos][7].getName() == "PAWN" && this.chessBoard[xPos][7].getColor() == "WHITE") {
+			if (this.chessBoard[7][xPos].getName() == "PAWN" && this.chessBoard[xPos][7].getColor() == "WHITE") {
 				console.log("Changing white pawn at " + xPos + " 7 to a white queen.");
 				this.chessBoard[xPos][7] = this.whiteQueen;
 			}
@@ -259,10 +259,10 @@ export class ValidatorBoard extends Board {
 		if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
 			return false;
 		}
-		if (this.chessBoard[x1][y1].getName() == "UNSPECIFIED") {
+		if (this.chessBoard[y1][x1].getName() == "UNSPECIFIED") {
 			console.log("Error: No piece selected");
 		}
-		var pieceName: string = this.chessBoard[x1][y1].getName();
+		var pieceName: string = this.chessBoard[y1][x1].getName();
 		var validMovement: boolean = false;
 		switch (pieceName) {
 			case ("PAWN"):
@@ -308,6 +308,7 @@ export class ValidatorBoard extends Board {
 			this.move(x1, y1, x2, y2);
 			return true;
 		}
+		console.log("BUT WHY?");
 		return false;
 	}
 
@@ -330,24 +331,29 @@ export class ValidatorBoard extends Board {
 		}
 
 		// TODO: I don't know if var is the right way to do this.
-		var selectedPawn: Pawn = this.chessBoard[x1][y1];
-		if (selectedPawn.getColor() == this.chessBoard[x2][y2].getColor()) {
+		var selectedPawn: Pawn = this.chessBoard[y1][x1];
+		if (selectedPawn.getColor() == this.chessBoard[y2][x2].getColor()) {
 			console.log("Pawn tried to move to location of another piece of its color.");
 			return false;
 		}
 
 		// A black pawn will only be able to move down one, or down diagonal if an enemy piece
 		// is occupying that space.
+		console.log(selectedPawn.getColor());
 		if (selectedPawn.getColor() == "BLACK") {
+			console.log("Maybe not?");
 			// Checks for down movement, verifies that the piece is moving down one,
 			// not moving horizontally, and there is nothing in the way of the piece.
-			if (y2 == y1 - 1 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED") {
+			
+			if (y2 == y1 - 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
 				return true;
+			}else{
+			console.log("YOU LIAR!");
 			}
 			// Checks for down diagonal movement, which can occur if there is an enemy piece occupying
 			// that space. Checks that it is moving down 1, left or right 1,  that there is an enemy piece present
 			// at that space, and that the color of the piece is white.
-			if (y2 == y1 - 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[x2][y2].getName() != "UNSPECIFIED" && this.chessBoard[x2][y2].getColor() == "WHITE") {
+			if (y2 == y1 - 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "WHITE") {
 				return true;
 			}
 			console.log("Bad coordinates sent for movement of pawn.");
@@ -358,7 +364,7 @@ export class ValidatorBoard extends Board {
 			// up one, not moving horizontally, and there is nothing in the
 			// way of the piece.
 
-			if (y2 == y1 + 1 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED") {
+			if (y2 == y1 + 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
 				return true;
 			}
 			// Checks for upwards diagonal movement, which can occur if there
@@ -367,7 +373,7 @@ export class ValidatorBoard extends Board {
 			// that there is an enemy piece present at that space, and that
 			// the color of the piece is black.
 
-			if (y2 == y1 + 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[x2][y2].getName() != "UNSPECIFIED" && this.chessBoard[x2][y2].getColor() == "BLACK") {
+			if (y2 == y1 + 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "BLACK") {
 
 				return true;
 			}
@@ -399,7 +405,8 @@ export class ValidatorBoard extends Board {
 		}
 		// Checks to see if there is another piece of the same color occupying
 		// the space the King is to move to.
-		if (this.chessBoard[x2][y2].getColor() == this.chessBoard[x1][y1].getColor()) {
+		if (this.chessBoard[y2][x2].getColor() == this.chessBoard[y1][x1].getColor()) {
+		console.log("YOU TYRANT!");
 			return false;
 		}
 		var selectedKing: King = this.chessBoard[x1][y1];
@@ -428,12 +435,14 @@ export class ValidatorBoard extends Board {
 			console.log('COORDINATE ERROR');
 			return false;
 		}
-		if (this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor()) {
+		if (this.chessBoard[y1][x1].getColor() == this.chessBoard[y2][x2].getColor()) {
+		console.log("RED QUEEN");
 			return false;
 		}
 		if (this.goodDiagonalPathChecker(x1, y1, x2, y2) || this.goodHorizontalVerticalPathChecker(x1, y1, x2, y2)) {
 			return true;
 		}
+		console.log("BAD QUEEN");
 		return false;
 	}
 
@@ -452,13 +461,14 @@ export class ValidatorBoard extends Board {
 			console.log("COORDINATE ERROR");
 			return false;
 		}
-		if ((this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor())) {
+		if ((this.chessBoard[y1][x1].getColor() == this.chessBoard[y2][x2].getColor())) {
 			console.log("ATTEMPTING TO CAPTURE OWN PIECE");
 			return false;
 		}
 		if (this.goodHorizontalVerticalPathChecker(x1, y1, x2, y2)) {
 			return true;
 		}
+		console.log("X VS Y");
 		return false;
 	}
 
@@ -475,9 +485,11 @@ export class ValidatorBoard extends Board {
 	 */
 	checkBishopMovement(x1: number, y1: number, x2: number, y2: number) {
 		if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
+			console.log("INVALID COORDS");
 			return false;
 		}
 		if (this.chessBoard[y1][x1].getColor() == this.chessBoard[y2][x2].getColor()) {
+			console.log("MUTINY!");
 			return false;
 		}
 		// The bishop can move in any direction diagonally, the
@@ -486,6 +498,7 @@ export class ValidatorBoard extends Board {
 		if (this.goodDiagonalPathChecker(x1, y1, x2, y2)) {
 			return true;
 		}
+		console.log("BAD BISHOP");
 		return false;
 	}
 
@@ -519,6 +532,39 @@ export class ValidatorBoard extends Board {
 		if ((xDiff == 2 && yDiff == 1) || (xDiff == 1 && yDiff == 2)) {
 			return true;
 		}
+		console.log("Bad Knight");
 		return false;
+	}
+	
+	createPiece(fen:string){
+		switch(fen){
+		case "p":
+			return new Pawn("BLACK");
+		case "P":
+			return new Pawn("WHITE");
+			case "r":
+			return new Rook("BLACK");
+			case "R":
+			return new Rook("WHITE");
+			case "n":
+			return new Knight("BLACK");
+			case "N":
+			return new Knight("WHITE");
+			case "b":
+			return new Bishop("BLACK");
+			case "B":
+			return new Bishop("WHITE");
+			case "q":
+			return new Queen("BLACK");
+			case "Q":
+			return new Queen("WHITE");
+			case "k":
+			return new King("BLACK");
+			case "K":
+			return new King("WHITE");
+			default:
+			return "";
+		
+		}
 	}
 }
