@@ -172,8 +172,7 @@ export class CreatorComponent implements AfterViewInit {
 
         //Reset counts for pieces
         for(let piece of this.pieces){
-            let limit = <HTMLInputElement>document.getElementById("pieceLimit_" + piece.piece);
-            limit.innerHTML = piece.upperBound.toString();
+            piece.limit = piece.upperBound;
         }
     }
 
