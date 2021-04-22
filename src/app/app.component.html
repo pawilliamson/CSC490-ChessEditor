@@ -14,16 +14,20 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary" (click)="goHome()">Home</button>
         <button class="btn btn-primary" (click)="goBoard()">Board</button>
+		<button class="btn btn-primary" (click)="goGame()">Game</button>
     </div>
     <div cdkDropListGroup >
-            <app-creator></app-creator>
-        </div>
+        <app-creator></app-creator>
+    </div>
 </div>
 <div *ngIf="page == 3">
-	<button class="btn btn-primary" (click)="goHome()">Home</button>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" (click)="goHome()">Home</button>
         <button class="btn btn-primary" (click)="goBoard()">Board</button>
-        <div cdkDropListGroup>
-	<app-game></app-game>
-	</div>
+        <button class="btn btn-primary" (click)="goGame()">Game</button>
+    </div>
+    <div cdkDropListGroup>
+        <app-game></app-game>
+    </div>
 </div>
 <router-outlet></router-outlet>
