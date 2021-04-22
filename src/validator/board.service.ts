@@ -24,7 +24,7 @@ export class Board {
 	for(;x <= 7; x++){
 	 let y = 0;
 	 let row:Piece[] = new Array;
-	 for(;y <= 8; y++){
+	 for(;y <= 7; y++){
 	  row[y] = new Piece("UNSPECIFIED");
 	 }
 	 this.chessBoard[x] = row;
@@ -88,7 +88,7 @@ export class Board {
      */
     remove(xPos: number, yPos: number) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            this.chessBoard[xPos][yPos] == this.empty;
+            this.chessBoard[yPos][ xPos] == this.empty;
         }
         else {
             console.log("Board class tried to remove a Piece out of bounds. Please ensure the location is within bounds. Attempted X Position: " + xPos + "Attempted Y Position: " + yPos);
@@ -104,7 +104,7 @@ export class Board {
      */
     add(xPos: number, yPos: number, addedPiece: Piece) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            this.chessBoard[xPos][yPos] = addedPiece;
+            this.chessBoard[yPos][xPos] = addedPiece;
         }
         else {
             console.log("Board class tried to add a Piece out of bounds. Attempted X Position " + xPos + " Attempted Y Position: " + yPos);
@@ -121,7 +121,7 @@ export class Board {
      */
     move(initialXPos: number, initialYPos: number, locationXPos: number, locationYPos: number) {
         if(initialXPos <= this.BOARD_LIMIT && initialYPos <= this.BOARD_LIMIT && locationXPos <= this.BOARD_LIMIT && locationYPos <= this.BOARD_LIMIT) {
-            this.chessBoard[locationXPos][locationYPos] = this.chessBoard[initialXPos][initialYPos];
+            this.chessBoard[ locationYPos ][locationXPos] = this.chessBoard[initialYPos][ initialXPos];
             this.remove(initialXPos, initialYPos);
         }
         else{
@@ -137,7 +137,7 @@ export class Board {
      */
     getPiece(xPos: number, yPos: number) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            return this.chessBoard[xPos][yPos];
+            return this.chessBoard[yPos][ xPos];
         }
         else {
             console.log("Board class tried to return a Piece that was out of bounds. Attempted X Position: " + xPos + " Attempted Y Position: " + yPos);
