@@ -5,11 +5,14 @@
  */
 class ValidatorBoard extends Board {
     // These two Queens will be exchanged with the Pawn when the Pawn reaches the end of the board.
-    blackQueen: Queen = new Queen("BLACK");
-    whiteQueen: Queen = new Queen("WHITE");
+    private blackQueen: Queen = new Queen("BLACK");
+    private whiteQueen: Queen = new Queen("WHITE");
     // These two booleans will be used to determine castling, as one can only castle as their king's first move. This will be set to true whenever the king moves.
     blackKingMoved: boolean = false;
     whiteKingMoved: boolean = false;
+    // These two booleans will determine if a piece is in a check state or not
+    private blackChecked: boolean = false;
+    private whiteChecked: boolean = false;
     /**
      * This method will check the top and bottom rows of the chess board, and if it contains any white pawns in the top row, or black pawns in the bottom row, it converts them to queens. This should be run at the end of every turn.
      * 
@@ -125,7 +128,46 @@ class ValidatorBoard extends Board {
      * @param y2 
      */
     checkCastling(x1: number, y1: number, x2: number, y2: number) {
+        if(((this.chessBoard[x1][y1].getName() == "KING" && this.chessBoard[x2][y2].getName() == "ROOK") || (this.chessBoard[x1][y1].getName() == "ROOK" && this.chessBoard[x2][y2].getName() == "KING")) 
+        && (this.chessBoard[x1][y1].getColor() == this.chessBoard[x2][y2].getColor())) {
+            
+        }
+    }
 
+    checkChecker() {
+        var x: number = 0;
+        var y: number = 0;
+        var xBlackKing: number = 0;
+        var yBlackKing: number = 0;
+        var xWhiteKing: number = 0;
+        var yWhiteKing: number = 0;
+        // This will scan the board to find the locations of the black and white King pieces.
+        for(y = 0; y < this.BOARD_LIMIT; y++) {
+            for(x = 0; x < this.BOARD_LIMIT; x++) {
+                if(this.chessBoard[x][y].getName() == "KING") {
+                    if(this.chessBoard[x][y].getColor() == "BLACK") {
+                        xBlackKing = x;
+                        yBlackKing = y;
+                    }
+                    if(this.chessBoard[x][y].getColor() == "WHITE") {
+                        xWhiteKing = x;
+                        yWhiteKing = y;
+                    }
+                }
+            }
+        }
+        // The black King's status of being in check or not will be verified, starting by ensuring that it cannot be attacked by a Pawn.
+        // To ensure an index out of bounds is not being checked, an if statement is needed.
+        if(xBlackKing - 1 > 0 && yBlackKing - 1 > 0) {
+            if(this.chessBoard[xBlackKing][yBlackKing].getColor() == "WHITE" && this.chessBoard[xBlackKing][yBlackKing].getName() == "PAWN") {
+                this.blackChecked = true;
+            }
+        }
+        else if(xBlackKing + 1 < this.BOARD_LIMIT && yBlackKing -1 > 0) {
+            if(this.chessBoard[xBlackKing][yBlackKing].getColor() == "WHITE" && this.chessBoard[xBlackKing][yBlackKing].getName() == "PAWN") {
+                this.blackChecked = true;
+            }
+        }
     }
 
     /**
@@ -192,9 +234,7 @@ class ValidatorBoard extends Board {
         if(!this.validCoordinatesChecker(x1, y1, x2, y2)) {
             console.log("Invalid movement coordinates were sent for pawn");
             return false;
-        }
-        // TODO: I don't know if var is the right way to do this.
-        var selectedPawn: Pawn = this.chessBoard[x1][y1];
+        }        var selectedPawn: Pawn = this.chessBoard[x1][y1];
         if(selectedPawn.getColor() == this.chessBoard[x2][y2].getColor()) {
             console.log("Pawn tried to move to location of another piece of its color.");
             return false;
@@ -203,6 +243,10 @@ class ValidatorBoard extends Board {
         if(selectedPawn.getColor() == "BLACK") {
             // Checks for down movement, verifies that the piece is moving down one, not moving horizontally, and there is nothing in the way of the piece.
             if(y2 == y1-1 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED") {
+                return true;
+            }
+            // Checks for if the pawn moves double or not.
+            if(y2 == y1-2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1-1][y1-1].getName() == "UNSPECIFIED") {
                 return true;
             }
             // Checks for down diagonal movement, which can occur if there is an enemy piece occupying that space. Checks that it is moving down 1, left or right 1, 
@@ -216,6 +260,10 @@ class ValidatorBoard extends Board {
         if(selectedPawn.getColor() == "WHITE") {
             // Checks for upward movement, verifies that the piece is moving up one, not moving horizontally, and there is nothing in the way of the piece.
             if(y2 == y1+1 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED") {
+                return true;
+            }
+            // Checks for if the pawn moves double or not.
+            if(y2 == y1+2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1+1][y1+1].getName() == "UNSPECIFIED") {
                 return true;
             }
             // Checks for upwards diagonal movement, which can occur if there is an enemy piece occupying that space. Checks that it is moving up 1, left or right 1, 

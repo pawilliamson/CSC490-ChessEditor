@@ -13,6 +13,7 @@ let pointMap = new Map([
 class Piece {
     color: String = "UNSPECIFIED";
     points: number | undefined;
+    hasMoved: boolean = false;
     
 
     constructor(specifiedColor: string) {
@@ -55,6 +56,14 @@ class Piece {
      */
     getPoints() {
         return this.points;
+    }
+
+    /**
+     * This method sets that a piece has moved on the board.
+     * 
+     */
+    setMoved() {
+        this.hasMoved = true;
     }
 
     setPoints(specifiedType: string){
