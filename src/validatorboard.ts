@@ -246,7 +246,7 @@ class ValidatorBoard extends Board {
                 return true;
             }
             // Checks for if the pawn moves double or not.
-            if(y2 == y1-2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1-1][y1-1].getName() == "UNSPECIFIED") {
+            if(y2 == y1-2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1-1][y1-1].getName() == "UNSPECIFIED" && x1 == 6) {
                 return true;
             }
             // Checks for down diagonal movement, which can occur if there is an enemy piece occupying that space. Checks that it is moving down 1, left or right 1, 
@@ -263,7 +263,7 @@ class ValidatorBoard extends Board {
                 return true;
             }
             // Checks for if the pawn moves double or not.
-            if(y2 == y1+2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1+1][y1+1].getName() == "UNSPECIFIED") {
+            if(y2 == y1+2 && x1 == x2 && this.chessBoard[x2][y2].getName() == "UNSPECIFIED" && this.chessBoard[x1+1][y1+1].getName() == "UNSPECIFIED" && x1 == 1) {
                 return true;
             }
             // Checks for upwards diagonal movement, which can occur if there is an enemy piece occupying that space. Checks that it is moving up 1, left or right 1, 
