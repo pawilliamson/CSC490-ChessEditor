@@ -170,11 +170,7 @@ export class CreatorComponent implements AfterViewInit {
         saved.style.display="none";
         enterBtn.style.display="block";
 
-        //Reset counts for pieces
-        for(let piece of this.pieces){
-            let limit = <HTMLInputElement>document.getElementById("pieceLimit_" + piece.piece);
-            limit.innerHTML = piece.upperBound.toString();
-        }
+       
     }
 
     loadSavedFen(fen:string){
