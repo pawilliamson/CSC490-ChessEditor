@@ -130,6 +130,26 @@ export class CreatorComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.reorganizeEditorPieces ();
+        this.board.madeMove = (cell:any) => {this.checkLimits()};
+    }
+    
+    checkLimits(){
+      let pieces = this.pieces;
+      let str:string = this.board.toFENString();
+      for(let piece of this.pieces){
+         var ls:number = Number(str.length);
+         var reg = new RegExp(piece.piece, 'g');
+         var rs = str.replace(reg, "").length;
+		 var num:number = Number(ls) - Number(rs);
+		 console.log(str.replace(piece.piece, ""));
+		 console.log(str.length);
+		
+
+		 console.log(str.replace(/piece.piece/g, ""));
+		 console.log(num);
+		 piece.limit = piece.upperBound - num;
+      
+      }
     }
 
     startEditor(){

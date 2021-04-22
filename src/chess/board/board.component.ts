@@ -311,6 +311,9 @@ class Cell implements FEN{
 				event.previousIndex, event.currentIndex);
 
 		}
+		console.log(before);
+		console.log(this.getPieces())
+		if(before && this.getPieces())
 		if (before == this.getPieces()){
 			this.pieces.shift();
 		}else{
