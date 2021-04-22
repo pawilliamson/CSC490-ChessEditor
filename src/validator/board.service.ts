@@ -24,7 +24,7 @@ export class Board {
 	for(;x <= 7; x++){
 	 let y = 0;
 	 let row:Piece[] = new Array;
-	 for(;y <= 7; y++){
+	 for(;y <= 8; y++){
 	  row[y] = new Piece("UNSPECIFIED");
 	 }
 	 this.chessBoard[x] = row;
@@ -38,48 +38,46 @@ export class Board {
     printBoard() {
         var xPos: number;
         var yPos: number;
-	    let output = "";
-	    for(yPos = 0; yPos < this.BOARD_LIMIT; yPos++) {
+        for(yPos = 0; yPos < this.BOARD_LIMIT; yPos++) {
             for(xPos = 0; xPos < this.BOARD_LIMIT; xPos++) {
-                var pieceColor: String = this.chessBoard[yPos][ xPos].getColor();
-                var pieceName: String = this.chessBoard[yPos][ xPos].getName();
+                var pieceColor: String = this.chessBoard[xPos][yPos].getColor();
+                var pieceName: String = this.chessBoard[xPos][yPos].getName();
                 // These if-else statements will print out the color of the Piece.
                 if(pieceColor == "WHITE") {
-                   output+="W";
+                    console.log("W");
                 }
                 else if(pieceColor == "BLACK") {
-                   output += "B";
+                    console.log("B");
                 }
                 else {
-                    output += ("-");
+                    console.log("-");
                 }
                 // These if-else statements will print out the class of Piece.
                 if(pieceName == "PAWN") {
-                 output +=   "P";
+                    console.log("P");
                 }
-		    else if(pieceName == "KING") {
-		 output +=	"K";
-		    }
+                else if(pieceName == "KING") {
+                    console.log("K");
+                }
                 else if(pieceName == "QUEEN") {
-output +="Q";
+                    console.log("Q");
                 }
                 else if(pieceName == "ROOK") {
-                 output+=   "R";
+                    console.log("R");
                 }
                 else if(pieceName == "KNIGHT") {
-                   output += "H";
+                    console.log("H");
                 }
                 else if(pieceName == "BISHOP") {
-                   output += "B";
+                    console.log("B");
                 }
                 else {
-                   output += ("-");
+                    console.log("-");
                 }
                 // This should begin a new line.
-                output+=("\n");
+                console.log("\n");
             }
-	    }
-	    console.log(output);
+        }
     }
 
     /**
@@ -90,7 +88,7 @@ output +="Q";
      */
     remove(xPos: number, yPos: number) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            this.chessBoard[yPos][ xPos] == this.empty;
+            this.chessBoard[xPos][yPos] == this.empty;
         }
         else {
             console.log("Board class tried to remove a Piece out of bounds. Please ensure the location is within bounds. Attempted X Position: " + xPos + "Attempted Y Position: " + yPos);
@@ -106,7 +104,7 @@ output +="Q";
      */
     add(xPos: number, yPos: number, addedPiece: Piece) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            this.chessBoard[yPos][xPos] = addedPiece;
+            this.chessBoard[xPos][yPos] = addedPiece;
         }
         else {
             console.log("Board class tried to add a Piece out of bounds. Attempted X Position " + xPos + " Attempted Y Position: " + yPos);
@@ -123,7 +121,7 @@ output +="Q";
      */
     move(initialXPos: number, initialYPos: number, locationXPos: number, locationYPos: number) {
         if(initialXPos <= this.BOARD_LIMIT && initialYPos <= this.BOARD_LIMIT && locationXPos <= this.BOARD_LIMIT && locationYPos <= this.BOARD_LIMIT) {
-            this.chessBoard[ locationYPos ][locationXPos] = this.chessBoard[initialYPos][ initialXPos];
+            this.chessBoard[locationXPos][locationYPos] = this.chessBoard[initialXPos][initialYPos];
             this.remove(initialXPos, initialYPos);
         }
         else{
@@ -139,7 +137,7 @@ output +="Q";
      */
     getPiece(xPos: number, yPos: number) {
         if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            return this.chessBoard[yPos][ xPos];
+            return this.chessBoard[xPos][yPos];
         }
         else {
             console.log("Board class tried to return a Piece that was out of bounds. Attempted X Position: " + xPos + " Attempted Y Position: " + yPos);

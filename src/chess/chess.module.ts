@@ -49,7 +49,7 @@ import {
 		ValidatorModule
 	],
 	exports: [BoardComponent,HomeComponent,PieceComponent, GameComponent],
-	bootstrap: [BoardComponent, HomeComponent, GameComponent],
+	bootstrap: [BoardComponent, HomeComponent],
 })
 export class ChessModule {};
-export {BoardComponent, HomeComponent, PieceComponent, GameComponent};
+export {BoardComponent, HomeComponent, PieceComponent};
