@@ -1,27 +1,31 @@
 <div class="container">
-	<button  class="btn btn-secondary" (click)="this.startEditor()">Enter the editor</button>
-	<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
-	<button class="btn btn-secondary" (click)="this.closeEditor()" style="display: none;">Close editor</button>
-
+	<button id = "enterEditorBtn" class="btn btn-secondary" (click)="this.startEditor()">Enter the editor</button>
+	
 	<div id="editorTools" style="display:none;" class="container-fluid">
 		<div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"
-       class="row " [cdkDropListData]="pieceCollection" 
-       (cdkDropListDropped)="this.drop($event)">
+       	class="row " [cdkDropListData]="pieceCollection" 
+       	(cdkDropListDropped)="this.drop($event)">
 			<div *ngFor = "let piece of pieceCollection" class="col container">
 				<div id = "pieceLimit_{{piece}}" class="special" > {{this.getLimit(piece)}}</div>
 				<app-piece cdkDragPreview  matchSize="true"  id="freeMovingPiece_{{piece}}" 
-						 [cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
-						 (cdkDragStarted)="this.start(piece)" 
-						 [piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
+						[cdkDragDisabled]="getLimit(piece) <=0" (cdkDragReleased)="this.end(piece)" 
+						(cdkDragStarted)="this.start(piece)" 
+						[piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
 			</div>
 		</div>
+		<button class="btn btn-secondary" (click)="this.closeEditor()">Cancel editor</button>
+		<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
 	</div>
-		<div id ="load" style="display:none">
-			<div *ngFor="let fen of fenSaved; let i = index;">
-				<p id="fenId_{{i}}">{{fen}}</p>
-				<button class="btn btn-primary" (click)="this.loadSavedFen(fen)">Load this board</button>
-			</div>
-		</div>
+	<div id ="load" style="display:none">
+		<table>
+			<tbody>
+				<tr *ngFor = "let fen of fenSaved; let i = index;">
+					<td id="fenId_{{i}}">{{fen}}</td>
+					<td><button class="btn btn-primary" (click)="this.loadSavedFen(fen)">Load this board</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<app-board #board>
 	</app-board>
 </div>
