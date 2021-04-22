@@ -22,130 +22,176 @@ export class GameComponent implements AfterViewInit {
 	constructor() { }
 
 	ngAfterViewInit(): void {
-	console.log("TEST");
-		this.board.madeMove = () => this.move();
+		console.log("TEST");
+		this.board.madeMove = (x:any) => {this.move(x)};
 		this.board.generateBoard();
 		this.startingPosition = this.getFENBoard();
-		
-		
+
+
 		this.vboard = new ValidatorBoard();
 		this.loadValidator();
+		console.log(this.startingPosition);
+
+		this.history[0] =this.startingPosition;
+		console.log(this.history);
 	}
-	move(){
-	console.log("MOVE CALLED");
-		let after = this.getFENBoard();
-		let previous = (this.turn > 1? this.history[this.turn - 1]:this.startingPosition).split("/");
-		let aboard = after.split("/");
-		let pos1 = {x: -1, y: -1};
-		let pos2 = {x: -1, y: -1};
+	isUpperCase(st:string){
+	return st === st.toUpperCase();
+	}
+	move(inp:any){
+		let spit = (x:string) => { return x.split("/")};
+		let previous = spit(this.history[this.turn-1]);
+		let leMove = spit(this.getFENBoard());
+		this.loadValidator();
 		let found = false;
-		for(var y = 0; y < aboard.length && !found; y = y + 1){
-		let counter = 0;
-		for(var x = 0; x < aboard[y].length && !found; x = x + 1){
-		let out = Number(aboard[y][x]);
-				counter = isNaN(out)? counter:counter+(out > 1? out-1:0);
-			if(!(aboard[y][x] == previous[y][x])){
-			  let out = Number(aboard[y][x]);
-				if(pos1.x != -1 && isNaN(out)){
-					console.log(aboard[y][x]);
-					pos2.x = x + (counter);
-					pos2.y = 7- y;
-					if(isNaN(out))
+		let original = {x: -1, y:-1};
+		let cload = (px:number, py:number) => { return {x: px, y: py}};
+		let  end = cload(inp.x, inp.y);
+		console.log(leMove);
+		console.log(inp.x + ", " +inp.y);
+		console.log(leMove[inp.y]);
+		if(this.player && !this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces()) || !this.player && this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces())){
+			console.log("THAT IS NOT YOURS!");
+			this.undo();
+			return;
+		}
+		for (var row = 0; row <= 7 && found == false; row++){
+			const pRow = previous[row];
+			const leRow = leMove[row];
+			let counter = 0;
+			let counters = {p: 0, l: 0, pe: 0, le: 0};
+			while(counter <= 7 && found == false){
+				const pCell = counters.pe == 0?pRow[counters.p]:"1";
+				const leCell = counters.le == 0? leRow[counters.l]:"1";
+				console.log(pCell);
+				console.log(leCell);
+				if(pCell == leCell){
+					counters.p = counters.p+1;
+					counters.l = counters.l+1;
+				}
+				if(pCell != leCell && !this.isDigit(pCell) && this.isDigit(leCell)){
 					found = true;
-				}else{
-					pos1.x = x + (counter);
-					pos1.y =  7 - y;
-				}	
+					original.x = counter;
+					original.y = row;
+				}
+				counter = counter + 1;
 			}
 		}
+
+				if(found){
+					console.log(previous);
+					console.log(leMove);
+					console.log(original);
+					console.log(end);
+					let valid = this.vboard.validateMovement(original.x,7- original.y,end.x, 7-end.y);
+					if(!valid){
+						this.undo();
+					}else{
+
+						this.player=!this.player;
+						this.history.push(this.getFENBoard());
+						this.turn = this.turn + 1;
+					}
+					found = false;
+					
+				}
+			}
+			isDigit(fen:string){
+				return !isNaN(Number(fen));
+			}
+			parse(fen:string){
+				// TODO Split String into parts
+
+				// TODO Add conditional for only position
+				// TODO Parse parts of FEN string
+			}
+
+			isValid(){
+				// TODO Add Validator Board implementation
+
+			}
+			loadValidator(){
+				let aboard = this.getFENBoard().split("/");
+
+				for(var y = 0; y < aboard.length; y++){
+					for(var x = 0; x < aboard[y].length; x++){
+						
+						let temp = aboard[y][x];
+						if(this.isDigit(temp)){
+							let counter = 0;
+							while(counter < Number(temp)){
+								counter = counter + 1;
+								this.vboard.chessBoard[y][x+counter] = new Piece("UNSPECIFIED");
+							}
+						}else{
+							let temp2 = this.vboard.createPiece(temp);
+							if(temp2 instanceof Piece){
+								this.vboard.chessBoard[7-y][x] = temp2 ;
+							}
+						}
+					}
+				}
+				console.log(this.vboard.chessBoard);
+			}
+
+			isCheck(){
+
+			}
+			isCheckMate(){
+
+			}
+			/** 
+			 * Function: endGame
+			 *
+			 */
+			endGame(){
+
+			}
+
+			/**
+			 * Function: isMoveLimit
+			 */
+			isMoveLimit(){
+				return this.halfMove >= 100;
+			}
+			/**
+			 * Function: undo
+			 * TODO
+			 */
+			undo(){
+				this.board.generateBoard(this.history[this.turn-1]);
+				this.loadValidator();
+			}
+			canCastle(){
+
+			}
+			toFENString(){
+				return "";
+			}
+			getFENBoard(){
+				return this.board.toFENString();
+			}
+			// Function nextTurn
+			nextTurn(){
+				this.history.push(this.toFENString());
+				this.player = !this.player;
+				this.turn = this.turn + 1;
+			}
+			// Function:isTurn
+			isTurn(player:string){
+				return this.player?player=='w':player=='b';
+			}
+
+			lastTurn(){
+				if(this.turn > 1){
+					this.board.generateFEN(this.history.pop());
+					this.player = !this.player;
+					this.turn = this.turn -1;
+				}else{
+				 this.board.generateFEN(this.history[0]);
+					this.player = true; 
+
+				}
+			}
+
 		}
-		if(found){
-		console.log(aboard);
-		console.log(previous);
-		console.log(pos1);
-		console.log(pos2);
-			console.log(this.vboard.validateMovement(pos1.x,pos1.y,pos2.x,pos2.y));
-			found = false;
-		}
-	}
-
-	parse(){
-		// TODO Split String into parts
-
-		// TODO Add conditional for only position
-		// TODO Parse parts of FEN string
-	}
-
-	isValid(){
-		// TODO Add Validator Board implementation
-
-	}
-	loadValidator(){
-		let aboard = this.getFENBoard().split("/");
-		
-		for(var y = 0; y < aboard.length; y++){
-		for(var x = 0; x < aboard[y].length; x++){
-		 let temp = this.vboard.createPiece(aboard[y][x]);
-		 if(temp instanceof Piece)
-		 this.vboard.chessBoard[7-y][x] = temp;
-		 }
-		 }
-		 console.log(this.vboard.chessBoard);
-	}
-
-	isCheck(){
-
-	}
-	isCheckMate(){
-
-	}
-	/** 
-	 * Function: endGame
-	 *
-	 */
-	endGame(){
-
-	}
-
-	/**
-	 * Function: isMoveLimit
-	 */
-	isMoveLimit(){
-		return this.halfMove >= 100;
-	}
-	/**
-	 * Function: undo
-	 * TODO
-	 */
-	undo(){
-		this.board.generateBoard(this.startingPosition);
-		this.loadValidator();
-	}
-	canCastle(){
-
-	}
-	toFENString(){
-		return "";
-	}
-	getFENBoard(){
-		return this.board.toFENString();
-	}
-	// Function nextTurn
-	nextTurn(){
-		this.history.push(this.toFENString());
-		this.player = !this.player;
-		this.turn = this.turn + 1;
-	}
-	// Function:isTurn
-	isTurn(player:string){
-		return this.player?player=='w':player=='b';
-	}
-	lastTurn(){
-		if(this.turn > 1){
-			this.board.generateFEN(this.history.pop());
-			this.player = !this.player;
-			this.turn = this.turn -1;
-		}
-	}
-
-}

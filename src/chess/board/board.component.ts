@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit, FEN{
 	
 	test_counter: number = 0;
 
-	public madeMove = () => {console.log("Well you failed to over write me");};
+	public madeMove = (cell:any) => {return cell};
 
 	/*
 	 * Function: addRow
@@ -65,10 +65,10 @@ export class BoardComponent implements OnInit, FEN{
 				a.style = classB;
 			}
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
-			a.y = 8 - this.rows.length;
+			a.y = this.rows.length;
 			a.x = y;
 			if(!(this.madeMove === null))
-				a.madeMove = () => {this.madeMove()};
+				a.madeMove = () => {this.madeMove(a)};
 			
 			temp.addCell(a);
 		}
