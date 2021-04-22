@@ -12,7 +12,7 @@ export class AppComponent {
   goBoard(){
     this.page = 2;
   }
-  goEditor(){
+  goGame(){
   this.page = 3;
   }
   title = 'chess-app';

@@ -23,17 +23,12 @@ export class BoardComponent implements OnInit, FEN{
 	secondaryColor: string = "bg-secondary";
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-	
+	noStack:boolean = false;	
 	rows: Array < Row > = [];
+	
 	test_counter: number = 0;
-	/**
-	 * Function: dragStarted
-	 * Parameter: event
-	 *
-	 * Note: Not necessary (DEMO_REMOVE)
-	 */
-	
-	
+
+	public madeMove = () => {console.log("Well you failed to over write me");};
 
 	/*
 	 * Function: addRow
@@ -70,6 +65,11 @@ export class BoardComponent implements OnInit, FEN{
 				a.style = classB;
 			}
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
+			a.y = 8 - this.rows.length;
+			a.x = y;
+			if(!(this.madeMove === null))
+				a.madeMove = () => {this.madeMove()};
+			
 			temp.addCell(a);
 		}
 
@@ -259,7 +259,9 @@ class Row implements FEN{
 class Cell implements FEN{
 	style = "";
 	pieces = [""];
-
+	x:number = -1;
+	y:number = -1;
+	public madeMove = () => {};
 	/**
 	 * Function: getPieces
 	 *
@@ -307,6 +309,11 @@ class Cell implements FEN{
 				event.previousIndex, event.currentIndex);
 
 		}
+		if(this.madeMove){
+		 this.madeMove();
+		 console.log("WELL, I MADE IT!");
+		}
+	
 	}
 
 
