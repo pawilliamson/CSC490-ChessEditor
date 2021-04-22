@@ -2,6 +2,7 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { Turn } from './turn';
 import { ValidatorBoard , Piece} from '../../validator/validator.module';
+import { BoardComponent } from '../board/board.component';
 @Component({
 	selector: 'app-game',
 	templateUrl: './game.component.html',
@@ -16,7 +17,7 @@ export class GameComponent implements AfterViewInit {
 	board:any;
 	startingPosition:string = "";
 	vboard:ValidatorBoard = new ValidatorBoard();
-
+	previousBoard:any = new BoardComponent();
 	halfMove:number = 0;
 
 	constructor() { }
@@ -38,59 +39,52 @@ export class GameComponent implements AfterViewInit {
 	isUpperCase(st:string){
 	return st === st.toUpperCase();
 	}
+
+	intToUnary(num:number){
+	var out = [1];
+		for (var counter = 1; counter < num; counter++){
+		 out.push(1);
+		}
+		return out;
+	}
 	move(inp:any){
 		let spit = (x:string) => { return x.split("/")};
-		let previous = spit(this.history[this.turn-1]);
-		let leMove = spit(this.getFENBoard());
-		this.loadValidator();
+
+		this.previousBoard.generateBoard(this.history[this.turn-1]);
+				this.previousBoard.generateBoard(this.history[this.turn-1]);
+
 		let found = false;
 		let original = {x: -1, y:-1};
 		let cload = (px:number, py:number) => { return {x: px, y: py}};
 		let  end = cload(inp.x, inp.y);
-		console.log(leMove);
-		console.log(inp.x + ", " +inp.y);
-		console.log(leMove[inp.y]);
-		if(this.player && !this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces()) || !this.player && this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces())){
-			console.log("THAT IS NOT YOURS!");
-			this.undo();
-			return;
-		}
-		for (var row = 0; row <= 7 && found == false; row++){
-			const pRow = previous[row];
-			const leRow = leMove[row];
-			let counter = 0;
-			let counters = {p: 0, l: 0, pe: 0, le: 0};
-			while(counter <= 7 && found == false){
-				const pCell = counters.pe == 0?pRow[counters.p]:"1";
-				const leCell = counters.le == 0? leRow[counters.l]:"1";
-				console.log(pCell);
-				console.log(leCell);
-				if(pCell == leCell){
-					counters.p = counters.p+1;
-					counters.l = counters.l+1;
-				}
-				if(pCell != leCell && !this.isDigit(pCell) && this.isDigit(leCell)){
-					found = true;
-					original.x = counter;
-					original.y = row;
-				}
-				counter = counter + 1;
-			}
-		}
+		console.log(end);
+		
+		for (var row = 0; row < this.previousBoard.rows.length && !found; row++){
+			for (var cell =0; cell <  this.previousBoard.rows[row].cells.length && !found; cell++){
+				if(!((inp.x == cell) && (inp.y == row))) {
 
+					if(this.previousBoard.rows[row].cells[cell].getPieces()
+						!= this.board.rows[row].cells[cell].getPieces()){
+						found = true;
+						original = cload(cell, row);
+						console.log(original);
+					}
+				}
+
+			}
+
+		}
 				if(found){
-					console.log(previous);
-					console.log(leMove);
-					console.log(original);
-					console.log(end);
-					let valid = this.vboard.validateMovement(original.x,7- original.y,end.x, 7-end.y);
+					let valid = this.vboard.validateMovement(original.x, original.y, end.x, end.y);
 					if(!valid){
 						this.undo();
 					}else{
-
+console.log("VALID");
 						this.player=!this.player;
 						this.history.push(this.getFENBoard());
+						this.previousBoard.generateBoard(this.board.toFENString());
 						this.turn = this.turn + 1;
+						this.loadValidator();
 					}
 					found = false;
 					
@@ -111,27 +105,18 @@ export class GameComponent implements AfterViewInit {
 
 			}
 			loadValidator(){
-				let aboard = this.getFENBoard().split("/");
+			 this.vboard = new ValidatorBoard();
+			 for(var row of this.board.rows){
+				 for(var cell of row.cells){
+					 if(cell.toFENString != ""){
+						 let temp = this.vboard.createPiece(cell.toFENString());
+						 if(temp instanceof Piece)
+						 this.vboard.add(cell.x, cell.y, temp);
 
-				for(var y = 0; y < aboard.length; y++){
-					for(var x = 0; x < aboard[y].length; x++){
-						
-						let temp = aboard[y][x];
-						if(this.isDigit(temp)){
-							let counter = 0;
-							while(counter < Number(temp)){
-								counter = counter + 1;
-								this.vboard.chessBoard[y][x+counter] = new Piece("UNSPECIFIED");
-							}
-						}else{
-							let temp2 = this.vboard.createPiece(temp);
-							if(temp2 instanceof Piece){
-								this.vboard.chessBoard[7-y][x] = temp2 ;
-							}
-						}
-					}
-				}
-				console.log(this.vboard.chessBoard);
+					 }
+				 }
+			 }
+			 console.log(this.vboard.chessBoard);
 			}
 
 			isCheck(){
@@ -194,4 +179,9 @@ export class GameComponent implements AfterViewInit {
 				}
 			}
 
-		}
+}
+export class RCell{
+	public value:string|number|undefined = "-1";
+	public  stack:any = "";
+	constructor(){};
+}
