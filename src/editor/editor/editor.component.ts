@@ -177,6 +177,7 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     loadSavedFen(fen:string){
+        this.closeEditor ();
         this.board.generateBoard(fen);
     }
 
