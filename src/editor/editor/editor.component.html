@@ -17,10 +17,14 @@
 		<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
 	</div>
 	<div id ="load" style="display:none">
-		<div *ngFor="let fen of fenSaved; let i = index;">
-			<p id="fenId_{{i}}">{{fen}}</p>
-			<button class="btn btn-primary" (click)="this.loadSavedFen(fen)">Load this board</button>
-		</div>
+		<table>
+			<tbody>
+				<tr *ngFor = "let fen of fenSaved; let i = index;">
+					<td id="fenId_{{i}}">{{fen}}</td>
+					<td><button class="btn btn-primary" (click)="this.loadSavedFen(fen)">Load this board</button></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<app-board #board>
 	</app-board>
