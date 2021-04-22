@@ -374,7 +374,7 @@ export class ValidatorBoard extends Board {
 			// that there is an enemy piece present at that space, and that
 			// the color of the piece is black.
 
-			if (y2 == y1 + 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "BLACK") {
+			if (y2 == y1 - 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "BLACK") {
 
 				return true;
 			}

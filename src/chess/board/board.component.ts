@@ -311,16 +311,18 @@ class Cell implements FEN{
 		}
 		console.log(before);
 		console.log(this.getPieces())
+		//if(this.pieces.length > 1)
 		if(before && this.getPieces())
 		if (before == this.getPieces()){
 			this.pieces.shift();
 		}else{
 			this.pieces.pop();
 		}
-		if(this.madeMove){
+		this.pieces = [this.getPieces()];
+		
 		 this.madeMove();
 		 console.log("WELL, I MADE IT!");
-		}
+		
 	
 	}
 
