@@ -27,6 +27,7 @@ export class CreatorComponent implements AfterViewInit {
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
 	fenSaved:Array<string>=[];
+    previousFen: string = "";
 	
     /*each piece will contain a map of attributes
         piece: FEN string representation of piece
@@ -132,23 +133,28 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     startEditor(){
+        let enterBtn = <HTMLInputElement>document.getElementById("enterEditorBtn");
         let editor = <HTMLInputElement>document.getElementById("editorTools");
         let saved = <HTMLInputElement>document.getElementById("load");
         editor.style.display="block";
         saved.style.display="block";
+        enterBtn.style.display="none";
         this.board.generateBoard("8/8/8/8/8/8/8/8");
     }
 
     closeEditor(){
+        let enterBtn = <HTMLInputElement>document.getElementById("enterEditorBtn");
         let editor = <HTMLInputElement>document.getElementById("editorTools");
+        let saved = <HTMLInputElement>document.getElementById("load");
         editor.style.display= "none";
+        saved.style.display="none";
+        enterBtn.style.display="block";
 
         //Reset counts for pieces
         for(let piece of this.pieces){
             let limit = <HTMLInputElement>document.getElementById("pieceLimit_" + piece.piece);
             limit.innerHTML = piece.upperBound.toString();
         }
-        this.board.saveBoard
     }
 
     loadSavedFen(fen:string){
@@ -161,7 +167,8 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     saveBoard(){
-        this.fenSaved.push(this.board.toFENString());
+        if(this.fenSaved.indexOf(this.board.toFENString()) == -1)
+            this.fenSaved.push(this.board.toFENString());
         this.closeEditor();
     }
 
