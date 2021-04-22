@@ -258,7 +258,7 @@ class Row implements FEN{
 }
 class Cell implements FEN{
 	style = "";
-	pieces = [""];
+	pieces:Array<string> = [""];
 	x:number = -1;
 	y:number = -1;
 	public madeMove = () => {};
@@ -268,7 +268,9 @@ class Cell implements FEN{
 	 * Returns first character in the pieces array
 	 */
 	getPieces(){
-		return this.pieces[0];
+	
+		 return this.pieces[0]
+	 
 	}
 
 
@@ -301,13 +303,18 @@ class Cell implements FEN{
 	 * Function: drop
 	 */
 	drop(event: CdkDragDrop<string[]>) {
-
+		let before = this.getPieces();
 		if (event.previousContainer === event.container) {
 			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 		} else {
 			transferArrayItem(event.previousContainer.data, event.container.data, 
 				event.previousIndex, event.currentIndex);
 
+		}
+		if (before == this.getPieces()){
+			this.pieces.shift();
+		}else{
+			this.pieces.pop();
 		}
 		if(this.madeMove){
 		 this.madeMove();

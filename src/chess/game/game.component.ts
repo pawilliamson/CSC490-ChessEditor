@@ -51,23 +51,31 @@ export class GameComponent implements AfterViewInit {
 		let spit = (x:string) => { return x.split("/")};
 
 		this.previousBoard.generateBoard(this.history[this.turn-1]);
-				this.previousBoard.generateBoard(this.history[this.turn-1]);
-
-		let found = false;
+		
+		let icase = this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces());
+		if (icase != this.player){
+			this.undo();
+			return;		
+		
+		}
+		
+				let found = false;
 		let original = {x: -1, y:-1};
 		let cload = (px:number, py:number) => { return {x: px, y: py}};
 		let  end = cload(inp.x, inp.y);
 		console.log(end);
 		
-		for (var row = 0; row < this.previousBoard.rows.length && !found; row++){
-			for (var cell =0; cell <  this.previousBoard.rows[row].cells.length && !found; cell++){
+		for (let row = 0; row < this.previousBoard.rows.length && !found; row++){
+			for (let cell =0; cell <  this.previousBoard.rows[row].cells.length && !found; cell++){
 				if(!((inp.x == cell) && (inp.y == row))) {
 
 					if(this.previousBoard.rows[row].cells[cell].getPieces()
-						!= this.board.rows[row].cells[cell].getPieces()){
+						!= this.board.rows[row].cells[cell].getPieces() && (this.board.rows[row].cells[cell].getPieces() || this.previousBoard.rows[row].cells[cell].getPieces())){
 						found = true;
 						original = cload(cell, row);
 						console.log(original);
+						console.log(this.previousBoard.rows[row].cells[cell].getPieces());
+						console.log(this.board.rows[row].cells[cell].getPieces())
 					}
 				}
 
@@ -82,12 +90,15 @@ export class GameComponent implements AfterViewInit {
 console.log("VALID");
 						this.player=!this.player;
 						this.history.push(this.getFENBoard());
-						this.previousBoard.generateBoard(this.board.toFENString());
 						this.turn = this.turn + 1;
+						
 						this.loadValidator();
 					}
 					found = false;
+					this.previousBoard.generateBoard(this.history[this.turn-1]);
 					
+				}else{
+					this.undo();
 				}
 			}
 			isDigit(fen:string){
