@@ -261,6 +261,7 @@ export class ValidatorBoard extends Board {
 		}
 		if (this.chessBoard[y1][x1].getName() == "UNSPECIFIED") {
 			console.log("Error: No piece selected");
+			console.log(this.chessBoard);
 		}
 		var pieceName: string = this.chessBoard[y1][x1].getName();
 		var validMovement: boolean = false;
@@ -280,10 +281,10 @@ export class ValidatorBoard extends Board {
 					validMovement = true;
 					// These booleans will be set to true after the king's movement
 					// to prevent them from castling after moving.
-					if (this.chessBoard[x1][y1].getColor() == "WHITE") {
+					if (this.chessBoard[y1][x1].getColor() == "WHITE") {
 						this.whiteKingMoved = true;
 					}
-					if (this.chessBoard[x1][y1].getColor() == "BLACK") {
+					if (this.chessBoard[y1][x1].getColor() == "BLACK") {
 						this.blackKingMoved = true;
 					}
 				}
@@ -345,7 +346,7 @@ export class ValidatorBoard extends Board {
 			// Checks for down movement, verifies that the piece is moving down one,
 			// not moving horizontally, and there is nothing in the way of the piece.
 			
-			if (y2 == y1 - 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
+			if (y2 == y1 + 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
 				return true;
 			}else{
 			console.log("YOU LIAR!");
@@ -353,7 +354,7 @@ export class ValidatorBoard extends Board {
 			// Checks for down diagonal movement, which can occur if there is an enemy piece occupying
 			// that space. Checks that it is moving down 1, left or right 1,  that there is an enemy piece present
 			// at that space, and that the color of the piece is white.
-			if (y2 == y1 - 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "WHITE") {
+			if (y2 == y1 + 1 && (x2 == x1 + 1 || x2 == x1 - 1) && this.chessBoard[y2][x2].getName() != "UNSPECIFIED" && this.chessBoard[y2][x2].getColor() == "WHITE") {
 				return true;
 			}
 			console.log("Bad coordinates sent for movement of pawn.");
@@ -364,7 +365,7 @@ export class ValidatorBoard extends Board {
 			// up one, not moving horizontally, and there is nothing in the
 			// way of the piece.
 
-			if (y2 == y1 + 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
+			if (y2 == y1 - 1 && x1 == x2 && this.chessBoard[y2][x2].getName() == "UNSPECIFIED") {
 				return true;
 			}
 			// Checks for upwards diagonal movement, which can occur if there

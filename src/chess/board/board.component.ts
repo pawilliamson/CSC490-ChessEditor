@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit, FEN{
 	
 	test_counter: number = 0;
 
-	public madeMove = () => {console.log("Well you failed to over write me");};
+	public madeMove = (cell:any) => {return cell};
 
 	/*
 	 * Function: addRow
@@ -65,10 +65,10 @@ export class BoardComponent implements OnInit, FEN{
 				a.style = classB;
 			}
 			a.setFEN((isNaN(Number(fs)) ? fs : ""))
-			a.y = 8 - this.rows.length;
+			a.y = this.rows.length;
 			a.x = y;
 			if(!(this.madeMove === null))
-				a.madeMove = () => {this.madeMove()};
+				a.madeMove = () => {this.madeMove(a)};
 			
 			temp.addCell(a);
 		}
@@ -258,7 +258,7 @@ class Row implements FEN{
 }
 class Cell implements FEN{
 	style = "";
-	pieces = [""];
+	pieces:Array<string> = [""];
 	x:number = -1;
 	y:number = -1;
 	public madeMove = () => {};
@@ -268,7 +268,9 @@ class Cell implements FEN{
 	 * Returns first character in the pieces array
 	 */
 	getPieces(){
-		return this.pieces[0];
+	
+		 return this.pieces[0]
+	 
 	}
 
 
@@ -301,13 +303,18 @@ class Cell implements FEN{
 	 * Function: drop
 	 */
 	drop(event: CdkDragDrop<string[]>) {
-
+		let before = this.getPieces();
 		if (event.previousContainer === event.container) {
 			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 		} else {
 			transferArrayItem(event.previousContainer.data, event.container.data, 
 				event.previousIndex, event.currentIndex);
 
+		}
+		if (before == this.getPieces()){
+			this.pieces.shift();
+		}else{
+			this.pieces.pop();
 		}
 		if(this.madeMove){
 		 this.madeMove();
