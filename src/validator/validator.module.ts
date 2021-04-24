@@ -1,3 +1,5 @@
+//File: validator.module.ts
+//File: $f
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +12,7 @@ import { Bishop } from './bishop.service';
 import { Knight } from './knight.service';
 import { ValidatorBoard } from './validatorboard';
 import { Board } from './board.service';
-import { PieceProvider} from './piece.service.provider';
+import { pieceProvider} from './piece.service.provider';
 
 @NgModule({
   imports: [
@@ -18,4 +20,4 @@ import { PieceProvider} from './piece.service.provider';
   ],
 })
 export class ValidatorModule { }
-export {ValidatorBoard, Rook, King, Queen, Pawn, PieceProvider, Bishop, Knight, Board, Piece};
+export {ValidatorBoard, Rook, King, Queen, Pawn, pieceProvider, Bishop, Knight, Board, Piece};

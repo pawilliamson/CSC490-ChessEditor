@@ -25,7 +25,7 @@ describe('HomeComponent', () => {
     //To fill with test cases
     /*
     it('should generate home page', () => {
-        
+
     });
     */
 

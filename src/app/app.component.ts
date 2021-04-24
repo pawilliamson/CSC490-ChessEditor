@@ -16,5 +16,5 @@ export class AppComponent {
   this.page = 3;
   }
   title = 'chess-app';
-  constructor() {}; 
+  constructor() {};
  }

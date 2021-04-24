@@ -1,9 +1,9 @@
+//File: piece.service.provider.ts
+//File: $f
 import { Piece } from './piece.service';
 
-let pieceFactory = (color:string)=>{
- return new Piece(color);
-};
-export let PieceProvider = {
+const pieceFactory = (color: string)=>new Piece(color);
+export const pieceProvider = {
 	provide: Piece,
 	useFactory: pieceFactory,
 	};

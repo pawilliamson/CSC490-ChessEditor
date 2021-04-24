@@ -8,8 +8,8 @@ describe('PieceComponent', () => {
   let component: PieceComponent;
   let pieceComponentMock: PieceComponent;
   let piece: Piece;
-  let xStartPosition = 3, yStartPosition = 3;
-  let boardStart = 0, boardEnd = 7;
+  const xStartPosition = 3; const yStartPosition = 3;
+  const boardStart = 0; const boardEnd = 7;
 
   let fixture: ComponentFixture<PieceComponent>;
   let board: ValidatorBoard = new ValidatorBoard();
@@ -22,13 +22,13 @@ describe('PieceComponent', () => {
   });
 
   beforeEach(() => {
-	
+
     fixture = TestBed.createComponent(PieceComponent);
-    
+
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
-    
+
+
   });
 
   it('should create', () => {
@@ -36,10 +36,10 @@ describe('PieceComponent', () => {
   });
 
   describe('Pawns', function() {
-  let xStartPosition = 3, yStartPosition = 3;
-    let pawn: Pawn = new Pawn("WHITE");
-    let otherPiece: Pawn = new Pawn("BLACK");
-   
+  const xStartPosition = 3; const yStartPosition = 3;
+    const pawn: Pawn = new Pawn('WHITE');
+    const otherPiece: Pawn = new Pawn('BLACK');
+
     beforeEach(() => {
     board = new ValidatorBoard();
     });
@@ -55,7 +55,7 @@ describe('PieceComponent', () => {
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition, yStartPosition - 1)).toBeTrue();
     });
- 
+
     it('should not be allowed to occupy the same cell as a piece with any color', () => {
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       board.chessBoard[xStartPosition][yStartPosition + 1] = otherPiece;
@@ -80,12 +80,12 @@ describe('PieceComponent', () => {
   });
 
   describe('Rooks', function() {
-    let rook: Rook = new Rook("BLACK");
-    let otherPiece:Pawn = new Pawn("WHITE");
+    const rook: Rook = new Rook('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
 	beforeEach( () =>{
 	board = new ValidatorBoard();
 	});
-	
+
     it('should be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeTrue();
@@ -97,7 +97,7 @@ describe('PieceComponent', () => {
     });
 
     it('should not be able to move diagonally', () => {
-      let diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
+      const diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       expect(board.validateMovement(xStartPosition, xStartPosition, xStartPosition - diag, yStartPosition - diag)).toBeFalse();
     });
@@ -128,8 +128,8 @@ describe('PieceComponent', () => {
   });
 
   describe('Bishops', function() {
-    let bishop: Bishop = new  Bishop("BLACK");
-    let otherPiece: Pawn = new Pawn("WHITE");
+    const bishop: Bishop = new  Bishop('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
 	beforeEach( () =>{
 	board = new ValidatorBoard();
 	});
@@ -144,7 +144,7 @@ describe('PieceComponent', () => {
     });
 
     it('should be able to move diagonally', () => {
-      let diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
+      const diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       expect(board.validateMovement(xStartPosition, xStartPosition, xStartPosition + 1, yStartPosition - 1)).toBeTrue();
     });
@@ -173,14 +173,14 @@ describe('PieceComponent', () => {
   });
 
   describe('Knights', function() {
-    let knight: Knight = new Knight("BLACK");
-    let otherPiece: Pawn = new Pawn("WHITE");
+    const knight: Knight = new Knight('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
 	beforeEach( () =>{
 	board = new ValidatorBoard();
 	});
-	
+
     it('should not be able to move horizontally', () => {
-  
+
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeFalse();
     });
@@ -191,7 +191,7 @@ describe('PieceComponent', () => {
     });
 
     it('should not be able to move diagonally', () => {
-      let diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
+      const diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(board.validateMovement(xStartPosition, xStartPosition, xStartPosition - diag, yStartPosition - diag)).toBeFalse();
     });
@@ -202,7 +202,7 @@ describe('PieceComponent', () => {
     });
 
     it('should be able to capture an opposing piece', () => {
-    
+
       knight.setColor('WHITE');
       otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
@@ -219,8 +219,8 @@ describe('PieceComponent', () => {
     });
 
     /**
-      * I don't think this applies for knights. - DeMO
-      */
+     * I don't think this applies for knights. - DeMO
+     */
     it('should not be able to pass through another piece to get to a cell', () => {
        knight.setColor('WHITE');
       otherPiece.setColor('WHITE');
@@ -231,27 +231,27 @@ describe('PieceComponent', () => {
   });
 
   describe('Queens', function() {
-    let queen: Queen = new Queen("WHITE");
-    let otherPiece: Pawn = new Pawn("BLACK");
+    const queen: Queen = new Queen('WHITE');
+    const otherPiece: Pawn = new Pawn('BLACK');
     beforeEach(()=> {
     board = new ValidatorBoard();
     });
 
     it('should be able to move horizontally', () => {
-  
+
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, yStartPosition, boardEnd, yStartPosition)).toBeTrue();
     });
 
     it('should be able to move vertically', () => {
-    
+
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, yStartPosition, xStartPosition, boardStart)).toBeTrue();
     });
 
     it('should be able to move diagonally', () => {
 
-      let diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
+      const diag = xStartPosition > yStartPosition ? xStartPosition - 1 : yStartPosition - 1;
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(board.validateMovement(xStartPosition, xStartPosition, xStartPosition - diag, yStartPosition - diag)).toBeTrue();
     });
@@ -275,8 +275,8 @@ describe('PieceComponent', () => {
   });
 
   describe('Kings', function() {
-    let king: King = new King("BLACK");
-    let otherPiece: Pawn = new Pawn("WHITE");
+    const king: King = new King('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
 	beforeEach(()=>{
 	board = new ValidatorBoard();
 	});
