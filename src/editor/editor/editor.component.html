@@ -13,7 +13,7 @@
 						[piece]="piece" cdkDropData="piece"  cdkDrag></app-piece>
 			</div>
 		</div>
-		<button class="btn btn-secondary" (click)="this.closeEditor()">Cancel editor</button>
+		<button class="btn btn-secondary" (click)="this.cancelEditor()">Cancel editor</button>
 		<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
 	</div>
 	<div id ="load" style="display:none">
@@ -26,6 +26,6 @@
 			</tbody>
 		</table>
 	</div>
-	<app-board #board>
-	</app-board>
+	<app-game #game>
+	</app-game>
 </div>

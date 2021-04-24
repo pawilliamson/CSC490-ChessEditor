@@ -23,21 +23,32 @@ export class GameComponent implements AfterViewInit {
 	constructor() { }
 
 	ngAfterViewInit(): void {
-		console.log("TEST");
+        this.initBoard ();
+	}
+
+    initBoard (starter? : Partial <string>) {
+        this.turn = 1;
 		this.board.madeMove = (x:any) => {this.move(x)};
-		this.board.generateBoard();
+
+        if (!starter) {
+            this.board.generateBoard();
+        }
+        else {
+            this.board.generateBoard(starter);
+        }
+
 		this.startingPosition = this.getFENBoard();
-
-
 		this.vboard = new ValidatorBoard();
 		this.loadValidator();
-		console.log(this.startingPosition);
 
-		this.history[0] =this.startingPosition;
-		console.log(this.history);
-	}
+		//this.history[0] = this.startingPosition;
+        this.history = [];
+        this.history.push (this.startingPosition);
+    }
+
 	isUpperCase(st:string){
-	return st === st.toUpperCase();
+        //if st is undefined (happens when dragging piece back to its original position), always return the boolean that contadicts what is stored in player.
+	    return (typeof st != 'undefined') ? st === st.toUpperCase() : !this.player;
 	}
 
 	intToUnary(num:number){
@@ -59,7 +70,7 @@ export class GameComponent implements AfterViewInit {
 		
 		}
 		
-				let found = false;
+        let found = false;
 		let original = {x: -1, y:-1};
 		let cload = (px:number, py:number) => { return {x: px, y: py}};
 		let  end = cload(inp.x, inp.y);

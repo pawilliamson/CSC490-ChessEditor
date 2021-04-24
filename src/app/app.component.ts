@@ -12,9 +12,6 @@ export class AppComponent {
   goBoard(){
     this.page = 2;
   }
-  goGame(){
-  this.page = 3;
-  }
   title = 'chess-app';
   constructor() {}; 
  }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, AfterContentInit } from '@angular/core';
 import {
 	DragDropModule,moveItemInArray, transferArrayItem, copyArrayItem, CdkDragStart,CdkDragDrop, CdkDrag, CdkDropList, CdkDragExit,CdkDragMove
 	} from '@angular/cdk/drag-drop';
@@ -10,8 +10,8 @@ import {BoardComponent} from '../../chess/board/board.component';
     styleUrls: ['./editor.component.css']
 })
 
-export class CreatorComponent implements AfterViewInit {
-    @ViewChild("board")board:any;
+export class CreatorComponent implements AfterViewInit, AfterContentInit {
+    @ViewChild("game")board:any;
 
     CdkDragExit(){
         console.log("test");
@@ -129,9 +129,12 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.reorganizeEditorPieces ();
         this.board.madeMove = (cell:any) => {this.checkLimits()};
     }
+
+    ngAfterContentInit () : void {
+        this.reorganizeEditorPieces ();
+    } 
     
     checkLimits(){
       let pieces = this.pieces;
@@ -159,7 +162,13 @@ export class CreatorComponent implements AfterViewInit {
         editor.style.display="block";
         saved.style.display="block";
         enterBtn.style.display="none";
-        this.board.generateBoard("8/8/8/8/8/8/8/8");
+        this.previousFen = this.board.board.toFENString ();
+        this.board.initBoard("8/8/8/8/8/8/8/8");
+    }
+
+    cancelEditor () {
+        this.board.initBoard (this.previousFen);
+        this.closeEditor ();
     }
 
     closeEditor(){
@@ -178,7 +187,7 @@ export class CreatorComponent implements AfterViewInit {
 
     loadSavedFen(fen:string){
         this.closeEditor ();
-        this.board.generateBoard(fen);
+        this.board.initBoard (fen);
     }
 
     showSavedFens(){
@@ -187,9 +196,16 @@ export class CreatorComponent implements AfterViewInit {
     }
 
     saveBoard(){
-        if(this.fenSaved.indexOf(this.board.toFENString()) == -1)
-            this.fenSaved.push(this.board.toFENString());
-        this.closeEditor();
+        var fen: string = this.board.board.toFENString();
+        if (fen.match(".*K.*") == null || fen.match (".*k.*") == null) {
+            window.alert ("A valid chess board layout has at least one king for each player");
+        }
+        else {
+            if(this.fenSaved.indexOf(fen) == -1)
+                this.fenSaved.push(fen);
+
+            this.loadSavedFen (fen);
+        }
     }
 
 	setNewPiece(pieceType: string){

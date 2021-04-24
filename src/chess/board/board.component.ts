@@ -301,12 +301,12 @@ class Cell implements FEN{
 	 * Function: drop
 	 */
 	drop(event: CdkDragDrop<string[]>) {
+        console.log ("Board Drop");
 		let before = this.getPieces();
 		if (event.previousContainer === event.container) {
 			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 		} else {
-			transferArrayItem(event.previousContainer.data, event.container.data, 
-				event.previousIndex, event.currentIndex);
+			transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
 
 		}
 		console.log(before);
@@ -318,10 +318,16 @@ class Cell implements FEN{
 		}else{
 			this.pieces.pop();
 		}
+
 		this.pieces = [this.getPieces()];
+        if (event.previousContainer.id != "otherList") {
+            this.madeMove();
+        }
+        else{
+            this.madeMove = () => {};
+        }
 		
-		 this.madeMove();
-		 console.log("WELL, I MADE IT!");
+		console.log("WELL, I MADE IT!");
 		
 	
 	}
