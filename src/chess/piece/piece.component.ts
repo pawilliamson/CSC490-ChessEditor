@@ -1,6 +1,6 @@
 // File: piece.component.ts
 import { Component, OnInit, Input } from '@angular/core';
-import { Types, FEN } from "./types.enum"
+import { Types, FEN } from './types.enum';
 
 @Component({
   selector: 'app-piece',
@@ -14,11 +14,11 @@ import { Types, FEN } from "./types.enum"
  * - type:Types = Types.BlackPawn;
  */
 export class PieceComponent implements OnInit {
-	ptype:Types = Types.None;
+	ptype: Types = Types.None;
 	@Input('pid')
-	pid:number = 0;
+	pid = 0;
 	@Input('piece')
-	piece:string = "";
+	piece = '';
 	/**
 	 * Function: getImage()
 	 * Returns file name corresponding to the piece's type.
@@ -26,39 +26,39 @@ export class PieceComponent implements OnInit {
 	getImage(){
 		switch(this.ptype){
 			case Types.BlackPawn:
-				return "Chess_pdt45.svg";
+				return 'Chess_pdt45.svg';
 			case Types.WhitePawn:
-				return "Chess_plt45.svg";
+				return 'Chess_plt45.svg';
 			case Types.BlackKnight:
-				return "Chess_ndt45.svg";
+				return 'Chess_ndt45.svg';
 			case Types.WhiteKnight:
-				return "Chess_nlt45.svg";
+				return 'Chess_nlt45.svg';
 			case Types.WhiteBishop:
-				return "Chess_blt45.svg";
+				return 'Chess_blt45.svg';
 			case Types.BlackBishop:
-				return "Chess_bdt45.svg";
+				return 'Chess_bdt45.svg';
 			case Types.BlackQueen:
-				return "Chess_qdt45.svg";
+				return 'Chess_qdt45.svg';
 			case Types.WhiteQueen:
-				return "Chess_qlt45.svg";
+				return 'Chess_qlt45.svg';
 			case Types.WhiteKing:
-				return "Chess_klt45.svg";
+				return 'Chess_klt45.svg';
 			case Types.BlackKing:
-				return "Chess_kdt45.svg";
+				return 'Chess_kdt45.svg';
 			case Types.BlackRook:
-				return "Chess_rdt45.svg";
+				return 'Chess_rdt45.svg';
 			case Types.WhiteRook:
-				return "Chess_rlt45.svg";
+				return 'Chess_rlt45.svg';
 			default:
-				return "NONE";
+				return 'NONE';
 		}
 	}
 	/**
 	 * Function: set
-	 * 
+	 *
 	 * Alternative way to define a piece.
 	 */
-	set(num:number){
+	set(num: number){
 		this.ptype = num;
 	}
 	/**
@@ -67,7 +67,7 @@ export class PieceComponent implements OnInit {
 	 */
 	ngOnChanges(){
 		this.setFEN(this.piece);
-		console.log("Hello?");
+		console.log('Hello?');
 	}
 	/**
 	 * Function: get
@@ -75,7 +75,7 @@ export class PieceComponent implements OnInit {
 	 * Returns int enumeration of piece
 	 */
 	get(){
-		return this.ptype;  
+		return this.ptype;
 	}
 	/**
 	 * Function: toFENString
@@ -114,8 +114,8 @@ export class PieceComponent implements OnInit {
 	 * Function: setFEN
 	 *
 	 */
-	setFEN(fen:string){
-		let fe =  fen;
+	setFEN(fen: string){
+		const fe =  fen;
 		switch(fe){
 			case  FEN.BlackPawn:
 				this.ptype = Types.BlackPawn;
@@ -151,7 +151,7 @@ export class PieceComponent implements OnInit {
 				this.ptype =  Types.BlackRook;
 				break;
 			case FEN.WhiteRook:
-				this.ptype =  Types.WhiteRook;	
+				this.ptype =  Types.WhiteRook;
 				break;
 			default:
 				this.ptype = Types.None;
@@ -168,7 +168,7 @@ export class PieceComponent implements OnInit {
 	 */
 	ngOnInit(): void {
 
-		this.setFEN(this.piece)		  
+		this.setFEN(this.piece);
 
 	}
 
