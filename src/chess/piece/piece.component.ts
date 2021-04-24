@@ -1,5 +1,5 @@
 // File: piece.component.ts
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Types, FEN } from './types.enum';
 
 @Component({
@@ -13,12 +13,19 @@ import { Types, FEN } from './types.enum';
  * Properties:
  * - type:Types = Types.BlackPawn;
  */
-export class PieceComponent implements OnInit {
-	ptype: Types = Types.None;
-	@Input('pid')
+export class PieceComponent implements OnInit, OnChanges {
+	@Input()
 	pid = 0;
-	@Input('piece')
+	@Input()
 	piece = '';
+	ptype: Types = Types.None;
+	/**
+	 * Function: constructor
+	 */
+	constructor() { }
+	/**
+	 * Function: ngOnInit
+	 */
 	/**
 	 * Function: getImage()
 	 * Returns file name corresponding to the piece's type.
@@ -159,13 +166,7 @@ export class PieceComponent implements OnInit {
 		}
 	}
 
-	/**
-	 * Function: constructor
-	 */
-	constructor() { }
-	/**
-	 * Function: ngOnInit
-	 */
+
 	ngOnInit(): void {
 
 		this.setFEN(this.piece);
