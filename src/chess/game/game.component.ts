@@ -10,11 +10,11 @@ import { BoardComponent } from '../board/board.component';
 })
 export class GameComponent implements AfterViewInit {
 
+	@ViewChild('board')
+	board: any;
 	history: Array<string> = [''];
 	player = true;
 	turn = 1;
-	@ViewChild('board')
-	board: any;
 	startingPosition = '';
 	vboard: ValidatorBoard = new ValidatorBoard();
 	previousBoard: any = new BoardComponent();
@@ -53,7 +53,7 @@ export class GameComponent implements AfterViewInit {
 		this.previousBoard.generateBoard(this.history[this.turn-1]);
 
 		const icase = this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces());
-		if (icase != this.player){
+		if (icase !== this.player){
 			this.undo();
 			return;
 
@@ -67,10 +67,13 @@ export class GameComponent implements AfterViewInit {
 
 		for (let row = 0; row < this.previousBoard.rows.length && !found; row++){
 			for (let cell =0; cell <  this.previousBoard.rows[row].cells.length && !found; cell++){
-				if(!((inp.x == cell) && (inp.y == row))) {
+				if(!((inp.x === cell) && (inp.y === row))) {
 
 					if(this.previousBoard.rows[row].cells[cell].getPieces()
-						!= this.board.rows[row].cells[cell].getPieces() && (this.board.rows[row].cells[cell].getPieces() || this.previousBoard.rows[row].cells[cell].getPieces())){
+						!== this.board.rows[row].cells[cell].getPieces()
+						&& (this.board.rows[row].cells[cell].getPieces()
+					||this.previousBoard.rows[row].cells[cell].getPieces()
+						)){
 						found = true;
 						original = cload(cell, row);
 						console.log(original);
@@ -119,7 +122,7 @@ console.log('VALID');
 			 this.vboard = new ValidatorBoard();
 			 for(const row of this.board.rows){
 				 for(const cell of row.cells){
-					 if(cell.toFENString != ''){
+					 if(cell.toFENString !== ''){
 						 const temp = this.vboard.createPiece(cell.toFENString());
 						 if(temp instanceof Piece)
 						 {this.vboard.add(cell.x, cell.y, temp);}
@@ -129,10 +132,19 @@ console.log('VALID');
 			 }
 			 console.log(this.vboard.chessBoard);
 			}
-
+			/**
+			 * Function: isCheck
+			 *
+			 *
+			 */
 			isCheck(){
 
 			}
+			/**
+			 * Function: isCheckMate
+			 *
+			 *
+			 */
 			isCheckMate(){
 
 			}
@@ -161,6 +173,10 @@ console.log('VALID');
 			canCastle(){
 
 			}
+			/**
+			 * Function: toFENString
+			 *
+			 */
 			toFENString(){
 				return '';
 			}
@@ -175,7 +191,7 @@ console.log('VALID');
 			}
 			// Function:isTurn
 			isTurn(player: string){
-				return this.player?player=='w':player=='b';
+				return player==='w';
 			}
 
 			lastTurn(){
