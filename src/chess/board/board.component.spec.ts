@@ -12,9 +12,8 @@ describe('BoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
-    })
-    .compileComponents();
+      declarations: [BoardComponent],
+    }).compileComponents();
   });
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardComponent);
@@ -22,17 +21,17 @@ describe('BoardComponent', () => {
     fixture.detectChanges();
   });
 
-  describe('Initialization', function() {
+  describe('Initialization', () => {
     it('should be defined', () => {
       expect(component).toBeDefined();
     });
   });
 
-  describe('Create Board', function(){
+  describe('Create Board', () => {
     it('should generate normal chessboard', () => {
-      const initial_layout = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR';
+      const initialLayout = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR';
       const result = component.toFENString();
-      expect(result).toContain(initial_layout);
+      expect(result).toContain(initialLayout);
     });
 
     it('should generate an empty chessboard', () => {
@@ -42,7 +41,7 @@ describe('BoardComponent', () => {
       expect(result).toContain(initialLayout);
     });
 
-    it('should generate an empty board with an empty layout', () =>{
+    it('should generate an empty board with an empty layout', () => {
       const initialLayout = '';
       component.generateBoard('');
       const result = component.toFENString();
