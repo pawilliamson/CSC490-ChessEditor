@@ -1,5 +1,6 @@
 // File: board.service.ts
 // Contains Board Class
+//
 import { Rook } from './rook.service';
 import { Pawn } from './pawn.service';
 import { King } from './king.service';
@@ -12,11 +13,12 @@ import { ValidatorBoard } from './validatorboard';
 
 /**
  *Class:Board
- * This class has a 2D array that will contain the chess pieces as well as methods to move them around, remove them, and add them.
+ * This class has a 2D array that will contain the chess pieces as well as
+ * methods to move them around, remove them, and add them.
  *
  */
 export class Board {
-    BOARD_LIMIT = 7;
+    boardLimit = 7;
     chessBoard: Piece[][] = new Array();
     empty: Piece = new Piece('UNSPECIFIED');
 	constructor(){
@@ -31,44 +33,46 @@ export class Board {
 	}
 	}
     /**
-     * This method will print the board out to the console. An empty space will be represented by --, and a filled space will be represented by a letter indicating the color of the Piece followed by a letter indicating the type of the Piece. This method should be used for
-     * testing purposes only.
+     * This method will print the board out to the console. An empty space will
+     * be represented by --, and a filled space will be represented by a letter
+     * indicating the color of the Piece followed by a letter indicating the
+     * type of the Piece. This method should be used for testing purposes only.
      *
      */
     printBoard() {
         let xPos: number;
         let yPos: number;
-        for(yPos = 0; yPos < this.BOARD_LIMIT; yPos++) {
-            for(xPos = 0; xPos < this.BOARD_LIMIT; xPos++) {
-                const pieceColor: String = this.chessBoard[xPos][yPos].getColor();
-                const pieceName: String = this.chessBoard[xPos][yPos].getName();
+        for(yPos = 0; yPos < this.boardLimit; yPos++) {
+            for(xPos = 0; xPos < this.boardLimit; xPos++) {
+                const pieceColor: string = this.chessBoard[xPos][yPos].getColor();
+                const pieceName: string = this.chessBoard[xPos][yPos].getName();
                 // These if-else statements will print out the color of the Piece.
-                if(pieceColor == 'WHITE') {
+                if(pieceColor === 'WHITE') {
                     console.log('W');
                 }
-                else if(pieceColor == 'BLACK') {
+                else if(pieceColor === 'BLACK') {
                     console.log('B');
                 }
                 else {
                     console.log('-');
                 }
                 // These if-else statements will print out the class of Piece.
-                if(pieceName == 'PAWN') {
+                if(pieceName === 'PAWN') {
                     console.log('P');
                 }
-                else if(pieceName == 'KING') {
+                else if(pieceName === 'KING') {
                     console.log('K');
                 }
-                else if(pieceName == 'QUEEN') {
+                else if(pieceName === 'QUEEN') {
                     console.log('Q');
                 }
-                else if(pieceName == 'ROOK') {
+                else if(pieceName === 'ROOK') {
                     console.log('R');
                 }
-                else if(pieceName == 'KNIGHT') {
+                else if(pieceName === 'KNIGHT') {
                     console.log('H');
                 }
-                else if(pieceName == 'BISHOP') {
+                else if(pieceName === 'BISHOP') {
                     console.log('B');
                 }
                 else {
@@ -87,8 +91,8 @@ export class Board {
      * @param yPos
      */
     remove(xPos: number, yPos: number) {
-        if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
-            this.chessBoard[yPos][ xPos] == this.empty;
+        if(xPos <= this.boardLimit && yPos <= this.boardLimit) {
+            this.chessBoard[yPos][ xPos] === this.empty;
         }
         else {
             console.log('Board class tried to remove a Piece out of bounds. Please ensure the location is within bounds. Attempted X Position: ' + xPos + 'Attempted Y Position: ' + yPos);
@@ -96,23 +100,28 @@ export class Board {
     }
 
     /**
-     * This method will add a specified piece to a specified X and Y location. Will be used to populate the board, when a pawn becomes a queen, and in the editor.
+     * This method will add a specified piece to a specified X and Y location.
+     * Will be used to populate the board, when a pawn becomes a queen, and in
+     * the editor.
      *
      * @param xPos
      * @param yPos
      * @param addedPiece
      */
     add(xPos: number, yPos: number, addedPiece: Piece) {
-        if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
+        if(xPos <= this.boardLimit && yPos <= this.boardLimit) {
             this.chessBoard[yPos][xPos] = addedPiece;
         }
         else {
-            console.log('Board class tried to add a Piece out of bounds. Attempted X Position ' + xPos + ' Attempted Y Position: ' + yPos);
+	    console.log('Board class tried to add a Piece out of bounds.'
+		    +'Attempted X Position ' + xPos + ' Attempted Y Position: ' +
+		    yPos);
         }
     }
 
     /**
-     * This method will move a piece at a specified X and Y location to different specified X and Y coordinates.
+     * This method will move a piece at a specified X and Y location to
+     * different specified X and Y coordinates.
      *
      * @param initialXPos
      * @param initialYPos
@@ -120,12 +129,20 @@ export class Board {
      * @param locationYPos
      */
     move(initialXPos: number, initialYPos: number, locationXPos: number, locationYPos: number) {
-        if(initialXPos <= this.BOARD_LIMIT && initialYPos <= this.BOARD_LIMIT && locationXPos <= this.BOARD_LIMIT && locationYPos <= this.BOARD_LIMIT) {
-            this.chessBoard[ locationYPos ][locationXPos] = this.chessBoard[initialYPos][ initialXPos];
-            this.remove(initialXPos, initialYPos);
+	if(initialXPos <= this.boardLimit && initialYPos <= this.boardLimit
+		&& locationXPos <= this.boardLimit && locationYPos <=
+		this.boardLimit) {
+	    this.chessBoard[ locationYPos ][locationXPos] =
+			this.chessBoard[initialYPos][ initialXPos];
+	    this.remove(initialXPos, initialYPos);
         }
         else{
-            console.log('Board class tried to move a Piece out of bounds, or the location of the Piece to be moved was out of bounds. Attempted beggining X Position: ' + initialXPos + ' Attempted beggining Y Position: ' + initialYPos + ' Attempted destination X Position: ' + locationXPos + 'Attempted destination Y Position: ' + locationYPos);
+	    console.log('Board class tried to move a Piece out of bounds, or'
+		    +' the location of the Piece to be moved was out of bounds.'
+		    +' Attempted beggining X Position: ' + initialXPos +
+		    'Attempted beggining Y Position: ' + initialYPos +
+		    'Attempted destination X Position: ' + locationXPos +
+		    'Attempted destination Y Position: ' + locationYPos);
         }
     }
 
@@ -136,11 +153,13 @@ export class Board {
      * @param yPos
      */
     getPiece(xPos: number, yPos: number) {
-        if(xPos <= this.BOARD_LIMIT && yPos <= this.BOARD_LIMIT) {
+        if(xPos <= this.boardLimit && yPos <= this.boardLimit) {
             return this.chessBoard[yPos][ xPos];
         }
         else {
-            console.log('Board class tried to return a Piece that was out of bounds. Attempted X Position: ' + xPos + ' Attempted Y Position: ' + yPos);
+	    console.log('Board class tried to return a Piece that was out of'+
+		   ' bounds. Attempted X Position: ' + xPos + ' Attempted Y'+
+		   ' Position: ' + yPos);
         }
         return null;
     }

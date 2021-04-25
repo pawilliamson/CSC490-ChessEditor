@@ -1,12 +1,15 @@
+// File: testboard.ts
 /**
- * This class will test ValidatorBoard class. It will test the capabilities of movement of each piece in a variety of ways.
+ * This class will test ValidatorBoard class. It will test the capabilities of
+ * movement of each piece in a variety of ways.
  *
  */
 export class TestBoard {
     testBoard: ValidatorBoard = new ValidatorBoard();
 
     /**
-     * This will test the directions the black pawn can move. All the directions other than the one that it can move, down, are tested.
+     * This will test the directions the black pawn can move. All the
+     * directions other than the one that it can move, down, are tested.
      * Expected: False
      *
      * @returns
@@ -15,12 +18,19 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackPawn = new Pawn('BLACK');
         this.testBoard.chessBoard[3][3] = blackPawn;
-        return this.testBoard.validateMovement(3, 3, 3, 4) || this.testBoard.validateMovement(3, 3, 4, 4) || this.testBoard.validateMovement(3, 3, 4, 3) || this.testBoard.validateMovement(3, 3, 4, 2) || this.testBoard.validateMovement(3, 3, 3, 2)
-        || this.testBoard.validateMovement(3, 3, 2, 2) || this.testBoard.validateMovement(3, 3, 2, 3), this.testBoard.validateMovement(3, 3, 2, 4);
+	return this.testBoard.validateMovement(3, 3, 3, 4) ||
+		    this.testBoard.validateMovement(3, 3, 4, 4) ||
+		    this.testBoard.validateMovement(3, 3, 4, 3) ||
+		    this.testBoard.validateMovement(3, 3, 4, 2) ||
+		    this.testBoard.validateMovement(3, 3, 3, 2)
+	|| this.testBoard.validateMovement(3, 3, 2, 2) ||
+		    this.testBoard.validateMovement(3, 3, 2, 3),
+		    this.testBoard.validateMovement(3, 3, 2, 4);
     }
 
     /**
-     * This will test the directions the black pawn can move. The only one tested is the one it should be able to move, down.
+     * This will test the directions the black pawn can move. The only one
+     * tested is the one it should be able to move, down.
      * Expected: True
      *
      * @returns
@@ -73,7 +83,8 @@ export class TestBoard {
     }
 
     /**
-     * This will test the directions the white pawn can move. All the directions other than the one that it can move, down, are tested.
+     * This will test the directions the white pawn can move. All the
+     * directions other than the one that it can move, down, are tested.
      * Expected: False
      *
      * @returns
@@ -82,12 +93,19 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const whitePawn = new Pawn('WHITE');
         this.testBoard.chessBoard[3][3] = whitePawn;
-        return this.testBoard.validateMovement(3, 3, 3, 2) || this.testBoard.validateMovement(3, 3, 4, 4) || this.testBoard.validateMovement(3, 3, 4, 3) || this.testBoard.validateMovement(3, 3, 4, 2) || this.testBoard.validateMovement(3, 3, 3, 2)
-        || this.testBoard.validateMovement(3, 3, 2, 2) || this.testBoard.validateMovement(3, 3, 2, 3), this.testBoard.validateMovement(3, 3, 2, 4);
+	return this.testBoard.validateMovement(3, 3, 3, 2) ||
+		     this.testBoard.validateMovement(3, 3, 4, 4) ||
+		     this.testBoard.validateMovement(3, 3, 4, 3) ||
+		     this.testBoard.validateMovement(3, 3, 4, 2) ||
+		     this.testBoard.validateMovement(3, 3, 3, 2)
+	|| this.testBoard.validateMovement(3, 3, 2, 2) ||
+		     this.testBoard.validateMovement(3, 3, 2, 3),
+		     this.testBoard.validateMovement(3, 3, 2, 4);
     }
 
     /**
-     * This will test the directions the white pawn can move. The only one tested is the one it should be able to move, down.
+     * This will test the directions the white pawn can move. The only one
+     * tested is the one it should be able to move, down.
      * Expected: True
      *
      * @returns
@@ -121,7 +139,8 @@ export class TestBoard {
     }
 
     /**
-     * This will test the directions that any rook can move. It will only test directly horizontal and vertical movements.
+     * This will test the directions that any rook can move. It will only test
+     * directly horizontal and vertical movements.
      * Expected: True
      *
      * @returns
@@ -130,13 +149,25 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackRook = new Rook('BLACK');
         this.testBoard.chessBoard[3][3] = blackRook;
-        return this.testBoard.validateMovement(3, 3, 4, 3) && this.testBoard.validateMovement(4, 3, 7, 3) && this.testBoard.validateMovement(7, 3, 4, 3) && this.testBoard.validateMovement(4, 3, 3, 3) && this.testBoard.validateMovement(3, 3, 3, 2)
-        && this.testBoard.validateMovement(3, 3, 3, 0) && this.testBoard.validateMovement(3, 0, 3, 2) && this.testBoard.validateMovement(3, 2, 3, 3) && this.testBoard.validateMovement(3, 3, 2, 3) && this.testBoard.validateMovement(2, 3, 0, 3)
-        && this.testBoard.validateMovement(0, 3, 2, 3) && this.testBoard.validateMovement(2, 3, 3, 3) && this.testBoard.validateMovement(3, 3, 3, 4) && this.testBoard.validateMovement(3, 4, 3, 7);
+	return this.testBoard.validateMovement(3, 3, 4, 3) &&
+		    this.testBoard.validateMovement(4, 3, 7, 3) &&
+		    this.testBoard.validateMovement(7, 3, 4, 3) &&
+		    this.testBoard.validateMovement(4, 3, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 3, 2)
+	&& this.testBoard.validateMovement(3, 3, 3, 0) &&
+		    this.testBoard.validateMovement(3, 0, 3, 2) &&
+		    this.testBoard.validateMovement(3, 2, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 2, 3) &&
+		    this.testBoard.validateMovement(2, 3, 0, 3)
+	&& this.testBoard.validateMovement(0, 3, 2, 3) &&
+		    this.testBoard.validateMovement(2, 3, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 3, 4) &&
+		    this.testBoard.validateMovement(3, 4, 3, 7);
     }
 
     /**
-     * This will test a rook trying to move in directions that aren't directly horizontal or vertical.
+     * This will test a rook trying to move in directions that aren't directly
+     * horizontal or vertical.
      * Expected: False
      *
      * @returns
@@ -149,7 +180,9 @@ export class TestBoard {
     }
 
     /**
-     * This will test a rook trying to move to a space that it would normally be able to move to, but is blocked by another piece, one of the same color, one of another color.
+     * This will test a rook trying to move to a space that it would normally
+     * be able to move to, but is blocked by another piece, one of the same
+     * color, one of another color.
      * Expected: False
      *
      * @returns
@@ -165,7 +198,8 @@ export class TestBoard {
     }
 
     /**
-     * This will test a rook trying to move to a space that is occupied by another piece, one enemy piece and one friendly piece.
+     * This will test a rook trying to move to a space that is occupied by
+     * another piece, one enemy piece and one friendly piece.
      * Expected: True
      *
      * @returns
@@ -181,7 +215,8 @@ export class TestBoard {
     }
 
     /**
-     * This will test the directions a bishop can move. It will only test directly diagonal movements.
+     * This will test the directions a bishop can move. It will only test
+     * directly diagonal movements.
      * Expected: True
      *
      * @returns
@@ -190,12 +225,19 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackBishop = new Bishop('BLACK');
         this.testBoard.chessBoard[3][3] = blackBishop;
-        return this.testBoard.validateMovement(3, 3, 4, 4) && this.testBoard.validateMovement(4, 4, 6, 6) && this.testBoard.validateMovement(6, 6, 4, 4) && this.testBoard.validateMovement(4, 4, 3, 3) && this.testBoard.validateMovement(3, 3, 2, 4)
-        && this.testBoard.validateMovement(2, 4, 0, 6) && this.testBoard.validateMovement(0, 6, 2, 4) && this.testBoard.validateMovement(2, 4, 3, 3);
+	return this.testBoard.validateMovement(3, 3, 4, 4) &&
+		    this.testBoard.validateMovement(4, 4, 6, 6) &&
+		    this.testBoard.validateMovement(6, 6, 4, 4) &&
+		    this.testBoard.validateMovement(4, 4, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 2, 4)
+	&& this.testBoard.validateMovement(2, 4, 0, 6) &&
+		    this.testBoard.validateMovement(0, 6, 2, 4) &&
+		    this.testBoard.validateMovement(2, 4, 3, 3);
     }
 
     /**
-     * This will test the directions a bishop can't move, including horizontal and vertical and movements that are not directly diagonal.
+     * This will test the directions a bishop can't move, including horizontal
+     * and vertical and movements that are not directly diagonal.
      * Expected: False
      *
      * @returns
@@ -204,11 +246,15 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackBishop = new Bishop('BLACK');
         this.testBoard.chessBoard[3][3] = blackBishop;
-        return this.testBoard.validateMovement(3, 3, 2, 3) || this.testBoard.validateMovement(3, 3, 2, 5) || this.testBoard.validateMovement(3, 3, 3, 4) || this.testBoard.validateMovement(3, 3, 4, 0);
+	return this.testBoard.validateMovement(3, 3, 2, 3) ||
+		    this.testBoard.validateMovement(3, 3, 2, 5) ||
+		    this.testBoard.validateMovement(3, 3, 3, 4) ||
+		    this.testBoard.validateMovement(3, 3, 4, 0);
     }
 
     /**
-     * This will test if the bishop can move if it's path is blocked by either a piece of it's own color or the opponent's piece.
+     * This will test if the bishop can move if it's path is blocked by either
+     * a piece of it's own color or the opponent's piece.
      * Expected: False
      *
      * @returns
@@ -249,8 +295,14 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackKnight = new Knight('BLACK');
         this.testBoard.chessBoard[3][3] = blackKnight;
-        return this.testBoard.validateMovement(3, 3, 1, 2) && this.testBoard.validateMovement(1, 2, 3, 3) && this.testBoard.validateMovement(3, 3, 1, 4) && this.testBoard.validateMovement(1, 4, 3, 3) && this.testBoard.validateMovement(3, 3, 2, 5)
-        && this.testBoard.validateMovement(2, 5, 3, 3) && this.testBoard.validateMovement(3, 3, 4, 5) && this.testBoard.validateMovement(4, 5, 3, 3);
+	return this.testBoard.validateMovement(3, 3, 1, 2) &&
+		    this.testBoard.validateMovement(1, 2, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 1, 4) &&
+		    this.testBoard.validateMovement(1, 4, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 2, 5)
+	&& this.testBoard.validateMovement(2, 5, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 4, 5) &&
+		    this.testBoard.validateMovement(4, 5, 3, 3);
     }
 
     /**
@@ -263,12 +315,19 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackKnight = new Knight('BLACK');
         this.testBoard.chessBoard[3][3] = blackKnight;
-        return this.testBoard.validateMovement(3, 3, 2, 3) || this.testBoard.validateMovement(3, 3, 2, 4) || this.testBoard.validateMovement(3, 3, 3, 4) || this.testBoard.validateMovement(3, 3, 4, 4) || this.testBoard.validateMovement(3, 3, 4, 3)
-        || this.testBoard.validateMovement(3, 3, 4, 2) || this.testBoard.validateMovement(3, 3, 3, 2) || this.testBoard.validateMovement(3, 3, 2, 2);
+	return this.testBoard.validateMovement(3, 3, 2, 3) ||
+		    this.testBoard.validateMovement(3, 3, 2, 4) ||
+		    this.testBoard.validateMovement(3, 3, 3, 4) ||
+		    this.testBoard.validateMovement(3, 3, 4, 4) ||
+		    this.testBoard.validateMovement(3, 3, 4, 3)
+	|| this.testBoard.validateMovement(3, 3, 4, 2) ||
+		    this.testBoard.validateMovement(3, 3, 3, 2) ||
+		    this.testBoard.validateMovement(3, 3, 2, 2);
     }
 
     /**
-     * This will test that the knight can move to a space that's occupied by an enemy, but not to a space occupied by a piece of the same color.
+     * This will test that the knight can move to a space that's occupied by an
+     * enemy, but not to a space occupied by a piece of the same color.
      * Expected: True
      *
      * @returns
@@ -280,7 +339,8 @@ export class TestBoard {
         this.testBoard.chessBoard[3][3] = blackKnight;
         this.testBoard.chessBoard[1][2] = whiteKnight;
         this.testBoard.chessBoard[2][5] = blackKnight;
-        return !this.testBoard.validateMovement(3, 3, 2, 5) && this.testBoard.validateMovement(3, 3, 1, 2);
+	return !this.testBoard.validateMovement(3, 3, 2, 5) &&
+		    this.testBoard.validateMovement(3, 3, 1, 2);
     }
 
     /**
@@ -293,9 +353,18 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackQueen = new Queen('BLACK');
         this.testBoard.chessBoard[3][3] = blackQueen;
-        return this.testBoard.validateMovement(3, 3, 2, 3) && this.testBoard.validateMovement(2, 3, 0, 3) && this.testBoard.validateMovement(0, 3, 2, 3) && this.testBoard.validateMovement(2, 3, 3, 3) && this.testBoard.validateMovement(3, 3, 2, 4)
-        && this.testBoard.validateMovement(2, 4, 0, 6) && this.testBoard.validateMovement(0, 6, 2, 4) && this.testBoard.validateMovement(2, 4, 3, 3) && this.testBoard.validateMovement(3, 3, 3, 4) && this.testBoard.validateMovement(3, 4, 3, 6) &&
-        this.testBoard.validateMovement(3, 6, 3, 4) && this.testBoard.validateMovement(3, 4, 3, 3);
+	return this.testBoard.validateMovement(3, 3, 2, 3) &&
+		    this.testBoard.validateMovement(2, 3, 0, 3) &&
+		    this.testBoard.validateMovement(0, 3, 2, 3) &&
+		    this.testBoard.validateMovement(2, 3, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 2, 4)
+	&& this.testBoard.validateMovement(2, 4, 0, 6) &&
+		    this.testBoard.validateMovement(0, 6, 2, 4) &&
+		    this.testBoard.validateMovement(2, 4, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 3, 4) &&
+		    this.testBoard.validateMovement(3, 4, 3, 6) &&
+	this.testBoard.validateMovement(3, 6, 3, 4) &&
+		    this.testBoard.validateMovement(3, 4, 3, 3);
     }
 
     /**
@@ -308,7 +377,9 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackQueen = new Queen('BLACK');
         this.testBoard.chessBoard[3][3] = blackQueen;
-        return this.testBoard.validateMovement(3, 3, 4, 5) || this.testBoard.validateMovement(3, 3, 5, 2) || this.testBoard.validateMovement(3, 3, 2, 1);
+	return this.testBoard.validateMovement(3, 3, 4, 5) ||
+		    this.testBoard.validateMovement(3, 3, 5, 2) ||
+		    this.testBoard.validateMovement(3, 3, 2, 1);
     }
 
     /**
@@ -328,7 +399,8 @@ export class TestBoard {
     }
 
     /**
-     * Tests if a queen can move onto a space occupied by an enemy piece, but not one occupied by a piece of the same color.
+     * Tests if a queen can move onto a space occupied by an enemy piece, but
+     * not one occupied by a piece of the same color.
      * Expected: True
      *
      * @returns
@@ -353,8 +425,14 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackKing = new King('BLACK');
         this.testBoard.chessBoard[3][3] = blackKing;
-        return this.testBoard.validateMovement(3, 3, 2, 3) && this.testBoard.validateMovement(2, 3, 3, 3) && this.testBoard.validateMovement(3, 3, 2, 4) && this.testBoard.validateMovement(2, 4, 3, 3) && this.testBoard.validateMovement(3, 3, 3, 4)
-        && this.testBoard.validateMovement(3, 4, 3, 3) && this.testBoard.validateMovement(3, 3, 4, 4) && this.testBoard.validateMovement(4, 4, 3, 3);
+	return this.testBoard.validateMovement(3, 3, 2, 3) &&
+		    this.testBoard.validateMovement(2, 3, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 2, 4) &&
+		    this.testBoard.validateMovement(2, 4, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 3, 4)
+	&& this.testBoard.validateMovement(3, 4, 3, 3) &&
+		    this.testBoard.validateMovement(3, 3, 4, 4) &&
+		    this.testBoard.validateMovement(4, 4, 3, 3);
     }
 
     /**
@@ -367,11 +445,14 @@ export class TestBoard {
         this.testBoard = new ValidatorBoard();
         const blackKing = new King('BLACK');
         this.testBoard.chessBoard[3][3] = blackKing;
-        return this.testBoard.validateMovement(3, 3, 1, 3) || this.testBoard.validateMovement(3, 3, 3, 5) || this.testBoard.validateMovement(3, 3, 1, 5);
+	return this.testBoard.validateMovement(3, 3, 1, 3) ||
+		    this.testBoard.validateMovement(3, 3, 3, 5) ||
+		    this.testBoard.validateMovement(3, 3, 1, 5);
     }
 
     /**
-     * Tests if a king can move onto a space occupied by an enemy piece, but not one occupied by a piece of the same color.
+     * Tests if a king can move onto a space occupied by an enemy piece, but
+     * not one occupied by a piece of the same color.
      * Expected: True
      *
      * @returns
