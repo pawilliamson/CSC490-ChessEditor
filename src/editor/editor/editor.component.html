@@ -1,7 +1,8 @@
 <div class="container">
+	<div *ngIf="this.closed == true">
 	<button id = "enterEditorBtn" class="btn btn-secondary" (click)="this.startEditor()">Enter the editor</button>
-	
-	<div id="editorTools" style="display:none;" class="container-fluid">
+	</div>
+	<div id="editorTools" class="container-fluid" *ngIf="this.closed==false">
 		<div id="otherList" cdkDropList [cdkDropListSortingDisabled]="true"
        	class="row " [cdkDropListData]="pieceCollection" 
        	(cdkDropListDropped)="this.drop($event)">
@@ -16,7 +17,7 @@
 		<button class="btn btn-secondary" (click)="this.cancelEditor()">Cancel editor</button>
 		<button class="btn btn-secondary" (click)="this.saveBoard()">Save the current board</button>
 	</div>
-	<div id ="load" style="display:none">
+	<div id ="load" *ngIf="this.closed == false">
 		<table>
 			<tbody>
 				<tr *ngFor = "let fen of fenSaved; let i = index;">
