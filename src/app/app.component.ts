@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   page = 1;
+  title = 'chess-app';
+  constructor() {};
   goHome(){
     this.page = 1;
   }
   goBoard(){
     this.page = 2;
   }
-  title = 'chess-app';
-  constructor() {};
  }

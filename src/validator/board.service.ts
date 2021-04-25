@@ -92,10 +92,12 @@ export class Board {
      */
     remove(xPos: number, yPos: number) {
         if(xPos <= this.boardLimit && yPos <= this.boardLimit) {
-            this.chessBoard[yPos][ xPos] === this.empty;
+            this.chessBoard[yPos][ xPos] = this.empty;
         }
         else {
-            console.log('Board class tried to remove a Piece out of bounds. Please ensure the location is within bounds. Attempted X Position: ' + xPos + 'Attempted Y Position: ' + yPos);
+	    console.log('Board class tried to remove a Piece out of bounds.'+
+		    'Please ensure the location is within bounds. Attempted X' +
+		    'Position: ' + xPos + 'Attempted Y Position: ' + yPos);
         }
     }
 

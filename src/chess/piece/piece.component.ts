@@ -1,53 +1,59 @@
-// File: piece.component.ts
-import { Component, OnInit, Input } from '@angular/core';
-import { Types, FEN } from './types.enum';
+// File: Piece.component.ts
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { FEN, Piece } from './types.enum';
 
 @Component({
-  selector: 'app-piece',
-  templateUrl: './piece.component.html',
-  styleUrls: ['./piece.component.css']
+	selector: 'app-piece',
+	templateUrl: './piece.component.html',
+	styleUrls: ['./piece.component.css']
 })
 
 /**
  * Class: PieceComponent
  * Properties:
- * - type:Types = Types.BlackPawn;
+ * - type:PieceType = PieceType.blackPawn;
  */
-export class PieceComponent implements OnInit {
-	ptype: Types = Types.None;
-	@Input('pid')
+export class PieceComponent implements OnInit, OnChanges{
+
+	@Input()
 	pid = 0;
-	@Input('piece')
+	@Input()
 	piece = '';
+	ptype: Piece= Piece.empty;
+
+	/**
+	 * Function: constructor
+	 */
+	constructor() { }
 	/**
 	 * Function: getImage()
-	 * Returns file name corresponding to the piece's type.
+	 * Returns file name corresponding to the Piece's type.
 	 **/
 	getImage(){
 		switch(this.ptype){
-			case Types.BlackPawn:
+			case Piece.blackPawn:
 				return 'Chess_pdt45.svg';
-			case Types.WhitePawn:
+			case Piece.whitePawn:
 				return 'Chess_plt45.svg';
-			case Types.BlackKnight:
+			case Piece.blackKnight:
 				return 'Chess_ndt45.svg';
-			case Types.WhiteKnight:
+			case Piece.whiteKnight:
 				return 'Chess_nlt45.svg';
-			case Types.WhiteBishop:
+			case Piece.whiteBishop:
 				return 'Chess_blt45.svg';
-			case Types.BlackBishop:
+			case Piece.blackBishop:
 				return 'Chess_bdt45.svg';
-			case Types.BlackQueen:
+			case Piece.blackQueen:
 				return 'Chess_qdt45.svg';
-			case Types.WhiteQueen:
+			case Piece.whiteQueen:
 				return 'Chess_qlt45.svg';
-			case Types.WhiteKing:
+			case Piece.whiteKing:
 				return 'Chess_klt45.svg';
-			case Types.BlackKing:
+			case Piece.blackKing:
 				return 'Chess_kdt45.svg';
-			case Types.BlackRook:
+			case Piece.blackRook:
 				return 'Chess_rdt45.svg';
-			case Types.WhiteRook:
+			case Piece.whiteRook:
 				return 'Chess_rlt45.svg';
 			default:
 				return 'NONE';
@@ -56,7 +62,7 @@ export class PieceComponent implements OnInit {
 	/**
 	 * Function: set
 	 *
-	 * Alternative way to define a piece.
+	 * Alternative way to define a Piece.
 	 */
 	set(num: number){
 		this.ptype = num;
@@ -67,12 +73,11 @@ export class PieceComponent implements OnInit {
 	 */
 	ngOnChanges(){
 		this.setFEN(this.piece);
-		console.log('Hello?');
 	}
 	/**
 	 * Function: get
 	 *
-	 * Returns int enumeration of piece
+	 * Returns int enumeration of Piece
 	 */
 	get(){
 		return this.ptype;
@@ -82,30 +87,30 @@ export class PieceComponent implements OnInit {
 	 */
 	toFENString(){
 		switch(this.ptype){
-			case Types.BlackPawn:
-				return FEN.BlackPawn;
-			case Types.WhitePawn:
-				return FEN.WhitePawn;
-			case Types.BlackKnight:
-				return FEN.BlackKnight;
-			case Types.WhiteKnight:
-				return FEN.WhiteKnight;
-			case Types.WhiteBishop:
-				return FEN.WhiteBishop;
-			case Types.BlackBishop:
-				return FEN.BlackBishop;
-			case Types.BlackQueen:
-				return FEN.BlackQueen;
-			case Types.WhiteQueen:
-				return FEN.WhiteQueen;
-			case Types.WhiteKing:
-				return FEN.WhiteKing;
-			case Types.BlackKing:
-				return FEN.BlackKing;
-			case Types.BlackRook:
-				return FEN.BlackRook;
-			case Types.WhiteRook:
-				return FEN.WhiteRook;
+			case Piece.blackPawn:
+				return FEN.blackPawn;
+			case Piece.whitePawn:
+				return FEN.whitePawn;
+			case Piece.blackKnight:
+				return FEN.blackKnight;
+			case Piece.whiteKnight:
+				return FEN.whiteKnight;
+			case Piece.whiteBishop:
+				return FEN.whiteBishop;
+			case Piece.blackBishop:
+				return FEN.blackBishop;
+			case Piece.blackQueen:
+				return FEN.blackQueen;
+			case Piece.whiteQueen:
+				return FEN.whiteQueen;
+			case Piece.whiteKing:
+				return FEN.whiteKing;
+			case Piece.blackKing:
+				return FEN.blackKing;
+			case Piece.blackRook:
+				return FEN.blackRook;
+			case Piece.whiteRook:
+				return FEN.whiteRook;
 			default:
 				return 1;
 		}
@@ -117,52 +122,48 @@ export class PieceComponent implements OnInit {
 	setFEN(fen: string){
 		const fe =  fen;
 		switch(fe){
-			case  FEN.BlackPawn:
-				this.ptype = Types.BlackPawn;
-				return;
-			case FEN.WhitePawn:
-				this.ptype =  Types.WhitePawn;
-				return;
-			case FEN.BlackKnight:
-				this.ptype =  Types.BlackKnight;
-				break;
-			case FEN.WhiteKnight:
-				this.ptype =  Types.WhiteKnight;
-				break;
-			case FEN.WhiteBishop:
-				this.ptype =  Types.WhiteBishop;
-				break;
-			case FEN.BlackBishop:
-				this.ptype =  Types.BlackBishop;
-				break;
-			case FEN.BlackQueen:
-				this.ptype =  Types.BlackQueen;
-				break;
-			case FEN.WhiteQueen:
-				this.ptype =  Types.WhiteQueen;
-				break;
-			case FEN.WhiteKing:
-				this.ptype =  Types.WhiteKing;
-				break;
-			case FEN.BlackKing:
-				this.ptype =  Types.BlackKing;
-				break;
-			case FEN.BlackRook:
-				this.ptype =  Types.BlackRook;
-				break;
-			case FEN.WhiteRook:
-				this.ptype =  Types.WhiteRook;
-				break;
+			case  FEN.blackPawn:
+				this.ptype = Piece.blackPawn;
+			return;
+			case FEN.whitePawn:
+				this.ptype =  Piece.whitePawn;
+			return;
+			case FEN.blackKnight:
+				this.ptype =  Piece.blackKnight;
+			break;
+			case FEN.whiteKnight:
+				this.ptype =  Piece.whiteKnight;
+			break;
+			case FEN.whiteBishop:
+				this.ptype =  Piece.whiteBishop;
+			break;
+			case FEN.blackBishop:
+				this.ptype =  Piece.blackBishop;
+			break;
+			case FEN.blackQueen:
+				this.ptype =  Piece.blackQueen;
+			break;
+			case FEN.whiteQueen:
+				this.ptype =  Piece.whiteQueen;
+			break;
+			case FEN.whiteKing:
+				this.ptype =  Piece.whiteKing;
+			break;
+			case FEN.blackKing:
+				this.ptype =  Piece.blackKing;
+			break;
+			case FEN.blackRook:
+				this.ptype =  Piece.blackRook;
+			break;
+			case FEN.whiteRook:
+				this.ptype =  Piece.whiteRook;
+			break;
 			default:
-				this.ptype = Types.None;
-				break;
+				this.ptype = Piece.empty;
+			break;
 		}
 	}
 
-	/**
-	 * Function: constructor
-	 */
-	constructor() { }
 	/**
 	 * Function: ngOnInit
 	 */

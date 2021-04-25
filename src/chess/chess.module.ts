@@ -33,7 +33,7 @@ import {
 }
 from './piece/piece.component';
 import {
-	Types
+Piece,FEN
 }from'./piece/types.enum';
 import {
 	DragDropModule

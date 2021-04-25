@@ -26,8 +26,12 @@ export class BoardComponent implements OnInit, FEN{
 	noStack = false;
 	rows: Array < Row > = [];
 
-	test_counter = 0;
 
+	/**
+	 * Function: constructor
+	 *
+	 */
+	constructor() { }
 	public madeMove = (cell: any) => cell;
 
 	/*
@@ -45,10 +49,10 @@ export class BoardComponent implements OnInit, FEN{
 		for (; y < cells; y++) {
 			const fs = fen.charAt(counter);
 			if (!isNaN(Number(fs))) {
-				if (counter2 == 0) {
+				if (counter2 === 0) {
 					counter2++;
 				}
-				if (counter2 == Number(fs)) {
+				if (counter2 === Number(fs)) {
 					counter2 = 0;
 					counter++;
 				} else {
@@ -59,7 +63,7 @@ export class BoardComponent implements OnInit, FEN{
 				counter++;
 			}
 			const a = new Cell();
-			if (y % 2 == 0) {
+			if (y % 2 === 0) {
 				a.style = classA;
 			} else {
 				a.style = classB;
@@ -77,31 +81,6 @@ export class BoardComponent implements OnInit, FEN{
 		return temp;
 	}
 
-	/**
-	 * Function: memo
-	 *
-	 * Used for testing
-	 *
-	 * (DEMO_REMOVE)
-	 */
-	memo() {
-		if (this.test_counter == 0) {
-			this.move(0, 1, 0, 2);
-			this.test_counter++;
-			this.printFENString();
-		} else {
-			if (this.test_counter == 1) {
-				this.test_counter = 3;
-				this.generateBoard('r1b1k1nr/p2p1pNp/n2B4/1p1NP2P/6P1/3P1Q2/P1P1K3/q5b1');
-				this.printFENString();
-			} else {
-				if (this.test_counter == 3) {
-					this.generateBoard();
-					this.test_counter = 0;
-				}
-			}
-		}
-	}
 
 
 	/**
@@ -137,7 +116,7 @@ export class BoardComponent implements OnInit, FEN{
 		let counter = 0;
 		const fen = startingPos.split('/');
 		for (; counter < num; counter++) {
-			if (counter % 2 == 0) {
+			if (counter % 2 === 0) {
 				this.rows.push(this.addRow(this.primaryColor, this.secondaryColor,
 					fen[counter]));
 			} else {
@@ -148,13 +127,6 @@ export class BoardComponent implements OnInit, FEN{
 		this.printFENString();
 	}
 
-	/**
-	 * Function: constructor
-	 *
-	 */
-	constructor() {
-
-	}
 
 	/**
 	 * Function: printFENString()
@@ -177,7 +149,7 @@ export class BoardComponent implements OnInit, FEN{
 		let output = '';
 
 		for (; i < length; i++) {
-			output += this.rows[i].toFENString() + (i + 1 == length ? '' : '/');
+			output += this.rows[i].toFENString() + (i + 1 === length ? '' : '/');
 		}
 		return output;
 	}
@@ -200,13 +172,19 @@ class Row implements FEN{
 
 	cells: Array < Cell > = [];
 
+	/**
+	 * Function: constructor
+	 */
+	constructor() {
+
+	}
 	toFENString() {
 		let out = '';
 		let i = 0;
 		let counter = 0;
 		for (; i < this.cells.length; i++) {
 			const z = this.cells[i].toFENString();
-			if (z == '' || z == null) {
+			if (z === '' || z === null) {
 				counter += 1;
 			} else {
 				if (counter > 0) {
@@ -249,18 +227,17 @@ class Row implements FEN{
 		this.cells.push(cell);
 	}
 
-	/**
-	 * Function: constructor
-	 */
-	constructor() {
-
-	}
 }
 class Cell implements FEN{
 	style = '';
 	pieces: Array<string> = [''];
 	x = -1;
 	y = -1;
+	/**
+	 * Function: constructor
+	 *
+	 */
+	constructor(){}
 	public madeMove = () => {};
 	/**
 	 * Function: getPieces
@@ -272,14 +249,6 @@ class Cell implements FEN{
 	}
 
 
-	/**
-	 * setPiece()
-	 *
-	 * Sets piece component to enumerated integer
-	 */
-	/*setPiece(num: number) {
-			this.piece.set(num)
-		}*/
 	/**
 	 * Function: getPiece()
 	 *
@@ -304,23 +273,26 @@ class Cell implements FEN{
         console.log ('Board Drop');
 		const before = this.getPieces();
 		if (event.previousContainer === event.container) {
-			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+			moveItemInArray(event.container.data,
+				event.previousIndex, event.currentIndex);
 		} else {
-			transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+			transferArrayItem(event.previousContainer.data,
+				event.container.data, event.previousIndex,
+				event.currentIndex);
 
 		}
 		console.log(before);
 		console.log(this.getPieces());
 		//if(this.pieces.length > 1)
 		if(before && this.getPieces())
-		{if (before == this.getPieces()){
+		{if (before === this.getPieces()){
 			this.pieces.shift();
 		}else{
 			this.pieces.pop();
 		}}
 
 		this.pieces = [this.getPieces()];
-        if (event.previousContainer.id != 'otherList') {
+        if (event.previousContainer.id !== 'otherList') {
             this.madeMove();
         }
         else{
@@ -333,11 +305,6 @@ class Cell implements FEN{
 	}
 
 
-	/**
-	 * Function: constructor
-	 *
-	 */
-	constructor(){}
 
 	/**
 	 * Function: setFEN

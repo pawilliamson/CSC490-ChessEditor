@@ -10,11 +10,11 @@ import { BoardComponent } from '../board/board.component';
 })
 export class GameComponent implements AfterViewInit {
 
+	@ViewChild('board')
+	board: any;
 	history: Array<string> = [''];
 	player = true;
 	turn = 1;
-	@ViewChild('board')
-	board: any;
 	startingPosition = '';
 	vboard: ValidatorBoard = new ValidatorBoard();
 	previousBoard: any = new BoardComponent();
@@ -47,7 +47,9 @@ export class GameComponent implements AfterViewInit {
     }
 
 	isUpperCase(st: string){
-        //if st is undefined (happens when dragging piece back to its original position), always return the boolean that contadicts what is stored in player.
+	//if st is undefined (happens when dragging piece back to its original
+		//position), always return the boolean that contadicts what is
+		//stored in player.
 	    return (typeof st != 'undefined') ? st === st.toUpperCase() : !this.player;
 	}
 
@@ -64,7 +66,7 @@ export class GameComponent implements AfterViewInit {
 		this.previousBoard.generateBoard(this.history[this.turn-1]);
 
 		const icase = this.isUpperCase(this.board.rows[inp.y].cells[inp.x].getPieces());
-		if (icase != this.player){
+		if (icase !== this.player){
 			this.undo();
 			return;
 
@@ -78,10 +80,15 @@ export class GameComponent implements AfterViewInit {
 
 		for (let row = 0; row < this.previousBoard.rows.length && !found; row++){
 			for (let cell =0; cell <  this.previousBoard.rows[row].cells.length && !found; cell++){
-				if(!((inp.x == cell) && (inp.y == row))) {
+				if(!((inp.x === cell) && (inp.y === row))) {
 
 					if(this.previousBoard.rows[row].cells[cell].getPieces()
-						!= this.board.rows[row].cells[cell].getPieces() && (this.board.rows[row].cells[cell].getPieces() || this.previousBoard.rows[row].cells[cell].getPieces())){
+						!==
+						this.board.rows[row].cells[cell].getPieces()
+						&&
+						(this.board.rows[row].cells[cell].getPieces()
+							||
+							this.previousBoard.rows[row].cells[cell].getPieces())){
 						found = true;
 						original = cload(cell, row);
 						console.log(original);
@@ -94,7 +101,10 @@ export class GameComponent implements AfterViewInit {
 
 		}
 				if(found){
-					const valid = this.vboard.validateMovement(original.x, original.y, end.x, end.y);
+					const valid =
+						this.vboard.validateMovement(original.x,
+							original.y, end.x,
+							end.y);
 					if(!valid){
 						this.undo();
 					}else{
@@ -130,7 +140,7 @@ console.log('VALID');
 			 this.vboard = new ValidatorBoard();
 			 for(const row of this.board.rows){
 				 for(const cell of row.cells){
-					 if(cell.toFENString != ''){
+					 if(cell.toFENString !== ''){
 						 const temp = this.vboard.createPiece(cell.toFENString());
 						 if(temp instanceof Piece)
 						 {this.vboard.add(cell.x, cell.y, temp);}
@@ -140,11 +150,14 @@ console.log('VALID');
 			 }
 			 console.log(this.vboard.chessBoard);
 			}
-
+			// Function: isCheck
+	// Checks if the current player is in check.
 			isCheck(){
 
 			}
-			isCheckMate(){
+	// Funciton: isCheckMate
+	// Checks if a checkmate exists
+	isCheckMate(){
 
 			}
 			/**
@@ -172,8 +185,30 @@ console.log('VALID');
 			canCastle(){
 
 			}
+	enPassant(){
+
+	}
+	enPassantToString(){
+
+return '-';
+	}
+	turnToString(){
+	 return this.turn.toString();
+	}
+	halfMoveToString(){
+	return '-';
+	}
+			castleToString(){
+
+			return '-';
+			}
+	// Function: toFENString()
+	// Used to export the board to a FEN string
 			toFENString(){
-				return '';
+				return this.getFENBoard() + ' ' +
+					this.playerToString + ' ' + this.castleToString()
+					+ this.enPassantToString() +
+					this.halfMoveToString() + this.turnToString() ;
 			}
 			getFENBoard(){
 				return this.board.toFENString();
@@ -184,9 +219,14 @@ console.log('VALID');
 				this.player = !this.player;
 				this.turn = this.turn + 1;
 			}
-			// Function:isTurn
+	// Function:isTurn
+	// Checks if it is the given player's turn.
+	// Note: This can be used for the full FEN string
 			isTurn(player: string){
-				return this.player?player=='w':player=='b';
+				return this.player?player==='w':player==='b';
+			}
+			playerToString(){
+			return this.player?'w':'b';
 			}
 
 			lastTurn(){
