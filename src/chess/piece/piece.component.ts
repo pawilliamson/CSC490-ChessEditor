@@ -1,11 +1,11 @@
 // File: Piece.component.ts
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { FEN, Piece } from "./types.enum";
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { FEN, Piece } from './types.enum';
 
 @Component({
-  selector: "app-piece",
-  templateUrl: "./piece.component.html",
-  styleUrls: ["./piece.component.css"],
+  selector: 'app-piece',
+  templateUrl: './piece.component.html',
+  styleUrls: ['./piece.component.css'],
 })
 
 /**
@@ -17,7 +17,7 @@ export class PieceComponent implements OnInit, OnChanges {
   @Input()
   pid = 0;
   @Input()
-  piece = "";
+  piece = '';
   ptype: Piece = Piece.empty;
 
   /**
@@ -31,31 +31,31 @@ export class PieceComponent implements OnInit, OnChanges {
   getImage() {
     switch (this.ptype) {
       case Piece.blackPawn:
-        return "Chess_pdt45.svg";
+        return 'Chess_pdt45.svg';
       case Piece.whitePawn:
-        return "Chess_plt45.svg";
+        return 'Chess_plt45.svg';
       case Piece.blackKnight:
-        return "Chess_ndt45.svg";
+        return 'Chess_ndt45.svg';
       case Piece.whiteKnight:
-        return "Chess_nlt45.svg";
+        return 'Chess_nlt45.svg';
       case Piece.whiteBishop:
-        return "Chess_blt45.svg";
+        return 'Chess_blt45.svg';
       case Piece.blackBishop:
-        return "Chess_bdt45.svg";
+        return 'Chess_bdt45.svg';
       case Piece.blackQueen:
-        return "Chess_qdt45.svg";
+        return 'Chess_qdt45.svg';
       case Piece.whiteQueen:
-        return "Chess_qlt45.svg";
+        return 'Chess_qlt45.svg';
       case Piece.whiteKing:
-        return "Chess_klt45.svg";
+        return 'Chess_klt45.svg';
       case Piece.blackKing:
-        return "Chess_kdt45.svg";
+        return 'Chess_kdt45.svg';
       case Piece.blackRook:
-        return "Chess_rdt45.svg";
+        return 'Chess_rdt45.svg';
       case Piece.whiteRook:
-        return "Chess_rlt45.svg";
+        return 'Chess_rlt45.svg';
       default:
-        return "NONE";
+        return 'NONE';
     }
   }
   /**

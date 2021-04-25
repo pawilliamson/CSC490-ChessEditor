@@ -1,5 +1,5 @@
 // File: bishop.service.ts
-import { Piece } from "./piece.service";
+import { Piece } from './piece.service';
 
 /**
  * Class: Bishop
@@ -15,6 +15,6 @@ export class Bishop extends Piece {
    *
    */
   getName() {
-    return "BISHOP";
+    return 'BISHOP';
   }
 }

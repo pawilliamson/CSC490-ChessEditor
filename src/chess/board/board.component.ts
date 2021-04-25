@@ -1,19 +1,19 @@
 // File: board.component.ts
-import { FEN } from "../fen";
-import { PieceComponent } from "../piece/piece.component";
+import { FEN } from '../fen';
+import { PieceComponent } from '../piece/piece.component';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
   copyArrayItem,
   CdkDragStart,
-} from "@angular/cdk/drag-drop";
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+} from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 @Component({
-  selector: "app-board",
-  templateUrl: "./board.component.html",
-  styleUrls: ["./board.component.css"],
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.css'],
 })
 
 /**
@@ -25,8 +25,8 @@ import { Observable } from "rxjs";
  *
  */
 export class BoardComponent implements OnInit, FEN {
-  primaryColor = "bg-primary";
-  secondaryColor = "bg-secondary";
+  primaryColor = 'bg-primary';
+  secondaryColor = 'bg-secondary';
   pieceToAdd: string | unknown;
   colorToAdd: string | unknown;
   noStack = false;
@@ -72,7 +72,7 @@ export class BoardComponent implements OnInit, FEN {
       } else {
         a.style = classB;
       }
-      a.setFEN(isNaN(Number(fs)) ? fs : "");
+      a.setFEN(isNaN(Number(fs)) ? fs : '');
       a.y = this.rows.length;
       a.x = y;
       if (!(this.madeMove === null)) {
@@ -96,7 +96,7 @@ export class BoardComponent implements OnInit, FEN {
    */
   move(x1: number, y1: number, x2: number, y2: number) {
     const temp = this.rows[y1].cells[x1].toFENString();
-    this.rows[y1].cells[x1].setFEN("");
+    this.rows[y1].cells[x1].setFEN('');
     this.rows[y2].cells[x2].setFEN(temp);
   }
 
@@ -113,11 +113,11 @@ export class BoardComponent implements OnInit, FEN {
   generateBoard(startingPos?: Partial<string>) {
     this.rows = [];
     if (!startingPos) {
-      startingPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
+      startingPos = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR';
     }
     const num = 8;
     let counter = 0;
-    const fen = startingPos.split("/");
+    const fen = startingPos.split('/');
     for (; counter < num; counter++) {
       if (counter % 2 === 0) {
         this.rows.push(
@@ -150,10 +150,10 @@ export class BoardComponent implements OnInit, FEN {
     let i = 0;
     const j = 0;
     const length = 8;
-    let output = "";
+    let output = '';
 
     for (; i < length; i++) {
-      output += this.rows[i].toFENString() + (i + 1 === length ? "" : "/");
+      output += this.rows[i].toFENString() + (i + 1 === length ? '' : '/');
     }
     return output;
   }
@@ -161,7 +161,7 @@ export class BoardComponent implements OnInit, FEN {
    * Function: ngOnInit
    */
   ngOnInit(): void {
-    this.generateBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+    this.generateBoard('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR');
     console.log(this.toFENString());
   }
 }
@@ -179,12 +179,12 @@ class Row implements FEN {
    */
   constructor() {}
   toFENString() {
-    let out = "";
+    let out = '';
     let i = 0;
     let counter = 0;
     for (; i < this.cells.length; i++) {
       const z = this.cells[i].toFENString();
-      if (z === "" || z === null) {
+      if (z === '' || z === null) {
         counter += 1;
       } else {
         if (counter > 0) {
@@ -227,8 +227,8 @@ class Row implements FEN {
   }
 }
 class Cell implements FEN {
-  style = "";
-  pieces: Array<string> = [""];
+  style = '';
+  pieces: Array<string> = [''];
   x = -1;
   y = -1;
   /**
@@ -267,7 +267,7 @@ class Cell implements FEN {
    * Function: drop
    */
   drop(event: CdkDragDrop<string[]>) {
-    console.log("Board Drop");
+    console.log('Board Drop');
     const before = this.getPieces();
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -295,13 +295,13 @@ class Cell implements FEN {
     }
 
     this.pieces = [this.getPieces()];
-    if (event.previousContainer.id !== "otherList") {
+    if (event.previousContainer.id !== 'otherList') {
       this.madeMove();
     } else {
       this.madeMove = () => {};
     }
 
-    console.log("WELL, I MADE IT!");
+    console.log('WELL, I MADE IT!');
   }
 
   /**
@@ -319,6 +319,6 @@ class Cell implements FEN {
    *
    */
   getStyle() {
-    return "col " + this.style;
+    return 'col ' + this.style;
   }
 }

@@ -1,4 +1,4 @@
-import { Piece } from "./piece.service";
+import { Piece } from './piece.service';
 
 const pieceFactory = (color: string) => new Piece(color);
 export const pieceProvider = {

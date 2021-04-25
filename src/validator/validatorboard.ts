@@ -2,14 +2,14 @@
 // Originally designed by Brandon in JS
 // Converted to TypeScript by Tylor
 // Implemented in Angular by Devin
-import { Board } from "./board.service";
-import { Rook } from "./rook.service";
-import { Pawn } from "./pawn.service";
-import { King } from "./king.service";
-import { Queen } from "./queen.service";
-import { Piece } from "./piece.service";
-import { Bishop } from "./bishop.service";
-import { Knight } from "./knight.service";
+import { Board } from './board.service';
+import { Rook } from './rook.service';
+import { Pawn } from './pawn.service';
+import { King } from './king.service';
+import { Queen } from './queen.service';
+import { Piece } from './piece.service';
+import { Bishop } from './bishop.service';
+import { Knight } from './knight.service';
 
 /**
  * Class: ValidatorBoard
@@ -26,8 +26,8 @@ export class ValidatorBoard extends Board {
   // with the Pawn when the Pawn reaches
   // the end of the board.
 
-  blackQueen: Queen = new Queen("BLACK");
-  whiteQueen: Queen = new Queen("WHITE");
+  blackQueen: Queen = new Queen('BLACK');
+  whiteQueen: Queen = new Queen('WHITE');
 
   // These two booleans will be used to determine castling,
   // as one can only castle as their king's first move.
@@ -50,20 +50,20 @@ export class ValidatorBoard extends Board {
     // Checking where y=0, the bottom of the board.
     for (xPos = 0; xPos < 8; xPos++) {
       if (
-        this.chessBoard[0][xPos].getName() === "PAWN" &&
-        this.chessBoard[xPos][0].getColor() === "BLACK"
+        this.chessBoard[0][xPos].getName() === 'PAWN' &&
+        this.chessBoard[xPos][0].getColor() === 'BLACK'
       ) {
-        console.log("Changing black pawn at " + xPos + " 0 to a black queen.");
+        console.log('Changing black pawn at ' + xPos + ' 0 to a black queen.');
         this.chessBoard[xPos][0] = this.blackQueen;
       }
     }
     // Checking where y=7, the top of the board.
     for (xPos = 0; xPos < 8; xPos++) {
       if (
-        this.chessBoard[7][xPos].getName() === "PAWN" &&
-        this.chessBoard[xPos][7].getColor() === "WHITE"
+        this.chessBoard[7][xPos].getName() === 'PAWN' &&
+        this.chessBoard[xPos][7].getColor() === 'WHITE'
       ) {
-        console.log("Changing white pawn at " + xPos + " 7 to a white queen.");
+        console.log('Changing white pawn at ' + xPos + ' 7 to a white queen.');
         this.chessBoard[xPos][7] = this.whiteQueen;
       }
     }
@@ -81,7 +81,7 @@ export class ValidatorBoard extends Board {
    * @param y2
    */
   validCoordinatesChecker(x1: number, y1: number, x2: number, y2: number) {
-    console.log("CHECKER");
+    console.log('CHECKER');
     console.log(x1);
     console.log(x2);
     console.log(y1);
@@ -96,7 +96,7 @@ export class ValidatorBoard extends Board {
       x2 < 0 ||
       y2 < 0
     ) {
-      console.log("Input out of bounds was sent!");
+      console.log('Input out of bounds was sent!');
       return false;
     }
     return true;
@@ -116,7 +116,7 @@ export class ValidatorBoard extends Board {
    * @param y2
    */
   goodDiagonalPathChecker(x1: number, y1: number, x2: number, y2: number) {
-    console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
+    console.log('(' + x1 + ', ' + y1 + ') to (' + x2 + ', ' + y2 + ')');
     // xChange and yChange will be used to determine if the
     // diagonal path is correct, if it is the absolute value of x1
     // - x2 will equal the absolute value of y1 - y2.
@@ -146,9 +146,9 @@ export class ValidatorBoard extends Board {
         console.log(tempy);
         if (
           this.chessBoard[Math.floor(tempy)][Math.floor(tempx)].getName() !==
-          "UNSPECIFIED"
+          'UNSPECIFIED'
         ) {
-          console.log("Obstruction along a diagonal path");
+          console.log('Obstruction along a diagonal path');
           return false;
         }
       }
@@ -157,10 +157,10 @@ export class ValidatorBoard extends Board {
       return true;
     }
     console.log(
-      "Not diagonal path (" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")"
+      'Not diagonal path (' + x1 + ', ' + y1 + ') to (' + x2 + ', ' + y2 + ')'
     );
-    console.log("xChange: " + xChange);
-    console.log("yChange: " + yChange);
+    console.log('xChange: ' + xChange);
+    console.log('yChange: ' + yChange);
     return false;
   }
 
@@ -211,8 +211,8 @@ export class ValidatorBoard extends Board {
           tem += xChangePerSpace > 0 ? 1 : -1
         ) {
           console.log(this.chessBoard[tempy][tem].getName());
-          if (this.chessBoard[tempy][tem].getName() !== "UNSPECIFIED") {
-            console.log("Obstruction along horizontal path");
+          if (this.chessBoard[tempy][tem].getName() !== 'UNSPECIFIED') {
+            console.log('Obstruction along horizontal path');
             return false;
           }
         }
@@ -224,10 +224,10 @@ export class ValidatorBoard extends Board {
           temy += yChangePerSpace > 0 ? 1 : -1
         ) {
           console.log(this.chessBoard[temy][tempx].getName());
-          if (this.chessBoard[temy][tempx].getName() !== "UNSPECIFIED") {
+          if (this.chessBoard[temy][tempx].getName() !== 'UNSPECIFIED') {
             console.log(this.chessBoard[temy][tempx].getName());
-            console.log("Obstruction along vertical path");
-            console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
+            console.log('Obstruction along vertical path');
+            console.log('(' + x1 + ', ' + y1 + ') to (' + x2 + ', ' + y2 + ')');
             return false;
           }
         }
@@ -237,8 +237,8 @@ export class ValidatorBoard extends Board {
       // it is a horizontal or vertical path with no obsturctions.
       return true;
     }
-    console.log("INVALID");
-    console.log("(" + x1 + ", " + y1 + ") to (" + x2 + ", " + y2 + ")");
+    console.log('INVALID');
+    console.log('(' + x1 + ', ' + y1 + ') to (' + x2 + ', ' + y2 + ')');
     return false;
   }
 
@@ -269,47 +269,47 @@ export class ValidatorBoard extends Board {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
       return false;
     }
-    if (this.chessBoard[y1][x1].getName() === "UNSPECIFIED") {
-      console.log("Error: No piece selected");
+    if (this.chessBoard[y1][x1].getName() === 'UNSPECIFIED') {
+      console.log('Error: No piece selected');
       console.log(this.chessBoard);
     }
     const pieceName: string = this.chessBoard[y1][x1].getName();
     let validMovement = false;
     switch (pieceName) {
-      case "PAWN":
+      case 'PAWN':
         if (this.checkPawnMovement(x1, y1, x2, y2)) {
           validMovement = true;
         }
         break;
-      case "QUEEN":
+      case 'QUEEN':
         if (this.checkQueenMovement(x1, y1, x2, y2)) {
           validMovement = true;
         }
         break;
-      case "KING":
+      case 'KING':
         if (this.checkKingMovement(x1, y1, x2, y2)) {
           validMovement = true;
           // These booleans will be set to true after the king's movement
           // to prevent them from castling after moving.
-          if (this.chessBoard[y1][x1].getColor() === "WHITE") {
+          if (this.chessBoard[y1][x1].getColor() === 'WHITE') {
             this.whiteKingMoved = true;
           }
-          if (this.chessBoard[y1][x1].getColor() === "BLACK") {
+          if (this.chessBoard[y1][x1].getColor() === 'BLACK') {
             this.blackKingMoved = true;
           }
         }
         break;
-      case "BISHOP":
+      case 'BISHOP':
         if (this.checkBishopMovement(x1, y1, x2, y2)) {
           validMovement = true;
         }
         break;
-      case "ROOK":
+      case 'ROOK':
         if (this.checkRookMovement(x1, y1, x2, y2)) {
           validMovement = true;
         }
         break;
-      case "KNIGHT":
+      case 'KNIGHT':
         if (this.checkKnightMovement(x1, y1, x2, y2)) {
           validMovement = true;
         }
@@ -319,7 +319,7 @@ export class ValidatorBoard extends Board {
       this.move(x1, y1, x2, y2);
       return true;
     }
-    console.log("BUT WHY?");
+    console.log('BUT WHY?');
     return false;
   }
 
@@ -337,7 +337,7 @@ export class ValidatorBoard extends Board {
    */
   checkPawnMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("Invalid movement coordinates were sent for pawn");
+      console.log('Invalid movement coordinates were sent for pawn');
       return false;
     }
 
@@ -345,7 +345,7 @@ export class ValidatorBoard extends Board {
     const selectedPawn: Pawn = this.chessBoard[y1][x1];
     if (selectedPawn.getColor() === this.chessBoard[y2][x2].getColor()) {
       console.log(
-        "Pawn tried to move to location of another piece of its color."
+        'Pawn tried to move to location of another piece of its color.'
       );
       return false;
     }
@@ -353,19 +353,19 @@ export class ValidatorBoard extends Board {
     // A black pawn will only be able to move down one, or down
     // diagonal if an enemy piece is occupying that space.
     console.log(selectedPawn.getColor());
-    if (selectedPawn.getColor() === "BLACK") {
-      console.log("Maybe not?");
+    if (selectedPawn.getColor() === 'BLACK') {
+      console.log('Maybe not?');
       // Checks for down movement, verifies that the piece is moving down one,
       // not moving horizontally, and there is nothing in the way of the piece.
 
       if (
         y2 === y1 + 1 &&
         x1 === x2 &&
-        this.chessBoard[y2][x2].getName() === "UNSPECIFIED"
+        this.chessBoard[y2][x2].getName() === 'UNSPECIFIED'
       ) {
         return true;
       } else {
-        console.log("YOU LIAR!");
+        console.log('YOU LIAR!');
       }
       // Checks for down diagonal movement, which can occur
       // if there is an enemy piece occupying that space.
@@ -375,15 +375,15 @@ export class ValidatorBoard extends Board {
       if (
         y2 === y1 + 1 &&
         (x2 === x1 + 1 || x2 === x1 - 1) &&
-        this.chessBoard[y2][x2].getName() !== "UNSPECIFIED" &&
-        this.chessBoard[y2][x2].getColor() === "WHITE"
+        this.chessBoard[y2][x2].getName() !== 'UNSPECIFIED' &&
+        this.chessBoard[y2][x2].getColor() === 'WHITE'
       ) {
         return true;
       }
-      console.log("Bad coordinates sent for movement of pawn.");
+      console.log('Bad coordinates sent for movement of pawn.');
       return false;
     }
-    if (selectedPawn.getColor() === "WHITE") {
+    if (selectedPawn.getColor() === 'WHITE') {
       // Checks for upward movement, verifies that the piece is moving
       // up one, not moving horizontally, and there is nothing in the
       // way of the piece.
@@ -391,7 +391,7 @@ export class ValidatorBoard extends Board {
       if (
         y2 === y1 - 1 &&
         x1 === x2 &&
-        this.chessBoard[y2][x2].getName() === "UNSPECIFIED"
+        this.chessBoard[y2][x2].getName() === 'UNSPECIFIED'
       ) {
         return true;
       }
@@ -404,18 +404,18 @@ export class ValidatorBoard extends Board {
       if (
         y2 === y1 - 1 &&
         (x2 === x1 + 1 || x2 === x1 - 1) &&
-        this.chessBoard[y2][x2].getName() !== "UNSPECIFIED" &&
-        this.chessBoard[y2][x2].getColor() === "BLACK"
+        this.chessBoard[y2][x2].getName() !== 'UNSPECIFIED' &&
+        this.chessBoard[y2][x2].getColor() === 'BLACK'
       ) {
         return true;
       }
-      console.log("Bad coordinates sent for movement of pawn.");
+      console.log('Bad coordinates sent for movement of pawn.');
       return false;
     }
     // If neither of these if conditions are met, something has gone wrong
     // and a pawn without a color exists.
 
-    console.log("Error: Pawn does not have a color");
+    console.log('Error: Pawn does not have a color');
     return false;
   }
 
@@ -432,7 +432,7 @@ export class ValidatorBoard extends Board {
    */
   checkKingMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("Invalid movement coordinates were sent for king");
+      console.log('Invalid movement coordinates were sent for king');
       return false;
     }
     // Checks to see if there is another piece of the same color occupying
@@ -440,7 +440,7 @@ export class ValidatorBoard extends Board {
     if (
       this.chessBoard[y2][x2].getColor() === this.chessBoard[y1][x1].getColor()
     ) {
-      console.log("YOU TYRANT!");
+      console.log('YOU TYRANT!');
       return false;
     }
     const selectedKing: King = this.chessBoard[x1][y1];
@@ -453,7 +453,7 @@ export class ValidatorBoard extends Board {
     ) {
       return true;
     }
-    console.log("Bad coordinates sent for movment of king.");
+    console.log('Bad coordinates sent for movment of king.');
     return false;
   }
 
@@ -469,13 +469,13 @@ export class ValidatorBoard extends Board {
    */
   checkQueenMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("COORDINATE ERROR");
+      console.log('COORDINATE ERROR');
       return false;
     }
     if (
       this.chessBoard[y1][x1].getColor() === this.chessBoard[y2][x2].getColor()
     ) {
-      console.log("RED QUEEN");
+      console.log('RED QUEEN');
       return false;
     }
     if (
@@ -484,7 +484,7 @@ export class ValidatorBoard extends Board {
     ) {
       return true;
     }
-    console.log("BAD QUEEN");
+    console.log('BAD QUEEN');
     return false;
   }
 
@@ -500,19 +500,19 @@ export class ValidatorBoard extends Board {
    */
   checkRookMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("COORDINATE ERROR");
+      console.log('COORDINATE ERROR');
       return false;
     }
     if (
       this.chessBoard[y1][x1].getColor() === this.chessBoard[y2][x2].getColor()
     ) {
-      console.log("ATTEMPTING TO CAPTURE OWN PIECE");
+      console.log('ATTEMPTING TO CAPTURE OWN PIECE');
       return false;
     }
     if (this.goodHorizontalVerticalPathChecker(x1, y1, x2, y2)) {
       return true;
     }
-    console.log("X VS Y");
+    console.log('X VS Y');
     return false;
   }
 
@@ -529,13 +529,13 @@ export class ValidatorBoard extends Board {
    */
   checkBishopMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("INVALID COORDS");
+      console.log('INVALID COORDS');
       return false;
     }
     if (
       this.chessBoard[y1][x1].getColor() === this.chessBoard[y2][x2].getColor()
     ) {
-      console.log("MUTINY!");
+      console.log('MUTINY!');
       return false;
     }
     // The bishop can move in any direction diagonally, the
@@ -544,7 +544,7 @@ export class ValidatorBoard extends Board {
     if (this.goodDiagonalPathChecker(x1, y1, x2, y2)) {
       return true;
     }
-    console.log("BAD BISHOP");
+    console.log('BAD BISHOP');
     return false;
   }
 
@@ -561,13 +561,13 @@ export class ValidatorBoard extends Board {
    */
   checkKnightMovement(x1: number, y1: number, x2: number, y2: number) {
     if (!this.validCoordinatesChecker(x1, y1, x2, y2)) {
-      console.log("INVALID COORD");
+      console.log('INVALID COORD');
       return false;
     }
     if (
       this.chessBoard[y1][x1].getColor() === this.chessBoard[y2][x2].getColor()
     ) {
-      console.log("ATTEMPTING TO CAPTURE OWN PIECE");
+      console.log('ATTEMPTING TO CAPTURE OWN PIECE');
       return false;
     }
     // The Knight must move in an L shape, horizontally by 1 or 2 spaces
@@ -580,38 +580,38 @@ export class ValidatorBoard extends Board {
     if ((xDiff === 2 && yDiff === 1) || (xDiff === 1 && yDiff === 2)) {
       return true;
     }
-    console.log("Bad Knight");
+    console.log('Bad Knight');
     return false;
   }
 
   createPiece(fen: string) {
     switch (fen) {
-      case "p":
-        return new Pawn("BLACK");
-      case "P":
-        return new Pawn("WHITE");
-      case "r":
-        return new Rook("BLACK");
-      case "R":
-        return new Rook("WHITE");
-      case "n":
-        return new Knight("BLACK");
-      case "N":
-        return new Knight("WHITE");
-      case "b":
-        return new Bishop("BLACK");
-      case "B":
-        return new Bishop("WHITE");
-      case "q":
-        return new Queen("BLACK");
-      case "Q":
-        return new Queen("WHITE");
-      case "k":
-        return new King("BLACK");
-      case "K":
-        return new King("WHITE");
+      case 'p':
+        return new Pawn('BLACK');
+      case 'P':
+        return new Pawn('WHITE');
+      case 'r':
+        return new Rook('BLACK');
+      case 'R':
+        return new Rook('WHITE');
+      case 'n':
+        return new Knight('BLACK');
+      case 'N':
+        return new Knight('WHITE');
+      case 'b':
+        return new Bishop('BLACK');
+      case 'B':
+        return new Bishop('WHITE');
+      case 'q':
+        return new Queen('BLACK');
+      case 'Q':
+        return new Queen('WHITE');
+      case 'k':
+        return new King('BLACK');
+      case 'K':
+        return new King('WHITE');
       default:
-        return "";
+        return '';
     }
   }
 }

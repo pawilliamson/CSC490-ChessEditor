@@ -1,4 +1,4 @@
-import { Piece } from "./piece.service";
+import { Piece } from './piece.service';
 /**
  * This class is for the Rook chess piece.
  *
@@ -9,6 +9,6 @@ export class Rook extends Piece {
    *
    */
   getName() {
-    return "ROOK";
+    return 'ROOK';
   }
 }

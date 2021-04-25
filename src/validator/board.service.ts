@@ -1,14 +1,14 @@
 // File: board.service.ts
 // Contains Board Class
 //
-import { Rook } from "./rook.service";
-import { Pawn } from "./pawn.service";
-import { King } from "./king.service";
-import { Queen } from "./queen.service";
-import { Piece } from "./piece.service";
-import { Bishop } from "./bishop.service";
-import { Knight } from "./knight.service";
-import { ValidatorBoard } from "./validatorboard";
+import { Rook } from './rook.service';
+import { Pawn } from './pawn.service';
+import { King } from './king.service';
+import { Queen } from './queen.service';
+import { Piece } from './piece.service';
+import { Bishop } from './bishop.service';
+import { Knight } from './knight.service';
+import { ValidatorBoard } from './validatorboard';
 
 /**
  *Class:Board
@@ -19,14 +19,14 @@ import { ValidatorBoard } from "./validatorboard";
 export class Board {
   boardLimit = 7;
   chessBoard: Piece[][] = new Array();
-  empty: Piece = new Piece("UNSPECIFIED");
+  empty: Piece = new Piece('UNSPECIFIED');
   constructor() {
     let x = 0;
     for (; x <= 7; x++) {
       let y = 0;
       const row: Piece[] = new Array();
       for (; y <= 7; y++) {
-        row[y] = new Piece("UNSPECIFIED");
+        row[y] = new Piece('UNSPECIFIED');
       }
       this.chessBoard[x] = row;
     }
@@ -46,31 +46,31 @@ export class Board {
         const pieceColor: string = this.chessBoard[xPos][yPos].getColor();
         const pieceName: string = this.chessBoard[xPos][yPos].getName();
         // These if-else statements will print out the color of the Piece.
-        if (pieceColor === "WHITE") {
-          console.log("W");
-        } else if (pieceColor === "BLACK") {
-          console.log("B");
+        if (pieceColor === 'WHITE') {
+          console.log('W');
+        } else if (pieceColor === 'BLACK') {
+          console.log('B');
         } else {
-          console.log("-");
+          console.log('-');
         }
         // These if-else statements will print out the class of Piece.
-        if (pieceName === "PAWN") {
-          console.log("P");
-        } else if (pieceName === "KING") {
-          console.log("K");
-        } else if (pieceName === "QUEEN") {
-          console.log("Q");
-        } else if (pieceName === "ROOK") {
-          console.log("R");
-        } else if (pieceName === "KNIGHT") {
-          console.log("H");
-        } else if (pieceName === "BISHOP") {
-          console.log("B");
+        if (pieceName === 'PAWN') {
+          console.log('P');
+        } else if (pieceName === 'KING') {
+          console.log('K');
+        } else if (pieceName === 'QUEEN') {
+          console.log('Q');
+        } else if (pieceName === 'ROOK') {
+          console.log('R');
+        } else if (pieceName === 'KNIGHT') {
+          console.log('H');
+        } else if (pieceName === 'BISHOP') {
+          console.log('B');
         } else {
-          console.log("-");
+          console.log('-');
         }
         // This should begin a new line.
-        console.log("\n");
+        console.log('\n');
       }
     }
   }
@@ -86,11 +86,11 @@ export class Board {
       this.chessBoard[yPos][xPos] = this.empty;
     } else {
       console.log(
-        "Board class tried to remove a Piece out of bounds." +
-          "Please ensure the location is within bounds. Attempted X" +
-          "Position: " +
+        'Board class tried to remove a Piece out of bounds.' +
+          'Please ensure the location is within bounds. Attempted X' +
+          'Position: ' +
           xPos +
-          "Attempted Y Position: " +
+          'Attempted Y Position: ' +
           yPos
       );
     }
@@ -110,10 +110,10 @@ export class Board {
       this.chessBoard[yPos][xPos] = addedPiece;
     } else {
       console.log(
-        "Board class tried to add a Piece out of bounds." +
-          "Attempted X Position " +
+        'Board class tried to add a Piece out of bounds.' +
+          'Attempted X Position ' +
           xPos +
-          " Attempted Y Position: " +
+          ' Attempted Y Position: ' +
           yPos
       );
     }
@@ -146,15 +146,15 @@ export class Board {
       this.remove(initialXPos, initialYPos);
     } else {
       console.log(
-        "Board class tried to move a Piece out of bounds, or" +
-          " the location of the Piece to be moved was out of bounds." +
-          " Attempted beggining X Position: " +
+        'Board class tried to move a Piece out of bounds, or' +
+          ' the location of the Piece to be moved was out of bounds.' +
+          ' Attempted beggining X Position: ' +
           initialXPos +
-          "Attempted beggining Y Position: " +
+          'Attempted beggining Y Position: ' +
           initialYPos +
-          "Attempted destination X Position: " +
+          'Attempted destination X Position: ' +
           locationXPos +
-          "Attempted destination Y Position: " +
+          'Attempted destination Y Position: ' +
           locationYPos
       );
     }
@@ -171,11 +171,11 @@ export class Board {
       return this.chessBoard[yPos][xPos];
     } else {
       console.log(
-        "Board class tried to return a Piece that was out of" +
-          " bounds. Attempted X Position: " +
+        'Board class tried to return a Piece that was out of' +
+          ' bounds. Attempted X Position: ' +
           xPos +
-          " Attempted Y" +
-          " Position: " +
+          ' Attempted Y' +
+          ' Position: ' +
           yPos
       );
     }

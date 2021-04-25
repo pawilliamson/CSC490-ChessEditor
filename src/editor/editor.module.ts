@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ChessModule } from "../chess/chess.module";
-import { CreatorComponent } from "./editor/editor.component";
-import { DragDropModule } from "@angular/cdk/drag-drop";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChessModule } from '../chess/chess.module';
+import { CreatorComponent } from './editor/editor.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 export { CreatorComponent };
 @NgModule({
   declarations: [CreatorComponent],

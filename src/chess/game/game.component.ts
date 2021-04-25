@@ -1,20 +1,20 @@
 // File: game.component.ts
-import { Component, AfterViewInit, ViewChild } from "@angular/core";
-import { Turn } from "./turn";
-import { ValidatorBoard, Piece } from "../../validator/validator.module";
-import { BoardComponent } from "../board/board.component";
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Turn } from './turn';
+import { ValidatorBoard, Piece } from '../../validator/validator.module';
+import { BoardComponent } from '../board/board.component';
 @Component({
-  selector: "app-game",
-  templateUrl: "./game.component.html",
-  styleUrls: ["./game.component.css"],
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements AfterViewInit {
-  @ViewChild("board")
+  @ViewChild('board')
   board: any;
-  history: Array<string> = [""];
+  history: Array<string> = [''];
   player = true;
   turn = 1;
-  startingPosition = "";
+  startingPosition = '';
   vboard: ValidatorBoard = new ValidatorBoard();
   previousBoard: any = new BoardComponent();
   halfMove = 0;
@@ -50,7 +50,7 @@ export class GameComponent implements AfterViewInit {
     //if st is undefined (happens when dragging piece back to its original
     //position), always return the boolean that contadicts what is
     //stored in player.
-    return typeof st != "undefined" ? st === st.toUpperCase() : !this.player;
+    return typeof st != 'undefined' ? st === st.toUpperCase() : !this.player;
   }
 
   intToUnary(num: number) {
@@ -61,7 +61,7 @@ export class GameComponent implements AfterViewInit {
     return out;
   }
   move(inp: any) {
-    const spit = (x: string) => x.split("/");
+    const spit = (x: string) => x.split('/');
 
     this.previousBoard.generateBoard(this.history[this.turn - 1]);
 
@@ -111,7 +111,7 @@ export class GameComponent implements AfterViewInit {
       if (!valid) {
         this.undo();
       } else {
-        console.log("VALID");
+        console.log('VALID');
         this.player = !this.player;
         this.history.push(this.getFENBoard());
         this.turn = this.turn + 1;
@@ -140,7 +140,7 @@ export class GameComponent implements AfterViewInit {
     this.vboard = new ValidatorBoard();
     for (const row of this.board.rows) {
       for (const cell of row.cells) {
-        if (cell.toFENString !== "") {
+        if (cell.toFENString !== '') {
           const temp = this.vboard.createPiece(cell.toFENString());
           if (temp instanceof Piece) {
             this.vboard.add(cell.x, cell.y, temp);
@@ -179,25 +179,25 @@ export class GameComponent implements AfterViewInit {
   canCastle() {}
   enPassant() {}
   enPassantToString() {
-    return "-";
+    return '-';
   }
   turnToString() {
     return this.turn.toString();
   }
   halfMoveToString() {
-    return "-";
+    return '-';
   }
   castleToString() {
-    return "-";
+    return '-';
   }
   // Function: toFENString()
   // Used to export the board to a FEN string
   toFENString() {
     return (
       this.getFENBoard() +
-      " " +
+      ' ' +
       this.playerToString +
-      " " +
+      ' ' +
       this.castleToString() +
       this.enPassantToString() +
       this.halfMoveToString() +
@@ -217,10 +217,10 @@ export class GameComponent implements AfterViewInit {
   // Checks if it is the given player's turn.
   // Note: This can be used for the full FEN string
   isTurn(player: string) {
-    return this.player ? player === "w" : player === "b";
+    return this.player ? player === 'w' : player === 'b';
   }
   playerToString() {
-    return this.player ? "w" : "b";
+    return this.player ? 'w' : 'b';
   }
 
   lastTurn() {
@@ -235,7 +235,7 @@ export class GameComponent implements AfterViewInit {
   }
 }
 export class RCell {
-  public value: string | number | undefined = "-1";
-  public stack: any = "";
+  public value: string | number | undefined = '-1';
+  public stack: any = '';
   constructor() {}
 }

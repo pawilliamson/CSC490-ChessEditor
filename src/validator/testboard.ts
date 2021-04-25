@@ -16,7 +16,7 @@ export class TestBoard {
    */
   testPawnMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackPawn = new Pawn("BLACK");
+    const blackPawn = new Pawn('BLACK');
     this.testBoard.chessBoard[3][3] = blackPawn;
     return (
       this.testBoard.validateMovement(3, 3, 3, 4) ||
@@ -39,7 +39,7 @@ export class TestBoard {
    */
   testPawnMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackPawn = new Pawn("BLACK");
+    const blackPawn = new Pawn('BLACK');
     this.testBoard.chessBoard[3][3] = blackPawn;
     return this.testBoard.validateMovement(3, 3, 3, 2);
   }
@@ -54,8 +54,8 @@ export class TestBoard {
     this.testBoard = new ValidatorBoard();
     let test1 = false;
     let test2 = false;
-    const blackPawn = new Pawn("BLACK");
-    const whitePawn = new Pawn("WHITE");
+    const blackPawn = new Pawn('BLACK');
+    const whitePawn = new Pawn('WHITE');
     this.testBoard.chessBoard[3][3] = blackPawn;
     this.testBoard.chessBoard[2][2] = whitePawn;
     this.testBoard.chessBoard[4][2] = whitePawn;
@@ -75,7 +75,7 @@ export class TestBoard {
     this.testBoard = new ValidatorBoard();
     let test1 = false;
     let test2 = false;
-    const blackPawn = new Pawn("BLACK");
+    const blackPawn = new Pawn('BLACK');
     this.testBoard.chessBoard[3][3] = blackPawn;
     this.testBoard.chessBoard[2][2] = blackPawn;
     this.testBoard.chessBoard[4][2] = blackPawn;
@@ -93,7 +93,7 @@ export class TestBoard {
    */
   testPawnMovement5() {
     this.testBoard = new ValidatorBoard();
-    const whitePawn = new Pawn("WHITE");
+    const whitePawn = new Pawn('WHITE');
     this.testBoard.chessBoard[3][3] = whitePawn;
     return (
       this.testBoard.validateMovement(3, 3, 3, 2) ||
@@ -116,7 +116,7 @@ export class TestBoard {
    */
   testPawnMovement6() {
     this.testBoard = new ValidatorBoard();
-    const whitePawn = new Pawn("WHITE");
+    const whitePawn = new Pawn('WHITE');
     this.testBoard.chessBoard[3][3] = whitePawn;
     return this.testBoard.validateMovement(3, 3, 3, 4);
   }
@@ -131,8 +131,8 @@ export class TestBoard {
     this.testBoard = new ValidatorBoard();
     let test1 = false;
     let test2 = false;
-    const blackPawn = new Pawn("BLACK");
-    const whitePawn = new Pawn("WHITE");
+    const blackPawn = new Pawn('BLACK');
+    const whitePawn = new Pawn('WHITE');
     this.testBoard.chessBoard[3][3] = whitePawn;
     this.testBoard.chessBoard[2][4] = blackPawn;
     this.testBoard.chessBoard[4][4] = blackPawn;
@@ -151,7 +151,7 @@ export class TestBoard {
    */
   testRookMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackRook = new Rook("BLACK");
+    const blackRook = new Rook('BLACK');
     this.testBoard.chessBoard[3][3] = blackRook;
     return (
       this.testBoard.validateMovement(3, 3, 4, 3) &&
@@ -180,7 +180,7 @@ export class TestBoard {
    */
   testRookMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackRook = new Rook("BLACK");
+    const blackRook = new Rook('BLACK');
     this.testBoard.chessBoard[3][3] = blackRook;
     return (
       this.testBoard.validateMovement(3, 3, 2, 4) ||
@@ -198,8 +198,8 @@ export class TestBoard {
    */
   testRookMovement3() {
     this.testBoard = new ValidatorBoard();
-    const blackRook = new Rook("BLACK");
-    const whiteRook = new Rook("WHITE");
+    const blackRook = new Rook('BLACK');
+    const whiteRook = new Rook('WHITE');
     this.testBoard.chessBoard[3][3] = blackRook;
     this.testBoard.chessBoard[2][3] = blackRook;
     this.testBoard.chessBoard[3][5] = whiteRook;
@@ -218,8 +218,8 @@ export class TestBoard {
    */
   testRookMovement4() {
     this.testBoard = new ValidatorBoard();
-    const blackRook = new Rook("BLACK");
-    const whiteRook = new Rook("WHITE");
+    const blackRook = new Rook('BLACK');
+    const whiteRook = new Rook('WHITE');
     this.testBoard.chessBoard[3][3] = blackRook;
     this.testBoard.chessBoard[2][3] = blackRook;
     this.testBoard.chessBoard[3][5] = whiteRook;
@@ -238,7 +238,7 @@ export class TestBoard {
    */
   testBishopMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackBishop = new Bishop("BLACK");
+    const blackBishop = new Bishop('BLACK');
     this.testBoard.chessBoard[3][3] = blackBishop;
     return (
       this.testBoard.validateMovement(3, 3, 4, 4) &&
@@ -261,7 +261,7 @@ export class TestBoard {
    */
   testBishopMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackBishop = new Bishop("BLACK");
+    const blackBishop = new Bishop('BLACK');
     this.testBoard.chessBoard[3][3] = blackBishop;
     return (
       this.testBoard.validateMovement(3, 3, 2, 3) ||
@@ -280,8 +280,8 @@ export class TestBoard {
    */
   testBishopMovement3() {
     this.testBoard = new ValidatorBoard();
-    const blackBishop = new Bishop("BLACK");
-    const whiteBishop = new Bishop("WHITE");
+    const blackBishop = new Bishop('BLACK');
+    const whiteBishop = new Bishop('WHITE');
     this.testBoard.chessBoard[3][3] = blackBishop;
     this.testBoard.chessBoard[1][5] = whiteBishop;
     this.testBoard.chessBoard[4][2] = blackBishop;
@@ -299,8 +299,8 @@ export class TestBoard {
    */
   testBishopMovement4() {
     this.testBoard = new ValidatorBoard();
-    const blackBishop = new Bishop("BLACK");
-    const whiteBishop = new Bishop("WHITE");
+    const blackBishop = new Bishop('BLACK');
+    const whiteBishop = new Bishop('WHITE');
     this.testBoard.chessBoard[3][3] = blackBishop;
     this.testBoard.chessBoard[2][4] = whiteBishop;
     this.testBoard.chessBoard[0][6] = whiteBishop;
@@ -318,7 +318,7 @@ export class TestBoard {
    */
   testKnightMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackKnight = new Knight("BLACK");
+    const blackKnight = new Knight('BLACK');
     this.testBoard.chessBoard[3][3] = blackKnight;
     return (
       this.testBoard.validateMovement(3, 3, 1, 2) &&
@@ -340,7 +340,7 @@ export class TestBoard {
    */
   testKnightMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackKnight = new Knight("BLACK");
+    const blackKnight = new Knight('BLACK');
     this.testBoard.chessBoard[3][3] = blackKnight;
     return (
       this.testBoard.validateMovement(3, 3, 2, 3) ||
@@ -363,8 +363,8 @@ export class TestBoard {
    */
   testKnightMovement3() {
     this.testBoard = new ValidatorBoard();
-    const blackKnight = new Knight("BLACK");
-    const whiteKnight = new Knight("WHITE");
+    const blackKnight = new Knight('BLACK');
+    const whiteKnight = new Knight('WHITE');
     this.testBoard.chessBoard[3][3] = blackKnight;
     this.testBoard.chessBoard[1][2] = whiteKnight;
     this.testBoard.chessBoard[2][5] = blackKnight;
@@ -382,7 +382,7 @@ export class TestBoard {
    */
   testQueenMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackQueen = new Queen("BLACK");
+    const blackQueen = new Queen('BLACK');
     this.testBoard.chessBoard[3][3] = blackQueen;
     return (
       this.testBoard.validateMovement(3, 3, 2, 3) &&
@@ -408,7 +408,7 @@ export class TestBoard {
    */
   testQueenMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackQueen = new Queen("BLACK");
+    const blackQueen = new Queen('BLACK');
     this.testBoard.chessBoard[3][3] = blackQueen;
     return (
       this.testBoard.validateMovement(3, 3, 4, 5) ||
@@ -425,8 +425,8 @@ export class TestBoard {
    */
   testQueenMovement3() {
     this.testBoard = new ValidatorBoard();
-    const blackQueen = new Queen("BLACK");
-    const whiteQueen = new Queen("WHITE");
+    const blackQueen = new Queen('BLACK');
+    const whiteQueen = new Queen('WHITE');
     this.testBoard.chessBoard[3][3] = blackQueen;
     this.testBoard.chessBoard[2][3] = whiteQueen;
     this.testBoard.chessBoard[5][3] = blackQueen;
@@ -445,8 +445,8 @@ export class TestBoard {
    */
   testQueenMovement4() {
     this.testBoard = new ValidatorBoard();
-    const blackQueen = new Queen("BLACK");
-    const whiteQueen = new Queen("WHITE");
+    const blackQueen = new Queen('BLACK');
+    const whiteQueen = new Queen('WHITE');
     this.testBoard.chessBoard[3][3] = blackQueen;
     this.testBoard.chessBoard[0][3] = whiteQueen;
     this.testBoard.chessBoard[5][3] = blackQueen;
@@ -464,7 +464,7 @@ export class TestBoard {
    */
   testKingMovement1() {
     this.testBoard = new ValidatorBoard();
-    const blackKing = new King("BLACK");
+    const blackKing = new King('BLACK');
     this.testBoard.chessBoard[3][3] = blackKing;
     return (
       this.testBoard.validateMovement(3, 3, 2, 3) &&
@@ -486,7 +486,7 @@ export class TestBoard {
    */
   testKingMovement2() {
     this.testBoard = new ValidatorBoard();
-    const blackKing = new King("BLACK");
+    const blackKing = new King('BLACK');
     this.testBoard.chessBoard[3][3] = blackKing;
     return (
       this.testBoard.validateMovement(3, 3, 1, 3) ||
@@ -504,8 +504,8 @@ export class TestBoard {
    */
   testKingMovement3() {
     this.testBoard = new ValidatorBoard();
-    const blackKing = new King("BLACK");
-    const whiteKing = new King("WHITE");
+    const blackKing = new King('BLACK');
+    const whiteKing = new King('WHITE');
     this.testBoard.chessBoard[3][3] = blackKing;
     this.testBoard.chessBoard[4][4] = whiteKing;
     this.testBoard.chessBoard[4][3] = blackKing;

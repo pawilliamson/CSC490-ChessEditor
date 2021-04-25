@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PieceComponent } from "./piece.component";
-import { BoardComponent } from "../board/board.component";
-import { Types } from "./types.enum";
+import { PieceComponent } from './piece.component';
+import { BoardComponent } from '../board/board.component';
+import { Types } from './types.enum';
 import {
   Piece,
   Pawn,
@@ -13,8 +13,8 @@ import {
   Queen,
   King,
   Board,
-} from "../../validator/validator.module";
-describe("PieceComponent", () => {
+} from '../../validator/validator.module';
+describe('PieceComponent', () => {
   let component: PieceComponent;
   let pieceComponentMock: PieceComponent;
   let piece: Piece;
@@ -39,20 +39,20 @@ describe("PieceComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe("Pawns", () => {
-    const pawn: Pawn = new Pawn("WHITE");
-    const otherPiece: Pawn = new Pawn("BLACK");
+  describe('Pawns', () => {
+    const pawn: Pawn = new Pawn('WHITE');
+    const otherPiece: Pawn = new Pawn('BLACK');
 
     beforeEach(() => {
       board = new ValidatorBoard();
     });
 
-    it("should move correctly when white", () => {
-      pawn.setColor("WHITE");
+    it('should move correctly when white', () => {
+      pawn.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       expect(
         board.validateMovement(
@@ -64,8 +64,8 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should move correctly when black", () => {
-      pawn.setColor("BLACK");
+    it('should move correctly when black', () => {
+      pawn.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       expect(
         board.validateMovement(
@@ -77,7 +77,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be allowed to occupy the same cell as a piece with any color", () => {
+    it('should not be allowed to occupy the same cell as a piece with any color', () => {
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       board.chessBoard[xStartPosition][yStartPosition + 1] = otherPiece;
       expect(
@@ -90,9 +90,9 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      pawn.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      pawn.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -105,9 +105,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      pawn.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      pawn.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = pawn;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -121,14 +121,14 @@ describe("PieceComponent", () => {
     });
   });
 
-  describe("Rooks", () => {
-    const rook: Rook = new Rook("BLACK");
-    const otherPiece: Pawn = new Pawn("WHITE");
+  describe('Rooks', () => {
+    const rook: Rook = new Rook('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
     beforeEach(() => {
       board = new ValidatorBoard();
     });
 
-    it("should be able to move horizontally", () => {
+    it('should be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       expect(
         board.validateMovement(
@@ -140,7 +140,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to move vertically", () => {
+    it('should be able to move vertically', () => {
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       expect(
         board.validateMovement(
@@ -152,7 +152,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to move diagonally", () => {
+    it('should not be able to move diagonally', () => {
       const diag =
         xStartPosition > yStartPosition
           ? xStartPosition - 1
@@ -168,9 +168,9 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      rook.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      rook.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
       expect(
@@ -183,9 +183,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      rook.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      rook.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = rook;
       board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
       expect(
@@ -198,9 +198,9 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should not be able to pass through another piece to get to a cell", () => {
-      rook.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should not be able to pass through another piece to get to a cell', () => {
+      rook.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[yStartPosition][xStartPosition] = rook;
       board.chessBoard[yStartPosition][xStartPosition + 1] = otherPiece;
       expect(
@@ -214,13 +214,13 @@ describe("PieceComponent", () => {
     });
   });
 
-  describe("Bishops", () => {
-    const bishop: Bishop = new Bishop("BLACK");
-    const otherPiece: Pawn = new Pawn("WHITE");
+  describe('Bishops', () => {
+    const bishop: Bishop = new Bishop('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
     beforeEach(() => {
       board = new ValidatorBoard();
     });
-    it("should not be able to move horizontally", () => {
+    it('should not be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       expect(
         board.validateMovement(
@@ -232,7 +232,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should not be able to move vertically", () => {
+    it('should not be able to move vertically', () => {
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       expect(
         board.validateMovement(
@@ -244,7 +244,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should be able to move diagonally", () => {
+    it('should be able to move diagonally', () => {
       const diag =
         xStartPosition > yStartPosition
           ? xStartPosition - 1
@@ -260,9 +260,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      bishop.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      bishop.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -275,9 +275,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      bishop.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      bishop.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -290,7 +290,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should not be able to pass through another piece to get to a cell", () => {
+    it('should not be able to pass through another piece to get to a cell', () => {
       board.chessBoard[xStartPosition][yStartPosition] = bishop;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -304,14 +304,14 @@ describe("PieceComponent", () => {
     });
   });
 
-  describe("Knights", () => {
-    const knight: Knight = new Knight("BLACK");
-    const otherPiece: Pawn = new Pawn("WHITE");
+  describe('Knights', () => {
+    const knight: Knight = new Knight('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
     beforeEach(() => {
       board = new ValidatorBoard();
     });
 
-    it("should not be able to move horizontally", () => {
+    it('should not be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(
         board.validateMovement(
@@ -323,7 +323,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should not be able to move vertically", () => {
+    it('should not be able to move vertically', () => {
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(
         board.validateMovement(
@@ -335,7 +335,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should not be able to move diagonally", () => {
+    it('should not be able to move diagonally', () => {
       const diag =
         xStartPosition > yStartPosition
           ? xStartPosition - 1
@@ -351,7 +351,7 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should move like a knight, similar to an L", () => {
+    it('should move like a knight, similar to an L', () => {
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       expect(
         board.validateMovement(
@@ -363,9 +363,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      knight.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      knight.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       board.chessBoard[xStartPosition + 2][yStartPosition + 1] = otherPiece;
       expect(
@@ -378,9 +378,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      knight.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      knight.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       board.chessBoard[xStartPosition + 2][yStartPosition + 1] = otherPiece;
       expect(
@@ -396,9 +396,9 @@ describe("PieceComponent", () => {
     /**
      * I don't think this applies for knights. - DeMO
      */
-    it("should not be able to pass through another piece to get to a cell", () => {
-      knight.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to pass through another piece to get to a cell', () => {
+      knight.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = knight;
       board.chessBoard[xStartPosition + 2][yStartPosition] = otherPiece;
       expect(
@@ -412,14 +412,14 @@ describe("PieceComponent", () => {
     });
   });
 
-  describe("Queens", () => {
-    const queen: Queen = new Queen("WHITE");
-    const otherPiece: Pawn = new Pawn("BLACK");
+  describe('Queens', () => {
+    const queen: Queen = new Queen('WHITE');
+    const otherPiece: Pawn = new Pawn('BLACK');
     beforeEach(() => {
       board = new ValidatorBoard();
     });
 
-    it("should be able to move horizontally", () => {
+    it('should be able to move horizontally', () => {
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(
         board.validateMovement(
@@ -431,7 +431,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to move vertically", () => {
+    it('should be able to move vertically', () => {
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       expect(
         board.validateMovement(
@@ -443,7 +443,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to move diagonally", () => {
+    it('should be able to move diagonally', () => {
       const diag =
         xStartPosition > yStartPosition
           ? xStartPosition - 1
@@ -459,9 +459,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      queen.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      queen.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
       expect(
@@ -474,9 +474,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      queen.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      queen.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = queen;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(
@@ -490,13 +490,13 @@ describe("PieceComponent", () => {
     });
   });
 
-  describe("Kings", () => {
-    const king: King = new King("BLACK");
-    const otherPiece: Pawn = new Pawn("WHITE");
+  describe('Kings', () => {
+    const king: King = new King('BLACK');
+    const otherPiece: Pawn = new Pawn('WHITE');
     beforeEach(() => {
       board = new ValidatorBoard();
     });
-    it("should be able to move only one space", () => {
+    it('should be able to move only one space', () => {
       board.chessBoard[xStartPosition][yStartPosition] = king;
       expect(
         board.validateMovement(
@@ -508,7 +508,7 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to move more than one space", () => {
+    it('should not be able to move more than one space', () => {
       board = new ValidatorBoard();
       board.chessBoard[xStartPosition][yStartPosition] = king;
       expect(
@@ -521,9 +521,9 @@ describe("PieceComponent", () => {
       ).toBeFalse();
     });
 
-    it("should be able to capture an opposing piece", () => {
-      king.setColor("WHITE");
-      otherPiece.setColor("BLACK");
+    it('should be able to capture an opposing piece', () => {
+      king.setColor('WHITE');
+      otherPiece.setColor('BLACK');
       board.chessBoard[xStartPosition][yStartPosition] = king;
       board.chessBoard[xStartPosition + 1][yStartPosition] = otherPiece;
       expect(
@@ -536,9 +536,9 @@ describe("PieceComponent", () => {
       ).toBeTrue();
     });
 
-    it("should not be able to capture a piece with the same color", () => {
-      king.setColor("WHITE");
-      otherPiece.setColor("WHITE");
+    it('should not be able to capture a piece with the same color', () => {
+      king.setColor('WHITE');
+      otherPiece.setColor('WHITE');
       board.chessBoard[xStartPosition][yStartPosition] = king;
       board.chessBoard[xStartPosition + 1][yStartPosition + 1] = otherPiece;
       expect(

@@ -4,7 +4,7 @@ import {
   ViewChild,
   AfterViewInit,
   AfterContentInit,
-} from "@angular/core";
+} from '@angular/core';
 import {
   DragDropModule,
   moveItemInArray,
@@ -16,26 +16,26 @@ import {
   CdkDropList,
   CdkDragExit,
   CdkDragMove,
-} from "@angular/cdk/drag-drop";
+} from '@angular/cdk/drag-drop';
 
-import { BoardComponent } from "../../chess/board/board.component";
+import { BoardComponent } from '../../chess/board/board.component';
 @Component({
-  selector: "app-creator",
-  templateUrl: "./editor.component.html",
-  styleUrls: ["./editor.component.css"],
+  selector: 'app-creator',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css'],
 })
 export class CreatorComponent implements AfterViewInit, AfterContentInit {
-  @ViewChild("game") board: any;
+  @ViewChild('game') board: any;
 
   closed = true;
 
   pieceCollection: Array<string> = [];
-  primaryColor = "bg-primary";
-  secondaryColor = "bg-secondary";
+  primaryColor = 'bg-primary';
+  secondaryColor = 'bg-secondary';
   pieceToAdd: string | unknown;
   colorToAdd: string | unknown;
   fenSaved: Array<string> = [];
-  previousFen = "";
+  previousFen = '';
 
   /* each piece will contain a map of attributes piece: FEN string
    * representation of piece limit: used to track the number of pieces
@@ -43,18 +43,18 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
    * that can be allowed on the board.
    */
   pieces = [
-    { piece: "P", limit: 8, upperBound: 8 },
-    { piece: "N", limit: 2, upperBound: 2 },
-    { piece: "B", limit: 2, upperBound: 2 },
-    { piece: "R", limit: 2, upperBound: 2 },
-    { piece: "Q", limit: 1, upperBound: 1 },
-    { piece: "K", limit: 1, upperBound: 1 },
-    { piece: "p", limit: 8, upperBound: 8 },
-    { piece: "n", limit: 2, upperBound: 2 },
-    { piece: "b", limit: 2, upperBound: 2 },
-    { piece: "r", limit: 2, upperBound: 2 },
-    { piece: "q", limit: 1, upperBound: 1 },
-    { piece: "k", limit: 1, upperBound: 1 },
+    { piece: 'P', limit: 8, upperBound: 8 },
+    { piece: 'N', limit: 2, upperBound: 2 },
+    { piece: 'B', limit: 2, upperBound: 2 },
+    { piece: 'R', limit: 2, upperBound: 2 },
+    { piece: 'Q', limit: 1, upperBound: 1 },
+    { piece: 'K', limit: 1, upperBound: 1 },
+    { piece: 'p', limit: 8, upperBound: 8 },
+    { piece: 'n', limit: 2, upperBound: 2 },
+    { piece: 'b', limit: 2, upperBound: 2 },
+    { piece: 'r', limit: 2, upperBound: 2 },
+    { piece: 'q', limit: 1, upperBound: 1 },
+    { piece: 'k', limit: 1, upperBound: 1 },
   ];
   constructor() {}
 
@@ -157,13 +157,13 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
     const str: string = this.board.toFENString();
     for (const piece of this.pieces) {
       const ls = Number(str.length);
-      const reg = new RegExp(piece.piece, "g");
-      const rs = str.replace(reg, "").length;
+      const reg = new RegExp(piece.piece, 'g');
+      const rs = str.replace(reg, '').length;
       const num: number = Number(ls) - Number(rs);
-      console.log(str.replace(piece.piece, ""));
+      console.log(str.replace(piece.piece, ''));
       console.log(str.length);
 
-      console.log(str.replace(/piece.piece/g, ""));
+      console.log(str.replace(/piece.piece/g, ''));
       console.log(num);
       piece.limit = piece.upperBound - num;
     }
@@ -172,7 +172,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   startEditor() {
     this.closed = false;
     this.previousFen = this.board.board.toFENString();
-    this.board.initBoard("8/8/8/8/8/8/8/8");
+    this.board.initBoard('8/8/8/8/8/8/8/8');
   }
 
   cancelEditor() {
@@ -195,9 +195,9 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 
   saveBoard() {
     const fen: string = this.board.board.toFENString();
-    if (fen.match(".*K.*") === null || fen.match(".*k.*") === null) {
+    if (fen.match('.*K.*') === null || fen.match('.*k.*') === null) {
       window.alert(
-        "A valid chess board layout has at least one king for each player"
+        'A valid chess board layout has at least one king for each player'
       );
     } else {
       if (this.fenSaved.indexOf(fen) === -1) {
