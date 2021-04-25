@@ -5,6 +5,7 @@
  *
  */
 export class TestBoard {
+
   testBoard: ValidatorBoard = new ValidatorBoard();
 
   /**
@@ -514,4 +515,5 @@ export class TestBoard {
       !this.testBoard.validateMovement(3, 3, 4, 4)
     );
   }
+
 }
