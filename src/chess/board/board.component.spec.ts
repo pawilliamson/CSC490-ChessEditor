@@ -2,19 +2,18 @@
 	File containing tests for Board Component.
 */
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BoardComponent } from './board.component';
+import { BoardComponent } from "./board.component";
 
-describe('BoardComponent', () => {
+describe("BoardComponent", () => {
   let component: BoardComponent;
   let fixture: ComponentFixture<BoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
-    })
-    .compileComponents();
+      declarations: [BoardComponent],
+    }).compileComponents();
   });
   beforeEach(() => {
     fixture = TestBed.createComponent(BoardComponent);
@@ -22,29 +21,29 @@ describe('BoardComponent', () => {
     fixture.detectChanges();
   });
 
-	describe('Initialization', ()=> {
-    it('should be defined', () => {
+  describe("Initialization", () => {
+    it("should be defined", () => {
       expect(component).toBeDefined();
     });
   });
 
-	describe('Create Board', ()=>{
-    it('should generate normal chessboard', () => {
-      const initialLayout = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR';
+  describe("Create Board", () => {
+    it("should generate normal chessboard", () => {
+      const initialLayout = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
       const result = component.toFENString();
       expect(result).toContain(initialLayout);
     });
 
-    it('should generate an empty chessboard', () => {
-      const initialLayout = '8/8/8/8/8/8/8/8';
+    it("should generate an empty chessboard", () => {
+      const initialLayout = "8/8/8/8/8/8/8/8";
       component.generateBoard(initialLayout);
       const result = component.toFENString();
       expect(result).toContain(initialLayout);
     });
 
-    it('should generate an empty board with an empty layout', () =>{
-      const initialLayout = '';
-      component.generateBoard('');
+    it("should generate an empty board with an empty layout", () => {
+      const initialLayout = "";
+      component.generateBoard("");
       const result = component.toFENString();
       expect(result).toContain(initialLayout);
     });
