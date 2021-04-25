@@ -1,16 +1,16 @@
 // File: chess.module.ts
 /**
  * Class: Chess Module
- * 
+ *
  * Contains components required to generate a chess board with pieces.
- * 
+ *
  * Components:
- * 
- * - <BoardComponent> 
+ *
+ * - <BoardComponent>
  * - <PieceComponent>
  *
  **/
- 
+
 import {
 	NgModule
 }

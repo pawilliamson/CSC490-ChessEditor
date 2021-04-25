@@ -6,16 +6,16 @@ import {Piece} from './piece.service';
  * Extends Piece
  *
  * This class is for the Bishop chess piece.
- * 
+ *
  */
 export class Bishop extends Piece {
-    
+
 	/**
 	 * Function: getName
 	 * This method returns the name of the Piece.
-	 * 
+	 *
 	 */
 	getName() {
-		return "BISHOP";
+		return 'BISHOP';
 	}
 }

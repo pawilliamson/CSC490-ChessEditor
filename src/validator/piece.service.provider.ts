@@ -1,9 +1,7 @@
 import { Piece } from './piece.service';
 
-let pieceFactory = (color:string)=>{
- return new Piece(color);
-};
-export let PieceProvider = {
+const pieceFactory = (color: string)=>new Piece(color);
+export const PieceProvider = {
 	provide: Piece,
 	useFactory: pieceFactory,
 	};

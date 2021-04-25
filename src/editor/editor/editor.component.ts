@@ -11,44 +11,44 @@ import {BoardComponent} from '../../chess/board/board.component';
 })
 
 export class CreatorComponent implements AfterViewInit, AfterContentInit {
-    @ViewChild("game")board:any;
+    @ViewChild('game')board: any;
 
     CdkDragExit(){
-        console.log("test");
+        console.log('test');
     }
 
-    CdkDragStart(event:CdkDrag<string[]>){
-        console.log("test");
+    CdkDragStart(event: CdkDrag<string[]>){
+        console.log('test');
     }
 
-    pieceCollection:Array<string> = [];
-	primaryColor : string = "bg-primary";
-	secondaryColor: string = "bg-secondary";
+    pieceCollection: Array<string> = [];
+	primaryColor = 'bg-primary';
+	secondaryColor = 'bg-secondary';
 	pieceToAdd: string | unknown;
 	colorToAdd: string | unknown;
-	fenSaved:Array<string>=[];
-    previousFen: string = "";
-	
+	fenSaved: Array<string>=[];
+    previousFen = '';
+
     /*each piece will contain a map of attributes
         piece: FEN string representation of piece
         limit: used to track the number of pieces allowed to be placed on the board.
         upperBound: maximum number of pieces that can be allowed on the board.
     */
     pieces = [
-        {piece: "P", limit: 8, upperBound: 8},
-        {piece: "N", limit: 2, upperBound: 2},
-        {piece: "B", limit: 2, upperBound: 2},
-        {piece: "R", limit: 2, upperBound: 2},
-        {piece: "Q", limit: 1, upperBound: 1},
-        {piece: "K", limit: 1, upperBound: 1},
-        {piece: "p", limit: 8, upperBound: 8},
-        {piece: "n", limit: 2, upperBound: 2},
-        {piece: "b", limit: 2, upperBound: 2},
-        {piece: "r", limit: 2, upperBound: 2},
-        {piece: "q", limit: 1, upperBound: 1},
-        {piece: "k", limit: 1, upperBound: 1}];
-	
-	getLimit(piece:string){
+        {piece: 'P', limit: 8, upperBound: 8},
+        {piece: 'N', limit: 2, upperBound: 2},
+        {piece: 'B', limit: 2, upperBound: 2},
+        {piece: 'R', limit: 2, upperBound: 2},
+        {piece: 'Q', limit: 1, upperBound: 1},
+        {piece: 'K', limit: 1, upperBound: 1},
+        {piece: 'p', limit: 8, upperBound: 8},
+        {piece: 'n', limit: 2, upperBound: 2},
+        {piece: 'b', limit: 2, upperBound: 2},
+        {piece: 'r', limit: 2, upperBound: 2},
+        {piece: 'q', limit: 1, upperBound: 1},
+        {piece: 'k', limit: 1, upperBound: 1}];
+
+	getLimit(piece: string){
 		for ( let p = 0; p < this.pieces.length; p++){
             if(this.pieces[p].piece == piece){
                 return this.pieces[p].limit;
@@ -56,8 +56,8 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 		}
 		return -1;
 	}
-	
-    dragStarted (event : CdkDragStart) {
+
+    dragStarted(event: CdkDragStart) {
         console.log(event);
     }
 
@@ -65,14 +65,14 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
         for ( let p = 0; p < this.pieces.length; p++){
             if(this.pieces[p].piece == piece){
                 this.pieces[p].limit--;
-                
-                
+
+
                 if(this.pieces[p].limit > 0){
                     this.pieceCollection.push(piece);
                 }
                 break;
-            }        
-        }        
+            }
+        }
     }
 
     end(piece: string){
@@ -91,7 +91,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
         }
 
     }
-	
+
     drop(event: any) {
 
         if (event.previousContainer === event.container) {
@@ -103,7 +103,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 
         let p = 0;
         for (; p < this.pieceCollection.length; p++){
-            while(this.pieceCollection.filter((x)=> x== this.pieceCollection[p]).length > 1){ 
+            while(this.pieceCollection.filter((x)=> x== this.pieceCollection[p]).length > 1){
                 let z = 0;
                 for( ;z < this.pieces.length; z++){
                     if (this.pieces[z].piece == this.pieceCollection[p]){
@@ -121,7 +121,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
     /*
     reorganizeEditorPieces - used to restore ordering of pieces based on ordering of piece map.
     */
-    reorganizeEditorPieces (): void {
+    reorganizeEditorPieces(): void {
         this.pieceCollection = [];
         for (let i = 0; i < this.pieces.length; i++) {
             this.pieceCollection.push (this.pieces [i].piece);
@@ -129,80 +129,80 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
     }
 
     ngAfterViewInit(): void {
-        this.board.madeMove = (cell:any) => {this.checkLimits()};
+        this.board.madeMove = (cell: any) => {this.checkLimits();};
     }
 
-    ngAfterContentInit () : void {
+    ngAfterContentInit(): void {
         this.reorganizeEditorPieces ();
-    } 
-    
-    checkLimits(){
-      let pieces = this.pieces;
-      let str:string = this.board.toFENString();
-      for(let piece of this.pieces){
-         var ls:number = Number(str.length);
-         var reg = new RegExp(piece.piece, 'g');
-         var rs = str.replace(reg, "").length;
-		 var num:number = Number(ls) - Number(rs);
-		 console.log(str.replace(piece.piece, ""));
-		 console.log(str.length);
-		
+    }
 
-		 console.log(str.replace(/piece.piece/g, ""));
+    checkLimits(){
+      const pieces = this.pieces;
+      const str: string = this.board.toFENString();
+      for(const piece of this.pieces){
+         const ls = Number(str.length);
+         const reg = new RegExp(piece.piece, 'g');
+         const rs = str.replace(reg, '').length;
+		 const num: number = Number(ls) - Number(rs);
+		 console.log(str.replace(piece.piece, ''));
+		 console.log(str.length);
+
+
+		 console.log(str.replace(/piece.piece/g, ''));
 		 console.log(num);
 		 piece.limit = piece.upperBound - num;
-      
+
       }
     }
 
     startEditor(){
-        let enterBtn = <HTMLInputElement>document.getElementById("enterEditorBtn");
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-        let saved = <HTMLInputElement>document.getElementById("load");
-        editor.style.display="block";
-        saved.style.display="block";
-        enterBtn.style.display="none";
+        const enterBtn = <HTMLInputElement>document.getElementById('enterEditorBtn');
+        const editor = <HTMLInputElement>document.getElementById('editorTools');
+        const saved = <HTMLInputElement>document.getElementById('load');
+        editor.style.display='block';
+        saved.style.display='block';
+        enterBtn.style.display='none';
         this.previousFen = this.board.board.toFENString ();
-        this.board.initBoard("8/8/8/8/8/8/8/8");
+        this.board.initBoard('8/8/8/8/8/8/8/8');
     }
 
-    cancelEditor () {
+    cancelEditor() {
         this.board.initBoard (this.previousFen);
         this.closeEditor ();
     }
 
     closeEditor(){
-        let enterBtn = <HTMLInputElement>document.getElementById("enterEditorBtn");
-        let editor = <HTMLInputElement>document.getElementById("editorTools");
-        let saved = <HTMLInputElement>document.getElementById("load");
-        editor.style.display= "none";
-        saved.style.display="none";
-        enterBtn.style.display="block";
+        const enterBtn = <HTMLInputElement>document.getElementById('enterEditorBtn');
+        const editor = <HTMLInputElement>document.getElementById('editorTools');
+        const saved = <HTMLInputElement>document.getElementById('load');
+        editor.style.display= 'none';
+        saved.style.display='none';
+        enterBtn.style.display='block';
 
         //Reset counts for pieces
-        for(let piece of this.pieces){
+        for(const piece of this.pieces){
             piece.limit = piece.upperBound;
         }
     }
 
-    loadSavedFen(fen:string){
+    loadSavedFen(fen: string){
         this.closeEditor ();
         this.board.initBoard (fen);
     }
 
     showSavedFens(){
-        let savedFENS = <HTMLInputElement>document.getElementById("load");
-        savedFENS.style.display = "block";
+        const savedFENS = <HTMLInputElement>document.getElementById('load');
+        savedFENS.style.display = 'block';
     }
 
     saveBoard(){
-        var fen: string = this.board.board.toFENString();
-        if (fen.match(".*K.*") == null || fen.match (".*k.*") == null) {
-            window.alert ("A valid chess board layout has at least one king for each player");
+        const fen: string = this.board.board.toFENString();
+        if (fen.match('.*K.*') == null || fen.match ('.*k.*') == null) {
+            window.alert ('A valid chess board layout has at least one king for each player');
         }
         else {
             if(this.fenSaved.indexOf(fen) == -1)
-                this.fenSaved.push(fen);
+                {this.fenSaved.push(fen);}
 
             this.loadSavedFen (fen);
         }
@@ -216,5 +216,5 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 		this.colorToAdd = color;
 	}
 
-	addPiece(color:string){}
+	addPiece(color: string){}
 }
