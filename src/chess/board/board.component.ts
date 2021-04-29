@@ -184,7 +184,7 @@ class Row implements FEN {
     let counter = 0;
     for (; i < this.cells.length; i++) {
       const z = this.cells[i].toFENString();
-      if (z === '' || z === null) {
+      if (z === '' || z === null || !z) {
         counter += 1;
       } else {
         if (counter > 0) {
