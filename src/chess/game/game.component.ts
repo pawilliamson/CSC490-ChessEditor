@@ -37,7 +37,7 @@ export class GameComponent implements AfterViewInit {
     } else {
       this.board.generateBoard(starter);
     }
-
+	this.player = true;
     this.startingPosition = this.getFENBoard();
     this.vboard = new ValidatorBoard();
     this.loadValidator();

@@ -98,6 +98,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
         event.previousIndex,
         event.currentIndex
       );
+      
     }
 
     let p = 0;
@@ -117,7 +118,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
       }
     }
     
-    this.board.passBoard (this.checkLimits);
+  this.checkLimits();
   }
 
   /* reorganizeEditorPieces - used to restore ordering of pieces based on
@@ -161,6 +162,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   cancelEditor() {
+    this.board.true = false;
     this.closed = true;
     this.board.initBoard(this.previousFen);
     this.closeEditor();
@@ -175,6 +177,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   loadSavedFen(fen: string) {
+  this.board.game = true;
     this.closeEditor();
     this.board.initBoard(fen);
   }
