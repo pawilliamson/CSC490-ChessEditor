@@ -286,7 +286,7 @@ class Cell implements FEN {
     if (event.previousContainer.id !== 'otherList') {
       this.madeMove();
     } else {
-      this.madeMove = () => {};
+      this.madeMove();
     }
   }
 

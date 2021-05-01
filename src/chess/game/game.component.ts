@@ -18,7 +18,8 @@ export class GameComponent implements AfterViewInit {
   vboard: ValidatorBoard = new ValidatorBoard();
   previousBoard: any = new BoardComponent();
   halfMove = 0;
-
+  game = false;
+  madeMove = () => {};
   constructor() {}
 
   ngAfterViewInit(): void {
@@ -61,6 +62,10 @@ export class GameComponent implements AfterViewInit {
     return out;
   }
   move(inp: any) {
+	  if(!this.game){
+		  this.madeMove();
+		  return;
+	  }
     const spit = (x: string) => x.split('/');
 
     this.previousBoard.generateBoard(this.history[this.turn - 1]);
@@ -235,9 +240,10 @@ export class GameComponent implements AfterViewInit {
   }
 
   passBoard(made:any){
-    this.board.madeMove = (x:any) =>{
+    this.madeMove = () =>{
         made();
     }
+    this.board.generateBoard(this.board.toFENString());
    }
 }
 export class RCell {

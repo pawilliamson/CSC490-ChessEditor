@@ -131,7 +131,10 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   ngAfterViewInit(): void {
-    this.board.passBoard (this.checkLimits);
+	this.board.madeMove = ()=>{
+	this.checkLimits();
+	}
+
   }
 
   ngAfterContentInit(): void {
@@ -140,7 +143,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 
   checkLimits() {
     const pieces = this.pieces;
-    const str: string = this.board.toFENString();
+    const str: string = this.board.board.toFENString();
     for (const piece of this.pieces) {
       const ls = Number(str.length);
       const reg = new RegExp(piece.piece, 'g');
@@ -151,6 +154,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   startEditor() {
+	this.board.game = false;
     this.closed = false;
     this.previousFen = this.board.board.toFENString();
     this.board.initBoard('8/8/8/8/8/8/8/8');
@@ -163,6 +167,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   closeEditor() {
+    this.board.game = true;
     this.closed = true;
     for (const piece of this.pieces) {
       piece.limit = piece.upperBound;
