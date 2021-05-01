@@ -116,7 +116,8 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
         this.pieceCollection.splice(p, 1);
       }
     }
-    this.checkLimits();
+    
+    this.board.passBoard (this.checkLimits);
   }
 
   /* reorganizeEditorPieces - used to restore ordering of pieces based on
@@ -130,9 +131,7 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   }
 
   ngAfterViewInit(): void {
-    this.board.madeMove = (cell: any) => {
-      this.checkLimits();
-    };
+    this.board.passBoard (this.checkLimits);
   }
 
   ngAfterContentInit(): void {

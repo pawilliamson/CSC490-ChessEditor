@@ -233,6 +233,12 @@ export class GameComponent implements AfterViewInit {
       this.player = true;
     }
   }
+
+  passBoard(made:any){
+    this.board.madeMove = (x:any) =>{
+        made();
+    }
+   }
 }
 export class RCell {
   public value: string | number | undefined = '-1';
