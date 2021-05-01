@@ -30,12 +30,6 @@ export class Piece {
   setColor(specifiedColor: string) {
     if (specifiedColor === 'WHITE' || specifiedColor === 'BLACK') {
       this.color = specifiedColor;
-    } else {
-      console.log(
-        'Piece class tried to assign a color to a Piece that' +
-          'was not WHITE or BLACK. Attempted color assignment: ' +
-          specifiedColor
-      );
     }
   }
 

@@ -5,13 +5,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  page = 1;
   title = 'chess-app';
   constructor() {}
-  goHome() {
-    this.page = 1;
-  }
-  goBoard() {
-    this.page = 2;
-  }
 }

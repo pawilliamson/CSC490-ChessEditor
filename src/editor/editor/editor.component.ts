@@ -67,10 +67,6 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
     return -1;
   }
 
-  dragStarted(event: CdkDragStart) {
-    console.log(event);
-  }
-
   start(piece: string) {
     for (const p of this.pieces) {
       if (p.piece === piece) {
@@ -160,11 +156,6 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
       const reg = new RegExp(piece.piece, 'g');
       const rs = str.replace(reg, '').length;
       const num: number = Number(ls) - Number(rs);
-      console.log(str.replace(piece.piece, ''));
-      console.log(str.length);
-
-      console.log(str.replace(/piece.piece/g, ''));
-      console.log(num);
       piece.limit = piece.upperBound - num;
     }
   }

@@ -129,16 +129,6 @@ export class BoardComponent implements OnInit, FEN {
         );
       }
     }
-    this.printFENString();
-  }
-
-  /**
-   * Function: printFENString()
-   *
-   * Prints the output of toFENString in the developer console
-   */
-  printFENString() {
-    console.log(this.toFENString());
   }
 
   /**
@@ -157,12 +147,12 @@ export class BoardComponent implements OnInit, FEN {
     }
     return output;
   }
+
   /**
    * Function: ngOnInit
    */
   ngOnInit(): void {
     this.generateBoard('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR');
-    console.log(this.toFENString());
   }
 }
 
@@ -267,7 +257,6 @@ class Cell implements FEN {
    * Function: drop
    */
   drop(event: CdkDragDrop<string[]>) {
-    console.log('Board Drop');
     const before = this.getPieces();
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -283,8 +272,7 @@ class Cell implements FEN {
         event.currentIndex
       );
     }
-    console.log(before);
-    console.log(this.getPieces());
+
     //if(this.pieces.length > 1)
     if (before && this.getPieces()) {
       if (before === this.getPieces()) {
@@ -300,8 +288,6 @@ class Cell implements FEN {
     } else {
       this.madeMove = () => {};
     }
-
-    console.log('WELL, I MADE IT!');
   }
 
   /**

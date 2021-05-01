@@ -1,31 +1,23 @@
-# CSC490-ChessEditor Readme
+# CSC-490-02: Spring 2021 
+# Gamer Chess
+### Chess...for Gamers
 
-## Requirements
-npm: 6.14.11
+<br>
 
-## How to build?
-This project requires node to build the projects and download the dependencies.
+# Documentation
+## [Project Final Report](https://drive.google.com/file/d/1ZaYqn6yI8DX9hB4gtPgTYT2k2PE74Wxk/view?usp=sharing)
 
-The steps below outline the process that allows you to use your GitHub root directory in tandem with the installation resources.
+## [User Manual](https://docs.google.com/document/d/1rE-iXvNuGbvx91T6rWCvXpvt-B7DVFlX73kqj1TzG-g/edit?usp=sharing)
 
-Please make sure that the GitHub repository is downloaded **before** proceeding with this step.
+<br>
 
-Use the following commands in this order:
-1. Create your project using the GitHub repo directory.
-    -**Note:** Depending on your IDE, it may be more appropriate to import a project from the GitHub repo. I had to use Import Angular Project for Eclipse with Angular IDE extension.
+# About Us
 
-2. `cd [Your project directory]` 
+## The Azkaban Dabmentors
+![The Azkaban Dabmentors](./src/assets/team_mascot.png?raw=true)
 
-    - The directory in which the npm package will be installed for server rendering.
-
-    - **Example:** `cd C:\Users\Preston.Williamson\eclipse-workspace\CSC490-ProjectDirectory`
-
-3. `npm install`
-    
-    - Install step
-
-4. `ng serve --open`
-
-    - Command given to start the server.
-    
-    - **Note:** Depending on IDE and project configurations, this may already be done for you. Eclipse provides a UI option to start the server with Anguler IDE extension.
+### Dakota Simpkins
+### Tyler Wallschleger
+### Devin O’Brien
+### Preston Williamson
+### Brandon Kyle

@@ -2,20 +2,7 @@
 <h1>Gamer Chess</h1>
 
 <!--Allows for swapping to different pages-->
-<div *ngIf="page == 1">
-  <div class="d-flex justify-content-center">
-    <button class="btn btn-primary" (click)="goHome()">Home</button>
-    <button class="btn btn-primary" (click)="goBoard()">Board</button>
-  </div>
-  <app-home></app-home>
-</div>
-<div *ngIf="page == 2">
-  <div class="d-flex justify-content-center">
-    <button class="btn btn-primary" (click)="goHome()">Home</button>
-    <button class="btn btn-primary" (click)="goBoard()">Board</button>
-  </div>
-  <div cdkDropListGroup>
+<div cdkDropListGroup>
     <app-creator></app-creator>
-  </div>
 </div>
 <router-outlet></router-outlet>
