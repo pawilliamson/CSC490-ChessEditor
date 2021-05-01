@@ -9,13 +9,6 @@ import {
   DragDropModule,
   moveItemInArray,
   transferArrayItem,
-  copyArrayItem,
-  CdkDragStart,
-  CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDragExit,
-  CdkDragMove,
 } from '@angular/cdk/drag-drop';
 
 import { BoardComponent } from '../../chess/board/board.component';
@@ -32,8 +25,6 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
   pieceCollection: Array<string> = [];
   primaryColor = 'bg-primary';
   secondaryColor = 'bg-secondary';
-  pieceToAdd: string | unknown;
-  colorToAdd: string | unknown;
   fenSaved: Array<string> = [];
   previousFen = '';
 
@@ -197,13 +188,5 @@ export class CreatorComponent implements AfterViewInit, AfterContentInit {
 
       this.loadSavedFen(fen);
     }
-  }
-
-  setNewPiece(pieceType: string) {
-    this.pieceToAdd = pieceType;
-  }
-
-  setNewColor(color: string) {
-    this.colorToAdd = color;
   }
 }

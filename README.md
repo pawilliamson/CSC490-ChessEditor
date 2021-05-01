@@ -17,9 +17,9 @@ Chess...for Gamers
 ## Team: The Azkaban Dabmentors
 ![The Azkaban Dabmentors](./src/assets/team_mascot.png?raw=true)
 
-## Team Members
-### Dakota Simpkins
-### Tyler Wallschleger
-### Devin O’Brien
-### Preston Williamson
-### Brandon Kyle
+## Team Members (Click our names to find out more!)
+### [Dakota Simpkins](https://www.linkedin.com/in/dakota-simpkins-226941185)
+### [Tyler Wallschleger](https://www.linkedin.com/in/tylerwallschleger/)
+### [Devin O’Brien] (https://www.linkedin.com/in/devin-o-brien-259503131/)
+### [Preston Williamson](https://www.linkedin.com/in/prestonwilliamson/)
+### [Brandon Kyle](https://www.linkedin.com/in/brandon-kyle-329465211/)
